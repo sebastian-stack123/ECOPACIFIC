@@ -1,0 +1,6 @@
+{
+  "name": "EcoPacific | Del campo a tu día",
+  "description": "Página web corporativa de EcoPacific. Alimentos y bebidas creados desde el origen, con sabor, innovación y propósito.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
