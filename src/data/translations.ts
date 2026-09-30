@@ -102,7 +102,7 @@ export const UI_TRANSLATIONS = {
       contactBrand: 'Consultar sobre esta marca',
     },
     footer: {
-      brandDesc: 'Innovando Alimentos Saludables.',
+      brandDesc: 'Innovando Alimentos Saludables',
       navHeading: 'Navegación',
       brandsHeading: 'Marcas',
       contactHeading: 'Contacto',
@@ -222,7 +222,7 @@ export const UI_TRANSLATIONS = {
       contactBrand: 'Inquire about this brand',
     },
     footer: {
-      brandDesc: 'Innovating Healthy Foods.',
+      brandDesc: 'Innovating Healthy Foods',
       navHeading: 'Navigation',
       brandsHeading: 'Brands',
       contactHeading: 'Contact',
