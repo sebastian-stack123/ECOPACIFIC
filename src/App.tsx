@@ -5,10 +5,9 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { TransitionSection } from './components/TransitionSection';
 import { BrandsSection } from './components/BrandsSection';
-import { HistorySection } from './components/HistorySection';
 import { OriginSection } from './components/OriginSection';
-import { SustainabilitySection } from './components/SustainabilitySection';
-import { CtaSection } from './components/CtaSection';
+import { NosotrosSubpage } from './components/NosotrosSubpage';
+import { SustainabilitySubpage } from './components/SustainabilitySubpage';
 import { BrandSubpage } from './components/BrandSubpage';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
@@ -36,18 +35,18 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Determine if viewing a specific brand subpage
+  // Determine active view
   const brandSlugMatch = currentPath.match(/^\/marcas\/([a-z0-9-]+)/);
   const activeBrandSlug = brandSlugMatch ? brandSlugMatch[1] : null;
   const activeBrand = activeBrandSlug ? BRANDS_DATA[activeBrandSlug] : null;
 
+  const isNosotros = currentPath === '/nosotros';
+  const isSostenibilidad = currentPath === '/sostenibilidad';
+
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-[#1E5638] selection:text-white">
       {activeBrand ? (
-        /* ========================================================
-           SUBPÁGINA INDEPENDIENTE DE MARCA
-           Se siente 100% como su propia web independiente
-           ======================================================== */
+        /* Subpágina de marca independiente (ej. Coco Freeze) */
         <BrandSubpage
           brand={activeBrand}
           language={language}
@@ -55,13 +54,26 @@ export default function App() {
           onNavigateBrand={(slug) => navigateTo(`/marcas/${slug}`)}
           onOpenContact={() => setContactModalOpen(true)}
         />
+      ) : isNosotros ? (
+        /* Subpágina completa de Nuestra Empresa (Nosotros) */
+        <NosotrosSubpage
+          language={language}
+          onNavigateHome={() => navigateTo('/')}
+          onNavigate={navigateTo}
+          onOpenContact={() => setContactModalOpen(true)}
+        />
+      ) : isSostenibilidad ? (
+        /* Subpágina completa de Sostenibilidad con texto 100% centrado */
+        <SustainabilitySubpage
+          language={language}
+          onNavigateHome={() => navigateTo('/')}
+          onNavigate={navigateTo}
+          onOpenContact={() => setContactModalOpen(true)}
+        />
       ) : (
-        /* ========================================================
-           HOMEPAGE CORPORATIVA ECOPACIFIC
-           Estilo Tropicana: Verde fresco vibrante, amarillo brillante y blanco
-           ======================================================== */
+        /* Página Principal */
         <>
-          {/* Global Corporate Navbar */}
+          {/* Top Navbar: Menú, ECOPACIFIC, Idiomas Y NADA MÁS */}
           <Navbar
             currentPath={currentPath}
             onNavigate={navigateTo}
@@ -71,6 +83,7 @@ export default function App() {
           />
 
           <main className="flex-grow">
+            {/* 1. Hero / Inicio */}
             <Hero
               language={language}
               onExploreBrands={() => {
@@ -79,38 +92,31 @@ export default function App() {
               }}
             />
 
+            {/* 2. Transición: Más de 20 años transformando lo que nace del campo */}
             <TransitionSection language={language} />
 
+            {/* 3. Nuestras Marcas: Compactas una al lado de la otra */}
             <BrandsSection
               language={language}
               onSelectBrand={(slug) => navigateTo(`/marcas/${slug}`)}
             />
 
-            <HistorySection language={language} />
-
+            {/* 4. Agricultores: Texto centrado en el medio sin burbuja y foto grande centrada abajo */}
             <OriginSection language={language} />
-
-            <SustainabilitySection language={language} />
-
-            <CtaSection
-              language={language}
-              onExplore={() => {
-                const el = document.getElementById('nosotros');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            />
           </main>
 
-          {/* Global Corporate Footer */}
+          {/* Footer Corporativo */}
           <Footer
             language={language}
             onNavigate={navigateTo}
+            onOpenNosotros={() => navigateTo('/nosotros')}
+            onOpenSostenibilidad={() => navigateTo('/sostenibilidad')}
             onOpenContact={() => setContactModalOpen(true)}
           />
         </>
       )}
 
-      {/* Corporate Contact Modal */}
+      {/* Modal Contacto */}
       <ContactModal
         isOpen={contactModalOpen}
         language={language}
