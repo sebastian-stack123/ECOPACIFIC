@@ -13,11 +13,11 @@ export const OriginSection: React.FC<OriginSectionProps> = ({ language }) => {
         {/* Centered Headers & Copy */}
         <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
           {/* Agricultores sin burbuja, más grande y visible al igual que Innovando Alimentos Saludables */}
-          <span className="text-sm sm:text-base font-bold uppercase tracking-widest text-[#286E48] text-center mb-4 block">
+          <span className="text-sm sm:text-base font-bold uppercase tracking-widest text-[#5B8C2A] text-center mb-4 block">
             {language === 'es' ? 'Agricultores' : 'Farmers'}
           </span>
 
-          <h2 className="text-4xl sm:text-6xl font-black tracking-tight text-[#1E5638] leading-[1.08] mb-6">
+          <h2 className="text-4xl sm:text-6xl font-black tracking-tight text-[#5B8C2A] leading-[1.08] mb-6">
             {language === 'es' ? 'El éxito comienza en el campo.' : 'Success begins in the field.'}
           </h2>
 

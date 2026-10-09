@@ -44,7 +44,7 @@ export default function App() {
   const isSostenibilidad = currentPath === '/sostenibilidad';
 
   return (
-    <div className="min-h-screen flex flex-col font-sans selection:bg-[#1E5638] selection:text-white">
+    <div className="min-h-screen flex flex-col font-sans selection:bg-[#5B8C2A] selection:text-white">
       {activeBrand ? (
         /* Subpágina de marca independiente (ej. Coco Freeze) */
         <BrandSubpage

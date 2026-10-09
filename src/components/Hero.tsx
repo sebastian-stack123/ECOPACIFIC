@@ -63,7 +63,7 @@ export const Hero: React.FC<HeroProps> = ({ language, onExploreBrands }) => {
         {/* Single CTA: "Descubre EcoPacific" */}
         <button
           onClick={handleScrollDown}
-          className="px-10 py-4 sm:px-12 sm:py-5 text-sm sm:text-base font-bold uppercase tracking-wider text-[#18482E] bg-white hover:bg-stone-100 rounded-full transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 cursor-pointer"
+          className="px-10 py-4 sm:px-12 sm:py-5 text-sm sm:text-base font-bold uppercase tracking-wider text-[#5B8C2A] bg-white hover:bg-stone-100 rounded-full transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 cursor-pointer"
         >
           {language === 'es' ? 'Descubre EcoPacific' : 'Discover EcoPacific'}
         </button>

@@ -69,7 +69,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             </div>
           ) : (
             <div>
-              <span className="text-xs uppercase tracking-widest text-[#286E48] font-semibold mb-2 block">
+              <span className="text-xs uppercase tracking-widest text-[#5B8C2A] font-bold mb-2 block">
                 {language === 'es' ? 'Contacto Corporativo' : 'Corporate Contact'}
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight mb-2">
@@ -93,7 +93,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder={language === 'es' ? 'Tu nombre' : 'Your name'}
-                      className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#1E5638] focus:border-transparent"
+                      className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#5B8C2A] focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -106,7 +106,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="nombre@empresa.com"
-                      className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#1E5638] focus:border-transparent"
+                      className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#5B8C2A] focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -121,7 +121,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       placeholder={language === 'es' ? 'Ej. Cadena retail / Distribuidora' : 'e.g. Retail / Distributor'}
-                      className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#1E5638] focus:border-transparent"
+                      className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#5B8C2A] focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -131,7 +131,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     <select
                       value={formData.inquiryType}
                       onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
-                      className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#1E5638] focus:border-transparent bg-white"
+                      className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#5B8C2A] focus:border-transparent bg-white"
                     >
                       <option value="distribucion">
                         {language === 'es' ? 'Distribución & Cadenas Comerciales' : 'Distribution & Retail Chains'}
@@ -166,7 +166,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                         ? 'Cuéntanos cómo podemos colaborar...'
                         : 'Tell us how we can collaborate...'
                     }
-                    className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#1E5638] focus:border-transparent resize-none"
+                    className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#5B8C2A] focus:border-transparent resize-none"
                   />
                 </div>
 

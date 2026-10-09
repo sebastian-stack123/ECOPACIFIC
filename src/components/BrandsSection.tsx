@@ -22,10 +22,10 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({
         {/* Simple, Non-overwhelming Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-12 gap-4">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#286E48] mb-1.5 block">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#5B8C2A] mb-1.5 block">
               ECOPACIFIC
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#1E5638]">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#5B8C2A]">
               {t.brandsSection.title}
             </h2>
           </div>
@@ -76,7 +76,7 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({
                     <span className="text-2xs sm:text-xs text-white/80 font-medium">
                       {language === 'es' ? 'Ver marca' : 'View brand'}
                     </span>
-                    <div className="w-7 h-7 rounded-full bg-white/20 group-hover:bg-white text-white group-hover:text-[#18482E] flex items-center justify-center transition-all">
+                    <div className="w-7 h-7 rounded-full bg-white/20 group-hover:bg-white text-white group-hover:text-[#5B8C2A] flex items-center justify-center transition-all">
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </div>
                   </div>

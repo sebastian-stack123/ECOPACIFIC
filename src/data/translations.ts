@@ -24,7 +24,7 @@ export const UI_TRANSLATIONS = {
     historySection: {
       title: 'Nuestra Empresa',
       subtitle: 'Fundada en 2008',
-      lead: 'Fundada en 2008 mediante la fusión de Limón Ecopacific, Coco Freeze y Hortilisto. Orgullosos líderes en jugos y frutas en el canal moderno del Ecuador.',
+      lead: 'Pasión ecuatoriana por las frutas desde 2008.',
       stat1Number: '2008',
       stat1Label: 'Año de fundación',
       stat2Number: '+200',
@@ -144,7 +144,7 @@ export const UI_TRANSLATIONS = {
     historySection: {
       title: 'Our Company',
       subtitle: 'Founded in 2008',
-      lead: 'Founded in 2008 by merging Limón Ecopacific, Coco Freeze, and Hortilisto. Proud market leaders in fresh juices and fruit in Ecuador.',
+      lead: 'Ecuadorian passion for fruits since 2008.',
       stat1Number: '2008',
       stat1Label: 'Foundation year',
       stat2Number: '+200',

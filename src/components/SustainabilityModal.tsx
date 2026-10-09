@@ -51,7 +51,7 @@ export const SustainabilityModal: React.FC<SustainabilityModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-stone-200 bg-white/90 sticky top-0 z-20 backdrop-blur-xs">
           <div className="flex items-center gap-3">
-            <span className="text-xs uppercase tracking-widest text-[#286E48] font-bold px-3 py-1 rounded-full bg-green-50 border border-green-200">
+            <span className="text-xs uppercase tracking-widest text-[#5B8C2A] font-bold px-3 py-1 rounded-full bg-stone-100 border border-[#5B8C2A]/30">
               ECOPACIFIC S.A.
             </span>
             <span className="text-xs text-stone-500 font-medium">
@@ -72,10 +72,10 @@ export const SustainabilityModal: React.FC<SustainabilityModalProps> = ({
         <div className="p-6 sm:p-12 overflow-y-auto space-y-10 text-center">
           {/* Main Titles Centered */}
           <div className="max-w-2xl mx-auto space-y-3 text-center">
-            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#1E5638] leading-tight text-center">
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#5B8C2A] leading-tight text-center">
               {s.title}
             </h2>
-            <p className="text-xl sm:text-2xl text-[#286E48] font-light text-center">
+            <p className="text-xl sm:text-2xl text-[#5B8C2A] font-medium text-center">
               {s.subtitle}
             </p>
           </div>
@@ -92,7 +92,7 @@ export const SustainabilityModal: React.FC<SustainabilityModalProps> = ({
           {/* 3 Environmental Pillars Centered */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-3xl mx-auto">
             <div className="p-6 rounded-2xl bg-white border border-stone-200 shadow-xs flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-xl bg-green-50 text-[#1E5638] flex items-center justify-center mb-3 border border-green-200">
+              <div className="w-12 h-12 rounded-xl bg-stone-100 text-[#5B8C2A] flex items-center justify-center mb-3 border border-[#5B8C2A]/30">
                 <Leaf className="w-6 h-6" />
               </div>
               <h3 className="text-base font-bold text-stone-900 mb-2 text-center">
@@ -106,7 +106,7 @@ export const SustainabilityModal: React.FC<SustainabilityModalProps> = ({
             </div>
 
             <div className="p-6 rounded-2xl bg-white border border-stone-200 shadow-xs flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-xl bg-green-50 text-[#1E5638] flex items-center justify-center mb-3 border border-green-200">
+              <div className="w-12 h-12 rounded-xl bg-stone-100 text-[#5B8C2A] flex items-center justify-center mb-3 border border-[#5B8C2A]/30">
                 <ShieldAlert className="w-6 h-6" />
               </div>
               <h3 className="text-base font-bold text-stone-900 mb-2 text-center">
@@ -120,7 +120,7 @@ export const SustainabilityModal: React.FC<SustainabilityModalProps> = ({
             </div>
 
             <div className="p-6 rounded-2xl bg-white border border-stone-200 shadow-xs flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-xl bg-green-50 text-[#1E5638] flex items-center justify-center mb-3 border border-green-200">
+              <div className="w-12 h-12 rounded-xl bg-stone-100 text-[#5B8C2A] flex items-center justify-center mb-3 border border-[#5B8C2A]/30">
                 <Droplets className="w-6 h-6" />
               </div>
               <h3 className="text-base font-bold text-stone-900 mb-2 text-center">

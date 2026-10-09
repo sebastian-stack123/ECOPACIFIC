@@ -1,6 +1,6 @@
 import { Brand } from '../types';
-import cocoFreezeImg from '../assets/images/brand_coco_freeze_1790632685019.jpg';
-import dhoyImg from '../assets/images/brand_dhoy_citrus_1790632694674.jpg';
+import cocoFreezeImg from '../assets/images/cocofreezeimagenmenu.jpg';
+import dhoyImg from '../assets/images/dhoyimagenmenu.jpg';
 import ecoloveImg from '../assets/images/brand_ecolove_wellness_1790632703218.jpg';
 import hortilistoImg from '../assets/images/brand_hortilisto_vegetables_1790632711765.jpg';
 

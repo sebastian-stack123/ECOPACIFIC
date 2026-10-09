@@ -55,10 +55,10 @@ export const InnovationSection: React.FC<InnovationSectionProps> = ({ language }
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-14 sm:mb-16">
-          <span className="text-xs uppercase tracking-widest text-[#286E48] font-semibold mb-2 block">
+          <span className="text-xs uppercase tracking-widest text-[#5B8C2A] font-bold mb-2 block">
             {language === 'es' ? 'Del Origen a tu Mesa' : 'From Origin to Table'}
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#1E5638] mb-4 leading-tight text-balance">
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#5B8C2A] mb-4 leading-tight text-balance">
             {t.innovationSection.title}
           </h2>
           <p className="text-base sm:text-lg text-stone-600 font-normal leading-relaxed text-balance">
@@ -76,7 +76,7 @@ export const InnovationSection: React.FC<InnovationSectionProps> = ({ language }
                 onClick={() => setActiveStep(idx)}
                 className={`p-6 rounded-2xl text-left transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[190px] ${
                   isCurrent
-                    ? 'bg-white border-2 border-[#1E5638] shadow-md ring-4 ring-green-100/50'
+                    ? 'bg-white border-2 border-[#5B8C2A] shadow-md ring-4 ring-[#5B8C2A]/20'
                     : 'bg-white/80 border border-stone-200 hover:bg-white hover:border-stone-300 shadow-2xs'
                 }`}
               >
@@ -84,7 +84,7 @@ export const InnovationSection: React.FC<InnovationSectionProps> = ({ language }
                   <div className="flex items-center justify-between mb-3">
                     <span
                       className={`text-xs font-bold tracking-wider ${
-                        isCurrent ? 'text-[#1E5638]' : 'text-stone-400'
+                        isCurrent ? 'text-[#5B8C2A]' : 'text-stone-400'
                       }`}
                     >
                       Paso {step.num}
@@ -103,7 +103,7 @@ export const InnovationSection: React.FC<InnovationSectionProps> = ({ language }
 
                 <div className="mt-3 pt-3 border-t border-stone-100 text-xs">
                   <span
-                    className={isCurrent ? 'text-[#1E5638] font-bold' : 'text-stone-400'}
+                    className={isCurrent ? 'text-[#5B8C2A] font-bold' : 'text-stone-400'}
                   >
                     {isCurrent
                       ? language === 'es'
@@ -122,16 +122,16 @@ export const InnovationSection: React.FC<InnovationSectionProps> = ({ language }
         {/* Detailed Active Step Inspector - Soft, Calm Card */}
         <div className="p-6 sm:p-8 rounded-2xl bg-white border border-stone-200/90 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="max-w-2xl">
-            <span className="text-xs uppercase tracking-wider text-[#286E48] font-bold mb-1.5 block">
+            <span className="text-xs uppercase tracking-wider text-[#5B8C2A] font-bold mb-1.5 block">
               {steps[activeStep].title}
             </span>
             <p className="text-sm sm:text-base text-stone-700 leading-relaxed font-normal">
               {steps[activeStep].details}
             </p>
           </div>
-          <div className="shrink-0 flex items-center gap-2 text-xs text-[#1E5638] bg-green-50 px-4 py-2 rounded-full border border-green-200/70">
-            <CheckCircle2 className="w-4 h-4 text-[#286E48]" />
-            <span className="font-medium">
+          <div className="shrink-0 flex items-center gap-2 text-xs text-[#5B8C2A] bg-stone-50 px-4 py-2 rounded-full border border-[#5B8C2A]/30">
+            <CheckCircle2 className="w-4 h-4 text-[#5B8C2A]" />
+            <span className="font-semibold text-stone-800">
               {language === 'es'
                 ? 'Sabor auténtico y natural'
                 : 'Pure & authentic flavor'}

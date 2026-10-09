@@ -25,15 +25,15 @@ html {
   background: #a8a29e;
 }
 
-/* Soft Botanical Plant Green Outline Text with crisp white fill */
+/* Fresh Ecopacific Green Outline Text (#5B8C2A) with crisp fill */
 .text-stroke-green {
-  -webkit-text-stroke: 1.5px #1E5638;
+  -webkit-text-stroke: 1.5px #5B8C2A;
   paint-order: stroke fill;
 }
 
 @media (min-width: 768px) {
   .text-stroke-green-lg {
-    -webkit-text-stroke: 2.2px #1E5638;
+    -webkit-text-stroke: 2.2px #5B8C2A;
     paint-order: stroke fill;
   }
 }

@@ -4,6 +4,7 @@ import { Brand, Product, Language } from '../types';
 import { UI_TRANSLATIONS } from '../data/translations';
 import { BRANDS_DATA } from '../data/brandsData';
 import { ProductDetailModal } from './ProductDetailModal';
+import ecopacificLogo from '../assets/ecopacificlogo.png';
 
 interface BrandSubpageProps {
   brand: Brand;
@@ -166,10 +167,15 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
 
             <button
               onClick={onNavigateHome}
-              className="md:hidden p-2 rounded-lg bg-black/20 text-white text-xs font-bold"
+              className="md:hidden p-1.5 rounded-lg bg-black/20 hover:bg-black/30 transition-colors flex items-center justify-center cursor-pointer"
               aria-label="Volver a ECOPACIFIC"
+              title="Volver a ECOPACIFIC"
             >
-              ECOPACIFIC
+              <img
+                src={ecopacificLogo}
+                alt="ECOPACIFIC"
+                className="h-6 w-auto object-contain"
+              />
             </button>
           </div>
         </div>
