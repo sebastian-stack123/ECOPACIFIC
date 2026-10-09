@@ -52,8 +52,8 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-black text-xs shadow-md">
               DH
             </div>
-            <span className="text-2xl font-black tracking-wider text-white">
-              DHOY<span className="text-emerald-400">.</span>
+            <span className="text-2xl font-black tracking-tight text-white">
+              D'hoy<span className="text-emerald-400">.</span>
             </span>
           </div>
         );

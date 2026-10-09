@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArrowDown } from 'lucide-react';
 import { Language } from '../types';
 import heroCitrusImg from '../assets/images/hero_citrus_harvest_1790733004665.jpg';
 
@@ -68,18 +67,6 @@ export const Hero: React.FC<HeroProps> = ({ language, onExploreBrands }) => {
           {language === 'es' ? 'Descubre EcoPacific' : 'Discover EcoPacific'}
         </button>
       </div>
-
-      {/* Bottom Scroll Cue */}
-      <button
-        onClick={handleScrollDown}
-        aria-label="Desplazar hacia abajo"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors cursor-pointer"
-      >
-        <span className="text-xs uppercase tracking-widest font-semibold">
-          Scroll
-        </span>
-        <ArrowDown className="w-4 h-4 animate-bounce" />
-      </button>
     </section>
   );
 };

@@ -1,7 +1,7 @@
 import { Brand } from '../types';
 import cocoFreezeImg from '../assets/images/cocofreezeimagenmenu.jpg';
 import dhoyImg from '../assets/images/dhoyimagenmenu.jpg';
-import ecoloveImg from '../assets/images/brand_ecolove_wellness_1790632703218.jpg';
+import ecoloveImg from '../assets/images/imagenmenuecolove.jpg';
 import hortilistoImg from '../assets/images/brand_hortilisto_vegetables_1790632711765.jpg';
 
 export const BRANDS_DATA: Record<string, Brand> = {
@@ -170,7 +170,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
 
   'dhoy': {
     id: 'dhoy',
-    name: 'DHOY',
+    name: "D'hoy",
     slug: 'dhoy',
     valueStatement: 'DE FAMILIA Y DEL CAMPO. SABE A FRUTA DE VERDAD.',
     conceptVisual: 'fruta fresca, naranja, campo, energía, naturalidad.',
@@ -180,13 +180,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
     milestones: [
       {
         year: '2009',
-        title: 'Nace DHOY',
+        title: "Nace D'hoy",
         description: 'Jugo de naranja exprimido de madrugada para restaurantes de Quito.'
       },
       {
         year: '2011',
         title: 'Llegamos a más personas',
-        description: 'Incorporamos un proceso tecnológico que, sin aditivos, permite alargar la vida útil y llevar DHOY a más puntos de venta.'
+        description: 'Incorporamos un proceso tecnológico que, sin aditivos, permite alargar la vida útil y llevar D\'hoy a más puntos de venta.'
       },
       {
         year: '2012',
@@ -226,18 +226,18 @@ export const BRANDS_DATA: Record<string, Brand> = {
       cardTagText: '#C2410C',
       footerBg: '#7C2D12',
       footerText: '#FED7AA',
-      vibrantTag: 'DHOY · Sabor Cítrico Auténtico',
+      vibrantTag: "D'hoy · Sabor Cítrico Auténtico",
       buttonBg: '#EA580C',
       buttonText: '#FFFFFF',
       buttonBorder: '#15803D'
     },
     heroImage: dhoyImg,
-    closingStatement: 'Elegimos buena fruta y cuidamos cada proceso para que cuando abras una botella de DHOY, sientas el verdadero sabor del campo.',
+    closingStatement: "Elegimos buena fruta y cuidamos cada proceso para que cuando abras una botella de D'hoy, sientas el verdadero sabor del campo.",
     families: [
       {
         id: 'jugo-de-naranja',
         name: 'Jugo de naranja',
-        tagline: 'El que empezó todo. Nuestro producto estrella y la expresión más pura de lo que significa DHOY.',
+        tagline: "El que empezó todo. Nuestro producto estrella y la expresión más pura de lo que significa D'hoy.",
         productIds: ['dh-naranja-clasico', 'dh-naranja-sin-pulpa', 'dh-naranja-calcio-vitamina-d']
       },
       {
@@ -271,7 +271,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
       },
       {
         id: 'especialidades-dhoy',
-        name: 'Especialidades DHOY',
+        name: "Especialidades D'hoy",
         tagline: 'Formatos prácticos para llevar ingredientes naturales a distintas preparaciones.',
         productIds: ['dh-zumo-limon', 'dh-pulpa-sabila']
       }

@@ -42,7 +42,7 @@ export const NosotrosSubpage: React.FC<NosotrosSubpageProps> = ({
             />
           </button>
 
-          <span className="text-xs uppercase tracking-widest text-white/90 font-bold bg-white/10 px-3.5 py-1.5 rounded-full border border-white/15">
+          <span className="text-sm sm:text-base uppercase tracking-widest text-white font-bold">
             {language === 'es' ? 'Nuestra Empresa' : 'Our Company'}
           </span>
         </div>

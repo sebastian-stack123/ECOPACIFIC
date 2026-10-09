@@ -6,6 +6,7 @@ import manabiCropsImg from '../assets/images/brand_dhoy_citrus_1790632694674.jpg
 import cocoFreezeStoryImg from '../assets/images/brand_coco_freeze_1790632685019.jpg';
 import fusionFruitsImg from '../assets/images/harvest_fruits_transition_1791495675009.jpg';
 import closingOrchardImg from '../assets/images/hero_citrus_harvest_1790733004665.jpg';
+import fundadoresImg from '../assets/images/ecopacificfotofundadores.jpg';
 
 interface NuestraHistoriaSectionProps {
   language: Language;
@@ -166,13 +167,13 @@ export const NuestraHistoriaSection: React.FC<NuestraHistoriaSectionProps> = ({ 
       </div>
 
       {/* ========================================================
-          IMAGEN DE LADO A LADO (EDGE-TO-EDGE)
-          Antes del coco y después de los textos de Misión y Visión
+          IMAGEN DE LADO A LADO (EDGE-TO-EDGE) / IMAGEN LARGA
+          Foto de Fundadores Ecopacific: después de Misión y Visión y antes del viaje del coco
           ======================================================== */}
-      <div className="w-full mt-14 sm:mt-20 mb-8 overflow-hidden h-[340px] sm:h-[480px] lg:h-[560px]">
+      <div className="w-full mt-14 sm:mt-20 mb-8 overflow-hidden h-[340px] sm:h-[480px] lg:h-[580px] bg-stone-900/5">
         <img
-          src={fusionFruitsImg}
-          alt="Cosecha de frutas frescas de Ecuador"
+          src={fundadoresImg}
+          alt={language === 'es' ? 'Fundadores de Ecopacific' : 'Ecopacific Founders'}
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center"
         />

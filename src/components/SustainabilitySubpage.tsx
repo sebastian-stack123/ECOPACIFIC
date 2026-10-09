@@ -1,9 +1,11 @@
 import React from 'react';
-import { Leaf, ShieldAlert, Droplets } from 'lucide-react';
 import { Language } from '../types';
 import { UI_TRANSLATIONS } from '../data/translations';
 import { Footer } from './Footer';
 import dhoyImg from '../assets/images/brand_dhoy_citrus_1790632694674.jpg';
+import heroFarmImg from '../assets/images/hero_ecopacific_farm_1790632675187.jpg';
+import harvestFruitsImg from '../assets/images/harvest_fruits_transition_1791495675009.jpg';
+import farmPanoramaImg from '../assets/images/hero_citrus_harvest_1790733004665.jpg';
 import ecopacificLogo from '../assets/ecopacificlogo.png';
 
 interface SustainabilitySubpageProps {
@@ -40,14 +42,14 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
             />
           </button>
 
-          <span className="text-xs uppercase tracking-widest text-white/90 font-bold bg-white/10 px-3.5 py-1.5 rounded-full border border-white/15">
+          <span className="text-sm sm:text-base uppercase tracking-widest text-white font-bold">
             {language === 'es' ? 'Sostenibilidad' : 'Sustainability'}
           </span>
         </div>
       </header>
 
-      {/* Hero Banner with Centered Content */}
-      <div className="relative py-24 sm:py-36 bg-[#5B8C2A] text-white overflow-hidden text-center">
+      {/* Hero Banner: Inicio de Responsabilidad Ambiental (sin ECOPACIFIC SA) */}
+      <div className="relative py-20 sm:py-32 bg-[#5B8C2A] text-white overflow-hidden text-center">
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
           <img
             src={dhoyImg}
@@ -60,9 +62,6 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-10 text-center">
-          <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-white/90 mb-3 block text-center">
-            ECOPACIFIC S.A.
-          </span>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white mb-4 leading-tight text-center">
             {s.title}
           </h1>
@@ -72,65 +71,89 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
         </div>
       </div>
 
-      {/* Main Content with 100% Centered Text */}
-      <main className="flex-grow max-w-5xl mx-auto px-6 sm:px-10 py-16 sm:py-24 space-y-16 text-center">
-        {/* Official Environmental Statement (Centered) */}
-        <div className="p-8 sm:p-14 rounded-3xl bg-white border border-stone-200 shadow-sm text-center max-w-4xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#5B8C2A] mb-4 block text-center">
-            {language === 'es' ? 'Compromiso Ambiental' : 'Environmental Commitment'}
-          </span>
-          <p className="text-lg sm:text-xl md:text-2xl text-stone-800 font-light leading-relaxed text-center">
+      {/* IMAGEN 1: Después del inicio de responsabilidad ambiental y antes de Compromiso Ambiental */}
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 pt-10 sm:pt-14">
+        <div className="w-full h-64 sm:h-96 md:h-[450px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-stone-200">
+          <img
+            src={heroFarmImg}
+            alt="Campos agrícolas y naturaleza Ecopacific"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+      </div>
+
+      {/* COMPROMISO AMBIENTAL: Título agrandado y frase pequeña, sin cajas */}
+      <section className="max-w-4xl mx-auto px-6 sm:px-10 pt-14 sm:pt-20 text-center">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[#5B8C2A] mb-6 text-center">
+          {language === 'es' ? 'COMPROMISO AMBIENTAL' : 'ENVIRONMENTAL COMMITMENT'}
+        </h2>
+        <p className="text-sm sm:text-base md:text-lg text-stone-600 font-normal leading-relaxed text-center max-w-3xl mx-auto">
+          {language === 'es'
+            ? '«El éxito de Ecopacific S.A. se basa en la preservación de un ambiente natural y sano. Trabajamos para asegurar una actividad duradera de los campos a través de prácticas agrícolas de bajo impacto y nos esforzamos por reducir nuestra huella ambiental, eliminando el desperdicio y minimizando el uso de materiales no reciclables, además contamos con una política para minimizar el uso de energía y agua.»'
+            : '«The success of Ecopacific S.A. is built upon preserving a clean and healthy natural environment. We work to ensure long-term vitality across the land through low-impact farming practices, and we strive to reduce our footprint by eliminating waste, minimizing non-recyclable materials, and strictly optimizing energy and water usage.»'}
+        </p>
+      </section>
+
+      {/* IMAGEN 2: Después de la frase de compromiso ambiental */}
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
+        <div className="w-full h-64 sm:h-96 md:h-[450px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-stone-200">
+          <img
+            src={harvestFruitsImg}
+            alt="Cosechas y cultivos sostenibles Ecopacific"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+      </div>
+
+      {/* PILARES EN TODA LA PANTALLA: NO en cajas, uno arriba del otro, sin símbolos/hojitas, títulos grandes y texto más pequeño */}
+      <main className="w-full max-w-5xl mx-auto px-6 sm:px-10 pb-12 sm:pb-16 space-y-16 sm:space-y-24 text-center">
+        {/* 1. Bajo impacto agrícola / ambiental */}
+        <div className="flex flex-col items-center text-center">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#5B8C2A] tracking-tight mb-4 text-center">
+            {language === 'es' ? 'Bajo impacto ambiental' : 'Low environmental impact'}
+          </h3>
+          <p className="text-base sm:text-lg md:text-xl text-stone-600 leading-relaxed text-center max-w-3xl">
             {language === 'es'
-              ? '«El éxito de Ecopacific S.A. se basa en la preservación de un ambiente natural y sano. Trabajamos para asegurar una actividad duradera de los campos a través de prácticas agrícolas de bajo impacto y nos esforzamos por reducir nuestra huella ambiental, eliminando el desperdicio y minimizando el uso de materiales no reciclables, además contamos con una política para minimizar el uso de energía y agua.»'
-              : '«The success of Ecopacific S.A. is built upon preserving a clean and healthy natural environment. We work to ensure long-term vitality across the land through low-impact farming practices, and we strive to reduce our footprint by eliminating waste, minimizing non-recyclable materials, and strictly optimizing energy and water usage.»'}
+              ? 'Prácticas agrícolas responsables que cuidan la tierra y aseguran una actividad duradera en los campos, preservando los nutrientes del suelo y el equilibrio del ecosistema.'
+              : 'Responsible farming practices that care for the land and ensure long-term vitality across fields, preserving soil health and ecological balance.'}
           </p>
         </div>
 
-        {/* 3 Pillars (Centered) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto text-center">
-          <div className="p-8 rounded-3xl bg-white border border-stone-200 shadow-sm flex flex-col items-center text-center">
-            <div className="w-14 h-14 rounded-2xl bg-stone-100 text-[#5B8C2A] flex items-center justify-center mb-4 border border-[#5B8C2A]/30">
-              <Leaf className="w-7 h-7" />
-            </div>
-            <h3 className="text-lg font-bold text-stone-900 mb-2 text-center">
-              {language === 'es' ? 'Bajo impacto agrícola' : 'Low agricultural impact'}
-            </h3>
-            <p className="text-sm text-stone-600 leading-relaxed text-center">
-              {language === 'es'
-                ? 'Prácticas agrícolas responsables que cuidan la tierra y aseguran una actividad duradera en los campos.'
-                : 'Responsible farming practices that preserve the soil and ensure long-term vitality.'}
-            </p>
-          </div>
+        {/* 2. Cero desperdicio */}
+        <div className="flex flex-col items-center text-center">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#5B8C2A] tracking-tight mb-4 text-center">
+            {language === 'es' ? 'Cero desperdicio' : 'Zero waste'}
+          </h3>
+          <p className="text-base sm:text-lg md:text-xl text-stone-600 leading-relaxed text-center max-w-3xl">
+            {language === 'es'
+              ? 'Eliminando el desperdicio en todos nuestros procesos y minimizando activamente el uso de materiales no reciclables en todos nuestros empaques y operaciones.'
+              : 'Eliminating waste throughout our processes and actively minimizing the use of non-recyclable materials across all packaging and operations.'}
+          </p>
+        </div>
 
-          <div className="p-8 rounded-3xl bg-white border border-stone-200 shadow-sm flex flex-col items-center text-center">
-            <div className="w-14 h-14 rounded-2xl bg-stone-100 text-[#5B8C2A] flex items-center justify-center mb-4 border border-[#5B8C2A]/30">
-              <ShieldAlert className="w-7 h-7" />
-            </div>
-            <h3 className="text-lg font-bold text-stone-900 mb-2 text-center">
-              {language === 'es' ? 'Cero desperdicio' : 'Zero waste'}
-            </h3>
-            <p className="text-sm text-stone-600 leading-relaxed text-center">
-              {language === 'es'
-                ? 'Eliminando el desperdicio y minimizando el uso de materiales no reciclables en todos nuestros empaques.'
-                : 'Eliminating waste and minimizing the use of non-recyclable materials across our packaging.'}
-            </p>
-          </div>
-
-          <div className="p-8 rounded-3xl bg-white border border-stone-200 shadow-sm flex flex-col items-center text-center">
-            <div className="w-14 h-14 rounded-2xl bg-stone-100 text-[#5B8C2A] flex items-center justify-center mb-4 border border-[#5B8C2A]/30">
-              <Droplets className="w-7 h-7" />
-            </div>
-            <h3 className="text-lg font-bold text-stone-900 mb-2 text-center">
-              {language === 'es' ? 'Ahorro de energía y agua' : 'Energy & water savings'}
-            </h3>
-            <p className="text-sm text-stone-600 leading-relaxed text-center">
-              {language === 'es'
-                ? 'Política estricta para minimizar el consumo de energía y agua en todas las fases de producción.'
-                : 'Strict policies designed to minimize energy and water consumption in all production phases.'}
-            </p>
-          </div>
+        {/* 3. Ahorro de energía */}
+        <div className="flex flex-col items-center text-center">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#5B8C2A] tracking-tight mb-4 text-center">
+            {language === 'es' ? 'Ahorro de energía' : 'Energy savings'}
+          </h3>
+          <p className="text-base sm:text-lg md:text-xl text-stone-600 leading-relaxed text-center max-w-3xl">
+            {language === 'es'
+              ? 'Política estricta de eficiencia para optimizar el consumo de energía y agua en todas las fases de producción y centros de distribución.'
+              : 'Strict efficiency policy to optimize energy and water consumption across all production phases and distribution facilities.'}
+          </p>
         </div>
       </main>
+
+      {/* IMAGEN 3: Al final antes del footer */}
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 pb-20 sm:pb-28">
+        <div className="w-full h-64 sm:h-96 md:h-[460px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-stone-200">
+          <img
+            src={farmPanoramaImg}
+            alt="Preservación del campo y el entorno natural Ecopacific"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+      </div>
 
       {/* Global Footer */}
       <Footer

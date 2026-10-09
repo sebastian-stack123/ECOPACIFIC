@@ -17,9 +17,6 @@ export const SustainabilitySection: React.FC<SustainabilitySectionProps> = ({
     <section id="sostenibilidad" className="py-24 sm:py-36 bg-[#F3EFE6] text-stone-900">
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
         <div className="max-w-3xl mb-14 sm:mb-16">
-          <span className="text-xs uppercase tracking-widest text-[#5B8C2A] font-bold mb-3 block">
-            ECOPACIFIC S.A.
-          </span>
           <h2 className="text-4xl sm:text-6xl font-black tracking-tight text-stone-900 mb-3 leading-[1.08]">
             {s.title}
           </h2>
@@ -34,7 +31,7 @@ export const SustainabilitySection: React.FC<SustainabilitySectionProps> = ({
             <div className="w-10 h-10 rounded-xl bg-stone-100 text-[#5B8C2A] flex items-center justify-center mb-3 border border-[#5B8C2A]/30">
               <Leaf className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-stone-900 mb-1">
+            <h3 className="text-base font-bold text-[#5B8C2A] mb-1">
               Prácticas agrícolas de bajo impacto
             </h3>
             <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
@@ -46,7 +43,7 @@ export const SustainabilitySection: React.FC<SustainabilitySectionProps> = ({
             <div className="w-10 h-10 rounded-xl bg-stone-100 text-[#5B8C2A] flex items-center justify-center mb-3 border border-[#5B8C2A]/30">
               <ShieldAlert className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-stone-900 mb-1">
+            <h3 className="text-base font-bold text-[#5B8C2A] mb-1">
               Reducción de huella y cero desperdicio
             </h3>
             <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
@@ -58,7 +55,7 @@ export const SustainabilitySection: React.FC<SustainabilitySectionProps> = ({
             <div className="w-10 h-10 rounded-xl bg-stone-100 text-[#5B8C2A] flex items-center justify-center mb-3 border border-[#5B8C2A]/30">
               <Droplets className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-stone-900 mb-1">
+            <h3 className="text-base font-bold text-[#5B8C2A] mb-1">
               Política de energía y agua
             </h3>
             <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">

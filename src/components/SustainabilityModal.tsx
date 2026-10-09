@@ -95,7 +95,7 @@ export const SustainabilityModal: React.FC<SustainabilityModalProps> = ({
               <div className="w-12 h-12 rounded-xl bg-stone-100 text-[#5B8C2A] flex items-center justify-center mb-3 border border-[#5B8C2A]/30">
                 <Leaf className="w-6 h-6" />
               </div>
-              <h3 className="text-base font-bold text-stone-900 mb-2 text-center">
+              <h3 className="text-base font-bold text-[#5B8C2A] mb-2 text-center">
                 {language === 'es' ? 'Bajo impacto agrícola' : 'Low agricultural impact'}
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 leading-relaxed text-center">
@@ -109,7 +109,7 @@ export const SustainabilityModal: React.FC<SustainabilityModalProps> = ({
               <div className="w-12 h-12 rounded-xl bg-stone-100 text-[#5B8C2A] flex items-center justify-center mb-3 border border-[#5B8C2A]/30">
                 <ShieldAlert className="w-6 h-6" />
               </div>
-              <h3 className="text-base font-bold text-stone-900 mb-2 text-center">
+              <h3 className="text-base font-bold text-[#5B8C2A] mb-2 text-center">
                 {language === 'es' ? 'Cero desperdicio' : 'Zero waste'}
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 leading-relaxed text-center">
@@ -123,7 +123,7 @@ export const SustainabilityModal: React.FC<SustainabilityModalProps> = ({
               <div className="w-12 h-12 rounded-xl bg-stone-100 text-[#5B8C2A] flex items-center justify-center mb-3 border border-[#5B8C2A]/30">
                 <Droplets className="w-6 h-6" />
               </div>
-              <h3 className="text-base font-bold text-stone-900 mb-2 text-center">
+              <h3 className="text-base font-bold text-[#5B8C2A] mb-2 text-center">
                 {language === 'es' ? 'Ahorro de agua y energía' : 'Energy & water savings'}
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 leading-relaxed text-center">
