@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import { Language } from '../types';
-import harvestFruitsImg from '../assets/images/harvest_fruits_transition_1791495675009.jpg';
+import fotoEcopacificImg from '../assets/images/fotoecopacific.jpg';
 
 interface TransitionSectionProps {
   language: Language;
@@ -33,8 +33,8 @@ export const TransitionSection: React.FC<TransitionSectionProps> = ({ language }
         {/* Fotografía de Cosecha Fresca antes de Nuestras Marcas */}
         <div className="w-full max-w-4xl mb-10 rounded-3xl overflow-hidden shadow-2xl border border-stone-300/70 bg-stone-200 aspect-[16/9] sm:aspect-[21/9]">
           <img
-            src={harvestFruitsImg}
-            alt="Cosecha fresca y origen natural de EcoPacific"
+            src={fotoEcopacificImg}
+            alt="EcoPacific - Más de 20 años transformando lo que nace del campo"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-102"
           />

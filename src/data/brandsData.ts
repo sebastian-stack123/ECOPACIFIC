@@ -2,7 +2,7 @@ import { Brand } from '../types';
 import cocoFreezeImg from '../assets/images/cocofreezeimagenmenu.jpg';
 import dhoyImg from '../assets/images/dhoyimagenmenu.jpg';
 import ecoloveImg from '../assets/images/imagenmenuecolove.jpg';
-import hortilistoImg from '../assets/images/brand_hortilisto_vegetables_1790632711765.jpg';
+import hortilistoImg from '../assets/images/hortilistoimagenlogo.jpg';
 
 export const BRANDS_DATA: Record<string, Brand> = {
   'coco-freeze': {

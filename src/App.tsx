@@ -9,15 +9,14 @@ import { OriginSection } from './components/OriginSection';
 import { NosotrosSubpage } from './components/NosotrosSubpage';
 import { SustainabilitySubpage } from './components/SustainabilitySubpage';
 import { BrandSubpage } from './components/BrandSubpage';
+import { ContactSubpage } from './components/ContactSubpage';
 import { Footer } from './components/Footer';
-import { ContactModal } from './components/ContactModal';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
     return window.location.pathname || '/';
   });
   const [language, setLanguage] = useState<Language>('es');
-  const [contactModalOpen, setContactModalOpen] = useState(false);
 
   // Sync with browser back/forward buttons
   useEffect(() => {
@@ -42,6 +41,7 @@ export default function App() {
 
   const isNosotros = currentPath === '/nosotros';
   const isSostenibilidad = currentPath === '/sostenibilidad';
+  const isContacto = currentPath === '/contacto';
 
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-[#5B8C2A] selection:text-white">
@@ -52,7 +52,7 @@ export default function App() {
           language={language}
           onNavigateHome={() => navigateTo('/')}
           onNavigateBrand={(slug) => navigateTo(`/marcas/${slug}`)}
-          onOpenContact={() => setContactModalOpen(true)}
+          onOpenContact={() => navigateTo('/contacto')}
         />
       ) : isNosotros ? (
         /* Subpágina completa de Nuestra Empresa (Nosotros) */
@@ -60,26 +60,34 @@ export default function App() {
           language={language}
           onNavigateHome={() => navigateTo('/')}
           onNavigate={navigateTo}
-          onOpenContact={() => setContactModalOpen(true)}
+          onOpenContact={() => navigateTo('/contacto')}
         />
       ) : isSostenibilidad ? (
-        /* Subpágina completa de Sostenibilidad con texto 100% centrado */
+        /* Subpágina completa de Sostenibilidad */
         <SustainabilitySubpage
           language={language}
           onNavigateHome={() => navigateTo('/')}
           onNavigate={navigateTo}
-          onOpenContact={() => setContactModalOpen(true)}
+          onOpenContact={() => navigateTo('/contacto')}
+        />
+      ) : isContacto ? (
+        /* Sección propia de Contacto (no modal, fondo verde, sin inicio) */
+        <ContactSubpage
+          language={language}
+          onNavigateHome={() => navigateTo('/')}
+          onNavigate={navigateTo}
+          onLanguageChange={setLanguage}
         />
       ) : (
         /* Página Principal */
         <>
-          {/* Top Navbar: Menú, ECOPACIFIC, Idiomas Y NADA MÁS */}
+          {/* Top Navbar: Menú, ECOPACIFIC, Idiomas */}
           <Navbar
             currentPath={currentPath}
             onNavigate={navigateTo}
             language={language}
             onLanguageChange={setLanguage}
-            onOpenContact={() => setContactModalOpen(true)}
+            onOpenContact={() => navigateTo('/contacto')}
           />
 
           <main className="flex-grow">
@@ -101,7 +109,7 @@ export default function App() {
               onSelectBrand={(slug) => navigateTo(`/marcas/${slug}`)}
             />
 
-            {/* 4. Agricultores: Texto centrado en el medio sin burbuja y foto grande centrada abajo */}
+            {/* 4. Agricultores */}
             <OriginSection language={language} />
           </main>
 
@@ -111,17 +119,10 @@ export default function App() {
             onNavigate={navigateTo}
             onOpenNosotros={() => navigateTo('/nosotros')}
             onOpenSostenibilidad={() => navigateTo('/sostenibilidad')}
-            onOpenContact={() => setContactModalOpen(true)}
+            onOpenContact={() => navigateTo('/contacto')}
           />
         </>
       )}
-
-      {/* Modal Contacto */}
-      <ContactModal
-        isOpen={contactModalOpen}
-        language={language}
-        onClose={() => setContactModalOpen(false)}
-      />
     </div>
   );
 }

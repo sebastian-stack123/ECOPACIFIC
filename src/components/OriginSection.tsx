@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language } from '../types';
-import dhoyImg from '../assets/images/brand_dhoy_citrus_1790632694674.jpg';
+import campoImg from '../assets/images/imagencampo.jpg';
 
 interface OriginSectionProps {
   language: Language;
@@ -31,8 +31,8 @@ export const OriginSection: React.FC<OriginSectionProps> = ({ language }) => {
         {/* Large Centered Photo without text overlay or cards */}
         <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl bg-stone-200 border border-stone-300/60 aspect-[16/9] sm:aspect-[21/9]">
           <img
-            src={dhoyImg}
-            alt="Agricultores de Ecuador - EcoPacific"
+            src={campoImg}
+            alt="Agricultores y campo de Ecuador - EcoPacific"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center"
           />

@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Language } from '../types';
 
-import farmPanoramaImg from '../assets/images/hero_ecopacific_farm_1790632675187.jpg';
-import manabiCropsImg from '../assets/images/brand_dhoy_citrus_1790632694674.jpg';
-import cocoFreezeStoryImg from '../assets/images/brand_coco_freeze_1790632685019.jpg';
-import fusionFruitsImg from '../assets/images/harvest_fruits_transition_1791495675009.jpg';
-import closingOrchardImg from '../assets/images/hero_citrus_harvest_1790733004665.jpg';
+import farmPanoramaImg from '../assets/images/campo2.jpg';
+import imagenCampoStoryImg from '../assets/images/imagencampo.jpg';
+import cocosStoryImg from '../assets/images/cocos.jpg';
+import dhoyStoryImg from '../assets/images/dhoy.jpg';
+import construccionStoryImg from '../assets/images/construccion.jpg';
 import fundadoresImg from '../assets/images/ecopacificfotofundadores.jpg';
+import equipoEcopacific2Img from '../assets/images/equipoecopacific2.jpg';
 
 interface NuestraHistoriaSectionProps {
   language: Language;
@@ -364,7 +365,7 @@ export const NuestraHistoriaSection: React.FC<NuestraHistoriaSectionProps> = ({ 
             <div>
               <div className="rounded-3xl overflow-hidden shadow-xl border border-stone-300 bg-stone-200 aspect-[16/10] w-full">
                 <img
-                  src={manabiCropsImg}
+                  src={imagenCampoStoryImg}
                   alt="Cultivos y trabajo agrícola en Manabí"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-center"
@@ -381,7 +382,7 @@ export const NuestraHistoriaSection: React.FC<NuestraHistoriaSectionProps> = ({ 
             <div className="order-2 md:order-1">
               <div className="rounded-3xl overflow-hidden shadow-xl border border-stone-300 bg-stone-200 aspect-[16/10] w-full">
                 <img
-                  src={cocoFreezeStoryImg}
+                  src={cocosStoryImg}
                   alt="Cocos frescos y nacimiento de Coco Freeze"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-center"
@@ -430,7 +431,7 @@ export const NuestraHistoriaSection: React.FC<NuestraHistoriaSectionProps> = ({ 
             <div>
               <div className="rounded-3xl overflow-hidden shadow-xl border border-stone-300 bg-stone-200 aspect-[16/10] w-full">
                 <img
-                  src={fusionFruitsImg}
+                  src={dhoyStoryImg}
                   alt="Limones, cocos y frutas ecuatorianas - Nace Ecopacific"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-center"
@@ -494,7 +495,7 @@ export const NuestraHistoriaSection: React.FC<NuestraHistoriaSectionProps> = ({ 
             <div>
               <div className="rounded-3xl overflow-hidden shadow-xl border border-stone-300 bg-stone-200 aspect-[16/10] w-full">
                 <img
-                  src={closingOrchardImg}
+                  src={construccionStoryImg}
                   alt="Ecopacific conectando el campo con los consumidores"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-center"
@@ -509,10 +510,10 @@ export const NuestraHistoriaSection: React.FC<NuestraHistoriaSectionProps> = ({ 
             "Lo mejor de Ecuador, para el mundo."
             ======================================================== */}
         <div className="mt-28 sm:mt-40 p-8 sm:p-16 rounded-3xl bg-[#5B8C2A] text-white text-center shadow-2xl relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div className="absolute inset-0 opacity-30 pointer-events-none">
             <img
-              src={closingOrchardImg}
-              alt="Frutas creciendo en el campo ecuatoriano"
+              src={equipoEcopacific2Img}
+              alt="Equipo Ecopacific - Lo mejor de Ecuador para el mundo"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center"
             />

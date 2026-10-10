@@ -2,10 +2,10 @@ import React from 'react';
 import { Language } from '../types';
 import { UI_TRANSLATIONS } from '../data/translations';
 import { Footer } from './Footer';
-import dhoyImg from '../assets/images/brand_dhoy_citrus_1790632694674.jpg';
-import heroFarmImg from '../assets/images/hero_ecopacific_farm_1790632675187.jpg';
-import harvestFruitsImg from '../assets/images/harvest_fruits_transition_1791495675009.jpg';
-import farmPanoramaImg from '../assets/images/hero_citrus_harvest_1790733004665.jpg';
+import fotoEcopacificImg from '../assets/images/fotoecopacific.jpg';
+import campo3Img from '../assets/images/campo3.jpg';
+import campesinoImg from '../assets/images/campesino.jpg';
+import campesino2Img from '../assets/images/campesino2.jpg';
 import ecopacificLogo from '../assets/ecopacificlogo.png';
 
 interface SustainabilitySubpageProps {
@@ -48,14 +48,14 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
         </div>
       </header>
 
-      {/* Hero Banner: Inicio de Responsabilidad Ambiental (sin ECOPACIFIC SA) */}
+      {/* Hero Banner: Inicio de Responsabilidad Ambiental con fondo verde tenue de fotoecopacific */}
       <div className="relative py-20 sm:py-32 bg-[#5B8C2A] text-white overflow-hidden text-center">
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
           <img
-            src={dhoyImg}
+            src={fotoEcopacificImg}
             alt="EcoPacific Campo y Sostenibilidad"
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover object-center brightness-40 scale-105"
+            className="w-full h-full object-cover object-center brightness-60 opacity-30 scale-105"
           />
           <div className="absolute inset-0 bg-[#5B8C2A]/85 backdrop-blur-[1px]" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#5B8C2A] via-transparent to-[#5B8C2A]/90" />
@@ -71,12 +71,12 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
         </div>
       </div>
 
-      {/* IMAGEN 1: Después del inicio de responsabilidad ambiental y antes de Compromiso Ambiental */}
+      {/* IMAGEN: Arriba de Compromiso Ambiental (única imagen de campo3 cubriendo toda la zona) */}
       <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 pt-10 sm:pt-14">
-        <div className="w-full h-64 sm:h-96 md:h-[450px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-stone-200">
+        <div className="w-full h-64 sm:h-96 md:h-[460px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-stone-200">
           <img
-            src={heroFarmImg}
-            alt="Campos agrícolas y naturaleza Ecopacific"
+            src={campo3Img}
+            alt="Campos y cultivos de frutas EcoPacific"
             className="w-full h-full object-cover object-center"
           />
         </div>
@@ -94,12 +94,12 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
         </p>
       </section>
 
-      {/* IMAGEN 2: Después de la frase de compromiso ambiental */}
+      {/* IMAGEN 2: Después de la frase de compromiso ambiental (campesino.jpg) */}
       <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
         <div className="w-full h-64 sm:h-96 md:h-[450px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-stone-200">
           <img
-            src={harvestFruitsImg}
-            alt="Cosechas y cultivos sostenibles Ecopacific"
+            src={campesinoImg}
+            alt="Campesinos y trabajo sostenible Ecopacific"
             className="w-full h-full object-cover object-center"
           />
         </div>
@@ -144,12 +144,12 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
         </div>
       </main>
 
-      {/* IMAGEN 3: Al final antes del footer */}
+      {/* IMAGEN 3: Al final antes del footer (campesino2.jpg) */}
       <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 pb-20 sm:pb-28">
         <div className="w-full h-64 sm:h-96 md:h-[460px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-stone-200">
           <img
-            src={farmPanoramaImg}
-            alt="Preservación del campo y el entorno natural Ecopacific"
+            src={campesino2Img}
+            alt="Campesinos y preservación del entorno natural Ecopacific"
             className="w-full h-full object-cover object-center"
           />
         </div>

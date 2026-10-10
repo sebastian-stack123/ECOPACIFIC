@@ -17,22 +17,18 @@ export const Hero: React.FC<HeroProps> = ({ language, onExploreBrands }) => {
     <section className="relative h-screen min-h-[680px] w-full flex items-center justify-center overflow-hidden bg-stone-950 text-white">
       {/* Fullscreen Video / Media Container */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-        {/* HTML5 Background Video with High-Res Poster */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster={heroCitrusImg}
-          className="w-full h-full object-cover object-center scale-105"
-        >
-          <source
-            src="https://archive.org/download/car_000063/car_000063_p1_access.mp4"
-            type="video/mp4"
+        {/* YouTube Background Video: Looping non-stop and muted */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/ahkl1jnSpKE?autoplay=1&mute=1&loop=1&playlist=ahkl1jnSpKE&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&playsinline=1&enablejsapi=1"
+            title="EcoPacific Video"
+            className="absolute top-1/2 left-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full -translate-x-1/2 -translate-y-1/2 scale-125 sm:scale-110 pointer-events-none border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
           />
-        </video>
+        </div>
 
-        {/* Fallback Image in case video is loading or paused */}
+        {/* Fallback Image in case video is loading */}
         <img
           src={heroCitrusImg}
           alt="Cosecha de frutas frescas, cítricos y cocos de ECOPACIFIC"

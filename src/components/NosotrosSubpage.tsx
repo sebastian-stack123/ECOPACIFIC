@@ -4,8 +4,8 @@ import { Language } from '../types';
 import { UI_TRANSLATIONS } from '../data/translations';
 import { Footer } from './Footer';
 import { NuestraHistoriaSection } from './NuestraHistoriaSection';
-import heroCitrusImg from '../assets/images/hero_citrus_harvest_1790733004665.jpg';
-import farmPanoramaImg from '../assets/images/hero_ecopacific_farm_1790632675187.jpg';
+import fotoEcopacificImg from '../assets/images/fotoecopacific.jpg';
+import equipoEcopacificImg from '../assets/images/equipoecopacific.jpg';
 import ecopacificLogo from '../assets/ecopacificlogo.png';
 
 interface NosotrosSubpageProps {
@@ -48,14 +48,14 @@ export const NosotrosSubpage: React.FC<NosotrosSubpageProps> = ({
         </div>
       </header>
 
-      {/* Hero Banner: Con font rellenito */}
+      {/* Hero Banner: Con fondo verde tenue de fotoecopacific */}
       <div className="relative py-24 sm:py-36 bg-[#5B8C2A] text-white overflow-hidden">
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
           <img
-            src={heroCitrusImg}
-            alt="EcoPacific Naturaleza y Cosecha"
+            src={fotoEcopacificImg}
+            alt="EcoPacific Origen y Naturaleza"
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover object-center brightness-40 scale-105"
+            className="w-full h-full object-cover object-center brightness-60 opacity-30 scale-105"
           />
           <div className="absolute inset-0 bg-[#5B8C2A]/85 backdrop-blur-[1px]" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#5B8C2A] via-transparent to-[#5B8C2A]/90" />
@@ -78,8 +78,8 @@ export const NosotrosSubpage: React.FC<NosotrosSubpageProps> = ({
       <div className="max-w-5xl mx-auto px-6 sm:px-10 mt-16 sm:mt-24 mb-12 sm:mb-16">
         <div className="rounded-3xl overflow-hidden shadow-2xl border border-stone-300/80 bg-stone-200 aspect-[16/9] sm:aspect-[21/9]">
           <img
-            src={farmPanoramaImg}
-            alt="Campos y cosecha de frutas en Ecuador"
+            src={equipoEcopacificImg}
+            alt="Equipo Ecopacific"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center"
           />

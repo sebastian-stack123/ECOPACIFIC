@@ -5,6 +5,7 @@ import { UI_TRANSLATIONS } from '../data/translations';
 import { BRANDS_DATA } from '../data/brandsData';
 import { ProductDetailModal } from './ProductDetailModal';
 import ecopacificLogo from '../assets/ecopacificlogo.png';
+import hortilistoLogoImg from '../assets/images/hortilistoimagenlogo.jpg';
 
 interface BrandSubpageProps {
   brand: Brand;
@@ -70,10 +71,12 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
         );
       case 'hortilisto':
         return (
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-md bg-teal-400 text-black flex items-center justify-center font-black text-xs shadow-md">
-              HL
-            </div>
+          <div className="flex items-center gap-3">
+            <img
+              src={hortilistoLogoImg}
+              alt="Hortilisto Logo"
+              className="h-8 w-auto object-contain rounded-md shadow-xs bg-white/10 p-0.5"
+            />
             <span className="text-2xl font-black tracking-widest text-white uppercase">
               HORTI<span className="text-teal-400">LISTO</span>
             </span>
@@ -229,7 +232,16 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
               {brand.shortDescription}
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap items-center gap-4">
+              {brand.id === 'hortilisto' && (
+                <div className="flex items-center p-1.5 bg-white/15 backdrop-blur-md rounded-2xl border border-white/25 shadow-xl hover:scale-105 transition-transform">
+                  <img
+                    src={hortilistoLogoImg}
+                    alt="Hortilisto Productos Logo"
+                    className="h-12 sm:h-14 w-auto object-contain rounded-xl"
+                  />
+                </div>
+              )}
               <a
                 href="#portafolio"
                 className="px-8 py-4 rounded-full text-sm font-black uppercase tracking-wider shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border-2"
