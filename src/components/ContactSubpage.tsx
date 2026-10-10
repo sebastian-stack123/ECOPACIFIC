@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import {
-  ArrowLeft,
   CheckCircle,
   Mail,
   MapPin,
   Phone,
   MessageCircle,
   Send,
-  Heart,
   Clock,
   ExternalLink,
 } from 'lucide-react';
@@ -42,68 +40,69 @@ export const ContactSubpage: React.FC<ContactSubpageProps> = ({
     setSubmitted(true);
   };
 
+  const scheduleItems = [
+    { dayEs: 'Lunes', dayEn: 'Monday', time: '8:30 AM – 6:00 PM' },
+    { dayEs: 'Martes', dayEn: 'Tuesday', time: '8:30 AM – 6:30 PM' },
+    { dayEs: 'Miércoles', dayEn: 'Wednesday', time: '8:30 AM – 6:00 PM' },
+    { dayEs: 'Jueves', dayEn: 'Thursday', time: '8:30 AM – 6:00 PM' },
+    { dayEs: 'Viernes', dayEn: 'Friday', time: '8:30 AM – 6:00 PM' },
+    { dayEs: 'Sábado', dayEn: 'Saturday', time: language === 'es' ? 'Cerrado' : 'Closed', closed: true },
+    { dayEs: 'Domingo', dayEn: 'Sunday', time: language === 'es' ? 'Cerrado' : 'Closed', closed: true },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col bg-[#5B8C2A] text-white selection:bg-white selection:text-[#5B8C2A]">
-      {/* Top Bar dedicada para la sección de Contacto */}
-      <header className="sticky top-0 z-40 bg-[#5B8C2A]/95 backdrop-blur-md border-b border-[#4A7422] shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-8 py-3.5 sm:py-4 flex items-center justify-between">
-          {/* Botón Volver al inicio */}
+      {/* Top Bar: Al apretar ECOPACIFIC vuelves directamente al inicio como en las demás secciones */}
+      <header className="sticky top-0 z-40 bg-[#5B8C2A] text-white shadow-md border-b border-[#4A7422]">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 py-3.5 flex items-center justify-between">
           <button
             onClick={onNavigateHome}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 hover:bg-white/25 text-white text-xs sm:text-sm font-bold tracking-wide transition-all cursor-pointer backdrop-blur-xs border border-white/20 active:scale-95"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>{language === 'es' ? 'Volver al inicio' : 'Back to home'}</span>
-          </button>
-
-          {/* Logo ECOPACIFIC */}
-          <button
-            onClick={onNavigateHome}
-            className="flex items-center justify-center hover:opacity-90 transition-opacity cursor-pointer"
+            className="flex items-center cursor-pointer hover:opacity-90 transition-opacity focus:outline-hidden"
             aria-label="ECOPACIFIC Inicio"
+            title={language === 'es' ? 'Volver al Inicio' : 'Back to Home'}
           >
             <img
               src={ecopacificLogo}
               alt="ECOPACIFIC"
-              className="h-8 sm:h-10 w-auto object-contain drop-shadow-xs"
+              className="h-8 sm:h-10 w-auto object-contain drop-shadow-sm"
             />
           </button>
 
-          {/* Selector de idioma */}
-          <div className="flex gap-1.5 p-1 rounded-full bg-black/15 border border-white/20">
-            <button
-              onClick={() => onLanguageChange('es')}
-              className={`px-3 py-1 rounded-full text-xs transition-all font-bold cursor-pointer ${
-                language === 'es'
-                  ? 'bg-white text-[#5B8C2A] shadow-xs'
-                  : 'text-white/80 hover:text-white'
-              }`}
-            >
-              ES
-            </button>
-            <button
-              onClick={() => onLanguageChange('en')}
-              className={`px-3 py-1 rounded-full text-xs transition-all font-bold cursor-pointer ${
-                language === 'en'
-                  ? 'bg-white text-[#5B8C2A] shadow-xs'
-                  : 'text-white/80 hover:text-white'
-              }`}
-            >
-              EN
-            </button>
+          <div className="flex items-center gap-4">
+            <span className="text-sm sm:text-base uppercase tracking-widest text-white font-bold">
+              {language === 'es' ? 'Contacto' : 'Contact'}
+            </span>
+            <div className="flex gap-1.5 p-1 rounded-full bg-black/15 border border-white/20">
+              <button
+                onClick={() => onLanguageChange('es')}
+                className={`px-3 py-1 rounded-full text-xs transition-all font-bold cursor-pointer ${
+                  language === 'es'
+                    ? 'bg-white text-[#5B8C2A] shadow-xs'
+                    : 'text-white/80 hover:text-white'
+                }`}
+              >
+                ES
+              </button>
+              <button
+                onClick={() => onLanguageChange('en')}
+                className={`px-3 py-1 rounded-full text-xs transition-all font-bold cursor-pointer ${
+                  language === 'en'
+                    ? 'bg-white text-[#5B8C2A] shadow-xs'
+                    : 'text-white/80 hover:text-white'
+                }`}
+              >
+                EN
+              </button>
+            </div>
           </div>
         </div>
       </header>
 
       {/* Contenido Principal de la Sección de Contacto */}
-      <main className="flex-grow py-12 sm:py-20 px-4 sm:px-6 lg:px-8">
+      <main className="flex-grow py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          {/* Header de la sección */}
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md text-white text-xs font-black tracking-widest uppercase mb-4 border border-white/25 shadow-xs">
-              <Heart className="w-3.5 h-3.5 fill-white" />
-              <span>{language === 'es' ? 'EcoPacific · Contacto Directo' : 'EcoPacific · Direct Contact'}</span>
-            </div>
+          {/* Header de la sección (sin la burbuja innecesaria) */}
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mb-4 drop-shadow-sm">
               {language === 'es' ? '¿En qué te podemos ayudar?' : 'How can we help you?'}
             </h1>
@@ -115,11 +114,11 @@ export const ContactSubpage: React.FC<ContactSubpageProps> = ({
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Columna Izquierda: WhatsApp Inmediato y Canales Directos */}
+            {/* Columna Izquierda: WhatsApp, Canales Directos y Minimapa */}
             <div className="lg:col-span-5 space-y-6">
               {/* Tarjeta WhatsApp Inmediato */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-white text-stone-900 shadow-xl border border-white/40">
-                <div className="flex items-center gap-3 mb-4">
+              <div className="p-6 sm:p-7 rounded-3xl bg-white text-stone-900 shadow-xl border border-white/40">
+                <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-md">
                     <MessageCircle className="w-6 h-6" />
                   </div>
@@ -132,29 +131,48 @@ export const ContactSubpage: React.FC<ContactSubpageProps> = ({
                     </h2>
                   </div>
                 </div>
-                <p className="text-sm text-stone-600 mb-6 leading-relaxed">
+                <p className="text-sm text-stone-600 mb-5 leading-relaxed">
                   {language === 'es'
-                    ? '¿Prefieres una respuesta inmediata? Escríbenos directamente y nuestro equipo te atenderá al instante.'
-                    : 'Looking for a quick answer? Chat with our team right away on WhatsApp.'}
+                    ? 'Escríbenos directamente al WhatsApp +593 98 930 0156 y te atenderemos con gusto.'
+                    : 'Chat with our team right away on WhatsApp at +593 98 930 0156.'}
                 </p>
                 <a
-                  href="https://wa.me/593998765432?text=Hola%20EcoPacific%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n"
+                  href="https://wa.me/593989300156?text=Hola%20EcoPacific%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md hover:shadow-xl transition-all cursor-pointer transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md hover:shadow-xl transition-all cursor-pointer transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <MessageCircle className="w-5 h-5" />
-                  <span>{language === 'es' ? 'Abrir chat de WhatsApp' : 'Open WhatsApp Chat'}</span>
+                  <span>+593 98 930 0156</span>
                 </a>
               </div>
 
-              {/* Tarjeta de Información y Canales */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 text-white space-y-5">
+              {/* Tarjeta de Canales Directos, Horarios y Minimapa */}
+              <div className="p-6 sm:p-7 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 text-white space-y-5">
                 <h3 className="text-base font-black uppercase tracking-wider text-white/90">
-                  {language === 'es' ? 'Canales directos' : 'Direct channels'}
+                  {language === 'es' ? 'Canales directos y ubicación' : 'Direct channels & location'}
                 </h3>
 
                 <div className="space-y-4 text-sm">
+                  {/* Teléfono */}
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center shrink-0 text-white mt-0.5">
+                      <Phone className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-white/70 font-semibold uppercase tracking-wider">
+                        {language === 'es' ? 'Teléfono de contacto' : 'Phone'}
+                      </p>
+                      <a
+                        href="tel:+593989300156"
+                        className="text-white font-bold hover:underline"
+                      >
+                        +593 98 930 0156
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Correo */}
                   <div className="flex items-start gap-3.5">
                     <div className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center shrink-0 text-white mt-0.5">
                       <Mail className="w-4 h-4" />
@@ -172,53 +190,83 @@ export const ContactSubpage: React.FC<ContactSubpageProps> = ({
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3.5">
-                    <div className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center shrink-0 text-white mt-0.5">
-                      <Phone className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-white/70 font-semibold uppercase tracking-wider">
-                        {language === 'es' ? 'Teléfono PBX' : 'Phone'}
-                      </p>
-                      <a
-                        href="tel:+59352698000"
-                        className="text-white font-bold hover:underline"
-                      >
-                        +593 5 269 8000
-                      </a>
-                    </div>
-                  </div>
-
+                  {/* Ubicación */}
                   <div className="flex items-start gap-3.5">
                     <div className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center shrink-0 text-white mt-0.5">
                       <MapPin className="w-4 h-4" />
                     </div>
                     <div>
                       <p className="text-xs text-white/70 font-semibold uppercase tracking-wider">
-                        {language === 'es' ? 'Planta y Oficinas' : 'Headquarters'}
+                        {language === 'es' ? 'Ubicación' : 'Location'}
                       </p>
                       <p className="text-white/95 font-medium leading-relaxed">
-                        Parque Industrial El Carmen, Manabí — Ecuador
+                        Parque Industrial El Carmen
+                        <br />
+                        Km 2 ½ vía Sangolquí – Amaguaña, Sangolquí
+                      </p>
+                      <p className="text-xs text-white/75 mt-1">
+                        Calle H lote 13 (Parque Industrial El Carmen)
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3.5">
-                    <div className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center shrink-0 text-white mt-0.5">
-                      <Clock className="w-4 h-4" />
+                  {/* Minimapa */}
+                  <div className="pt-2">
+                    <div className="relative rounded-2xl overflow-hidden border border-white/25 shadow-lg bg-black/20 aspect-video">
+                      <iframe
+                        title="Minimapa Ubicación EcoPacific"
+                        src="https://maps.google.com/maps?q=Calle%20H%20lote%2013%2C%20Parque%20Industrial%20El%20Carmen%2C%20Km%202%20%C2%BD%20v%C3%ADa%20Sangolqu%C3%AD%20-%20Amagua%C3%B1a%2C%20Sangolqu%C3%AD&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        className="w-full h-full border-0"
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                      />
                     </div>
-                    <div>
-                      <p className="text-xs text-white/70 font-semibold uppercase tracking-wider">
-                        {language === 'es' ? 'Horario' : 'Hours'}
+                    <div className="mt-2 text-right">
+                      <a
+                        href="https://www.google.com/maps/search/?api=1&query=Calle+H+lote+13+Parque+Industrial+El+Carmen+Km+2+1%2F2+via+Sangolqui+-+Amaguana+Sangolqui"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/90 hover:text-white underline"
+                      >
+                        <span>{language === 'es' ? 'Ver en Google Maps' : 'View on Google Maps'}</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Horarios Detallados */}
+                  <div className="pt-3 border-t border-white/15">
+                    <div className="flex items-center gap-2 mb-2.5">
+                      <Clock className="w-4 h-4 text-emerald-300" />
+                      <p className="text-xs text-white font-bold uppercase tracking-wider">
+                        {language === 'es' ? 'Horarios de atención' : 'Business Hours'}
                       </p>
-                      <p className="text-white/95 font-medium">
-                        {language === 'es' ? 'Lunes a Viernes: 8:00 - 17:00' : 'Monday to Friday: 8:00 - 17:00'}
-                      </p>
+                    </div>
+                    <div className="space-y-1.5 text-xs">
+                      {scheduleItems.map((item, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center justify-between py-0.5 border-b border-white/10 last:border-0"
+                        >
+                          <span className="font-semibold text-white/90">
+                            {language === 'es' ? item.dayEs : item.dayEn}
+                          </span>
+                          <span
+                            className={
+                              item.closed
+                                ? 'text-white/60 font-medium italic'
+                                : 'text-emerald-100 font-bold'
+                            }
+                          >
+                            {item.time}
+                          </span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-white/15">
+                <div className="pt-2 border-t border-white/15">
                   <a
                     href="https://cl.linkedin.com/company/ecopacific-s.a."
                     target="_blank"

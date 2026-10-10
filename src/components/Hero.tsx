@@ -1,68 +1,110 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { Volume2, VolumeX } from 'lucide-react';
 import { Language } from '../types';
-import heroCitrusImg from '../assets/images/hero_citrus_harvest_1790733004665.jpg';
 
 interface HeroProps {
   language: Language;
-  onExploreBrands: () => void;
+  onExploreBrands?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ language, onExploreBrands }) => {
-  const handleScrollDown = () => {
-    const el = document.querySelector('#transicion') || document.querySelector('#marcas');
-    el?.scrollIntoView({ behavior: 'smooth' });
+export const Hero: React.FC<HeroProps> = ({ language }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const sendCommand = (func: string, args: unknown[] = []) => {
+    try {
+      if (iframeRef.current?.contentWindow) {
+        iframeRef.current.contentWindow.postMessage(
+          JSON.stringify({ event: 'command', func, args }),
+          '*'
+        );
+      }
+    } catch {
+      // Ignore cross-origin error if any
+    }
   };
 
+  const toggleMute = () => {
+    if (isMuted) {
+      sendCommand('unMute');
+      setIsMuted(false);
+    } else {
+      sendCommand('mute');
+      setIsMuted(true);
+    }
+  };
+
+  // Pausa el video si bajas lo suficiente para que no se vea, y lo reanuda al volver a estar visible
+  useEffect(() => {
+    const currentSection = sectionRef.current;
+    if (!currentSection) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            sendCommand('playVideo');
+          } else {
+            sendCommand('pauseVideo');
+          }
+        });
+      },
+      {
+        threshold: 0.08,
+      }
+    );
+
+    observer.observe(currentSection);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <section className="relative h-screen min-h-[680px] w-full flex items-center justify-center overflow-hidden bg-stone-950 text-white">
-      {/* Fullscreen Video / Media Container */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-        {/* YouTube Background Video: Looping non-stop and muted */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/ahkl1jnSpKE?autoplay=1&mute=1&loop=1&playlist=ahkl1jnSpKE&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&playsinline=1&enablejsapi=1"
-            title="EcoPacific Video"
-            className="absolute top-1/2 left-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full -translate-x-1/2 -translate-y-1/2 scale-125 sm:scale-110 pointer-events-none border-0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
-
-        {/* Fallback Image in case video is loading */}
-        <img
-          src={heroCitrusImg}
-          alt="Cosecha de frutas frescas, cítricos y cocos de ECOPACIFIC"
-          referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-center absolute inset-0 -z-10"
-        />
-
-        {/* Very Subtle Cinematic Scrim to ensure AA text contrast while preserving video brilliance */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/45" />
-        <div className="absolute inset-0 bg-radial-[circle_at_center] from-transparent via-black/20 to-black/60" />
+    <section
+      ref={sectionRef}
+      className="relative min-h-[85vh] sm:min-h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#18270f] via-[#13200b] to-[#0e1708] text-white pt-24 sm:pt-28 pb-12 sm:pb-16 px-4 sm:px-6 md:px-8"
+    >
+      {/* Background ambient lighting */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#5B8C2A]/25 blur-[140px] rounded-full" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#5B8C2A]/10 blur-[120px] rounded-full" />
       </div>
 
-      {/* Central Minimal, High-Impact Editorial Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 text-center flex flex-col items-center select-none">
-        {/* Main Headline: "Del campo a tu día." */}
-        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight text-white mb-6 leading-[1.02] text-balance drop-shadow-xl">
-          {language === 'es' ? 'Del campo a tu día.' : 'From the farm to your day.'}
-        </h1>
+      {/* Cuadro redondeado grande que cubre la mayor parte de la sección con el video */}
+      <div className="relative z-10 w-full max-w-5xl xl:max-w-6xl mx-auto flex items-center justify-center">
+        <div className="relative w-full aspect-video rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/80 border border-white/20 ring-1 ring-black/40 bg-black group">
+          <iframe
+            ref={iframeRef}
+            src="https://www.youtube-nocookie.com/embed/ahkl1jnSpKE?autoplay=1&mute=1&loop=1&playlist=ahkl1jnSpKE&controls=1&playsinline=1&rel=0&modestbranding=1&enablejsapi=1"
+            title="EcoPacific Video"
+            className="w-full h-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
 
-        {/* Subline: "Alimentos y bebidas creados desde el origen." */}
-        <p className="text-lg sm:text-2xl md:text-3xl text-stone-100 font-light max-w-3xl mb-10 leading-relaxed text-balance drop-shadow-md">
-          {language === 'es'
-            ? 'Alimentos y bebidas creados desde el origen.'
-            : 'Food and beverages crafted from the source.'}
-        </p>
-
-        {/* Single CTA: "Descubre EcoPacific" */}
-        <button
-          onClick={handleScrollDown}
-          className="px-10 py-4 sm:px-12 sm:py-5 text-sm sm:text-base font-bold uppercase tracking-wider text-[#5B8C2A] bg-white hover:bg-stone-100 rounded-full transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 cursor-pointer"
-        >
-          {language === 'es' ? 'Descubre EcoPacific' : 'Discover EcoPacific'}
-        </button>
+          {/* Botón flotante para activar / silenciar sonido */}
+          <button
+            onClick={toggleMute}
+            className="absolute bottom-4 right-4 z-20 inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-black/80 hover:bg-black text-white text-xs font-semibold backdrop-blur-md border border-white/25 shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer"
+            aria-label={isMuted ? 'Activar sonido' : 'Silenciar video'}
+          >
+            {isMuted ? (
+              <>
+                <VolumeX className="w-4 h-4 text-emerald-400" />
+                <span>{language === 'es' ? 'Activar sonido' : 'Enable sound'}</span>
+              </>
+            ) : (
+              <>
+                <Volume2 className="w-4 h-4 text-emerald-400 animate-pulse" />
+                <span>{language === 'es' ? 'Silenciar' : 'Mute'}</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </section>
   );
 };
+
