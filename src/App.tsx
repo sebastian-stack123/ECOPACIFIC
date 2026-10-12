@@ -1,16 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Language } from './types';
-import { BRANDS_DATA } from './data/brandsData';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { TransitionSection } from './components/TransitionSection';
-import { BrandsSection } from './components/BrandsSection';
-import { OriginSection } from './components/OriginSection';
-import { NosotrosSubpage } from './components/NosotrosSubpage';
-import { SustainabilitySubpage } from './components/SustainabilitySubpage';
-import { BrandSubpage } from './components/BrandSubpage';
-import { ContactSubpage } from './components/ContactSubpage';
-import { Footer } from './components/Footer';
+
+// Dynamic lazy imports: Only the page currently requested by the user is loaded.
+// Other pages and their assets are NOT fetched until navigated to.
+const HomePage = lazy(() =>
+  import('./components/HomePage').then((m) => ({ default: m.HomePage }))
+);
+const NosotrosSubpage = lazy(() =>
+  import('./components/NosotrosSubpage').then((m) => ({ default: m.NosotrosSubpage }))
+);
+const SustainabilitySubpage = lazy(() =>
+  import('./components/SustainabilitySubpage').then((m) => ({ default: m.SustainabilitySubpage }))
+);
+const BrandSubpage = lazy(() =>
+  import('./components/BrandSubpage').then((m) => ({ default: m.BrandSubpage }))
+);
+const ContactSubpage = lazy(() =>
+  import('./components/ContactSubpage').then((m) => ({ default: m.ContactSubpage }))
+);
+
+const PageLoadingFallback: React.FC = () => (
+  <div className="min-h-screen bg-[#111c0a] flex items-center justify-center p-6 text-center">
+    <div className="flex flex-col items-center gap-3">
+      <div className="w-10 h-10 border-3 border-[#5B8C2A] border-t-transparent rounded-full animate-spin" />
+      <span className="text-white/80 text-xs tracking-widest uppercase font-semibold">
+        EcoPacific
+      </span>
+    </div>
+  </div>
+);
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
@@ -37,7 +55,6 @@ export default function App() {
   // Determine active view
   const brandSlugMatch = currentPath.match(/^\/marcas\/([a-z0-9-]+)/);
   const activeBrandSlug = brandSlugMatch ? brandSlugMatch[1] : null;
-  const activeBrand = activeBrandSlug ? BRANDS_DATA[activeBrandSlug] : null;
 
   const isNosotros = currentPath === '/nosotros';
   const isSostenibilidad = currentPath === '/sostenibilidad';
@@ -45,84 +62,50 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-[#5B8C2A] selection:text-white">
-      {activeBrand ? (
-        /* Subpágina de marca independiente (ej. Coco Freeze) */
-        <BrandSubpage
-          brand={activeBrand}
-          language={language}
-          onNavigateHome={() => navigateTo('/')}
-          onNavigateBrand={(slug) => navigateTo(`/marcas/${slug}`)}
-          onOpenContact={() => navigateTo('/contacto')}
-        />
-      ) : isNosotros ? (
-        /* Subpágina completa de Nuestra Empresa (Nosotros) */
-        <NosotrosSubpage
-          language={language}
-          onNavigateHome={() => navigateTo('/')}
-          onNavigate={navigateTo}
-          onOpenContact={() => navigateTo('/contacto')}
-        />
-      ) : isSostenibilidad ? (
-        /* Subpágina completa de Sostenibilidad */
-        <SustainabilitySubpage
-          language={language}
-          onNavigateHome={() => navigateTo('/')}
-          onNavigate={navigateTo}
-          onOpenContact={() => navigateTo('/contacto')}
-        />
-      ) : isContacto ? (
-        /* Sección propia de Contacto (no modal, fondo verde, sin inicio) */
-        <ContactSubpage
-          language={language}
-          onNavigateHome={() => navigateTo('/')}
-          onNavigate={navigateTo}
-          onLanguageChange={setLanguage}
-        />
-      ) : (
-        /* Página Principal */
-        <>
-          {/* Top Navbar: Menú, ECOPACIFIC, Idiomas */}
-          <Navbar
-            currentPath={currentPath}
-            onNavigate={navigateTo}
+      <Suspense fallback={<PageLoadingFallback />}>
+        {activeBrandSlug ? (
+          /* Subpágina de marca independiente cargada bajo demanda */
+          <BrandSubpage
+            brandSlug={activeBrandSlug}
             language={language}
+            onNavigateHome={() => navigateTo('/')}
+            onNavigateBrand={(slug) => navigateTo(`/marcas/${slug}`)}
+            onOpenContact={() => navigateTo('/contacto')}
+          />
+        ) : isNosotros ? (
+          /* Subpágina completa de Nuestra Empresa cargada bajo demanda */
+          <NosotrosSubpage
+            language={language}
+            onNavigateHome={() => navigateTo('/')}
+            onNavigate={navigateTo}
+            onOpenContact={() => navigateTo('/contacto')}
+          />
+        ) : isSostenibilidad ? (
+          /* Subpágina completa de Sostenibilidad cargada bajo demanda */
+          <SustainabilitySubpage
+            language={language}
+            onNavigateHome={() => navigateTo('/')}
+            onNavigate={navigateTo}
+            onOpenContact={() => navigateTo('/contacto')}
+          />
+        ) : isContacto ? (
+          /* Sección de Contacto cargada bajo demanda */
+          <ContactSubpage
+            language={language}
+            onNavigateHome={() => navigateTo('/')}
+            onNavigate={navigateTo}
             onLanguageChange={setLanguage}
-            onOpenContact={() => navigateTo('/contacto')}
           />
-
-          <main className="flex-grow">
-            {/* 1. Hero / Inicio */}
-            <Hero
-              language={language}
-              onExploreBrands={() => {
-                const el = document.getElementById('marcas');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            />
-
-            {/* 2. Transición: Más de 20 años transformando lo que nace del campo */}
-            <TransitionSection language={language} />
-
-            {/* 3. Nuestras Marcas: Compactas una al lado de la otra */}
-            <BrandsSection
-              language={language}
-              onSelectBrand={(slug) => navigateTo(`/marcas/${slug}`)}
-            />
-
-            {/* 4. Agricultores */}
-            <OriginSection language={language} />
-          </main>
-
-          {/* Footer Corporativo */}
-          <Footer
+        ) : (
+          /* Página Principal cargada bajo demanda */
+          <HomePage
+            currentPath={currentPath}
             language={language}
             onNavigate={navigateTo}
-            onOpenNosotros={() => navigateTo('/nosotros')}
-            onOpenSostenibilidad={() => navigateTo('/sostenibilidad')}
-            onOpenContact={() => navigateTo('/contacto')}
+            onLanguageChange={setLanguage}
           />
-        </>
-      )}
+        )}
+      </Suspense>
     </div>
   );
 }

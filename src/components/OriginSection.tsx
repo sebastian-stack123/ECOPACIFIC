@@ -33,6 +33,8 @@ export const OriginSection: React.FC<OriginSectionProps> = ({ language }) => {
           <img
             src={campoImg}
             alt="Agricultores y campo de Ecuador - EcoPacific"
+            loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center"
           />

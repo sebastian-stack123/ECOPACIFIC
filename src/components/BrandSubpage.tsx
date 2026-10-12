@@ -8,7 +8,8 @@ import ecopacificLogo from '../assets/ecopacificlogo.png';
 import hortilistoLogoImg from '../assets/images/hortilistoimagenlogo.jpg';
 
 interface BrandSubpageProps {
-  brand: Brand;
+  brand?: Brand;
+  brandSlug?: string;
   language: Language;
   onNavigateHome: () => void;
   onNavigateBrand: (slug: string) => void;
@@ -16,12 +17,14 @@ interface BrandSubpageProps {
 }
 
 export const BrandSubpage: React.FC<BrandSubpageProps> = ({
-  brand,
+  brand: brandProp,
+  brandSlug,
   language,
   onNavigateHome,
   onNavigateBrand,
   onOpenContact,
 }) => {
+  const brand = brandProp || (brandSlug ? BRANDS_DATA[brandSlug] : null) || BRANDS_DATA['coco-freeze'];
   const t = UI_TRANSLATIONS[language];
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [activeFamilyFilter, setActiveFamilyFilter] = useState<string>('all');

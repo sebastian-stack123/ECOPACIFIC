@@ -77,6 +77,8 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
           <img
             src={campo3Img}
             alt="Campos y cultivos de frutas EcoPacific"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-center"
           />
         </div>
@@ -100,6 +102,8 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
           <img
             src={campesinoImg}
             alt="Campesinos y trabajo sostenible Ecopacific"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-center"
           />
         </div>
@@ -150,6 +154,8 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
           <img
             src={campesino2Img}
             alt="Campesinos y preservación del entorno natural Ecopacific"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-center"
           />
         </div>

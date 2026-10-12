@@ -175,6 +175,8 @@ export const NuestraHistoriaSection: React.FC<NuestraHistoriaSectionProps> = ({ 
         <img
           src={fundadoresImg}
           alt={language === 'es' ? 'Fundadores de Ecopacific' : 'Ecopacific Founders'}
+          loading="lazy"
+          decoding="async"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center"
         />
@@ -367,6 +369,8 @@ export const NuestraHistoriaSection: React.FC<NuestraHistoriaSectionProps> = ({ 
                 <img
                   src={imagenCampoStoryImg}
                   alt="Cultivos y trabajo agrícola en Manabí"
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-center"
                 />
@@ -384,6 +388,8 @@ export const NuestraHistoriaSection: React.FC<NuestraHistoriaSectionProps> = ({ 
                 <img
                   src={cocosStoryImg}
                   alt="Cocos frescos y nacimiento de Coco Freeze"
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-center"
                 />
@@ -433,6 +439,8 @@ export const NuestraHistoriaSection: React.FC<NuestraHistoriaSectionProps> = ({ 
                 <img
                   src={dhoyStoryImg}
                   alt="Limones, cocos y frutas ecuatorianas - Nace Ecopacific"
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-center"
                 />
@@ -497,6 +505,8 @@ export const NuestraHistoriaSection: React.FC<NuestraHistoriaSectionProps> = ({ 
                 <img
                   src={construccionStoryImg}
                   alt="Ecopacific conectando el campo con los consumidores"
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-center"
                 />
@@ -514,6 +524,8 @@ export const NuestraHistoriaSection: React.FC<NuestraHistoriaSectionProps> = ({ 
             <img
               src={equipoEcopacific2Img}
               alt="Equipo Ecopacific - Lo mejor de Ecuador para el mundo"
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center"
             />

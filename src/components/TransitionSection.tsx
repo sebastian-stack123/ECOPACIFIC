@@ -35,6 +35,8 @@ export const TransitionSection: React.FC<TransitionSectionProps> = ({ language }
           <img
             src={fotoEcopacificImg}
             alt="EcoPacific - Más de 20 años transformando lo que nace del campo"
+            loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-102"
           />

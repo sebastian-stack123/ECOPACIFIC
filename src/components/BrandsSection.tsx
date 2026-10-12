@@ -1,19 +1,28 @@
 import React from 'react';
 import { Language } from '../types';
 import { UI_TRANSLATIONS } from '../data/translations';
-import { BRANDS_DATA } from '../data/brandsData';
+import cocoFreezeImg from '../assets/images/cocofreezeimagenmenu.jpg';
+import dhoyImg from '../assets/images/dhoyimagenmenu.jpg';
+import ecoloveImg from '../assets/images/imagenmenuecolove.jpg';
+import hortilistoImg from '../assets/images/hortilistoimagenlogo.jpg';
 
 interface BrandsSectionProps {
   language: Language;
   onSelectBrand: (slug: string) => void;
 }
 
+const HOMEPAGE_BRANDS = [
+  { id: 'coco-freeze', name: 'Coco Freeze', slug: 'coco-freeze', heroImage: cocoFreezeImg },
+  { id: 'dhoy', name: "D'Hoy", slug: 'dhoy', heroImage: dhoyImg },
+  { id: 'ecolove', name: 'EcoLove', slug: 'ecolove', heroImage: ecoloveImg },
+  { id: 'hortilisto', name: 'Hortilisto', slug: 'hortilisto', heroImage: hortilistoImg },
+];
+
 export const BrandsSection: React.FC<BrandsSectionProps> = ({
   language,
   onSelectBrand,
 }) => {
   const t = UI_TRANSLATIONS[language];
-  const brandsList = Object.values(BRANDS_DATA);
 
   return (
     <section id="marcas" className="py-16 sm:py-24 bg-white text-stone-900 border-b border-stone-200/60">
@@ -35,17 +44,19 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({
 
         {/* 4 Cards Side-by-Side (2 cols mobile, 4 cols desktop) */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {brandsList.map((brand) => (
+          {HOMEPAGE_BRANDS.map((brand) => (
             <div
               key={brand.id}
               onClick={() => onSelectBrand(brand.slug)}
               className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer h-72 sm:h-84 flex flex-col justify-end items-center bg-stone-900 border border-stone-200"
             >
-              {/* Image with subtle zoom */}
+              {/* Image with subtle zoom and lazy loading */}
               <div className="absolute inset-0 w-full h-full overflow-hidden">
                 <img
                   src={brand.heroImage}
                   alt={brand.name}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out brightness-90"
                 />
