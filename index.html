@@ -9,12 +9,61 @@
     <meta property="og:description" content="Página web corporativa de EcoPacific. Alimentos y bebidas creados desde el origen, con sabor, innovación y propósito." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Preconnect for YouTube & Media to speed up initial connection -->
+    <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
+    <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
+    <link rel="dns-prefetch" href="https://i.ytimg.com">
+
+    <!-- Fonts: Preconnect & non-blocking load -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap">
+    </noscript>
   </head>
-  <body class="bg-neutral-50 text-neutral-900 font-sans antialiased selection:bg-emerald-900 selection:text-white">
-    <div id="root"></div>
+  <body class="bg-[#0d1607] text-neutral-900 font-sans antialiased selection:bg-[#5B8C2A] selection:text-white">
+    <div id="root">
+      <!-- Instant pure-CSS / SVG Coconut loader for 0ms initial visual feedback -->
+      <div style="min-height:100vh;background-color:#0d1607;display:flex;align-items:center;justify-content:center;color:#fff;font-family:sans-serif;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+          <style>
+            @keyframes init-coco-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+            @keyframes init-coco-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+            @keyframes init-coco-shadow{0%,100%{transform:scale(1);opacity:0.35}50%{transform:scale(0.7);opacity:0.15}}
+          </style>
+          <div style="position:relative;display:flex;flex-direction:column;align-items:center;animation:init-coco-bob 1.5s ease-in-out infinite;">
+            <div style="width:64px;height:64px;animation:init-coco-spin 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;">
+              <svg viewBox="0 0 100 100" style="width:100%;height:100%;" fill="none">
+                <defs>
+                  <radialGradient id="initShell" cx="35%" cy="30%" r="70%">
+                    <stop offset="0%" stop-color="#8C532B" />
+                    <stop offset="45%" stop-color="#5E3416" />
+                    <stop offset="100%" stop-color="#381D0B" />
+                  </radialGradient>
+                </defs>
+                <path d="M50 14 C46 6, 36 4, 32 8 C38 10, 44 16, 46 22 Z" fill="#84CC16" />
+                <path d="M50 14 C54 5, 64 6, 68 11 C62 11, 56 17, 53 23 Z" fill="#5B8C2A" />
+                <ellipse cx="50" cy="54" rx="37" ry="40" fill="url(#initShell)" stroke="#2A1406" stroke-width="2.5" />
+                <path d="M30 28 Q24 52 32 78" stroke="#2E1607" stroke-width="1.8" stroke-linecap="round" opacity="0.6" />
+                <path d="M50 20 Q48 54 51 88" stroke="#2E1607" stroke-width="1.6" stroke-linecap="round" opacity="0.5" />
+                <path d="M70 28 Q76 52 68 78" stroke="#2E1607" stroke-width="1.8" stroke-linecap="round" opacity="0.6" />
+                <ellipse cx="40" cy="42" rx="4.5" ry="5.5" fill="#1C0D05" />
+                <ellipse cx="60" cy="42" rx="4.5" ry="5.5" fill="#1C0D05" />
+                <ellipse cx="50" cy="62" rx="5" ry="6" fill="#1C0D05" />
+              </svg>
+            </div>
+            <div style="width:48px;height:8px;background:rgba(0,0,0,0.6);border-radius:9999px;margin-top:8px;animation:init-coco-shadow 1.5s ease-in-out infinite;"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <span style="font-weight:700;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:#fff;">EcoPacific</span>
+            <span style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#34D399;">Cargando...</span>
+          </div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Language } from './types';
+import { CoconutLoader } from './components/CoconutLoader';
 
 // Dynamic lazy imports: Only the page currently requested by the user is loaded.
 // Other pages and their assets are NOT fetched until navigated to.
@@ -20,14 +21,7 @@ const ContactSubpage = lazy(() =>
 );
 
 const PageLoadingFallback: React.FC = () => (
-  <div className="min-h-screen bg-[#111c0a] flex items-center justify-center p-6 text-center">
-    <div className="flex flex-col items-center gap-3">
-      <div className="w-10 h-10 border-3 border-[#5B8C2A] border-t-transparent rounded-full animate-spin" />
-      <span className="text-white/80 text-xs tracking-widest uppercase font-semibold">
-        EcoPacific
-      </span>
-    </div>
-  </div>
+  <CoconutLoader label="EcoPacific" fullScreen />
 );
 
 export default function App() {

@@ -75,11 +75,26 @@ export const Hero: React.FC<HeroProps> = ({ language }) => {
       {/* Cuadro redondeado grande que cubre la mayor parte de la sección con el video */}
       <div className="relative z-10 w-full max-w-5xl xl:max-w-6xl mx-auto flex items-center justify-center">
         <div className="relative w-full aspect-video rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/80 border border-white/20 ring-1 ring-black/40 bg-black group">
+          {/* Subtle loading placeholder behind iframe while player boots */}
+          <div className="absolute inset-0 bg-[#0d1607] flex items-center justify-center pointer-events-none">
+            <div className="flex flex-col items-center gap-2 opacity-60">
+              <div className="w-10 h-10 animate-coco-spin">
+                <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
+                  <ellipse cx="50" cy="54" rx="37" ry="40" fill="#5E3416" stroke="#2A1406" strokeWidth="2" />
+                  <ellipse cx="40" cy="42" rx="4" ry="5" fill="#1C0D05" />
+                  <ellipse cx="60" cy="42" rx="4" ry="5" fill="#1C0D05" />
+                  <ellipse cx="50" cy="62" rx="4.5" ry="5.5" fill="#1C0D05" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
           <iframe
             ref={iframeRef}
             src="https://www.youtube-nocookie.com/embed/ahkl1jnSpKE?autoplay=1&mute=1&loop=1&playlist=ahkl1jnSpKE&controls=1&playsinline=1&rel=0&modestbranding=1&enablejsapi=1"
             title="EcoPacific Video"
-            className="w-full h-full border-0"
+            className="w-full h-full border-0 relative z-10"
+            loading="eager"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />

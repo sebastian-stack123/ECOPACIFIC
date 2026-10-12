@@ -38,4 +38,46 @@ html {
   }
 }
 
+/* Ultralight GPU-accelerated Coconut animations (0 CPU overhead) */
+@keyframes coco-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes coco-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes coco-shadow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(0.7);
+    opacity: 0.15;
+  }
+}
+
+.animate-coco-spin {
+  animation: coco-spin 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-coco-bob {
+  animation: coco-bob 1.5s ease-in-out infinite;
+}
+
+.animate-coco-shadow {
+  animation: coco-shadow 1.5s ease-in-out infinite;
+}
+
 
