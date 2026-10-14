@@ -6,7 +6,6 @@ import {
   Phone,
   MessageCircle,
   Send,
-  Clock,
   ExternalLink,
 } from 'lucide-react';
 import { Language } from '../types';
@@ -39,16 +38,6 @@ export const ContactSubpage: React.FC<ContactSubpageProps> = ({
     if (!formData.name || !formData.contact || !formData.message) return;
     setSubmitted(true);
   };
-
-  const scheduleItems = [
-    { dayEs: 'Lunes', dayEn: 'Monday', time: '8:30 AM – 6:00 PM' },
-    { dayEs: 'Martes', dayEn: 'Tuesday', time: '8:30 AM – 6:30 PM' },
-    { dayEs: 'Miércoles', dayEn: 'Wednesday', time: '8:30 AM – 6:00 PM' },
-    { dayEs: 'Jueves', dayEn: 'Thursday', time: '8:30 AM – 6:00 PM' },
-    { dayEs: 'Viernes', dayEn: 'Friday', time: '8:30 AM – 6:00 PM' },
-    { dayEs: 'Sábado', dayEn: 'Saturday', time: language === 'es' ? 'Cerrado' : 'Closed', closed: true },
-    { dayEs: 'Domingo', dayEn: 'Sunday', time: language === 'es' ? 'Cerrado' : 'Closed', closed: true },
-  ];
 
   return (
     <div className="min-h-screen flex flex-col bg-[#5B8C2A] text-white selection:bg-white selection:text-[#5B8C2A]">
@@ -118,7 +107,7 @@ export const ContactSubpage: React.FC<ContactSubpageProps> = ({
             <div className="lg:col-span-5 space-y-6">
               {/* Tarjeta WhatsApp Inmediato */}
               <div className="p-6 sm:p-7 rounded-3xl bg-white text-stone-900 shadow-xl border border-white/40">
-                <div className="flex items-center gap-3 mb-3">
+                <div className="flex items-center gap-3 mb-5">
                   <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-md">
                     <MessageCircle className="w-6 h-6" />
                   </div>
@@ -131,11 +120,6 @@ export const ContactSubpage: React.FC<ContactSubpageProps> = ({
                     </h2>
                   </div>
                 </div>
-                <p className="text-sm text-stone-600 mb-5 leading-relaxed">
-                  {language === 'es'
-                    ? 'Escríbenos directamente al WhatsApp +593 98 930 0156 y te atenderemos con gusto.'
-                    : 'Chat with our team right away on WhatsApp at +593 98 930 0156.'}
-                </p>
                 <a
                   href="https://wa.me/593989300156?text=Hola%20EcoPacific%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n"
                   target="_blank"
@@ -231,37 +215,6 @@ export const ContactSubpage: React.FC<ContactSubpageProps> = ({
                         <span>{language === 'es' ? 'Ver en Google Maps' : 'View on Google Maps'}</span>
                         <ExternalLink className="w-3 h-3" />
                       </a>
-                    </div>
-                  </div>
-
-                  {/* Horarios Detallados */}
-                  <div className="pt-3 border-t border-white/15">
-                    <div className="flex items-center gap-2 mb-2.5">
-                      <Clock className="w-4 h-4 text-emerald-300" />
-                      <p className="text-xs text-white font-bold uppercase tracking-wider">
-                        {language === 'es' ? 'Horarios de atención' : 'Business Hours'}
-                      </p>
-                    </div>
-                    <div className="space-y-1.5 text-xs">
-                      {scheduleItems.map((item, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-center justify-between py-0.5 border-b border-white/10 last:border-0"
-                        >
-                          <span className="font-semibold text-white/90">
-                            {language === 'es' ? item.dayEs : item.dayEn}
-                          </span>
-                          <span
-                            className={
-                              item.closed
-                                ? 'text-white/60 font-medium italic'
-                                : 'text-emerald-100 font-bold'
-                            }
-                          >
-                            {item.time}
-                          </span>
-                        </div>
-                      ))}
                     </div>
                   </div>
                 </div>

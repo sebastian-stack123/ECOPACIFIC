@@ -42,34 +42,22 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({
           </p>
         </div>
 
-        {/* 4 Cards Side-by-Side (2 cols mobile, 4 cols desktop) */}
+        {/* 4 Cards con SOLO el logo sin modificaciones */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {HOMEPAGE_BRANDS.map((brand) => (
             <div
               key={brand.id}
               onClick={() => onSelectBrand(brand.slug)}
-              className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer h-72 sm:h-84 flex flex-col justify-end items-center bg-stone-900 border border-stone-200"
+              className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer h-56 sm:h-64 flex items-center justify-center bg-white border border-stone-200/90 hover:border-[#5B8C2A] p-4 sm:p-6"
             >
-              {/* Image with subtle zoom and lazy loading */}
-              <div className="absolute inset-0 w-full h-full overflow-hidden">
-                <img
-                  src={brand.heroImage}
-                  alt={brand.name}
-                  loading="lazy"
-                  decoding="async"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out brightness-90"
-                />
-                {/* Legibility Scrim */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
-              </div>
-
-              {/* Centered Large Brand Name */}
-              <div className="relative z-10 p-5 sm:p-6 w-full flex flex-col items-center justify-end text-center pb-6 sm:pb-8">
-                <h3 className="text-2xl sm:text-3xl lg:text-3xl font-black tracking-tight text-white text-center drop-shadow-md group-hover:scale-105 transition-transform duration-300">
-                  {brand.name}
-                </h3>
-              </div>
+              <img
+                src={brand.heroImage}
+                alt={brand.name}
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
           ))}
         </div>

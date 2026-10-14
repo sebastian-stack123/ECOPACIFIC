@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import { Language } from '../types';
-import fotoEcopacificImg from '../assets/images/fotoecopacific.jpg';
+import transitionJuicesImg from '../assets/images/transition_juices_1791937871685.jpg';
 
 interface TransitionSectionProps {
   language: Language;
@@ -9,7 +9,7 @@ interface TransitionSectionProps {
 
 export const TransitionSection: React.FC<TransitionSectionProps> = ({ language }) => {
   return (
-    <section id="transicion" className="relative py-20 sm:py-28 bg-[#FBF9F5] text-stone-900 overflow-hidden border-b border-stone-200/60">
+    <section id="transicion" className="relative pt-28 sm:pt-36 pb-20 sm:pb-28 bg-[#FBF9F5] text-stone-900 overflow-hidden border-b border-stone-200/60">
       {/* Decorative subtle brand watermark in background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.03] text-[18vw] font-black text-[#5B8C2A] tracking-tighter whitespace-nowrap">
         ECOPACIFIC
@@ -23,18 +23,18 @@ export const TransitionSection: React.FC<TransitionSectionProps> = ({ language }
             : 'Innovating Healthy Foods'}
         </span>
 
-        {/* Título Principal: Centrado */}
+        {/* Título Principal: Centrado sin Más de 20 Años */}
         <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-[#5B8C2A] tracking-tight leading-[1.08] text-center max-w-4xl mx-auto mb-10 text-balance">
           {language === 'es'
-            ? 'Más de 20 años transformando lo que nace del campo.'
-            : 'Over 20 years transforming what grows from the land.'}
+            ? 'Transformamos lo que nace del campo'
+            : 'Transforming what grows from the land'}
         </h2>
 
-        {/* Fotografía de Cosecha Fresca antes de Nuestras Marcas */}
+        {/* Fotografía de Cosecha Fresca y Productos: Agua de coco y Jugo de naranja */}
         <div className="w-full max-w-4xl mb-10 rounded-3xl overflow-hidden shadow-2xl border border-stone-300/70 bg-stone-200 aspect-[16/9] sm:aspect-[21/9]">
           <img
-            src={fotoEcopacificImg}
-            alt="EcoPacific - Más de 20 años transformando lo que nace del campo"
+            src={transitionJuicesImg}
+            alt="EcoPacific - Transformamos lo que nace del campo"
             loading="lazy"
             decoding="async"
             referrerPolicy="no-referrer"

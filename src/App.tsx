@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Language } from './types';
 import { CoconutLoader } from './components/CoconutLoader';
+import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton';
 
 // Dynamic lazy imports: Only the page currently requested by the user is loaded.
 // Other pages and their assets are NOT fetched until navigated to.
@@ -72,6 +73,7 @@ export default function App() {
             language={language}
             onNavigateHome={() => navigateTo('/')}
             onNavigate={navigateTo}
+            onLanguageChange={setLanguage}
             onOpenContact={() => navigateTo('/contacto')}
           />
         ) : isSostenibilidad ? (
@@ -80,6 +82,7 @@ export default function App() {
             language={language}
             onNavigateHome={() => navigateTo('/')}
             onNavigate={navigateTo}
+            onLanguageChange={setLanguage}
             onOpenContact={() => navigateTo('/contacto')}
           />
         ) : isContacto ? (
@@ -91,7 +94,6 @@ export default function App() {
             onLanguageChange={setLanguage}
           />
         ) : (
-          /* Página Principal cargada bajo demanda */
           <HomePage
             currentPath={currentPath}
             language={language}
@@ -100,6 +102,9 @@ export default function App() {
           />
         )}
       </Suspense>
+
+      {/* Acceso directo flotante a WhatsApp siempre visible en toda la web */}
+      <FloatingWhatsAppButton language={language} />
     </div>
   );
 }

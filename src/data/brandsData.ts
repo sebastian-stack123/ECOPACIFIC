@@ -64,7 +64,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
       buttonBorder: '#FACC15'
     },
     heroImage: cocoFreezeImg,
-    closingStatement: 'Más de 20 años cerca del origen nos han enseñado algo simple: cuando el coco se cosecha en su punto, se siente en cada sorbo.',
+    closingStatement: 'Cerca del origen aprendimos algo simple: cuando el coco se cosecha en su punto, se siente en cada sorbo.',
     families: [
       {
         id: 'agua-de-coco',

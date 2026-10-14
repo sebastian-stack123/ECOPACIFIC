@@ -1,10 +1,8 @@
 import React from 'react';
 import { Language } from '../types';
 import { Navbar } from './Navbar';
-import { Hero } from './Hero';
 import { TransitionSection } from './TransitionSection';
 import { BrandsSection } from './BrandsSection';
-import { OriginSection } from './OriginSection';
 import { Footer } from './Footer';
 
 interface HomePageProps {
@@ -22,7 +20,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 }) => {
   return (
     <>
-      {/* Top Navbar: Menú, ECOPACIFIC, Idiomas */}
+      {/* Top Navbar: Menú con 3 rayas, ECOPACIFIC, Idiomas */}
       <Navbar
         currentPath={currentPath}
         onNavigate={onNavigate}
@@ -32,26 +30,14 @@ export const HomePage: React.FC<HomePageProps> = ({
       />
 
       <main className="flex-grow">
-        {/* 1. Hero / Inicio con video en caja redondeada */}
-        <Hero
-          language={language}
-          onExploreBrands={() => {
-            const el = document.getElementById('marcas');
-            el?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        />
-
-        {/* 2. Transición: Más de 20 años transformando lo que nace del campo */}
+        {/* 1. Transición: Transformamos lo que nace del campo */}
         <TransitionSection language={language} />
 
-        {/* 3. Nuestras Marcas */}
+        {/* 2. Nuestras Marcas */}
         <BrandsSection
           language={language}
           onSelectBrand={(slug) => onNavigate(`/marcas/${slug}`)}
         />
-
-        {/* 4. Agricultores */}
-        <OriginSection language={language} />
       </main>
 
       {/* Footer Corporativo */}

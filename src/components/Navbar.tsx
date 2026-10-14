@@ -76,18 +76,10 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   };
 
-  const isTransparent = !isScrolled && isHomePage;
-
   return (
     <>
-      {/* Top Navbar: Menú, ECOPACIFIC, Idiomas Y NADA MÁS */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          isTransparent
-            ? 'bg-transparent py-5 sm:py-6 border-b border-transparent'
-            : 'bg-[#5B8C2A] text-white shadow-md py-3.5 sm:py-4 border-b border-[#4A7422]'
-        }`}
-      >
+      {/* Top Navbar: Menú con 3 rayas, ECOPACIFIC, Idiomas */}
+      <header className="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-[#5B8C2A] text-white shadow-md py-3.5 sm:py-4 border-b border-[#4A7422]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between relative">
           {/* Left: 3 Elegant Bars */}
           <div className="flex items-center">

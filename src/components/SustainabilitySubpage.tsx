@@ -1,17 +1,18 @@
 import React from 'react';
 import { Language } from '../types';
 import { UI_TRANSLATIONS } from '../data/translations';
+import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import fotoEcopacificImg from '../assets/images/fotoecopacific.jpg';
 import campo3Img from '../assets/images/campo3.jpg';
-import campesinoImg from '../assets/images/campesino.jpg';
+import fabricaAereaImg from '../assets/images/fabrica_aerea_1791937872449.jpg';
 import campesino2Img from '../assets/images/campesino2.jpg';
-import ecopacificLogo from '../assets/ecopacificlogo.png';
 
 interface SustainabilitySubpageProps {
   language: Language;
   onNavigateHome: () => void;
   onNavigate: (path: string) => void;
+  onLanguageChange?: (lang: Language) => void;
   onOpenContact: () => void;
 }
 
@@ -19,6 +20,7 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
   language,
   onNavigateHome,
   onNavigate,
+  onLanguageChange = () => {},
   onOpenContact,
 }) => {
   const t = UI_TRANSLATIONS[language];
@@ -26,30 +28,17 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
 
   return (
     <div className="min-h-screen bg-[#FBF9F5] text-stone-900 flex flex-col">
-      {/* Top Bar */}
-      <header className="sticky top-0 left-0 right-0 z-40 bg-[#5B8C2A] text-white shadow-md border-b border-[#4A7422]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 py-3.5 flex items-center justify-between">
-          <button
-            onClick={onNavigateHome}
-            className="flex items-center cursor-pointer hover:opacity-90 transition-opacity focus:outline-hidden"
-            aria-label="ECOPACIFIC Inicio"
-            title={language === 'es' ? 'Volver al Inicio' : 'Back to Home'}
-          >
-            <img
-              src={ecopacificLogo}
-              alt="ECOPACIFIC"
-              className="h-8 sm:h-10 w-auto object-contain drop-shadow-sm"
-            />
-          </button>
+      {/* Top Navbar con menú de 3 rayas visible */}
+      <Navbar
+        currentPath="/sostenibilidad"
+        onNavigate={onNavigate}
+        language={language}
+        onLanguageChange={onLanguageChange}
+        onOpenContact={onOpenContact}
+      />
 
-          <span className="text-sm sm:text-base uppercase tracking-widest text-white font-bold">
-            {language === 'es' ? 'Sostenibilidad' : 'Sustainability'}
-          </span>
-        </div>
-      </header>
-
-      {/* Hero Banner: Inicio de Responsabilidad Ambiental con fondo verde tenue de fotoecopacific */}
-      <div className="relative py-20 sm:py-32 bg-[#5B8C2A] text-white overflow-hidden text-center">
+      {/* Hero Banner: Franja verde compacta y elegante */}
+      <div className="relative pt-24 sm:pt-28 pb-10 sm:pb-12 bg-[#5B8C2A] text-white overflow-hidden text-center">
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
           <img
             src={fotoEcopacificImg}
@@ -61,18 +50,18 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
           <div className="absolute inset-0 bg-gradient-to-t from-[#5B8C2A] via-transparent to-[#5B8C2A]/90" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-10 text-center">
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white mb-4 leading-tight text-center">
+        <div className="relative z-10 max-w-3xl mx-auto px-6 sm:px-10 text-center">
+          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight text-center">
             {s.title}
           </h1>
-          <p className="text-xl sm:text-2xl text-white font-medium max-w-2xl mx-auto leading-relaxed text-center">
+          <p className="text-sm sm:text-base text-white/90 font-medium max-w-xl mx-auto leading-relaxed text-center">
             {s.subtitle}
           </p>
         </div>
       </div>
 
-      {/* IMAGEN: Arriba de Compromiso Ambiental (única imagen de campo3 cubriendo toda la zona) */}
-      <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 pt-10 sm:pt-14">
+      {/* IMAGEN: Arriba de Compromiso Ambiental (campo3 cubriendo toda la zona) */}
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 pt-8 sm:pt-12">
         <div className="w-full h-64 sm:h-96 md:h-[460px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-stone-200">
           <img
             src={campo3Img}
@@ -84,9 +73,9 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
         </div>
       </div>
 
-      {/* COMPROMISO AMBIENTAL: Título agrandado y frase pequeña, sin cajas */}
-      <section className="max-w-4xl mx-auto px-6 sm:px-10 pt-14 sm:pt-20 text-center">
-        <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[#5B8C2A] mb-6 text-center">
+      {/* COMPROMISO AMBIENTAL: Título y frase */}
+      <section className="max-w-4xl mx-auto px-6 sm:px-10 pt-12 sm:pt-16 text-center">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#5B8C2A] mb-5 text-center">
           {language === 'es' ? 'COMPROMISO AMBIENTAL' : 'ENVIRONMENTAL COMMITMENT'}
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-stone-600 font-normal leading-relaxed text-center max-w-3xl mx-auto">
@@ -96,12 +85,12 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
         </p>
       </section>
 
-      {/* IMAGEN 2: Después de la frase de compromiso ambiental (campesino.jpg) */}
-      <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
+      {/* IMAGEN 2: Foto aérea de la fábrica EcoPacific (reemplaza maracuyá en las manos) */}
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 py-10 sm:py-14">
         <div className="w-full h-64 sm:h-96 md:h-[450px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-stone-200">
           <img
-            src={campesinoImg}
-            alt="Campesinos y trabajo sostenible Ecopacific"
+            src={fabricaAereaImg}
+            alt="Planta de producción y fábrica agroindustrial EcoPacific"
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover object-center"

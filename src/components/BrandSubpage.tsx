@@ -6,6 +6,8 @@ import { BRANDS_DATA } from '../data/brandsData';
 import { ProductDetailModal } from './ProductDetailModal';
 import ecopacificLogo from '../assets/ecopacificlogo.png';
 import hortilistoLogoImg from '../assets/images/hortilistoimagenlogo.jpg';
+import cocosStoryImg from '../assets/images/cocos.jpg';
+import dhoyStoryImg from '../assets/images/dhoy.jpg';
 
 interface BrandSubpageProps {
   brand?: Brand;
@@ -290,6 +292,51 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
               <p className="text-base sm:text-lg text-stone-700 leading-relaxed font-normal">
                 {brand.storyText}
               </p>
+
+              {/* Foto de la historia: Cocos en la refri para Coco Freeze */}
+              {brand.id === 'coco-freeze' && (
+                <div className="mt-8 rounded-3xl overflow-hidden shadow-xl border-2 border-sky-300/70 bg-white">
+                  <div className="relative aspect-[16/10]">
+                    <img
+                      src={cocosStoryImg}
+                      alt="Cocos frescos refrigerados y origen de Coco Freeze"
+                      className="w-full h-full object-cover object-center"
+                    />
+                    {/* Coco que se mueve decorativo exclusivo para Coco Freeze */}
+                    <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-md rounded-full shadow-lg flex items-center justify-center p-1.5 animate-coco-spin">
+                      <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
+                        <ellipse cx="50" cy="54" rx="37" ry="40" fill="#5E3416" stroke="#2A1406" strokeWidth="2" />
+                        <ellipse cx="40" cy="42" rx="4" ry="5" fill="#1C0D05" />
+                        <ellipse cx="60" cy="42" rx="4" ry="5" fill="#1C0D05" />
+                        <ellipse cx="50" cy="62" rx="4.5" ry="5.5" fill="#1C0D05" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="p-4 bg-sky-50 text-xs font-semibold text-sky-900 text-center">
+                    {language === 'es'
+                      ? 'Nacimiento de Coco Freeze: 200 cocos frescos vendidos en Quito.'
+                      : 'Birth of Coco Freeze: 200 fresh coconuts sold in Quito.'}
+                  </div>
+                </div>
+              )}
+
+              {/* Foto de la historia: Cítricos y naranjas para D'Hoy */}
+              {brand.id === 'dhoy' && (
+                <div className="mt-8 rounded-3xl overflow-hidden shadow-xl border-2 border-emerald-300/70 bg-white">
+                  <div className="relative aspect-[16/10]">
+                    <img
+                      src={dhoyStoryImg}
+                      alt="Jugo de naranja natural y origen de D'Hoy"
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
+                  <div className="p-4 bg-emerald-50 text-xs font-semibold text-emerald-900 text-center">
+                    {language === 'es'
+                      ? 'D’Hoy: Cítricos y frutas cosechadas en su punto óptimo.'
+                      : 'D’Hoy: Fresh citrus fruits harvested at peak flavor.'}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* 3. Hitos de la Marca */}
