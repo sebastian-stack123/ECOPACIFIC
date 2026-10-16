@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import { Language } from '../types';
-import bebidasTropicalesImg from '../assets/images/bebidas_tropicales.jpg';
+import featuredJuicesImg from '../assets/images/inicio_productos_destacados.png';
 
 interface TransitionSectionProps {
   language: Language;
@@ -43,12 +43,12 @@ export const TransitionSection: React.FC<TransitionSectionProps> = ({ language }
         </div>
       </section>
 
-      {/* 2. FOTO BEBIDAS TROPICALES: Abajo del inicio y arriba de nuestras marcas, SOLO LA FOTO NINGÚN TEXTO */}
+      {/* 2. FOTO PRODUCTOS DESTACADOS: Abajo del inicio y arriba de nuestras marcas, SOLO LA FOTO NINGÚN TEXTO */}
       <section className="bg-[#FBF9F5] py-8 sm:py-14 px-4 sm:px-8 border-b border-stone-200/60">
-        <div className="max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-stone-300/80 bg-stone-100 aspect-[16/9] sm:aspect-[21/9]">
+        <div className="max-w-5xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-stone-300/80 bg-stone-100 aspect-[4/3] sm:aspect-[16/10] md:h-[560px]">
           <img
-            src={bebidasTropicalesImg}
-            alt="EcoPacific - Bebidas tropicales frescas entre cocos y naranjas"
+            src={featuredJuicesImg}
+            alt="EcoPacific - Coco Freeze y D'Hoy Jugos Naturales"
             loading="lazy"
             decoding="async"
             referrerPolicy="no-referrer"

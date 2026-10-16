@@ -2,10 +2,10 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Language } from '../types';
 import { UI_TRANSLATIONS } from '../data/translations';
-import cocoFreezeImg from '../assets/images/imagencocofreeze.jpg';
+import cocoFreezeImg from '../assets/images/cocofreeze_nuevo.png';
 import dhoyImg from '../assets/images/dhoy_marca.jpg';
-import ecoloveImg from '../assets/images/imagenmenuecolove.jpg';
-import hortilistoImg from '../assets/images/hortilistoimagenlogo.jpg';
+import ecoloveImg from '../assets/images/ecolove_nuevo.png';
+import hortilistoImg from '../assets/images/hortilisto_nuevo.png';
 
 interface BrandsSectionProps {
   language: Language;
@@ -31,8 +31,8 @@ const HOMEPAGE_BRANDS: BrandCardItem[] = [
     heroImage: cocoFreezeImg,
     imageFit: 'contain',
     objectPosition: 'center center',
-    imageScale: 'scale-[1.14] sm:scale-[1.18] group-hover:scale-[1.24]',
-    boxPadding: 'p-1',
+    imageScale: 'scale-100 group-hover:scale-108',
+    boxPadding: 'p-3 sm:p-4',
   },
   {
     id: 'dhoy',
@@ -49,20 +49,20 @@ const HOMEPAGE_BRANDS: BrandCardItem[] = [
     name: 'EcoLove',
     slug: 'ecolove',
     heroImage: ecoloveImg,
-    imageFit: 'cover',
-    objectPosition: 'center 8%',
-    imageScale: 'scale-100 group-hover:scale-105',
-    boxPadding: 'p-0',
+    imageFit: 'contain',
+    objectPosition: 'center center',
+    imageScale: 'scale-100 group-hover:scale-108',
+    boxPadding: 'p-4 sm:p-5',
   },
   {
     id: 'hortilisto',
     name: 'Hortilisto',
     slug: 'hortilisto',
     heroImage: hortilistoImg,
-    imageFit: 'cover',
-    objectPosition: 'center 10%',
-    imageScale: 'scale-100 group-hover:scale-105',
-    boxPadding: 'p-0',
+    imageFit: 'contain',
+    objectPosition: 'center center',
+    imageScale: 'scale-100 group-hover:scale-108',
+    boxPadding: 'p-5 sm:p-6',
   },
 ];
 

@@ -5,7 +5,7 @@ import { UI_TRANSLATIONS } from '../data/translations';
 import { BRANDS_DATA } from '../data/brandsData';
 import { ProductDetailModal } from './ProductDetailModal';
 import ecopacificLogo from '../assets/ecopacificlogo.png';
-import hortilistoLogoImg from '../assets/images/hortilistoimagenlogo.jpg';
+import hortilistoLogoImg from '../assets/images/hortilisto_nuevo.png';
 import cocosStoryImg from '../assets/images/cocos.jpg';
 import dhoyStoryImg from '../assets/images/dhoy.jpg';
 

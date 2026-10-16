@@ -5,7 +5,7 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import fotoEcopacificImg from '../assets/images/fotoecopacific.jpg';
 import campo3Img from '../assets/images/campo3.jpg';
-import fabricaAereaImg from '../assets/images/fabrica_aerea_1791937872449.jpg';
+import laFabrica1Img from '../assets/images/lafabrica-1.jpg';
 import laFabricaImg from '../assets/images/lafabrica.jpg';
 
 interface SustainabilitySubpageProps {
@@ -85,11 +85,11 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
         </p>
       </section>
 
-      {/* IMAGEN 2: Foto aérea de la fábrica EcoPacific (reemplaza maracuyá en las manos) */}
+      {/* IMAGEN 2: Foto de la fábrica EcoPacific (abajo de compromiso ambiental) */}
       <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 py-10 sm:py-14">
         <div className="w-full h-64 sm:h-96 md:h-[450px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-stone-200">
           <img
-            src={fabricaAereaImg}
+            src={laFabrica1Img}
             alt="Planta de producción y fábrica agroindustrial EcoPacific"
             loading="lazy"
             decoding="async"

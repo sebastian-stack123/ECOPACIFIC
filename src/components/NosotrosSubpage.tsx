@@ -158,8 +158,8 @@ export const NosotrosSubpage: React.FC<NosotrosSubpageProps> = ({
 
           <p className="text-base sm:text-xl text-stone-700 leading-relaxed font-normal text-balance max-w-3xl mx-auto">
             {language === 'es'
-              ? 'Fundada en 2008, Ecopacific S.A. nació con la convicción de transformar lo que nace del campo ecuatoriano en alimentos y bebidas saludables, naturales y de la más alta calidad. Con una profunda vocación agrícola y el trabajo conjunto con más de 100 pequeños agricultores y aliados locales, consolidamos marcas líderes que hoy llevan frescura y nutrición a miles de hogares en todo el Ecuador.'
-              : 'Founded in 2008, Ecopacific S.A. was born with the conviction of transforming what grows from the Ecuadorian countryside into healthy, natural, and high-quality food and beverages. With deep agricultural commitment and close partnerships with over 100 small local farmers, we developed leading brands that today deliver freshness and nutrition to thousands of households across Ecuador.'}
+              ? 'Ecopacific cree que un producto debe ser delicioso, saludable, innovador y natural. Brindamos más de 200 productos a todo el Ecuador. Estamos orgullosos de liderar la categoría de jugos y frutas en el canal moderno del país. Ecopacific se fundó el 2008 a través de la fusión de emprendimientos familiares: Limón Ecopacific, Coco Freeze y Hortilisto.'
+              : 'Ecopacific believes that a product must be delicious, healthy, innovative, and natural. We provide over 200 products across Ecuador. We are proud to lead the juice and fruit category in the country’s modern channel. Ecopacific was founded in 2008 through the merger of family ventures: Limón Ecopacific, Coco Freeze, and Hortilisto.'}
           </p>
 
           <div className="pt-4">
