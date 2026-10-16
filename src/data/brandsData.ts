@@ -1,6 +1,6 @@
 import { Brand } from '../types';
-import cocoFreezeImg from '../assets/images/cocofreezeimagenmenu.jpg';
-import dhoyImg from '../assets/images/dhoyimagenmenu.jpg';
+import cocoFreezeImg from '../assets/images/imagencocofreeze.jpg';
+import dhoyImg from '../assets/images/dhoy_marca.jpg';
 import ecoloveImg from '../assets/images/imagenmenuecolove.jpg';
 import hortilistoImg from '../assets/images/hortilistoimagenlogo.jpg';
 

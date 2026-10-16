@@ -6,7 +6,7 @@ import { Footer } from './Footer';
 import fotoEcopacificImg from '../assets/images/fotoecopacific.jpg';
 import campo3Img from '../assets/images/campo3.jpg';
 import fabricaAereaImg from '../assets/images/fabrica_aerea_1791937872449.jpg';
-import campesino2Img from '../assets/images/campesino2.jpg';
+import laFabricaImg from '../assets/images/lafabrica.jpg';
 
 interface SustainabilitySubpageProps {
   language: Language;
@@ -137,12 +137,12 @@ export const SustainabilitySubpage: React.FC<SustainabilitySubpageProps> = ({
         </div>
       </main>
 
-      {/* IMAGEN 3: Al final antes del footer (campesino2.jpg) */}
+      {/* IMAGEN: Abajo de ahorro de energía (lafabrica.jpg) */}
       <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 pb-20 sm:pb-28">
         <div className="w-full h-64 sm:h-96 md:h-[460px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-stone-200">
           <img
-            src={campesino2Img}
-            alt="Campesinos y preservación del entorno natural Ecopacific"
+            src={laFabricaImg}
+            alt="EcoPacific - Planta y fábrica de producción"
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover object-center"

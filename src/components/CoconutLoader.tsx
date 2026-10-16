@@ -116,18 +116,7 @@ export const CoconutLoader: React.FC<CoconutLoaderProps> = ({
         <div className="w-12 h-2.5 bg-black/60 rounded-full blur-[2px] mt-2 animate-coco-shadow will-change-transform" />
       </div>
 
-      {/* Label / Branding */}
-      {label && (
-        <div className="flex flex-col items-center gap-1.5 mt-2">
-          <span className="text-white font-bold text-xs sm:text-sm tracking-widest uppercase flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#5B8C2A] animate-ping" />
-            {label}
-          </span>
-          <span className="text-emerald-400/80 text-[10px] sm:text-xs font-semibold tracking-wider uppercase">
-            Cargando...
-          </span>
-        </div>
-      )}
+      {/* Solo el coco girando sin texto ni botón titilante */}
     </div>
   );
 

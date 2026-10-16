@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import { Language } from '../types';
-import transitionJuicesImg from '../assets/images/transition_juices_1791937871685.jpg';
+import bebidasTropicalesImg from '../assets/images/bebidas_tropicales.jpg';
 
 interface TransitionSectionProps {
   language: Language;
@@ -9,48 +9,53 @@ interface TransitionSectionProps {
 
 export const TransitionSection: React.FC<TransitionSectionProps> = ({ language }) => {
   return (
-    <section id="transicion" className="relative pt-28 sm:pt-36 pb-20 sm:pb-28 bg-[#FBF9F5] text-stone-900 overflow-hidden border-b border-stone-200/60">
-      {/* Decorative subtle brand watermark in background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.03] text-[18vw] font-black text-[#5B8C2A] tracking-tighter whitespace-nowrap">
-        ECOPACIFIC
-      </div>
+    <>
+      {/* 1. SECCIÓN DE INICIO: Fondo verde como el menú, texto bajado y sin imagen */}
+      <section id="inicio" className="relative pt-44 sm:pt-52 md:pt-60 pb-28 sm:pb-36 bg-[#5B8C2A] text-white overflow-hidden border-b border-[#4A7422]">
+        {/* Subtle decorative brand watermark in background */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.06] text-[18vw] font-black text-white tracking-tighter whitespace-nowrap">
+          ECOPACIFIC
+        </div>
 
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 relative z-10 text-center flex flex-col items-center">
-        {/* Innovando Alimentos Saludables: Centrado, más grande, sin burbujita ni punto */}
-        <span className="text-sm sm:text-base font-bold uppercase tracking-widest text-[#5B8C2A] text-center mb-4 block">
-          {language === 'es'
-            ? 'Innovando Alimentos Saludables'
-            : 'Innovating Healthy Foods'}
-        </span>
+        <div className="max-w-5xl mx-auto px-6 sm:px-10 relative z-10 text-center flex flex-col items-center">
+          {/* Subtítulo: Innovando Alimentos Saludables */}
+          <span className="text-sm sm:text-base font-bold uppercase tracking-widest text-white/85 text-center mb-4 block drop-shadow-xs">
+            {language === 'es'
+              ? 'Innovando Alimentos Saludables'
+              : 'Innovating Healthy Foods'}
+          </span>
 
-        {/* Título Principal: Centrado sin Más de 20 Años */}
-        <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-[#5B8C2A] tracking-tight leading-[1.08] text-center max-w-4xl mx-auto mb-10 text-balance">
-          {language === 'es'
-            ? 'Transformamos lo que nace del campo'
-            : 'Transforming what grows from the land'}
-        </h2>
+          {/* Título Principal: Transformamos lo que nace del campo */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight leading-[1.08] text-center max-w-4xl mx-auto mb-10 text-balance drop-shadow-xs">
+            {language === 'es'
+              ? 'Transformamos lo que nace del campo'
+              : 'Transforming what grows from the land'}
+          </h1>
 
-        {/* Fotografía de Cosecha Fresca y Productos: Agua de coco y Jugo de naranja */}
-        <div className="w-full max-w-4xl mb-10 rounded-3xl overflow-hidden shadow-2xl border border-stone-300/70 bg-stone-200 aspect-[16/9] sm:aspect-[21/9]">
+          {/* Botón hacia nuestras marcas */}
+          <a
+            href="#marcas"
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider text-[#5B8C2A] bg-white hover:bg-stone-100 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+          >
+            <span>{language === 'es' ? 'Nuestras marcas' : 'Our brands'}</span>
+            <ArrowDown className="w-4 h-4 animate-bounce" />
+          </a>
+        </div>
+      </section>
+
+      {/* 2. FOTO BEBIDAS TROPICALES: Abajo del inicio y arriba de nuestras marcas, SOLO LA FOTO NINGÚN TEXTO */}
+      <section className="bg-[#FBF9F5] py-8 sm:py-14 px-4 sm:px-8 border-b border-stone-200/60">
+        <div className="max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-stone-300/80 bg-stone-100 aspect-[16/9] sm:aspect-[21/9]">
           <img
-            src={transitionJuicesImg}
-            alt="EcoPacific - Transformamos lo que nace del campo"
+            src={bebidasTropicalesImg}
+            alt="EcoPacific - Bebidas tropicales frescas entre cocos y naranjas"
             loading="lazy"
             decoding="async"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-102"
           />
         </div>
-
-        {/* Botón Nuestras Marcas abajo de la imagen, centrado y señalando hacia abajo */}
-        <a
-          href="#marcas"
-          className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-[#5B8C2A] hover:bg-[#4A7422] shadow-md hover:shadow-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
-        >
-          <span>{language === 'es' ? 'Nuestras marcas' : 'Our brands'}</span>
-          <ArrowDown className="w-4 h-4 animate-bounce" />
-        </a>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
