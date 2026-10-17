@@ -48,9 +48,6 @@ export const NosotrosSubpage: React.FC<NosotrosSubpageProps> = ({
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-10 text-center">
-          <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-emerald-200 block mb-3">
-            {language === 'es' ? 'Nuestra Empresa' : 'Our Company'}
-          </span>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-4 leading-tight">
             {h.title}
           </h1>
