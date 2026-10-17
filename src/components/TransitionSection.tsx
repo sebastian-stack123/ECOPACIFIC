@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import { Language } from '../types';
-import featuredJuicesImg from '../assets/images/inicio_productos_destacados.png';
+import featuredJuicesImg from '../assets/images/bebidas_tropicales_en_la_finca.jpg';
 
 interface TransitionSectionProps {
   language: Language;

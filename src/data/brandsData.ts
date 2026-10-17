@@ -37,16 +37,16 @@ export const BRANDS_DATA: Record<string, Brand> = {
       }
     ],
     colors: {
-      primary: '#0284C7', // Azul brillante
+      primary: '#0369A1', // Azul más oscuro y elegante
       secondary: '#F0F9FF',
       accent: '#FACC15', // Toques de amarillo brillante
       badgeBg: '#FEF08A',
       badgeText: '#854D0E',
-      blockBg: '#0369A1',
+      blockBg: '#075985',
       blockText: '#FFFFFF',
       borderAccent: '#38BDF8',
       heroGradient: 'from-sky-950/95 via-sky-900/80 to-blue-950/90',
-      navBg: '#0284C7',
+      navBg: '#075985', // Azul marino oceánico ligeramente más oscuro
       navText: '#FFFFFF',
       navHover: '#FEF08A',
       navCtaBg: '#FACC15',
@@ -59,7 +59,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
       footerBg: '#082F49',
       footerText: '#BAE6FD',
       vibrantTag: 'Coco Freeze · 100% Tropical & Fresco',
-      buttonBg: '#0284C7',
+      buttonBg: '#0369A1',
       buttonText: '#FFFFFF',
       buttonBorder: '#FACC15'
     },

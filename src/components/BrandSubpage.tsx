@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
-import { ArrowLeft, ChevronRight, ArrowUpRight, Check, Droplets, Sparkles, Sun, Leaf } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowLeft, ArrowUpRight, Menu, X } from 'lucide-react';
 import { Brand, Product, Language } from '../types';
 import { UI_TRANSLATIONS } from '../data/translations';
 import { BRANDS_DATA } from '../data/brandsData';
 import { ProductDetailModal } from './ProductDetailModal';
-import ecopacificLogo from '../assets/ecopacificlogo.png';
-import hortilistoLogoImg from '../assets/images/hortilisto_nuevo.png';
+import cocofreezeLogoTransparent from '../assets/images/cocofreeze_logo_transparent.png';
+import cocofreezePortadaImg from '../assets/images/cocofreeze_portada_2026.jpg';
+import aguaDeCocoCategoryImg from '../assets/images/cocofreezeimagenmenu.jpg';
+import saboresCategoryImg from '../assets/images/bebidas_tropicales_en_la_finca.jpg';
 import cocosStoryImg from '../assets/images/cocos.jpg';
 import dhoyStoryImg from '../assets/images/dhoy.jpg';
+import dhoyMenuImg from '../assets/images/dhoyimagenmenu.jpg';
+import dhoyImg from '../assets/images/dhoy_marca.jpg';
+import ecoloveImg from '../assets/images/ecolove_nuevo.png';
+import ecoloveMenuImg from '../assets/images/imagenmenuecolove.jpg';
+import hortilistoLogoImg from '../assets/images/hortilisto_nuevo.png';
+import hortilistoMenuImg from '../assets/images/hortilistoimagenlogo.jpg';
 
 interface BrandSubpageProps {
   brand?: Brand;
@@ -29,524 +37,377 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
   const brand = brandProp || (brandSlug ? BRANDS_DATA[brandSlug] : null) || BRANDS_DATA['coco-freeze'];
   const t = UI_TRANSLATIONS[language];
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [activeFamilyFilter, setActiveFamilyFilter] = useState<string>('all');
+  const [selectedFamilyId, setSelectedFamilyId] = useState<string | null>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+
+  // Ref & scroll tracker for the single zigzag rolling element in history
+  const historyTimelineRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!historyTimelineRef.current) return;
+      const rect = historyTimelineRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const totalDist = rect.height;
+      if (totalDist <= 0) return;
+
+      const currentPos = viewportHeight * 0.65 - rect.top;
+      const progress = Math.min(Math.max(currentPos / totalDist, 0), 1);
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const otherBrands = Object.values(BRANDS_DATA).filter((b) => b.id !== brand.id);
 
-  const displayedFamilies =
-    activeFamilyFilter === 'all'
-      ? brand.families
-      : brand.families.filter((f) => f.id === activeFamilyFilter);
+  // Helper to get brand hero image
+  const getBrandHeroImage = () => {
+    switch (brand.id) {
+      case 'coco-freeze':
+        return cocofreezePortadaImg;
+      case 'dhoy':
+        return dhoyMenuImg;
+      case 'ecolove':
+        return ecoloveMenuImg;
+      case 'hortilisto':
+        return hortilistoMenuImg;
+      default:
+        return brand.heroImage;
+    }
+  };
 
-  // Brand-specific distinct aesthetic details
-  const getBrandLogoStyle = () => {
+  // Helper to get brand story image
+  const getBrandStoryImage = () => {
+    switch (brand.id) {
+      case 'coco-freeze':
+        return cocosStoryImg;
+      case 'dhoy':
+        return dhoyStoryImg;
+      case 'ecolove':
+        return ecoloveMenuImg;
+      case 'hortilisto':
+        return hortilistoMenuImg;
+      default:
+        return cocosStoryImg;
+    }
+  };
+
+  // Helper to get category images
+  const getFamilyImage = (familyId: string, index: number) => {
+    if (brand.id === 'coco-freeze') {
+      return familyId === 'agua-de-coco' || index === 0
+        ? aguaDeCocoCategoryImg
+        : saboresCategoryImg;
+    }
+    if (brand.id === 'dhoy') {
+      return index === 0 ? dhoyMenuImg : dhoyStoryImg;
+    }
+    if (brand.id === 'ecolove') {
+      return index === 0 ? ecoloveMenuImg : ecoloveImg;
+    }
+    if (brand.id === 'hortilisto') {
+      return index === 0 ? hortilistoMenuImg : hortilistoLogoImg;
+    }
+    return brand.heroImage;
+  };
+
+  // Helper for brand logo in navbar
+  const renderNavbarLogo = () => {
     switch (brand.id) {
       case 'coco-freeze':
         return (
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-yellow-400 text-sky-950 flex items-center justify-center font-black text-xs shadow-md">
-              CF
-            </div>
-            <span className="text-2xl font-black tracking-tight text-white uppercase">
-              COCO <span className="text-yellow-400">FREEZE</span>
-            </span>
-          </div>
+          <img
+            src={cocofreezeLogoTransparent}
+            alt="Coco Freeze"
+            className="h-9 sm:h-11 w-auto object-contain drop-shadow-md"
+          />
         );
       case 'dhoy':
         return (
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-black text-xs shadow-md">
-              DH
-            </div>
-            <span className="text-2xl font-black tracking-tight text-white">
-              D'hoy<span className="text-emerald-400">.</span>
-            </span>
-          </div>
+          <img
+            src={dhoyImg}
+            alt="D'Hoy"
+            className="h-8 sm:h-10 w-auto object-contain rounded-md drop-shadow-sm"
+          />
         );
       case 'ecolove':
         return (
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-lime-400 text-stone-900 flex items-center justify-center font-bold text-xs shadow-md">
-              ♥
-            </div>
-            <span className="text-2xl font-extrabold tracking-tight text-white lowercase">
-              eco<span className="text-lime-300">love</span>
-            </span>
-          </div>
+          <img
+            src={ecoloveImg}
+            alt="EcoLove"
+            className="h-9 sm:h-11 w-auto object-contain drop-shadow-md"
+          />
         );
       case 'hortilisto':
         return (
-          <div className="flex items-center gap-3">
-            <img
-              src={hortilistoLogoImg}
-              alt="Hortilisto Logo"
-              className="h-8 w-auto object-contain rounded-md shadow-xs bg-white/10 p-0.5"
-            />
-            <span className="text-2xl font-black tracking-widest text-white uppercase">
-              HORTI<span className="text-teal-400">LISTO</span>
-            </span>
-          </div>
+          <img
+            src={hortilistoLogoImg}
+            alt="Hortilisto"
+            className="h-8 sm:h-10 w-auto object-contain drop-shadow-sm"
+          />
         );
       default:
-        return <span className="text-2xl font-black text-white">{brand.name}</span>;
+        return <span className="text-xl sm:text-2xl font-black text-white">{brand.name}</span>;
     }
   };
 
   return (
     <div className="min-h-screen bg-white text-stone-900">
       {/* ========================================================
-          STANDALONE BRAND TOP BAR / NAVBAR (Feels like its own website!)
+          1. NAVBAR SUPERIOR UNIFICADO (Estructura idéntica para todas las marcas)
           ======================================================== */}
       <header
-        className="sticky top-0 left-0 right-0 z-40 shadow-lg transition-colors border-b"
+        className="sticky top-0 left-0 right-0 z-40 shadow-lg transition-colors"
         style={{
           backgroundColor: brand.colors.navBg,
-          borderColor: 'rgba(255, 255, 255, 0.15)',
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-4 flex items-center justify-between">
-          {/* Brand Logo Zone */}
-          <div className="flex items-center gap-6">
-            <a
-              href="#brand-hero"
-              className="cursor-pointer focus-visible:outline-none"
-            >
-              {getBrandLogoStyle()}
-            </a>
-
-            {/* Back to EcoPacific Subtle Marker */}
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-3.5 sm:py-4 flex items-center justify-between">
+          {/* IZQUIERDA: Menú de 3 rayitas */}
+          <div className="flex items-center gap-3">
             <button
-              onClick={onNavigateHome}
-              className="hidden lg:flex items-center gap-1.5 text-xs text-white/80 hover:text-white transition-colors px-2.5 py-1 rounded-full bg-black/20 hover:bg-black/30 border border-white/10 cursor-pointer"
+              onClick={() => setIsDrawerOpen(true)}
+              className="p-2 -ml-2 rounded-xl text-white hover:bg-white/15 transition-colors flex items-center justify-center cursor-pointer"
+              aria-label="Abrir menú"
             >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>EcoPacific Corporativo</span>
+              <Menu className="w-6 h-6" />
             </button>
           </div>
 
-          {/* Standalone Brand Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-bold text-white">
-            <a
-              href="#historia"
-              className="hover:opacity-80 transition-opacity"
-              style={{ color: brand.colors.navText }}
-            >
-              {t.brandDetail.storyHeading}
-            </a>
-            <a
-              href="#hitos"
-              className="hover:opacity-80 transition-opacity"
-              style={{ color: brand.colors.navText }}
-            >
-              {t.brandDetail.milestonesHeading}
-            </a>
-            <a
-              href="#portafolio"
-              className="hover:opacity-80 transition-opacity"
-              style={{ color: brand.colors.navText }}
-            >
-              {t.brandDetail.portfolioHeading}
-            </a>
-            <button
-              onClick={onOpenContact}
-              className="hover:opacity-80 transition-opacity cursor-pointer"
-              style={{ color: brand.colors.navText }}
-            >
-              {t.nav.contact}
-            </button>
-          </nav>
+          {/* CENTRO: Logo oficial de la marca (transparente, sin fondo blanco ni líneas) */}
+          <a
+            href="#brand-hero"
+            className="cursor-pointer flex items-center justify-center hover:opacity-90 transition-opacity"
+          >
+            {renderNavbarLogo()}
+          </a>
 
-          {/* Standalone Brand Action Button */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => {
-                const el = document.getElementById('portafolio');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="px-5 py-2 rounded-full text-xs font-black uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer border"
-              style={{
-                backgroundColor: brand.colors.buttonBg,
-                color: brand.colors.buttonText,
-                borderColor: brand.colors.buttonBorder,
-              }}
+          {/* DERECHA: PRODUCTOS (sin burbuja, texto directo) */}
+          <div className="flex items-center gap-4">
+            <a
+              href="#productos"
+              className="text-xs sm:text-sm font-black uppercase tracking-wider text-white hover:text-yellow-300 transition-colors cursor-pointer"
             >
-              Ver Portafolio
-            </button>
-
-            <button
-              onClick={onNavigateHome}
-              className="md:hidden p-1.5 rounded-lg bg-black/20 hover:bg-black/30 transition-colors flex items-center justify-center cursor-pointer"
-              aria-label="Volver a ECOPACIFIC"
-              title="Volver a ECOPACIFIC"
-            >
-              <img
-                src={ecopacificLogo}
-                alt="ECOPACIFIC"
-                className="h-6 w-auto object-contain"
-              />
-            </button>
+              PRODUCTOS
+            </a>
           </div>
         </div>
       </header>
 
       {/* ========================================================
-          1. DECLARACIÓN DE VALOR - Hero de Marca con Identidad Visual Propia
+          DRAWER LATERAL (Menú de 3 Rayitas)
           ======================================================== */}
-      <section
-        id="brand-hero"
-        className="relative py-24 sm:py-32 overflow-hidden text-white border-b-8"
-        style={{
-          borderColor: brand.colors.accent,
-        }}
-      >
-        {/* Visual concept background */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-          <img
-            src={brand.heroImage}
-            alt={brand.name}
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover object-center brightness-50 scale-105"
-          />
+      {isDrawerOpen && (
+        <div className="fixed inset-0 z-50 flex">
+          {/* Backdrop con desenfoque suave */}
           <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(to right, ${brand.colors.footerBg} 0%, rgba(10, 10, 10, 0.8) 60%, rgba(0, 0, 0, 0.4) 100%)`,
-            }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity"
+            onClick={() => setIsDrawerOpen(false)}
+          />
+
+          {/* Panel deslizante con el color del menú */}
+          <div
+            className="relative w-80 max-w-[85vw] h-full shadow-2xl p-6 flex flex-col justify-between z-10 transition-transform"
+            style={{ backgroundColor: brand.colors.navBg }}
+          >
+            <div>
+              {/* Header del menú con logo y botón cerrar */}
+              <div className="flex items-center justify-between pb-6 border-b border-white/15">
+                <div className="h-9 flex items-center">
+                  {renderNavbarLogo()}
+                </div>
+                <button
+                  onClick={() => setIsDrawerOpen(false)}
+                  className="p-1.5 rounded-lg text-white hover:bg-white/15 transition-colors cursor-pointer"
+                  aria-label="Cerrar menú"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Enlaces de navegación */}
+              <nav className="mt-8 flex flex-col gap-4 text-base font-bold text-white">
+                <button
+                  onClick={() => {
+                    setIsDrawerOpen(false);
+                    onNavigateHome();
+                  }}
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 transition-colors text-left cursor-pointer text-yellow-300"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  <span>Ecopacific Corporativo</span>
+                </button>
+
+                <a
+                  href="#productos"
+                  onClick={() => setIsDrawerOpen(false)}
+                  className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
+                >
+                  Productos
+                </a>
+
+                <a
+                  href="#historia"
+                  onClick={() => setIsDrawerOpen(false)}
+                  className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
+                >
+                  Historia
+                </a>
+
+                <button
+                  onClick={() => {
+                    setIsDrawerOpen(false);
+                    onOpenContact();
+                  }}
+                  className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left cursor-pointer"
+                >
+                  {t.nav.contact}
+                </button>
+              </nav>
+            </div>
+
+            {/* Pie del menú */}
+            <div className="pt-6 border-t border-white/15 text-xs text-white/70 flex items-center justify-between">
+              <span>EcoPacific S.A.</span>
+              <span className="text-[10px] uppercase font-bold text-yellow-300">{brand.name}</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ========================================================
+          2. PORTADA / INICIO (Cuadro redondeado sin textos ni delineados)
+          ======================================================== */}
+      <section id="brand-hero" className="w-full max-w-7xl mx-auto px-4 sm:px-8 pt-6 sm:pt-8 pb-10 sm:pb-14">
+        <div className="w-full h-[65vh] sm:h-[80vh] md:h-[85vh] rounded-3xl sm:rounded-4xl overflow-hidden shadow-2xl bg-stone-100">
+          <img
+            src={getBrandHeroImage()}
+            alt={brand.name}
+            className="w-full h-full object-cover object-center"
           />
         </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8">
-          <div className="max-w-3xl">
-            {/* Tagline kicker */}
-            <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6 shadow-md"
-              style={{
-                backgroundColor: brand.colors.subKickerBg,
-                color: brand.colors.subKickerText,
-              }}
-            >
-              <span>{brand.colors.vibrantTag}</span>
-            </div>
-
-            {/* Declaración de Valor en tipografía grande y contundente */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white mb-6 leading-[1.05] text-balance drop-shadow-lg">
-              &ldquo;{brand.valueStatement}&rdquo;
-            </h1>
-
-            <p className="text-lg sm:text-2xl text-stone-100 font-medium mb-10 leading-relaxed text-balance">
-              {brand.shortDescription}
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4">
-              {brand.id === 'hortilisto' && (
-                <div className="flex items-center p-1.5 bg-white/15 backdrop-blur-md rounded-2xl border border-white/25 shadow-xl hover:scale-105 transition-transform">
-                  <img
-                    src={hortilistoLogoImg}
-                    alt="Hortilisto Productos Logo"
-                    className="h-12 sm:h-14 w-auto object-contain rounded-xl"
-                  />
-                </div>
-              )}
-              <a
-                href="#portafolio"
-                className="px-8 py-4 rounded-full text-sm font-black uppercase tracking-wider shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border-2"
-                style={{
-                  backgroundColor: brand.colors.buttonBg,
-                  color: brand.colors.buttonText,
-                  borderColor: brand.colors.buttonBorder,
-                }}
-              >
-                Explorar productos {brand.name} &darr;
-              </a>
-              <button
-                onClick={onOpenContact}
-                className="px-6 py-4 rounded-full text-sm font-bold text-white bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-md transition-colors cursor-pointer"
-              >
-                Distribuir esta marca
-              </button>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* ========================================================
-          2. HISTORIA & 3. HITOS DE LA MARCA
+          3. PRODUCTOS (Ubicados antes de la historia, sin delineados)
           ======================================================== */}
-      <section id="historia" className="py-20 sm:py-28 bg-stone-50 border-b border-stone-200">
+      <section className="py-20 sm:py-28 bg-white" id="productos">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            {/* 2. Historia */}
-            <div className="lg:col-span-5">
-              <div
-                className="inline-block px-3 py-1 rounded-md text-xs font-black uppercase tracking-widest mb-3"
-                style={{
-                  backgroundColor: brand.colors.badgeBg,
-                  color: brand.colors.badgeText,
-                }}
-              >
-                {t.brandDetail.storyHeading}
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight mb-6 leading-tight">
-                {brand.storyTitle}
-              </h2>
-              <p className="text-base sm:text-lg text-stone-700 leading-relaxed font-normal">
-                {brand.storyText}
-              </p>
-
-              {/* Foto de la historia: Cocos en la refri para Coco Freeze */}
-              {brand.id === 'coco-freeze' && (
-                <div className="mt-8 rounded-3xl overflow-hidden shadow-xl border-2 border-sky-300/70 bg-white">
-                  <div className="relative aspect-[16/10]">
-                    <img
-                      src={cocosStoryImg}
-                      alt="Cocos frescos refrigerados y origen de Coco Freeze"
-                      className="w-full h-full object-cover object-center"
-                    />
-                    {/* Coco que se mueve decorativo exclusivo para Coco Freeze */}
-                    <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-md rounded-full shadow-lg flex items-center justify-center p-1.5 animate-coco-spin">
-                      <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
-                        <ellipse cx="50" cy="54" rx="37" ry="40" fill="#5E3416" stroke="#2A1406" strokeWidth="2" />
-                        <ellipse cx="40" cy="42" rx="4" ry="5" fill="#1C0D05" />
-                        <ellipse cx="60" cy="42" rx="4" ry="5" fill="#1C0D05" />
-                        <ellipse cx="50" cy="62" rx="4.5" ry="5.5" fill="#1C0D05" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="p-4 bg-sky-50 text-xs font-semibold text-sky-900 text-center">
-                    {language === 'es'
-                      ? 'Nacimiento de Coco Freeze: 200 cocos frescos vendidos en Quito.'
-                      : 'Birth of Coco Freeze: 200 fresh coconuts sold in Quito.'}
-                  </div>
-                </div>
-              )}
-
-              {/* Foto de la historia: Cítricos y naranjas para D'Hoy */}
-              {brand.id === 'dhoy' && (
-                <div className="mt-8 rounded-3xl overflow-hidden shadow-xl border-2 border-emerald-300/70 bg-white">
-                  <div className="relative aspect-[16/10]">
-                    <img
-                      src={dhoyStoryImg}
-                      alt="Jugo de naranja natural y origen de D'Hoy"
-                      className="w-full h-full object-cover object-center"
-                    />
-                  </div>
-                  <div className="p-4 bg-emerald-50 text-xs font-semibold text-emerald-900 text-center">
-                    {language === 'es'
-                      ? 'D’Hoy: Cítricos y frutas cosechadas en su punto óptimo.'
-                      : 'D’Hoy: Fresh citrus fruits harvested at peak flavor.'}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* 3. Hitos de la Marca */}
-            <div id="hitos" className="lg:col-span-7">
-              <div
-                className="inline-block px-3 py-1 rounded-md text-xs font-black uppercase tracking-widest mb-4"
-                style={{
-                  backgroundColor: brand.colors.badgeBg,
-                  color: brand.colors.badgeText,
-                }}
-              >
-                {t.brandDetail.milestonesHeading}
-              </div>
-
-              <div className="space-y-4">
-                {brand.milestones.map((milestone) => (
-                  <div
-                    key={milestone.year}
-                    className="p-6 rounded-2xl bg-white border-2 shadow-xs hover:shadow-md transition-all"
-                    style={{
-                      borderColor: brand.colors.cardAccentBorder,
-                    }}
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <span
-                        className="px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-white shadow-xs"
-                        style={{ backgroundColor: brand.colors.primary }}
-                      >
-                        {milestone.year}
-                      </span>
-                      <h3 className="text-base sm:text-lg font-bold text-stone-900">
-                        {milestone.title}
-                      </h3>
-                    </div>
-                    <p className="text-sm text-stone-600 leading-relaxed">
-                      {milestone.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          4. FAMILIAS DE PRODUCTOS & 5. FICHAS DE PRODUCTO
-          ======================================================== */}
-      <section className="py-24 sm:py-32 bg-white" id="portafolio">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8">
-          {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 pb-8 border-b-2 border-stone-100">
-            <div>
-              <div
-                className="inline-block px-3 py-1 rounded-md text-xs font-black uppercase tracking-widest mb-2"
-                style={{
-                  backgroundColor: brand.colors.badgeBg,
-                  color: brand.colors.badgeText,
-                }}
-              >
-                {t.brandDetail.portfolioHeading}
-              </div>
-              <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
-                Portafolio {brand.name}
-              </h2>
-            </div>
-
-            {/* Interactive Category Tabs with vibrant brand accent */}
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => setActiveFamilyFilter('all')}
-                className={`px-4 py-2 text-xs font-black uppercase tracking-wider rounded-full transition-all cursor-pointer shadow-xs border ${
-                  activeFamilyFilter === 'all'
-                    ? 'scale-105 shadow-md'
-                    : 'bg-stone-100 text-stone-700 hover:bg-stone-200 border-transparent'
-                }`}
-                style={
-                  activeFamilyFilter === 'all'
-                    ? {
-                        backgroundColor: brand.colors.buttonBg,
-                        color: brand.colors.buttonText,
-                        borderColor: brand.colors.buttonBorder,
-                      }
-                    : {}
-                }
-              >
-                Todas ({brand.products.length})
-              </button>
-              {brand.families.map((fam) => (
-                <button
-                  key={fam.id}
-                  onClick={() => setActiveFamilyFilter(fam.id)}
-                  className={`px-4 py-2 text-xs font-black uppercase tracking-wider rounded-full transition-all cursor-pointer shadow-xs border ${
-                    activeFamilyFilter === fam.id
-                      ? 'scale-105 shadow-md'
-                      : 'bg-stone-100 text-stone-700 hover:bg-stone-200 border-transparent'
-                  }`}
-                  style={
-                    activeFamilyFilter === fam.id
-                      ? {
-                          backgroundColor: brand.colors.buttonBg,
-                          color: brand.colors.buttonText,
-                          borderColor: brand.colors.buttonBorder,
-                        }
-                      : {}
-                  }
-                >
-                  {fam.name} ({fam.productIds.length})
-                </button>
-              ))}
-            </div>
+          {/* Título Productos Centrado, sin palabras secundarias ni delineados */}
+          <div className="text-center mb-14">
+            <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
+              Productos
+            </h2>
           </div>
 
-          {/* Families List with Distinct Presentation Blocks */}
-          <div className="space-y-20">
-            {displayedFamilies.map((family) => {
-              const familyProducts = brand.products.filter(
-                (p) => p.familyId === family.id
-              );
-
+          {/* Cuadros interactivos de categorías con imagen (sin delineados) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+            {brand.families.slice(0, 2).map((family, idx) => {
+              const isSelected = selectedFamilyId === family.id;
               return (
-                <div key={family.id} className="space-y-10">
-                  {/* Categoría destacada en bloque de color (REQUISITO CRÍTICO DEL DOCUMENTO) */}
-                  <div
-                    className="p-8 sm:p-10 rounded-3xl shadow-xl transition-all border-l-8"
-                    style={{
-                      backgroundColor: brand.colors.blockBg,
-                      color: brand.colors.blockText,
-                      borderColor: brand.colors.accent,
-                    }}
-                  >
-                    <div className="max-w-4xl">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span
-                          className="px-2.5 py-0.5 rounded text-xs font-mono font-black uppercase tracking-wider"
-                          style={{
-                            backgroundColor: brand.colors.badgeBg,
-                            color: brand.colors.badgeText,
-                          }}
-                        >
-                          Categoría
-                        </span>
-                        <span className="text-xs font-black uppercase tracking-widest opacity-90">
-                          {family.name}
-                        </span>
-                      </div>
-                      <p className="text-xl sm:text-3xl font-extrabold leading-snug">
-                        {family.tagline}
-                      </p>
-                    </div>
+                <div
+                  key={family.id}
+                  onClick={() => {
+                    setSelectedFamilyId(isSelected ? null : family.id);
+                    setTimeout(() => {
+                      document.getElementById('brand-products-list')?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  className={`group rounded-3xl p-6 transition-all duration-300 cursor-pointer flex flex-col items-center ${
+                    isSelected
+                      ? 'shadow-2xl scale-[1.02]'
+                      : 'bg-[#FAFAF8] shadow-md hover:shadow-xl hover:bg-white'
+                  }`}
+                  style={{
+                    backgroundColor: isSelected ? `${brand.colors.navBg}18` : undefined,
+                  }}
+                >
+                  <div className="w-full h-64 sm:h-72 rounded-2xl bg-white p-4 flex items-center justify-center overflow-hidden shadow-inner">
+                    <img
+                      src={getFamilyImage(family.id, idx)}
+                      alt={family.name}
+                      className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
+                  <div className="mt-5 text-center">
+                    <h3
+                      className="text-2xl sm:text-3xl font-black transition-colors"
+                      style={{
+                        color: isSelected ? brand.colors.primary : '#0f172a',
+                      }}
+                    >
+                      {family.name}
+                    </h3>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
-                  {/* Fichas de producto de esta familia (ORDEN REQUERIDO: 1. Nombre 2. Imagen 3. Frase emocional 4. Presentaciones 5. Info técnica) */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {familyProducts.map((product) => (
+          {/* Despliegue interactivo de los productos de la categoría seleccionada (sin delineados) */}
+          <div id="brand-products-list">
+            {selectedFamilyId && (
+              <div className="pt-6">
+                <div className="flex items-center justify-between mb-8 pb-4 border-b border-stone-200">
+                  <h4 className="text-2xl font-black text-stone-900">
+                    Productos: {brand.families.find((f) => f.id === selectedFamilyId)?.name}
+                  </h4>
+                  <button
+                    onClick={() => setSelectedFamilyId(null)}
+                    className="text-xs font-bold uppercase tracking-wider text-stone-500 hover:text-stone-900 cursor-pointer"
+                  >
+                    Ocultar productos &times;
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {brand.products
+                    .filter((p) => p.familyId === selectedFamilyId)
+                    .map((product) => (
                       <div
                         key={product.id}
                         onClick={() => setSelectedProduct(product)}
-                        className="group bg-white rounded-3xl p-6 sm:p-8 border-2 shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between"
-                        style={{
-                          borderColor: brand.colors.cardAccentBorder,
-                        }}
+                        className="group bg-white rounded-3xl p-6 sm:p-8 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between"
                       >
                         <div>
-                          {/* 1. Nombre del producto (Grande y claramente visible) */}
+                          {/* 1. Nombre del producto */}
                           <div className="flex items-start justify-between gap-3 mb-4">
                             <h3 className="text-xl sm:text-2xl font-black text-stone-900 group-hover:opacity-80 transition-opacity">
                               {product.name}
                             </h3>
                             <div
-                              className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform group-hover:scale-110 shadow-xs border"
-                              style={{
-                                backgroundColor: brand.colors.buttonBg,
-                                color: brand.colors.buttonText,
-                                borderColor: brand.colors.buttonBorder,
-                              }}
+                              className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform group-hover:scale-110 shadow-xs text-white"
+                              style={{ backgroundColor: brand.colors.buttonBg }}
                             >
                               <ArrowUpRight className="w-4 h-4" />
                             </div>
                           </div>
 
-                          {/* 2. Imagen grande y protagonista */}
-                          <div className="relative rounded-2xl bg-stone-50 overflow-hidden mb-6 aspect-[4/3] flex items-center justify-center p-4 border border-stone-100">
+                          {/* 2. Imagen del producto (sin delineado) */}
+                          <div className="relative rounded-2xl bg-stone-50 overflow-hidden mb-6 aspect-[4/3] flex items-center justify-center p-4">
                             <img
                               src={product.imageUrl || brand.heroImage}
                               alt={product.name}
                               referrerPolicy="no-referrer"
                               className="max-h-full w-auto object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-md"
                             />
-                            <div className="absolute top-3 left-3">
-                              <span
-                                className="px-2.5 py-0.5 rounded-full text-xs font-bold shadow-xs"
-                                style={{
-                                  backgroundColor: brand.colors.navCtaBg,
-                                  color: brand.colors.navCtaText,
-                                }}
-                              >
-                                {brand.name}
-                              </span>
-                            </div>
                           </div>
 
-                          {/* 3. Descripción emocional (Con mucho protagonismo) */}
-                          <div className="mb-6 p-4 rounded-xl bg-stone-50 border border-stone-100">
+                          {/* 3. Frase emocional (sin delineado) */}
+                          <div
+                            className="mb-6 p-4 rounded-xl"
+                            style={{ backgroundColor: `${brand.colors.navBg}12` }}
+                          >
                             <p className="text-sm sm:text-base font-medium text-stone-800 leading-snug italic">
                               &ldquo;{product.emotionalDescription}&rdquo;
                             </p>
                           </div>
 
-                          {/* 4. Presentaciones (Mostradas dentro de la misma ficha) */}
+                          {/* 4. Presentaciones */}
                           <div className="mb-6">
                             <span className="text-xs uppercase tracking-wider text-stone-400 font-semibold block mb-2.5">
                               {t.brandDetail.presentationsLabel}
@@ -555,7 +416,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                               {product.presentations.map((pres) => (
                                 <span
                                   key={pres}
-                                  className="px-3 py-1 rounded-full text-xs font-medium bg-stone-50 text-stone-700 border border-stone-200/80 shadow-2xs hover:bg-stone-100 transition-colors"
+                                  className="px-3 py-1 rounded-full text-xs font-medium bg-stone-100 text-stone-700 shadow-2xs hover:bg-stone-200 transition-colors"
                                 >
                                   {pres}
                                 </span>
@@ -564,7 +425,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                           </div>
                         </div>
 
-                        {/* 5. Información técnica (En segundo nivel visual) */}
+                        {/* 5. Información técnica */}
                         <div className="pt-4 border-t border-stone-100 text-xs text-stone-500 space-y-1">
                           {product.technicalInfo.conservation && (
                             <div className="truncate">
@@ -585,52 +446,170 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                         </div>
                       </div>
                     ))}
-                  </div>
                 </div>
-              );
-            })}
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* ========================================================
-          6. CIERRE VISUAL DE MARCA & FOOTER EXCLUSIVO DE LA MARCA
+          4. HISTORIA (Cajas del color del menú, zigzag Derecha / Izquierda)
+          ======================================================== */}
+      <section id="historia" className="py-20 sm:py-28 bg-[#F8FAFC]">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 text-center">
+          {/* Título centrado arriba */}
+          <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight mb-6">
+            {brand.storyTitle}
+          </h2>
+
+          {/* Texto descriptivo centrado */}
+          <p className="text-base sm:text-xl text-stone-700 leading-relaxed font-normal max-w-3xl mx-auto mb-10 text-balance">
+            {brand.storyText}
+          </p>
+
+          {/* Imagen central de la historia (sin delineado) */}
+          <div className="w-full max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white mb-20">
+            <div className="relative aspect-[16/10]">
+              <img
+                src={getBrandStoryImage()}
+                alt={brand.storyTitle}
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+          </div>
+
+          {/* Línea de tiempo en zigzag interactiva */}
+          <div
+            ref={historyTimelineRef}
+            className="relative max-w-4xl mx-auto mt-14 py-6"
+          >
+            {/* Elemento rodante grande y notorio (sin burbuja blanca, solo el gráfico natural con sombra 3D) */}
+            <div
+              className="absolute pointer-events-none z-20 transition-transform duration-75 will-change-transform hidden md:flex items-center justify-center"
+              style={{
+                top: `${Math.min(Math.max(scrollProgress * 88, 2), 92)}%`,
+                // Zigzag sincronizado con las tarjetas: empieza en la derecha (84%), luego izquierda (16%), etc.
+                left: `${50 + 34 * Math.cos(scrollProgress * Math.PI * 3)}%`,
+                transform: `translate(-50%, -50%) rotate(${scrollProgress * 1440}deg)`,
+              }}
+            >
+              <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
+                {brand.id === 'coco-freeze' ? (
+                  <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_12px_24px_rgba(0,0,0,0.45)]" fill="none">
+                    <defs>
+                      <radialGradient id="cocoShellGrad" cx="35%" cy="30%" r="70%">
+                        <stop offset="0%" stopColor="#8C532B" />
+                        <stop offset="45%" stopColor="#5E3416" />
+                        <stop offset="100%" stopColor="#381D0B" />
+                      </radialGradient>
+                      <linearGradient id="cocoSprout" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#4A7422" />
+                        <stop offset="100%" stopColor="#84CC16" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M50 14 C46 6, 36 4, 32 8 C38 10, 44 16, 46 22 Z" fill="url(#cocoSprout)" />
+                    <path d="M50 14 C54 5, 64 6, 68 11 C62 11, 56 17, 53 23 Z" fill="url(#cocoSprout)" />
+                    <ellipse cx="50" cy="54" rx="37" ry="40" fill="url(#cocoShellGrad)" stroke="#2A1406" strokeWidth="2.5" />
+                    <ellipse cx="40" cy="42" rx="4.5" ry="5.5" fill="#1C0D05" />
+                    <circle cx="39" cy="40.5" r="1.5" fill="#4A2813" />
+                    <ellipse cx="60" cy="42" rx="4.5" ry="5.5" fill="#1C0D05" />
+                    <circle cx="59" cy="40.5" r="1.5" fill="#4A2813" />
+                    <ellipse cx="50" cy="62" rx="5" ry="6" fill="#1C0D05" />
+                    <circle cx="49" cy="60.5" r="1.6" fill="#4A2813" />
+                  </svg>
+                ) : (
+                  <div
+                    className="w-16 h-16 rounded-full shadow-2xl flex items-center justify-center p-3 text-white text-2xl font-black"
+                    style={{ backgroundColor: brand.colors.accent || brand.colors.primary }}
+                  >
+                    ★
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Tarjetas alternadas:
+                1. El comienzo -> DERECHA
+                2. Del coco a la botella -> IZQUIERDA
+                3. Aprender desde el cultivo -> DERECHA
+                4. El último (Cosechado en su punto) -> IZQUIERDA
+                Fondo del color del menú (navBg), años fuera de burbuja y títulos centrados
+            */}
+            <div className="space-y-12 md:space-y-16">
+              {brand.milestones.map((milestone, idx) => {
+                // idx 0: Derecha, idx 1: Izquierda, idx 2: Derecha, idx 3: Izquierda
+                const isRight = idx % 2 === 0;
+                return (
+                  <div
+                    key={milestone.year}
+                    className="relative flex flex-col md:flex-row items-center"
+                  >
+                    {/* Columna Izquierda (para hitos impares: idx 1, idx 3) */}
+                    <div className={`w-full md:w-1/2 ${!isRight ? 'md:pr-10' : 'md:hidden'}`}>
+                      {!isRight && (
+                        <div
+                          className="p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all text-center"
+                          style={{ backgroundColor: brand.colors.navBg }}
+                        >
+                          {/* Año fuera de burbuja, centrado arriba del título */}
+                          <span className="text-2xl sm:text-3xl font-black text-yellow-300 tracking-tight block mb-1">
+                            {milestone.year}
+                          </span>
+                          {/* Título centrado */}
+                          <h3 className="text-lg sm:text-xl font-black text-white mb-3">
+                            {milestone.title}
+                          </h3>
+                          {/* Descripción centrada */}
+                          <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal">
+                            {milestone.description}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Columna Derecha (para hitos pares: idx 0, idx 2) */}
+                    <div className={`w-full md:w-1/2 ${isRight ? 'md:pl-10 md:ml-auto' : 'hidden md:block'}`}>
+                      {isRight && (
+                        <div
+                          className="p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all text-center"
+                          style={{ backgroundColor: brand.colors.navBg }}
+                        >
+                          {/* Año fuera de burbuja, centrado arriba del título */}
+                          <span className="text-2xl sm:text-3xl font-black text-yellow-300 tracking-tight block mb-1">
+                            {milestone.year}
+                          </span>
+                          {/* Título centrado */}
+                          <h3 className="text-lg sm:text-xl font-black text-white mb-3">
+                            {milestone.title}
+                          </h3>
+                          {/* Descripción centrada */}
+                          <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal">
+                            {milestone.description}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          5. FOOTER EXCLUSIVO (Color del menú navBg)
           ======================================================== */}
       <section
-        className="py-24 sm:py-32 text-white relative overflow-hidden"
+        className="py-16 sm:py-24 text-white relative overflow-hidden"
         style={{
-          backgroundColor: brand.colors.footerBg,
+          backgroundColor: brand.colors.navBg,
         }}
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
-          <div className="max-w-3xl mb-16">
-            <span
-              className="px-3 py-1 rounded-md text-xs font-black uppercase tracking-widest mb-4 inline-block"
-              style={{
-                backgroundColor: brand.colors.navCtaBg,
-                color: brand.colors.navCtaText,
-              }}
-            >
-              {brand.name}
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6 leading-tight text-balance">
-              {brand.closingStatement}
-            </h2>
-            <button
-              onClick={onOpenContact}
-              className="px-8 py-4 rounded-full font-black uppercase tracking-wider text-sm shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border-2"
-              style={{
-                backgroundColor: brand.colors.buttonBg,
-                color: brand.colors.buttonText,
-                borderColor: brand.colors.buttonBorder,
-              }}
-            >
-              {t.brandDetail.contactBrand}
-            </button>
-          </div>
-
           {/* Ecosistema de marcas selector */}
-          <div className="pt-12 border-t border-white/10">
+          <div>
             <span className="text-xs uppercase tracking-widest text-white/70 font-bold mb-6 block">
               {t.brandDetail.exploreOtherBrands}
             </span>
@@ -639,7 +618,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                 <button
                   key={other.id}
                   onClick={() => onNavigateBrand(other.slug)}
-                  className="p-6 rounded-2xl bg-black/40 border border-white/10 hover:border-white/40 text-left transition-all group cursor-pointer hover:bg-black/60 flex flex-col justify-between"
+                  className="p-6 rounded-2xl bg-black/25 hover:bg-black/40 text-left transition-all group cursor-pointer flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
@@ -653,8 +632,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                         </span>
                       </div>
                       <ArrowUpRight
-                        className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                        style={{ color: other.colors.buttonBg }}
+                        className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-yellow-300"
                       />
                     </div>
                     <p className="text-xs text-white/80 line-clamp-2 mb-4">
@@ -662,14 +640,8 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                     </p>
                   </div>
 
-                  {/* Each sub-section button in that brand's specific color */}
                   <span
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-black uppercase tracking-wider border self-start shadow-sm"
-                    style={{
-                      backgroundColor: other.colors.buttonBg,
-                      color: other.colors.buttonText,
-                      borderColor: other.colors.buttonBorder,
-                    }}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-black uppercase tracking-wider self-start shadow-sm bg-white/10 hover:bg-white/20 text-white"
                   >
                     <span>{other.name}</span>
                     <span>&rarr;</span>
@@ -679,8 +651,8 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             </div>
           </div>
 
-          {/* Quiet Corporate Endorsement */}
-          <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-white/60 gap-4">
+          {/* Retorno corporativo */}
+          <div className="mt-16 pt-8 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between text-xs text-white/70 gap-4">
             <div className="flex items-center gap-2">
               <span className="font-bold text-white">{brand.name}</span>
               <span>·</span>
@@ -688,7 +660,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             </div>
             <button
               onClick={onNavigateHome}
-              className="text-white hover:underline font-semibold"
+              className="text-white hover:underline font-semibold cursor-pointer"
             >
               ← Regresar al portal ECOPACIFIC
             </button>
