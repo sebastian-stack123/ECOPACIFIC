@@ -29,13 +29,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 z-20 w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 flex items-center justify-center transition-colors cursor-pointer shadow-md"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 z-30 w-11 h-11 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-800 flex items-center justify-center transition-all cursor-pointer shadow-md hover:rotate-90 duration-200"
           aria-label={t.brandDetail.modalClose}
         >
-          <X className="w-5 h-5" />
+          <X className="w-6 h-6 stroke-[2.5]" />
         </button>
 
-        {/* Content Layout adhering to: foto -> nombre -> frase emocional -> presentaciones -> información técnica */}
+        {/* Content Layout */}
         <div className="grid grid-cols-1 md:grid-cols-12">
           {/* 1 & 2. Protagonist Product Photo */}
           <div
@@ -77,24 +77,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               </div>
 
               {/* 1. Nombre del Producto (Grande y claramente visible) */}
-              <h3 className="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight mb-4">
+              <h3 className="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight mb-6">
                 {product.name}
               </h3>
 
-              {/* 3. Descripción Emocional (Con gran protagonismo) */}
-              <div
-                className="p-4 sm:p-5 rounded-2xl border mb-6"
-                style={{
-                  backgroundColor: brand.colors.secondary,
-                  borderColor: brand.colors.cardAccentBorder,
-                }}
-              >
-                <p className="text-base sm:text-lg font-medium text-stone-800 leading-relaxed italic">
-                  &ldquo;{product.emotionalDescription}&rdquo;
-                </p>
-              </div>
-
-              {/* 4. Presentaciones (Mostrar tamaños disponibles) */}
+              {/* Presentaciones */}
               <div className="mb-6">
                 <span className="text-xs uppercase tracking-wider text-stone-500 font-semibold block mb-2.5">
                   {t.brandDetail.presentationsLabel}

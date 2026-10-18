@@ -1,6 +1,11 @@
 import { Brand } from '../types';
 import cocoFreezeImg from '../assets/images/cocofreeze_nuevo.png';
+import cocofreezeAguaDeCocoImg from '../assets/images/cocofreeze_aguadecoco.png';
+import saborescocofreezeImg from '../assets/images/saborescocofreeze.png';
 import dhoyImg from '../assets/images/dhoy_marca.jpg';
+import dhoyJugo100Img from '../assets/images/dhoy_jugo100.png';
+import dhoyShotImg from '../assets/images/dhoy_shot.png';
+import dhoyColdPressedImg from '../assets/images/dhoy_coldpressed.png';
 import ecoloveImg from '../assets/images/ecolove_nuevo.png';
 import hortilistoImg from '../assets/images/hortilisto_nuevo.png';
 
@@ -92,7 +97,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener refrigerado entre 2°C y 4°C. Una vez abierto consumir en el menor tiempo posible.',
           origin: 'Cultivo de la costa del Pacífico, Finca NDP y productores aliados.'
         },
-        imageUrl: cocoFreezeImg,
+        imageUrl: cocofreezeAguaDeCocoImg,
         featured: true
       },
       {
@@ -107,7 +112,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Almacenar en lugar fresco y seco o refrigerar para un consumo óptimo.',
           origin: 'Palmas seleccionadas de la costa pacífica.'
         },
-        imageUrl: cocoFreezeImg
+        imageUrl: cocofreezeAguaDeCocoImg
       },
       {
         id: 'cf-jugo-coco',
@@ -121,7 +126,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener en refrigeración. Agitar bien antes de disfrutar.',
           origin: 'Cocos frescos ecuatorianos.'
         },
-        imageUrl: cocoFreezeImg
+        imageUrl: saborescocofreezeImg
       },
       {
         id: 'cf-coco-pina',
@@ -135,7 +140,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener refrigerado entre 2°C y 4°C.',
           origin: 'Frutas cosechadas en zonas tropicales de origen.'
         },
-        imageUrl: cocoFreezeImg
+        imageUrl: saborescocofreezeImg
       },
       {
         id: 'cf-limonada-coco',
@@ -149,7 +154,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener frío para preservar frescura cítrica.',
           origin: 'Cítricos y cocos del Pacífico.'
         },
-        imageUrl: cocoFreezeImg
+        imageUrl: saborescocofreezeImg
       },
       {
         id: 'cf-pina-colada',
@@ -163,7 +168,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar siempre para servir bien frío.',
           origin: 'Frutas tropicales de campo.'
         },
-        imageUrl: cocoFreezeImg
+        imageUrl: saborescocofreezeImg
       }
     ]
   },
@@ -205,29 +210,29 @@ export const BRANDS_DATA: Record<string, Brand> = {
       }
     ],
     colors: {
-      primary: '#EA580C', // Naranja fuerte
+      primary: '#F97316', // Naranja más claro y vibrante
       secondary: '#FFF7ED',
-      accent: '#15803D', // Verde fuerte
+      accent: '#15803D', // Verde fresco
       badgeBg: '#FFEDD5',
       badgeText: '#C2410C',
-      blockBg: '#C2410C',
+      blockBg: '#EA580C',
       blockText: '#FFFFFF',
       borderAccent: '#16A34A',
       heroGradient: 'from-orange-950/95 via-amber-950/80 to-stone-950/90',
-      navBg: '#EA580C',
+      navBg: '#F97316', // Naranja más claro en la barra de arriba
       navText: '#FFFFFF',
       navHover: '#FFEDD5',
-      navCtaBg: '#EA580C',
+      navCtaBg: '#F97316',
       navCtaText: '#FFFFFF',
       subKickerBg: '#FFEDD5',
       subKickerText: '#C2410C',
       cardAccentBorder: '#FB923C',
       cardTagBg: '#FFEDD5',
       cardTagText: '#C2410C',
-      footerBg: '#7C2D12',
-      footerText: '#FED7AA',
+      footerBg: '#F97316', // Naranja claro en el footer
+      footerText: '#FFFFFF',
       vibrantTag: "D'hoy · Sabor Cítrico Auténtico",
-      buttonBg: '#EA580C',
+      buttonBg: '#F97316',
       buttonText: '#FFFFFF',
       buttonBorder: '#15803D'
     },
@@ -235,16 +240,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
     closingStatement: "Elegimos buena fruta y cuidamos cada proceso para que cuando abras una botella de D'hoy, sientas el verdadero sabor del campo.",
     families: [
       {
-        id: 'jugo-de-naranja',
-        name: 'Jugo de naranja',
-        tagline: "El que empezó todo. Nuestro producto estrella y la expresión más pura de lo que significa D'hoy.",
-        productIds: ['dh-naranja-clasico', 'dh-naranja-sin-pulpa', 'dh-naranja-calcio-vitamina-d']
-      },
-      {
-        id: 'mezclas-de-fruta',
-        name: 'Mezclas de fruta',
-        tagline: 'Frutas que juntas saben todavía mejor. Combinaciones naturales, intensas y deliciosas.',
+        id: '100-jugo',
+        name: '100% jugo',
+        tagline: "El que empezó todo. Jugos 100% puros y mezclas de fruta fresca con todo el sabor natural del campo.",
         productIds: [
+          'dh-naranja-clasico',
+          'dh-naranja-sin-pulpa',
+          'dh-naranja-calcio-vitamina-d',
           'dh-naranja-zanahoria',
           'dh-naranja-mango',
           'dh-naranja-fresa',
@@ -254,26 +256,22 @@ export const BRANDS_DATA: Record<string, Brand> = {
           'dh-cranberry',
           'dh-toronja',
           'dh-nectar-frutilla',
-          'dh-limonada-fresa'
+          'dh-limonada-fresa',
+          'dh-zumo-limon',
+          'dh-pulpa-sabila'
         ]
       },
       {
-        id: 'cold-pressed',
-        name: 'Cold Pressed',
-        tagline: 'Frutas y vegetales prensados en frío, con combinaciones pensadas para sumar sabor y funcionalidad a tu día.',
-        productIds: ['dh-cold-pitahaya', 'dh-cold-pina-hierbabuena', 'dh-cold-remolacha']
-      },
-      {
-        id: 'shots',
-        name: 'Shots',
+        id: 'shot',
+        name: 'Shot',
         tagline: 'Ingredientes potentes y combinaciones funcionales creadas para acompañar distintos momentos y necesidades de tu rutina.',
         productIds: ['dh-shot-inmuni', 'dh-shot-inmuni-plus', 'dh-shot-balance', 'dh-shot-digesti', 'dh-shot-defen']
       },
       {
-        id: 'especialidades-dhoy',
-        name: "Especialidades D'hoy",
-        tagline: 'Formatos prácticos para llevar ingredientes naturales a distintas preparaciones.',
-        productIds: ['dh-zumo-limon', 'dh-pulpa-sabila']
+        id: 'cold-pressed',
+        name: 'Cold pressed',
+        tagline: 'Frutas y vegetales prensados en frío, con combinaciones pensadas para sumar sabor y funcionalidad a tu día.',
+        productIds: ['dh-cold-pitahaya', 'dh-cold-pina-hierbabuena', 'dh-cold-remolacha']
       }
     ],
     products: [
@@ -281,7 +279,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-naranja-clasico',
         name: 'Jugo de naranja',
         brandId: 'dhoy',
-        familyId: 'jugo-de-naranja',
+        familyId: '100-jugo',
         emotionalDescription: 'Naranjas seleccionadas por su sabor para disfrutar un jugo fresco, auténtico y delicioso todos los días.',
         presentations: ['200 ml Six Pack', '240 ml', '355 ml', '1 L', '1,75 L', '2,5 L', '3,8 L'],
         technicalInfo: {
@@ -289,14 +287,14 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener refrigerado a 4°C. Agitar suavemente antes de servir.',
           origin: 'Huertos de cítricos seleccionados por EcoPacific.'
         },
-        imageUrl: dhoyImg,
+        imageUrl: dhoyJugo100Img,
         featured: true
       },
       {
         id: 'dh-naranja-sin-pulpa',
         name: 'Naranja sin pulpa',
         brandId: 'dhoy',
-        familyId: 'jugo-de-naranja',
+        familyId: '100-jugo',
         emotionalDescription: 'Todo el sabor de nuestra naranja, con una textura más ligera y suave.',
         presentations: ['1 L', '2,5 L'],
         technicalInfo: {
@@ -304,13 +302,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Conservar siempre en frío.',
           origin: 'Cítricos de cosecha controlada.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       },
       {
         id: 'dh-naranja-calcio-vitamina-d',
         name: 'Naranja + Calcio y Vitamina D',
         brandId: 'dhoy',
-        familyId: 'jugo-de-naranja',
+        familyId: '100-jugo',
         emotionalDescription: 'Nuestro jugo de naranja con calcio y vitamina D para sumar algo más a tu día.',
         presentations: ['2,5 L'],
         technicalInfo: {
@@ -318,13 +316,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar a 4°C.',
           origin: 'Huertos ecuatorianos.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       },
       {
         id: 'dh-naranja-zanahoria',
         name: 'Naranja + Zanahoria',
         brandId: 'dhoy',
-        familyId: 'mezclas-de-fruta',
+        familyId: '100-jugo',
         emotionalDescription: 'La frescura de la naranja y el carácter de la zanahoria en uno de nuestros sabores favoritos.',
         presentations: ['355 ml', '1 L', '1,75 L'],
         technicalInfo: {
@@ -332,13 +330,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar entre 2°C y 4°C.',
           origin: 'Cultivos de altura y valles cálidos.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       },
       {
         id: 'dh-naranja-mango',
         name: 'Naranja + Mango',
         brandId: 'dhoy',
-        familyId: 'mezclas-de-fruta',
+        familyId: '100-jugo',
         emotionalDescription: 'Naranja fresca y mango tropical en una mezcla naturalmente deliciosa.',
         presentations: ['355 ml', '1,75 L'],
         technicalInfo: {
@@ -346,13 +344,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar a 4°C.',
           origin: 'Frutas tropicales del campo.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       },
       {
         id: 'dh-naranja-fresa',
         name: 'Naranja + Fresa',
         brandId: 'dhoy',
-        familyId: 'mezclas-de-fruta',
+        familyId: '100-jugo',
         emotionalDescription: 'La frescura de la naranja se encuentra con el sabor dulce y aromático de la fresa.',
         presentations: ['355 ml'],
         technicalInfo: {
@@ -360,13 +358,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar entre 2°C y 4°C.',
           origin: 'Orígenes seleccionados.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       },
       {
         id: 'dh-naranja-jengibre',
         name: 'Naranja + Jengibre',
         brandId: 'dhoy',
-        familyId: 'mezclas-de-fruta',
+        familyId: '100-jugo',
         emotionalDescription: 'Naranja refrescante con un toque intenso y vibrante de jengibre.',
         presentations: ['355 ml'],
         technicalInfo: {
@@ -374,13 +372,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener refrigerado.',
           origin: 'Cítricos y raíces de cultivo nacional.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       },
       {
         id: 'dh-mora',
         name: 'Mora',
         brandId: 'dhoy',
-        familyId: 'mezclas-de-fruta',
+        familyId: '100-jugo',
         emotionalDescription: 'Intenso, frutal y lleno del sabor característico de la mora.',
         presentations: ['355 ml', '1 L'],
         technicalInfo: {
@@ -388,13 +386,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigeración continua.',
           origin: 'Valles andinos.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       },
       {
         id: 'dh-mandarina',
         name: 'Mandarina',
         brandId: 'dhoy',
-        familyId: 'mezclas-de-fruta',
+        familyId: '100-jugo',
         emotionalDescription: 'Dulce, aromática y refrescante. Mandarina para disfrutar en cada sorbo.',
         presentations: ['355 ml', '1,75 L'],
         technicalInfo: {
@@ -402,13 +400,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar a 4°C.',
           origin: 'Huertos de cítricos dulces.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       },
       {
         id: 'dh-cranberry',
         name: 'Cranberry',
         brandId: 'dhoy',
-        familyId: 'mezclas-de-fruta',
+        familyId: '100-jugo',
         emotionalDescription: 'Un sabor frutal, intenso y ligeramente ácido que se disfruta bien frío.',
         presentations: ['355 ml', '1,75 L'],
         technicalInfo: {
@@ -416,13 +414,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener en frío.',
           origin: 'Selección de berries de calidad.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       },
       {
         id: 'dh-toronja',
         name: 'Toronja',
         brandId: 'dhoy',
-        familyId: 'mezclas-de-fruta',
+        familyId: '100-jugo',
         emotionalDescription: 'Cítrica, refrescante y con ese carácter inconfundible de la toronja.',
         presentations: ['355 ml'],
         technicalInfo: {
@@ -430,13 +428,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar entre 2°C y 4°C.',
           origin: 'Cultivos de cítricos.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       },
       {
         id: 'dh-nectar-frutilla',
         name: 'Néctar de frutilla',
         brandId: 'dhoy',
-        familyId: 'mezclas-de-fruta',
+        familyId: '100-jugo',
         emotionalDescription: 'Dulce, aromático y lleno del sabor que hace irresistible a la frutilla.',
         presentations: ['355 ml'],
         technicalInfo: {
@@ -444,13 +442,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar a 4°C.',
           origin: 'Campos frutícolas.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       },
       {
         id: 'dh-limonada-fresa',
         name: 'Limonada de fresa',
         brandId: 'dhoy',
-        familyId: 'mezclas-de-fruta',
+        familyId: '100-jugo',
         emotionalDescription: 'Limón refrescante y fresa en una combinación frutal y deliciosa.',
         presentations: ['355 ml'],
         technicalInfo: {
@@ -458,7 +456,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener refrigerado.',
           origin: 'Frutas frescas de huerto.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       },
       {
         id: 'dh-cold-pitahaya',
@@ -472,7 +470,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar estrictamente entre 2°C y 4°C.',
           origin: 'Cultivos de pitahaya ecuatoriana.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyColdPressedImg
       },
       {
         id: 'dh-cold-pina-hierbabuena',
@@ -486,7 +484,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener en frío.',
           origin: 'Cosechas tropicales.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyColdPressedImg
       },
       {
         id: 'dh-cold-remolacha',
@@ -500,13 +498,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener entre 2°C y 4°C.',
           origin: 'Hortalizas y frutas de origen.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyColdPressedImg
       },
       {
         id: 'dh-shot-inmuni',
         name: 'Inmunishot',
         brandId: 'dhoy',
-        familyId: 'shots',
+        familyId: 'shot',
         emotionalDescription: 'Jengibre intenso en una fórmula pensada para acompañar tus defensas y darle potencia a tu rutina.',
         presentations: ['Tripack', 'Six Pack'],
         technicalInfo: {
@@ -514,13 +512,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener en frío.',
           origin: 'Raíces frescas de cultivo.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyShotImg
       },
       {
         id: 'dh-shot-inmuni-plus',
         name: 'Inmunishot Plus',
         brandId: 'dhoy',
-        familyId: 'shots',
+        familyId: 'shot',
         emotionalDescription: 'Una fórmula reforzada para quienes buscan todavía más potencia en su rutina diaria.',
         presentations: ['Tripack'],
         technicalInfo: {
@@ -528,13 +526,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Conservar refrigerado.',
           origin: 'Raíces y cítricos seleccionados.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyShotImg
       },
       {
         id: 'dh-shot-balance',
         name: 'Balanceshot',
         brandId: 'dhoy',
-        familyId: 'shots',
+        familyId: 'shot',
         emotionalDescription: 'Cúrcuma y otros ingredientes en una combinación funcional pensada para acompañar tu equilibrio diario.',
         presentations: ['Tripack'],
         technicalInfo: {
@@ -542,13 +540,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener en frío.',
           origin: 'Campos de cultivo agroecológico.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyShotImg
       },
       {
         id: 'dh-shot-digesti',
         name: 'Digestishot',
         brandId: 'dhoy',
-        familyId: 'shots',
+        familyId: 'shot',
         emotionalDescription: 'Papaya en una combinación funcional pensada para acompañar tu bienestar digestivo.',
         presentations: ['Tripack'],
         technicalInfo: {
@@ -556,13 +554,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar a 4°C.',
           origin: 'Frutas tropicales.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyShotImg
       },
       {
         id: 'dh-shot-defen',
         name: 'Defenshot',
         brandId: 'dhoy',
-        familyId: 'shots',
+        familyId: 'shot',
         emotionalDescription: 'Vitamina C como protagonista en una fórmula pensada para acompañar tus defensas todos los días.',
         presentations: ['Tripack'],
         technicalInfo: {
@@ -570,13 +568,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar siempre.',
           origin: 'Cítricos de máxima concentración.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyShotImg
       },
       {
         id: 'dh-zumo-limon',
         name: 'Zumo de limón',
         brandId: 'dhoy',
-        familyId: 'especialidades-dhoy',
+        familyId: '100-jugo',
         emotionalDescription: 'El sabor fresco y ácido del limón listo para usar cuando lo necesites.',
         presentations: ['200 ml'],
         technicalInfo: {
@@ -584,13 +582,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener refrigerado una vez abierto.',
           origin: 'Limones de cosecha nacional.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       },
       {
         id: 'dh-pulpa-sabila',
         name: 'Pulpa de sábila',
         brandId: 'dhoy',
-        familyId: 'especialidades-dhoy',
+        familyId: '100-jugo',
         emotionalDescription: 'Sábila lista para incorporar fácilmente a diferentes preparaciones.',
         presentations: ['450 g'],
         technicalInfo: {
@@ -598,7 +596,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Conservar refrigerado.',
           origin: 'Cultivos de aloe de origen local.'
         },
-        imageUrl: dhoyImg
+        imageUrl: dhoyJugo100Img
       }
     ]
   },
