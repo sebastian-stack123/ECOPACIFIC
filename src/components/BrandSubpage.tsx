@@ -22,8 +22,12 @@ import hortilistoLogoImg from '../assets/images/hortilisto_nuevo.png';
 import hortilistoTransparentImg from '../assets/images/hortilisto_transparent.png';
 import hortilistoMenuImg from '../assets/images/hortilistoimagenlogo.jpg';
 import { CocoFreezeVideoPlayer } from './CocoFreezeVideoPlayer';
-import cocofreezeAntiguaImg from '../assets/images/cocofreezeantigua.png';
-import screenshot2010Img from '../assets/images/screenshot_2026_10_15.png';
+import cocofreeze2006BotellaImg from '../assets/images/cocofreeze_2006_botella_azul.png';
+import screenshot2010Img from '../assets/images/screenshot_2010.png';
+import lafabricaImg from '../assets/images/lafabrica-1.jpg';
+import campo3Img from '../assets/images/campo3.jpg';
+import fotoEcopacificImg from '../assets/images/fotoecopacific.jpg';
+import bebidasTropicalesImg from '../assets/images/bebidas_tropicales_en_la_cosecha.png';
 
 interface BrandSubpageProps {
   brand?: Brand;
@@ -153,6 +157,31 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
     return brand.heroImage;
   };
 
+  // Helper to get milestone images paired with each milestone
+  const getMilestoneImage = (index: number) => {
+    if (brand.id === 'coco-freeze') {
+      if (index === 0) return { img: cocosStoryImg, alt: '2004 El comienzo - 200 cocos' };
+      if (index === 1) return { img: cocofreeze2006BotellaImg, alt: '2006 Del coco a la botella' };
+      if (index === 2) return { img: screenshot2010Img, alt: '2010 Aprender desde el cultivo' };
+      return { img: cocofreezePortadaImg, alt: '2026 Cosechado en su punto' };
+    }
+    if (brand.id === 'dhoy') {
+      if (index === 0) return { img: dhoyStoryImg, alt: "2009 Nace DHOY" };
+      if (index === 1) return { img: lafabricaImg, alt: "2011 Llegamos a más personas" };
+      if (index === 2) return { img: campo3Img, alt: "2012 Tecnología para cuidar la fruta" };
+      if (index === 3) return { img: dhoyShotImg, alt: "2016 Nacen los shots" };
+      return { img: dhoyMenuImg, alt: "2026 Fruta de verdad" };
+    }
+    if (brand.id === 'ecolove') {
+      if (index === 0) return { img: ecoloveMenuImg, alt: "2017 Primeros pasos" };
+      if (index === 1) return { img: ecoloveImg, alt: "2018 Llegan los aceites" };
+      if (index === 2) return { img: ecoloveTransparentImg, alt: "2021 Bebidas vegetales" };
+      if (index === 3) return { img: fotoEcopacificImg, alt: "2022 Nuevas opciones" };
+      return { img: bebidasTropicalesImg, alt: "2026 Bienestar diario" };
+    }
+    return { img: brand.heroImage, alt: brand.name };
+  };
+
   // Helper for brand logo in navbar
   const renderNavbarLogo = () => {
     switch (brand.id) {
@@ -210,9 +239,9 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
           backgroundColor: brand.colors.navBg,
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-3.5 sm:py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 sm:py-4 flex items-center justify-between relative">
           {/* IZQUIERDA: Menú de 3 rayitas */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 z-10">
             <button
               onClick={() => setIsDrawerOpen(true)}
               className="p-2 -ml-2 rounded-xl text-white hover:bg-white/15 transition-colors flex items-center justify-center cursor-pointer"
@@ -222,16 +251,22 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             </button>
           </div>
 
-          {/* CENTRO: Logo oficial de la marca (transparente, sin fondo blanco ni líneas) */}
-          <a
-            href="#brand-hero"
-            className="cursor-pointer flex items-center justify-center hover:opacity-90 transition-opacity"
-          >
-            {renderNavbarLogo()}
-          </a>
+          {/* CENTRO: Logo oficial de la marca COMPLETAMENTE CENTRADO */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-auto z-10 max-w-[55%] sm:max-w-[65%]">
+            <button
+              type="button"
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="cursor-pointer flex items-center justify-center hover:opacity-90 transition-opacity focus:outline-none"
+              aria-label={`${brand.name} Inicio`}
+            >
+              {renderNavbarLogo()}
+            </button>
+          </div>
 
           {/* DERECHA: PRODUCTOS (sin burbuja, texto directo) */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 z-10">
             <a
               href="#productos"
               className="text-xs sm:text-sm font-black uppercase tracking-wider text-white hover:text-yellow-300 transition-colors cursor-pointer"
@@ -287,19 +322,29 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                 </button>
 
                 <a
+                  href="#valor"
+                  onClick={() => setIsDrawerOpen(false)}
+                  className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
+                >
+                  {brand.id === 'coco-freeze' ? 'Cosechado en su punto' : 'Declaración de valor'}
+                </a>
+
+                {brand.milestones && brand.milestones.length > 0 && (
+                  <a
+                    href="#historia"
+                    onClick={() => setIsDrawerOpen(false)}
+                    className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
+                  >
+                    Historia
+                  </a>
+                )}
+
+                <a
                   href="#productos"
                   onClick={() => setIsDrawerOpen(false)}
                   className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
                 >
                   Productos
-                </a>
-
-                <a
-                  href="#historia"
-                  onClick={() => setIsDrawerOpen(false)}
-                  className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
-                >
-                  Historia
                 </a>
               </nav>
             </div>
@@ -314,67 +359,61 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       )}
 
       {/* ========================================================
-          2. PORTADA / INICIO (Cuadro redondeado sin textos ni delineados)
+          1. DECLARACIÓN DE VALOR (Lo primero en pantalla debajo del navbar para todas las marcas)
           ======================================================== */}
-      <section id="brand-hero" className="w-full max-w-7xl mx-auto px-4 sm:px-8 pt-6 sm:pt-8 pb-10 sm:pb-14">
-        <div className="w-full h-[65vh] sm:h-[80vh] md:h-[85vh] rounded-3xl sm:rounded-4xl overflow-hidden shadow-2xl bg-stone-100">
-          <img
-            src={getBrandHeroImage()}
-            alt={brand.name}
-            className="w-full h-full object-cover object-center"
-          />
+      <section id="valor" className="pt-10 sm:pt-16 pb-14 sm:pb-20 bg-white text-center">
+        {/* Ancla adicional para compatibilidad con links a cosechado-en-su-punto */}
+        <div id="cosechado-en-su-punto" className="max-w-5xl mx-auto px-6 sm:px-8">
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-400 block mb-3">
+            Declaración de valor
+          </span>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-stone-900 tracking-tight mb-6 flex flex-col items-center gap-2">
+            {brand.id === 'dhoy' ? (
+              <>
+                <span>DE FAMILIA Y DEL CAMPO.</span>
+                <span>SABE A FRUTA DE VERDAD.</span>
+              </>
+            ) : (
+              <span>{brand.valueStatement}</span>
+            )}
+          </h2>
+
+          <p className="text-base sm:text-lg md:text-xl text-stone-700 leading-relaxed font-normal max-w-3xl mx-auto mb-10 sm:mb-14 text-balance">
+            {brand.id === 'coco-freeze'
+              ? 'Todo comienza en el campo. Seleccionamos cocos en su punto ideal de cosecha para llevar a cada botella ese sabor naturalmente dulce, fresco y auténtico que hace especial al coco. Más de 20 años cerca del origen nos han enseñado algo simple: cuando el coco se cosecha en su punto, se siente en cada sorbo.'
+              : brand.shortDescription}
+          </p>
+
+          {/* Video interactivo para Coco Freeze */}
+          {brand.id === 'coco-freeze' && (
+            <CocoFreezeVideoPlayer src="/VIDEO-COCO-FREEZE-2026.mp4" />
+          )}
         </div>
       </section>
 
       {/* ========================================================
-          COCO FREEZE: 
-          1. Portada / Inicio
-          2. Sección 'COSECHADO EN SU PUNTO' con texto y video abajo
-          3. Sección 'HISTORIA' (con timeline en zigzag y las 4 fotos integradas)
-          4. Sección 'PRODUCTOS' (con botones azules directos y pop-up)
-          
-          OTRAS MARCAS (D'Hoy, EcoLove, Hortilisto):
-          1. Portada / Inicio
-          2. Productos
-          3. Historia
+          2. HISTORIA Y LOS HITOS (Para marcas con historia: Coco Freeze, D'Hoy, EcoLove; Hortilisto no tiene)
           ======================================================== */}
+      {brand.milestones && brand.milestones.length > 0 && brand.storyTitle && (
+        <section id="historia" className="py-20 sm:py-28 bg-[#F8FAFC]">
+          <div className="max-w-5xl mx-auto px-6 sm:px-8 text-center">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-400 block mb-2">
+              Historia
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight mb-6">
+              {brand.storyTitle}
+            </h2>
+            <p className="text-base sm:text-xl text-stone-700 leading-relaxed font-normal max-w-3xl mx-auto mb-12 text-balance">
+              {brand.storyText}
+            </p>
 
-      {brand.id === 'coco-freeze' ? (
-        <>
-          {/* 1. SECCIÓN COSECHADO EN SU PUNTO + VIDEO INTERACTIVO */}
-          <section className="pt-14 sm:pt-20 pb-14 sm:pb-20 bg-white text-center">
-            <div className="max-w-5xl mx-auto px-6 sm:px-8">
-              {/* Título: COSECHADO EN SU PUNTO centrado y grande como el de Productos */}
-              <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight mb-6">
-                COSECHADO EN SU PUNTO
-              </h2>
-
-              {/* Texto explicativo en letras más pequeñas */}
-              <p className="text-base sm:text-lg md:text-xl text-stone-700 leading-relaxed font-normal max-w-3xl mx-auto mb-10 sm:mb-14 text-balance">
-                Todo comienza en el campo. Seleccionamos cocos en su punto ideal de cosecha para llevar a cada botella ese sabor naturalmente dulce, fresco y auténtico que hace especial al coco. Más de 20 años cerca del origen nos han enseñado algo simple: cuando el coco se cosecha en su punto, se siente en cada sorbo.
-              </p>
-
-              {/* Video en un recuadro redondeado grande que se reproduce con sonido mientras aparece en pantalla */}
-              <CocoFreezeVideoPlayer videoId="5Bsu-sFegGE" />
-            </div>
-          </section>
-
-          {/* 2. HISTORIA Y LOS HITOS (con las 4 fotos en zigzag) */}
-          <section id="historia" className="py-20 sm:py-28 bg-[#F8FAFC]">
-            <div className="max-w-5xl mx-auto px-6 sm:px-8 text-center">
-              <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight mb-6">
-                {brand.storyTitle}
-              </h2>
-              <p className="text-base sm:text-xl text-stone-700 leading-relaxed font-normal max-w-3xl mx-auto mb-12 text-balance">
-                {brand.storyText}
-              </p>
-
-              {/* Timeline en zigzag con coco rodante y fotos emparejadas */}
-              <div
-                ref={historyTimelineRef}
-                className="relative max-w-5xl mx-auto mt-14 py-6"
-              >
-                {/* Coco rodante grande y notorio en zigzag */}
+            {/* Timeline en zigzag (con coco rodante solo para Coco Freeze, y fotos emparejadas para cada hito) */}
+            <div
+              ref={historyTimelineRef}
+              className="relative max-w-5xl mx-auto mt-14 py-6"
+            >
+              {/* Coco rodante grande y notorio en zigzag (SOLO para Coco Freeze) */}
+              {brand.id === 'coco-freeze' && (
                 <div
                   className="absolute pointer-events-none z-20 transition-transform duration-75 will-change-transform hidden md:flex items-center justify-center"
                   style={{
@@ -408,217 +447,114 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                     </svg>
                   </div>
                 </div>
+              )}
 
-                {/* Hitos e imágenes emparejadas:
-                    2004: Foto 200 cocos a la izquierda, Texto a la derecha
-                    2006: Texto a la izquierda, Foto Coco Freeze Antigua a la derecha
-                    2010: Foto Screenshot a la izquierda, Texto a la derecha
-                    2026: Texto a la izquierda, Foto Portada 2026 a la derecha
-                */}
-                <div className="space-y-12 md:space-y-16">
-                  {brand.milestones.map((milestone, idx) => {
-                    const isRightCard = idx % 2 === 0;
+              {/* Hitos e imágenes emparejadas en zigzag */}
+              <div className="space-y-12 md:space-y-16">
+                {brand.milestones.map((milestone, idx) => {
+                  const isRightCard = idx % 2 === 0;
+                  const { img: milestoneImg, alt: milestoneAlt } = getMilestoneImage(idx);
 
-                    let milestoneImg = cocosStoryImg;
-                    let milestoneAlt = '2004 El comienzo - 200 cocos';
-                    if (idx === 1) {
-                      milestoneImg = cocofreezeAntiguaImg;
-                      milestoneAlt = '2006 Del coco a la botella - Coco Freeze Antigua';
-                    } else if (idx === 2) {
-                      milestoneImg = screenshot2010Img;
-                      milestoneAlt = '2010 Aprender desde el cultivo';
-                    } else if (idx === 3) {
-                      milestoneImg = cocofreezePortadaImg;
-                      milestoneAlt = '2026 Cosechado en su punto';
-                    }
+                  const textCard = (
+                    <div
+                      className="p-6 sm:p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all text-center flex flex-col justify-center min-h-[200px]"
+                      style={{ backgroundColor: brand.colors.navBg }}
+                    >
+                      <span className="text-3xl sm:text-4xl font-black text-yellow-300 tracking-tight block mb-2">
+                        {milestone.year}
+                      </span>
+                      <h3 className="text-lg sm:text-2xl font-black text-white mb-3">
+                        {milestone.title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal">
+                        {milestone.description}
+                      </p>
+                    </div>
+                  );
 
-                    const textCard = (
-                      <div
-                        className="p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all text-center h-full flex flex-col justify-center min-h-[190px]"
-                        style={{ backgroundColor: brand.colors.navBg }}
-                      >
-                        <span className="text-2xl sm:text-3xl font-black text-yellow-300 tracking-tight block mb-1">
-                          {milestone.year}
-                        </span>
-                        <h3 className="text-lg sm:text-xl font-black text-white mb-3">
-                          {milestone.title}
-                        </h3>
-                        <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal">
-                          {milestone.description}
-                        </p>
-                      </div>
-                    );
-
-                    const imageCard = (
-                      <div className="w-full rounded-3xl overflow-hidden shadow-xl bg-white border border-stone-200/70 aspect-[16/10] sm:aspect-[4/3] flex items-center justify-center p-3 group hover:shadow-2xl transition-shadow min-h-[190px]">
-                        <img
-                          src={milestoneImg}
-                          alt={milestoneAlt}
-                          className="w-full h-full object-contain rounded-2xl group-hover:scale-102 transition-transform duration-300"
-                        />
-                      </div>
-                    );
-
-                    return (
-                      <div
-                        key={milestone.year}
-                        className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-14 items-center"
-                      >
-                        <div className={isRightCard ? 'order-2 md:order-1' : 'order-1'}>
-                          {isRightCard ? imageCard : textCard}
-                        </div>
-                        <div className={isRightCard ? 'order-1 md:order-2' : 'order-2'}>
-                          {isRightCard ? textCard : imageCard}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* 3. PRODUCTOS DESPUÉS DE LA HISTORIA */}
-          <section className="py-20 sm:py-28 bg-white" id="productos">
-            <div className="max-w-7xl mx-auto px-6 sm:px-8">
-              <div className="text-center mb-14">
-                <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
-                  Productos
-                </h2>
-              </div>
-
-              {/* Cuadros interactivos de categorías: solo botón azul con el nombre y la flecha, sin título repetido ni palabra 'Ver' */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                {brand.families.map((family, idx) => (
-                  <div
-                    key={family.id}
-                    onClick={() => setSelectedFamilyId(family.id)}
-                    className="group rounded-3xl p-6 sm:p-8 transition-all duration-300 cursor-pointer flex flex-col items-center justify-between bg-[#FAFAF8] shadow-md hover:shadow-2xl hover:bg-white hover:-translate-y-1"
-                  >
-                    <div className="w-full h-64 sm:h-72 rounded-2xl bg-white p-4 flex items-center justify-center overflow-hidden shadow-inner">
+                  const imageCard = (
+                    <div className="w-full rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all">
                       <img
-                        src={getFamilyImage(family.id, idx)}
-                        alt={family.name}
-                        className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                        src={milestoneImg}
+                        alt={milestoneAlt}
+                        className="w-full h-auto block object-cover group-hover:scale-102 transition-transform duration-300"
                       />
                     </div>
-                    <div className="mt-6 text-center flex flex-col items-center w-full">
-                      {/* Solo botón azul con el nombre de la categoría y la flecha */}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedFamilyId(family.id);
-                        }}
-                        className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full text-base sm:text-lg font-black shadow-md hover:shadow-xl transition-all group-hover:scale-105 active:scale-95 text-white cursor-pointer"
-                        style={{ backgroundColor: brand.colors.buttonBg }}
-                      >
-                        <span>{family.name}</span>
-                        <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
-                      </button>
+                  );
+
+                  return (
+                    <div
+                      key={milestone.year}
+                      className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-14 items-center"
+                    >
+                      <div className={isRightCard ? 'order-2 md:order-1' : 'order-1'}>
+                        {isRightCard ? imageCard : textCard}
+                      </div>
+                      <div className={isRightCard ? 'order-1 md:order-2' : 'order-2'}>
+                        {isRightCard ? textCard : imageCard}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
-          </section>
-        </>
-      ) : (
-        /* OTRAS MARCAS (D'Hoy, EcoLove, Hortilisto): Productos y luego Historia */
-        <>
-          {/* PRODUCTOS */}
-          <section className="py-20 sm:py-28 bg-white" id="productos">
-            <div className="max-w-7xl mx-auto px-6 sm:px-8">
-              <div className="text-center mb-14">
-                <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
-                  Productos
-                </h2>
-              </div>
+          </div>
+        </section>
+      )}
 
-              {/* Cuadros interactivos de categorías */}
+      {/* ========================================================
+          3. PRODUCTOS (Para todas las marcas)
+          ======================================================== */}
+      <section className="py-20 sm:py-28 bg-white" id="productos">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
+              Productos
+            </h2>
+          </div>
+
+          {/* Cuadros interactivos de categorías */}
+          <div
+            className={`grid grid-cols-1 ${
+              brand.families.length === 2
+                ? 'md:grid-cols-2 max-w-4xl'
+                : brand.families.length === 3
+                ? 'md:grid-cols-3 max-w-5xl'
+                : 'sm:grid-cols-2 lg:grid-cols-3 max-w-6xl'
+            } gap-8 mx-auto`}
+          >
+            {brand.families.map((family, idx) => (
               <div
-                className={`grid grid-cols-1 ${
-                  brand.families.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'
-                } gap-8 max-w-5xl mx-auto`}
+                key={family.id}
+                onClick={() => setSelectedFamilyId(family.id)}
+                className="group rounded-3xl p-6 sm:p-8 transition-all duration-300 cursor-pointer flex flex-col items-center justify-between bg-[#FAFAF8] shadow-md hover:shadow-2xl hover:bg-white hover:-translate-y-1"
               >
-                {brand.families.map((family, idx) => (
-                  <div
-                    key={family.id}
-                    onClick={() => setSelectedFamilyId(family.id)}
-                    className="group rounded-3xl p-6 sm:p-8 transition-all duration-300 cursor-pointer flex flex-col items-center justify-between bg-[#FAFAF8] shadow-md hover:shadow-2xl hover:bg-white hover:-translate-y-1"
-                  >
-                    <div className="w-full h-64 sm:h-72 rounded-2xl bg-white p-4 flex items-center justify-center overflow-hidden shadow-inner">
-                      <img
-                        src={getFamilyImage(family.id, idx)}
-                        alt={family.name}
-                        className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="mt-6 text-center flex flex-col items-center w-full">
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedFamilyId(family.id);
-                        }}
-                        className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full text-base sm:text-lg font-black shadow-md hover:shadow-xl transition-all group-hover:scale-105 active:scale-95 text-white cursor-pointer"
-                        style={{ backgroundColor: brand.colors.buttonBg }}
-                      >
-                        <span>{family.name}</span>
-                        <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* HISTORIA */}
-          <section id="historia" className="py-20 sm:py-28 bg-[#F8FAFC]">
-            <div className="max-w-5xl mx-auto px-6 sm:px-8 text-center">
-              <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight mb-6">
-                {brand.storyTitle}
-              </h2>
-              <p className="text-base sm:text-xl text-stone-700 leading-relaxed font-normal max-w-3xl mx-auto mb-10 text-balance">
-                {brand.storyText}
-              </p>
-
-              {/* Imagen central de la historia */}
-              <div className="w-full max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white mb-16">
-                <div className="relative aspect-[16/10]">
+                <div className="w-full h-72 sm:h-80 md:h-96 rounded-2xl bg-white p-3 sm:p-5 flex items-center justify-center overflow-hidden shadow-inner">
                   <img
-                    src={getBrandStoryImage()}
-                    alt={brand.storyTitle}
-                    className="w-full h-full object-cover object-center"
+                    src={getFamilyImage(family.id, idx)}
+                    alt={family.name}
+                    className="max-h-full max-w-full w-auto h-auto object-contain object-center group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-              </div>
-
-              {/* Hitos centrados */}
-              <div className="max-w-2xl mx-auto space-y-8 mt-14">
-                {brand.milestones.map((milestone) => (
-                  <div
-                    key={milestone.year}
-                    className="p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all text-center"
-                    style={{ backgroundColor: brand.colors.navBg }}
+                <div className="mt-6 text-center flex flex-col items-center w-full">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedFamilyId(family.id);
+                    }}
+                    className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full text-base sm:text-lg font-black shadow-md hover:shadow-xl transition-all group-hover:scale-105 active:scale-95 text-white cursor-pointer"
+                    style={{ backgroundColor: brand.colors.buttonBg }}
                   >
-                    <span className="text-2xl sm:text-3xl font-black text-yellow-300 tracking-tight block mb-1">
-                      {milestone.year}
-                    </span>
-                    <h3 className="text-lg sm:text-xl font-black text-white mb-3">
-                      {milestone.title}
-                    </h3>
-                    <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal">
-                      {milestone.description}
-                    </p>
-                  </div>
-                ))}
+                    <span>{family.name}</span>
+                    <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
+                  </button>
+                </div>
               </div>
-            </div>
-          </section>
-        </>
-      )}
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ========================================================
           POP-UP DE CASI TODA LA PANTALLA PARA VER PRODUCTOS
@@ -632,27 +568,32 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             className="relative w-full max-w-6xl max-h-[92vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-stone-200"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header del Pop-up con Título y Botón X bien visible */}
+            {/* Header del Pop-up con Título, Tagline y Botón X bien visible */}
             <div className="sticky top-0 z-20 px-6 sm:px-10 py-5 sm:py-6 flex items-center justify-between border-b border-stone-200 bg-white/95 backdrop-blur-md">
               <div className="flex items-center gap-3 sm:gap-4">
                 <div
-                  className="w-3.5 h-10 rounded-full"
+                  className="w-3.5 h-12 rounded-full shrink-0"
                   style={{ backgroundColor: brand.colors.buttonBg }}
                 />
                 <div>
                   <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-400 block">
                     {brand.name} · Categoría
                   </span>
-                  <h3 className="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight">
+                  <h3 className="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight uppercase">
                     {brand.families.find((f) => f.id === selectedFamilyId)?.name}
                   </h3>
+                  {brand.families.find((f) => f.id === selectedFamilyId)?.tagline && (
+                    <p className="text-xs sm:text-sm text-stone-600 font-medium mt-1 max-w-2xl leading-snug">
+                      {brand.families.find((f) => f.id === selectedFamilyId)?.tagline}
+                    </p>
+                  )}
                 </div>
               </div>
 
               {/* Botón X grande y claramente visible */}
               <button
                 onClick={() => setSelectedFamilyId(null)}
-                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-stone-100 hover:bg-stone-200 active:scale-95 text-stone-800 flex items-center justify-center transition-all cursor-pointer shadow-md hover:rotate-90 duration-200"
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-stone-100 hover:bg-stone-200 active:scale-95 text-stone-800 flex items-center justify-center transition-all cursor-pointer shadow-md hover:rotate-90 duration-200 shrink-0 ml-4"
                 aria-label="Cerrar pop up"
               >
                 <X className="w-6 h-6 stroke-[2.5]" />
@@ -672,7 +613,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                     >
                       <div>
                         {/* 1. Nombre del producto */}
-                        <div className="flex items-start justify-between gap-3 mb-4">
+                        <div className="flex items-start justify-between gap-3 mb-3">
                           <h4 className="text-xl sm:text-2xl font-black text-stone-900 group-hover:opacity-80 transition-opacity">
                             {product.name}
                           </h4>
@@ -684,26 +625,33 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                           </div>
                         </div>
 
-                        {/* 2. Imagen del producto */}
-                        <div className="relative rounded-2xl bg-stone-50 overflow-hidden mb-6 aspect-[4/3] flex items-center justify-center p-4">
+                        {/* 2. Imagen del producto (visible 100% de la botella en cualquier pantalla) */}
+                        <div className="relative rounded-2xl bg-stone-50 overflow-hidden mb-5 h-72 sm:h-80 md:h-88 flex items-center justify-center p-3 sm:p-5">
                           <img
                             src={product.imageUrl || brand.heroImage}
                             alt={product.name}
                             referrerPolicy="no-referrer"
-                            className="max-h-full w-auto object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-md"
+                            className="max-h-full max-w-full w-auto h-auto object-contain object-center group-hover:scale-105 transition-transform duration-300 drop-shadow-md"
                           />
                         </div>
 
+                        {/* Descripción exacta del producto */}
+                        {product.emotionalDescription && (
+                          <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mb-4 font-normal">
+                            {product.emotionalDescription}
+                          </p>
+                        )}
+
                         {/* 3. Presentaciones */}
-                        <div className="mb-6">
-                          <span className="text-xs uppercase tracking-wider text-stone-400 font-semibold block mb-2.5">
-                            {t.brandDetail.presentationsLabel}
+                        <div className="mb-4">
+                          <span className="text-xs uppercase tracking-wider text-stone-400 font-bold block mb-2">
+                            {t.brandDetail.presentationsLabel}:
                           </span>
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-1.5">
                             {product.presentations.map((pres) => (
                               <span
                                 key={pres}
-                                className="px-3 py-1 rounded-full text-xs font-medium bg-stone-100 text-stone-700 shadow-2xs hover:bg-stone-200 transition-colors"
+                                className="px-3 py-1 rounded-full text-xs font-semibold bg-stone-100 text-stone-700 shadow-2xs hover:bg-stone-200 transition-colors"
                               >
                                 {pres}
                               </span>
@@ -712,41 +660,35 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                         </div>
                       </div>
 
-                      {/* 4. Información técnica completa */}
-                      <div className="pt-4 border-t border-stone-100 text-xs text-stone-600 space-y-2">
-                        {product.technicalInfo.ingredients && (
-                          <div>
-                            <span className="font-bold text-stone-800">
-                              {t.brandDetail.ingredients}:
-                            </span>{' '}
-                            {product.technicalInfo.ingredients}
-                          </div>
-                        )}
-                        {product.technicalInfo.conservation && (
-                          <div>
-                            <span className="font-bold text-stone-800">
-                              {t.brandDetail.conservation}:
-                            </span>{' '}
-                            {product.technicalInfo.conservation}
-                          </div>
-                        )}
-                        {product.technicalInfo.origin && (
-                          <div>
-                            <span className="font-bold text-stone-800">
-                              {t.brandDetail.origin}:
-                            </span>{' '}
-                            {product.technicalInfo.origin}
-                          </div>
-                        )}
-                        <div className="pt-2 text-right">
-                          <span
-                            className="text-xs font-black uppercase tracking-wider group-hover:underline"
-                            style={{ color: brand.colors.primary }}
-                          >
-                            {t.brandDetail.viewSheet} &rarr;
-                          </span>
+                      {/* 4. Información técnica SOLO si existe para la marca */}
+                      {product.technicalInfo && (product.technicalInfo.ingredients || product.technicalInfo.conservation || product.technicalInfo.origin) && (
+                        <div className="pt-3 border-t border-stone-100 text-xs text-stone-600 space-y-1.5">
+                          {product.technicalInfo.ingredients && (
+                            <div>
+                              <span className="font-bold text-stone-800">
+                                {t.brandDetail.ingredients}:
+                              </span>{' '}
+                              {product.technicalInfo.ingredients}
+                            </div>
+                          )}
+                          {product.technicalInfo.conservation && (
+                            <div>
+                              <span className="font-bold text-stone-800">
+                                {t.brandDetail.conservation}:
+                              </span>{' '}
+                              {product.technicalInfo.conservation}
+                            </div>
+                          )}
+                          {product.technicalInfo.origin && (
+                            <div>
+                              <span className="font-bold text-stone-800">
+                                {t.brandDetail.origin}:
+                              </span>{' '}
+                              {product.technicalInfo.origin}
+                            </div>
+                          )}
                         </div>
-                      </div>
+                      )}
                     </div>
                   ))}
               </div>

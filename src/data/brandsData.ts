@@ -96,11 +96,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'agua-de-coco',
         emotionalDescription: 'Refrescante, naturalmente dulce y lista para acompañarte donde quieras.',
         presentations: ['200 ml Six Pack', '240 ml', '300 ml vidrio', '355 ml', '500 ml', '1 L', '2 L'],
-        technicalInfo: {
-          ingredients: '100% Agua de coco natural cosechada en su punto.',
-          conservation: 'Mantener refrigerado entre 2°C y 4°C. Una vez abierto consumir en el menor tiempo posible.',
-          origin: 'Cultivo de la costa del Pacífico, Finca NDP y productores aliados.'
-        },
         imageUrl: cocofreezeAguaDeCocoImg,
         featured: true
       },
@@ -111,11 +106,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'agua-de-coco',
         emotionalDescription: 'De la palma a tus manos. Coco natural para disfrutarlo como nació.',
         presentations: ['Pipa natural'],
-        technicalInfo: {
-          ingredients: 'Coco natural entero seleccionado en su punto.',
-          conservation: 'Almacenar en lugar fresco y seco o refrigerar para un consumo óptimo.',
-          origin: 'Palmas seleccionadas de la costa pacífica.'
-        },
         imageUrl: cocofreezePipaNaturalImg
       },
       {
@@ -125,11 +115,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'sabores-de-coco',
         emotionalDescription: 'Cremoso, tropical y lleno de auténtico sabor a coco.',
         presentations: ['355 ml', '1 L'],
-        technicalInfo: {
-          ingredients: 'Agua de coco, extracto de pulpa de coco.',
-          conservation: 'Mantener en refrigeración. Agitar bien antes de disfrutar.',
-          origin: 'Cocos frescos ecuatorianos.'
-        },
         imageUrl: cocofreezeJugoDeCocoImg
       },
       {
@@ -139,11 +124,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'sabores-de-coco',
         emotionalDescription: 'La frescura del agua de coco con el toque tropical y delicioso de la piña.',
         presentations: ['355 ml'],
-        technicalInfo: {
-          ingredients: 'Agua de coco natural, jugo de piña seleccionada.',
-          conservation: 'Mantener refrigerado entre 2°C y 4°C.',
-          origin: 'Frutas cosechadas en zonas tropicales de origen.'
-        },
         imageUrl: cocofreezeAguaDeCocoConPinaImg
       },
       {
@@ -153,11 +133,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'sabores-de-coco',
         emotionalDescription: 'Limón refrescante y coco en una combinación tropical diferente.',
         presentations: ['355 ml'],
-        technicalInfo: {
-          ingredients: 'Agua de coco, jugo fresco de limón y notas de coco.',
-          conservation: 'Mantener frío para preservar frescura cítrica.',
-          origin: 'Cítricos y cocos del Pacífico.'
-        },
         imageUrl: cocofreezeLimonadaDeCocoImg
       },
       {
@@ -167,11 +142,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'sabores-de-coco',
         emotionalDescription: 'Coco y piña en una combinación cremosa que sabe a vacaciones.',
         presentations: ['355 ml'],
-        technicalInfo: {
-          ingredients: 'Base de agua y crema de coco, jugo de piña tropical.',
-          conservation: 'Refrigerar siempre para servir bien frío.',
-          origin: 'Frutas tropicales de campo.'
-        },
         imageUrl: cocofreezePinaColadaImg
       }
     ]
@@ -183,19 +153,19 @@ export const BRANDS_DATA: Record<string, Brand> = {
     slug: 'dhoy',
     valueStatement: 'DE FAMILIA Y DEL CAMPO. SABE A FRUTA DE VERDAD.',
     conceptVisual: 'fruta fresca, naranja, campo, energía, naturalidad.',
-    shortDescription: 'Elegimos buena fruta y la procesamos para conservar lo que importa: su sabor. Lo mejor del campo a tu día a día.',
+    shortDescription: 'Elegimos buena fruta y la procesamos para conservar lo que importa: su sabor. Así llevamos lo mejor del campo a tu día a día, de forma práctica y deliciosa',
     storyTitle: 'Una historia que empezó antes de amanecer',
     storyText: 'En 2009 comenzamos haciendo jugo de naranja fresco para restaurantes de Quito. Las naranjas se exprimían alrededor de las 3 de la mañana para entregar el jugo frío, fresco y con el mejor sabor posible. Desde entonces, nuestra convicción sigue siendo la misma: encontrar buena fruta y cuidar su verdadero sabor.',
     milestones: [
       {
         year: '2009',
-        title: "Nace D'hoy",
+        title: 'Nace DHOY',
         description: 'Jugo de naranja exprimido de madrugada para restaurantes de Quito.'
       },
       {
         year: '2011',
         title: 'Llegamos a más personas',
-        description: 'Incorporamos un proceso tecnológico que, sin aditivos, permite alargar la vida útil y llevar D\'hoy a más puntos de venta.'
+        description: 'Incorporamos un proceso tecnológico que, sin aditivos, permite alargar la vida útil y llevar DHOY a más puntos de venta.'
       },
       {
         year: '2012',
@@ -210,7 +180,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
       {
         year: '2026',
         title: 'Fruta de verdad',
-        description: 'Seguimos perfeccionando fruta y proceso para lograr un sabor consistentemente delicioso.'
+        description: 'Seguimos perfeccionando fruta y proceso para lograr un sabor consistentemente delicioso'
       }
     ],
     colors: {
@@ -984,30 +954,9 @@ export const BRANDS_DATA: Record<string, Brand> = {
     valueStatement: 'LA COMIDA ES EL MEJOR MOMENTO PARA COMPARTIR.',
     conceptVisual: 'vegetales frescos, cocina, practicidad, familia, compartir.',
     shortDescription: 'Vegetales deliciosos, listos para hacerte la cocina más práctica y dejarte más tiempo para disfrutar.',
-    storyTitle: 'La comida es el mejor momento para compartir',
-    storyText: 'Hortilisto nace de la convicción de que cocinar con ingredientes frescos no debería ser complicado ni demandar horas pelando y cortando. Llevamos hortalizas y vegetales de primera calidad, cuidadosamente seleccionados y listos para cocinar, para que puedas enfocarte en lo que de verdad importa: compartir la mesa con quienes quieres.',
-    milestones: [
-      {
-        year: '2015',
-        title: 'Del huerto a la cocina',
-        description: 'Iniciamos seleccionando aguacates y hortalizas frescas directamente con agricultores de valles locales.'
-      },
-      {
-        year: '2018',
-        title: 'Vegetales listos y frescos',
-        description: 'Incorporamos tecnología de empaque en atmósfera protectora para mantener la frescura de cebollas, pimientos y zapallos picados.'
-      },
-      {
-        year: '2021',
-        title: 'Nace la línea de guacamole',
-        description: 'Lanzamos guacamole fresco listo para abrir y compartir, con el punto exacto de sazón y aguacate.'
-      },
-      {
-        year: '2026',
-        title: 'Cocinar y compartir',
-        description: 'Consolidamos un portafolio diseñado para ahorrar tiempo en la cocina con máxima calidad.'
-      }
-    ],
+    storyTitle: '',
+    storyText: '',
+    milestones: [],
     colors: {
       primary: '#0D9488', // Turquesa fuerte
       secondary: '#F0FDFA',

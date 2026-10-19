@@ -39,14 +39,14 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-12">
           {/* 1 & 2. Protagonist Product Photo */}
           <div
-            className="md:col-span-5 relative flex items-center justify-center min-h-[300px] md:min-h-[480px] p-8"
+            className="md:col-span-5 relative flex items-center justify-center min-h-[340px] md:min-h-[500px] p-6 sm:p-8"
             style={{ backgroundColor: brand.colors.secondary }}
           >
             <img
               src={product.imageUrl || brand.heroImage}
               alt={product.name}
               referrerPolicy="no-referrer"
-              className="max-h-[360px] w-auto object-contain drop-shadow-2xl"
+              className="max-h-[420px] max-w-full w-auto h-auto object-contain drop-shadow-2xl"
             />
             <div className="absolute bottom-4 left-4">
               <span
@@ -77,9 +77,16 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               </div>
 
               {/* 1. Nombre del Producto (Grande y claramente visible) */}
-              <h3 className="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight mb-6">
+              <h3 className="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight mb-2">
                 {product.name}
               </h3>
+
+              {/* Descripción del producto */}
+              {product.emotionalDescription && (
+                <p className="text-sm sm:text-base text-stone-600 leading-relaxed mb-6 font-normal">
+                  {product.emotionalDescription}
+                </p>
+              )}
 
               {/* Presentaciones */}
               <div className="mb-6">
@@ -98,39 +105,41 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 </div>
               </div>
 
-              {/* 5. Información Técnica (En segundo nivel visual) */}
-              <div className="pt-6 border-t border-stone-200 space-y-3">
-                <span className="text-xs uppercase tracking-wider text-stone-400 font-bold block">
-                  {t.brandDetail.techSpecsLabel}
-                </span>
+              {/* Información Técnica (solo si el producto la tiene configurada) */}
+              {product.technicalInfo && (product.technicalInfo.ingredients || product.technicalInfo.conservation || product.technicalInfo.origin) && (
+                <div className="pt-6 border-t border-stone-200 space-y-3">
+                  <span className="text-xs uppercase tracking-wider text-stone-400 font-bold block">
+                    {t.brandDetail.techSpecsLabel}
+                  </span>
 
-                {product.technicalInfo.ingredients && (
-                  <div className="text-xs text-stone-600">
-                    <span className="font-bold text-stone-800">
-                      {t.brandDetail.ingredients}:
-                    </span>{' '}
-                    {product.technicalInfo.ingredients}
-                  </div>
-                )}
+                  {product.technicalInfo.ingredients && (
+                    <div className="text-xs text-stone-600">
+                      <span className="font-bold text-stone-800">
+                        {t.brandDetail.ingredients}:
+                      </span>{' '}
+                      {product.technicalInfo.ingredients}
+                    </div>
+                  )}
 
-                {product.technicalInfo.conservation && (
-                  <div className="text-xs text-stone-600">
-                    <span className="font-bold text-stone-800">
-                      {t.brandDetail.conservation}:
-                    </span>{' '}
-                    {product.technicalInfo.conservation}
-                  </div>
-                )}
+                  {product.technicalInfo.conservation && (
+                    <div className="text-xs text-stone-600">
+                      <span className="font-bold text-stone-800">
+                        {t.brandDetail.conservation}:
+                      </span>{' '}
+                      {product.technicalInfo.conservation}
+                    </div>
+                  )}
 
-                {product.technicalInfo.origin && (
-                  <div className="text-xs text-stone-600">
-                    <span className="font-bold text-stone-800">
-                      {t.brandDetail.origin}:
-                    </span>{' '}
-                    {product.technicalInfo.origin}
-                  </div>
-                )}
-              </div>
+                  {product.technicalInfo.origin && (
+                    <div className="text-xs text-stone-600">
+                      <span className="font-bold text-stone-800">
+                        {t.brandDetail.origin}:
+                      </span>{' '}
+                      {product.technicalInfo.origin}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Bottom Actions */}

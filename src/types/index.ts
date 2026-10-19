@@ -7,7 +7,7 @@ export interface Product {
   familyId: string;
   emotionalDescription: string;
   presentations: string[];
-  technicalInfo: {
+  technicalInfo?: {
     ingredients?: string;
     conservation?: string;
     origin?: string;
