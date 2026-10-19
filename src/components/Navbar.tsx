@@ -215,17 +215,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity text-white" />
               </button>
 
-              <button
-                onClick={() => {
-                  setDrawerOpen(false);
-                  onOpenContact();
-                }}
-                className="block w-full text-left text-2xl sm:text-3xl font-extrabold text-white hover:text-stone-100 transition-colors py-2 cursor-pointer flex items-center justify-between group"
-              >
-                <span>{t.nav.contact}</span>
-                <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity text-white" />
-              </button>
-
               {/* Trabaja con nosotros dentro del menú */}
               <div className="pt-6 border-t border-white/20">
                 <a

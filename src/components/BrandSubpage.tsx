@@ -21,6 +21,9 @@ import ecoloveMenuImg from '../assets/images/imagenmenuecolove.jpg';
 import hortilistoLogoImg from '../assets/images/hortilisto_nuevo.png';
 import hortilistoTransparentImg from '../assets/images/hortilisto_transparent.png';
 import hortilistoMenuImg from '../assets/images/hortilistoimagenlogo.jpg';
+import { CocoFreezeVideoPlayer } from './CocoFreezeVideoPlayer';
+import cocofreezeAntiguaImg from '../assets/images/cocofreezeantigua.png';
+import screenshot2010Img from '../assets/images/screenshot_2026_10_15.png';
 
 interface BrandSubpageProps {
   brand?: Brand;
@@ -298,16 +301,6 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                 >
                   Historia
                 </a>
-
-                <button
-                  onClick={() => {
-                    setIsDrawerOpen(false);
-                    onOpenContact();
-                  }}
-                  className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left cursor-pointer"
-                >
-                  {t.nav.contact}
-                </button>
               </nav>
             </div>
 
@@ -334,66 +327,301 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       </section>
 
       {/* ========================================================
-          3. PRODUCTOS (Ubicados antes de la historia, sin delineados)
+          COCO FREEZE: 
+          1. Portada / Inicio
+          2. Sección 'COSECHADO EN SU PUNTO' con texto y video abajo
+          3. Sección 'HISTORIA' (con timeline en zigzag y las 4 fotos integradas)
+          4. Sección 'PRODUCTOS' (con botones azules directos y pop-up)
+          
+          OTRAS MARCAS (D'Hoy, EcoLove, Hortilisto):
+          1. Portada / Inicio
+          2. Productos
+          3. Historia
           ======================================================== */}
-      <section className="py-20 sm:py-28 bg-white" id="productos">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8">
-          {/* Título Productos Centrado, sin palabras secundarias ni delineados */}
-          <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
-              Productos
-            </h2>
-          </div>
 
-          {/* Cuadros interactivos de categorías con imagen (sin delineados): 2 en Coco Freeze, 3 en D'Hoy */}
-          <div
-            className={`grid grid-cols-1 ${
-              brand.families.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'
-            } gap-8 max-w-5xl mx-auto`}
-          >
-            {brand.families.map((family, idx) => {
-              return (
+      {brand.id === 'coco-freeze' ? (
+        <>
+          {/* 1. SECCIÓN COSECHADO EN SU PUNTO + VIDEO INTERACTIVO */}
+          <section className="pt-14 sm:pt-20 pb-14 sm:pb-20 bg-white text-center">
+            <div className="max-w-5xl mx-auto px-6 sm:px-8">
+              {/* Título: COSECHADO EN SU PUNTO centrado y grande como el de Productos */}
+              <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight mb-6">
+                COSECHADO EN SU PUNTO
+              </h2>
+
+              {/* Texto explicativo en letras más pequeñas */}
+              <p className="text-base sm:text-lg md:text-xl text-stone-700 leading-relaxed font-normal max-w-3xl mx-auto mb-10 sm:mb-14 text-balance">
+                Todo comienza en el campo. Seleccionamos cocos en su punto ideal de cosecha para llevar a cada botella ese sabor naturalmente dulce, fresco y auténtico que hace especial al coco. Más de 20 años cerca del origen nos han enseñado algo simple: cuando el coco se cosecha en su punto, se siente en cada sorbo.
+              </p>
+
+              {/* Video en un recuadro redondeado grande que se reproduce con sonido mientras aparece en pantalla */}
+              <CocoFreezeVideoPlayer videoId="5Bsu-sFegGE" />
+            </div>
+          </section>
+
+          {/* 2. HISTORIA Y LOS HITOS (con las 4 fotos en zigzag) */}
+          <section id="historia" className="py-20 sm:py-28 bg-[#F8FAFC]">
+            <div className="max-w-5xl mx-auto px-6 sm:px-8 text-center">
+              <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight mb-6">
+                {brand.storyTitle}
+              </h2>
+              <p className="text-base sm:text-xl text-stone-700 leading-relaxed font-normal max-w-3xl mx-auto mb-12 text-balance">
+                {brand.storyText}
+              </p>
+
+              {/* Timeline en zigzag con coco rodante y fotos emparejadas */}
+              <div
+                ref={historyTimelineRef}
+                className="relative max-w-5xl mx-auto mt-14 py-6"
+              >
+                {/* Coco rodante grande y notorio en zigzag */}
                 <div
-                  key={family.id}
-                  onClick={() => setSelectedFamilyId(family.id)}
-                  className="group rounded-3xl p-6 sm:p-8 transition-all duration-300 cursor-pointer flex flex-col items-center justify-between bg-[#FAFAF8] shadow-md hover:shadow-2xl hover:bg-white hover:-translate-y-1"
+                  className="absolute pointer-events-none z-20 transition-transform duration-75 will-change-transform hidden md:flex items-center justify-center"
+                  style={{
+                    top: `${Math.min(Math.max(scrollProgress * 88, 3), 92)}%`,
+                    left: `${50 + 36 * Math.cos(scrollProgress * Math.PI * 3)}%`,
+                    transform: `translate(-50%, -50%) rotate(${scrollProgress * 1440}deg)`,
+                  }}
                 >
-                  <div className="w-full h-64 sm:h-72 rounded-2xl bg-white p-4 flex items-center justify-center overflow-hidden shadow-inner">
-                    <img
-                      src={getFamilyImage(family.id, idx)}
-                      alt={family.name}
-                      className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
-                    />
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_12px_24px_rgba(0,0,0,0.45)]" fill="none">
+                      <defs>
+                        <radialGradient id="cocoShellGrad" cx="35%" cy="30%" r="70%">
+                          <stop offset="0%" stopColor="#8C532B" />
+                          <stop offset="45%" stopColor="#5E3416" />
+                          <stop offset="100%" stopColor="#381D0B" />
+                        </radialGradient>
+                        <linearGradient id="cocoSprout" x1="0%" y1="100%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#4A7422" />
+                          <stop offset="100%" stopColor="#84CC16" />
+                        </linearGradient>
+                      </defs>
+                      <path d="M50 14 C46 6, 36 4, 32 8 C38 10, 44 16, 46 22 Z" fill="url(#cocoSprout)" />
+                      <path d="M50 14 C54 5, 64 6, 68 11 C62 11, 56 17, 53 23 Z" fill="url(#cocoSprout)" />
+                      <ellipse cx="50" cy="54" rx="37" ry="40" fill="url(#cocoShellGrad)" stroke="#2A1406" strokeWidth="2.5" />
+                      <ellipse cx="40" cy="42" rx="4.5" ry="5.5" fill="#1C0D05" />
+                      <circle cx="39" cy="40.5" r="1.5" fill="#4A2813" />
+                      <ellipse cx="60" cy="42" rx="4.5" ry="5.5" fill="#1C0D05" />
+                      <circle cx="59" cy="40.5" r="1.5" fill="#4A2813" />
+                      <ellipse cx="50" cy="62" rx="5" ry="6" fill="#1C0D05" />
+                      <circle cx="49" cy="60.5" r="1.6" fill="#4A2813" />
+                    </svg>
                   </div>
-                  <div className="mt-6 text-center flex flex-col items-center w-full">
-                    <h3 className="text-2xl sm:text-3xl font-black text-stone-900 group-hover:text-stone-700 transition-colors">
-                      {family.name}
-                    </h3>
-                    <div className="mt-4 w-full flex justify-center">
+                </div>
+
+                {/* Hitos e imágenes emparejadas:
+                    2004: Foto 200 cocos a la izquierda, Texto a la derecha
+                    2006: Texto a la izquierda, Foto Coco Freeze Antigua a la derecha
+                    2010: Foto Screenshot a la izquierda, Texto a la derecha
+                    2026: Texto a la izquierda, Foto Portada 2026 a la derecha
+                */}
+                <div className="space-y-12 md:space-y-16">
+                  {brand.milestones.map((milestone, idx) => {
+                    const isRightCard = idx % 2 === 0;
+
+                    let milestoneImg = cocosStoryImg;
+                    let milestoneAlt = '2004 El comienzo - 200 cocos';
+                    if (idx === 1) {
+                      milestoneImg = cocofreezeAntiguaImg;
+                      milestoneAlt = '2006 Del coco a la botella - Coco Freeze Antigua';
+                    } else if (idx === 2) {
+                      milestoneImg = screenshot2010Img;
+                      milestoneAlt = '2010 Aprender desde el cultivo';
+                    } else if (idx === 3) {
+                      milestoneImg = cocofreezePortadaImg;
+                      milestoneAlt = '2026 Cosechado en su punto';
+                    }
+
+                    const textCard = (
+                      <div
+                        className="p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all text-center h-full flex flex-col justify-center min-h-[190px]"
+                        style={{ backgroundColor: brand.colors.navBg }}
+                      >
+                        <span className="text-2xl sm:text-3xl font-black text-yellow-300 tracking-tight block mb-1">
+                          {milestone.year}
+                        </span>
+                        <h3 className="text-lg sm:text-xl font-black text-white mb-3">
+                          {milestone.title}
+                        </h3>
+                        <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal">
+                          {milestone.description}
+                        </p>
+                      </div>
+                    );
+
+                    const imageCard = (
+                      <div className="w-full rounded-3xl overflow-hidden shadow-xl bg-white border border-stone-200/70 aspect-[16/10] sm:aspect-[4/3] flex items-center justify-center p-3 group hover:shadow-2xl transition-shadow min-h-[190px]">
+                        <img
+                          src={milestoneImg}
+                          alt={milestoneAlt}
+                          className="w-full h-full object-contain rounded-2xl group-hover:scale-102 transition-transform duration-300"
+                        />
+                      </div>
+                    );
+
+                    return (
+                      <div
+                        key={milestone.year}
+                        className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-14 items-center"
+                      >
+                        <div className={isRightCard ? 'order-2 md:order-1' : 'order-1'}>
+                          {isRightCard ? imageCard : textCard}
+                        </div>
+                        <div className={isRightCard ? 'order-1 md:order-2' : 'order-2'}>
+                          {isRightCard ? textCard : imageCard}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 3. PRODUCTOS DESPUÉS DE LA HISTORIA */}
+          <section className="py-20 sm:py-28 bg-white" id="productos">
+            <div className="max-w-7xl mx-auto px-6 sm:px-8">
+              <div className="text-center mb-14">
+                <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
+                  Productos
+                </h2>
+              </div>
+
+              {/* Cuadros interactivos de categorías: solo botón azul con el nombre y la flecha, sin título repetido ni palabra 'Ver' */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                {brand.families.map((family, idx) => (
+                  <div
+                    key={family.id}
+                    onClick={() => setSelectedFamilyId(family.id)}
+                    className="group rounded-3xl p-6 sm:p-8 transition-all duration-300 cursor-pointer flex flex-col items-center justify-between bg-[#FAFAF8] shadow-md hover:shadow-2xl hover:bg-white hover:-translate-y-1"
+                  >
+                    <div className="w-full h-64 sm:h-72 rounded-2xl bg-white p-4 flex items-center justify-center overflow-hidden shadow-inner">
+                      <img
+                        src={getFamilyImage(family.id, idx)}
+                        alt={family.name}
+                        className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="mt-6 text-center flex flex-col items-center w-full">
+                      {/* Solo botón azul con el nombre de la categoría y la flecha */}
                       <button
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation();
                           setSelectedFamilyId(family.id);
                         }}
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm sm:text-base font-bold shadow-md hover:shadow-lg transition-all group-hover:scale-105 active:scale-95 text-white cursor-pointer"
+                        className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full text-base sm:text-lg font-black shadow-md hover:shadow-xl transition-all group-hover:scale-105 active:scale-95 text-white cursor-pointer"
                         style={{ backgroundColor: brand.colors.buttonBg }}
                       >
-                        <span>Ver {family.name}</span>
-                        <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+                        <span>{family.name}</span>
+                        <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
                       </button>
                     </div>
                   </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      ) : (
+        /* OTRAS MARCAS (D'Hoy, EcoLove, Hortilisto): Productos y luego Historia */
+        <>
+          {/* PRODUCTOS */}
+          <section className="py-20 sm:py-28 bg-white" id="productos">
+            <div className="max-w-7xl mx-auto px-6 sm:px-8">
+              <div className="text-center mb-14">
+                <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
+                  Productos
+                </h2>
+              </div>
+
+              {/* Cuadros interactivos de categorías */}
+              <div
+                className={`grid grid-cols-1 ${
+                  brand.families.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'
+                } gap-8 max-w-5xl mx-auto`}
+              >
+                {brand.families.map((family, idx) => (
+                  <div
+                    key={family.id}
+                    onClick={() => setSelectedFamilyId(family.id)}
+                    className="group rounded-3xl p-6 sm:p-8 transition-all duration-300 cursor-pointer flex flex-col items-center justify-between bg-[#FAFAF8] shadow-md hover:shadow-2xl hover:bg-white hover:-translate-y-1"
+                  >
+                    <div className="w-full h-64 sm:h-72 rounded-2xl bg-white p-4 flex items-center justify-center overflow-hidden shadow-inner">
+                      <img
+                        src={getFamilyImage(family.id, idx)}
+                        alt={family.name}
+                        className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="mt-6 text-center flex flex-col items-center w-full">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedFamilyId(family.id);
+                        }}
+                        className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full text-base sm:text-lg font-black shadow-md hover:shadow-xl transition-all group-hover:scale-105 active:scale-95 text-white cursor-pointer"
+                        style={{ backgroundColor: brand.colors.buttonBg }}
+                      >
+                        <span>{family.name}</span>
+                        <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* HISTORIA */}
+          <section id="historia" className="py-20 sm:py-28 bg-[#F8FAFC]">
+            <div className="max-w-5xl mx-auto px-6 sm:px-8 text-center">
+              <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight mb-6">
+                {brand.storyTitle}
+              </h2>
+              <p className="text-base sm:text-xl text-stone-700 leading-relaxed font-normal max-w-3xl mx-auto mb-10 text-balance">
+                {brand.storyText}
+              </p>
+
+              {/* Imagen central de la historia */}
+              <div className="w-full max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white mb-16">
+                <div className="relative aspect-[16/10]">
+                  <img
+                    src={getBrandStoryImage()}
+                    alt={brand.storyTitle}
+                    className="w-full h-full object-cover object-center"
+                  />
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+              </div>
+
+              {/* Hitos centrados */}
+              <div className="max-w-2xl mx-auto space-y-8 mt-14">
+                {brand.milestones.map((milestone) => (
+                  <div
+                    key={milestone.year}
+                    className="p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all text-center"
+                    style={{ backgroundColor: brand.colors.navBg }}
+                  >
+                    <span className="text-2xl sm:text-3xl font-black text-yellow-300 tracking-tight block mb-1">
+                      {milestone.year}
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-black text-white mb-3">
+                      {milestone.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal">
+                      {milestone.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
 
       {/* ========================================================
           POP-UP DE CASI TODA LA PANTALLA PARA VER PRODUCTOS
-          (Reemplaza la lista que antes aparecía abajo en la página)
           ======================================================== */}
       {selectedFamilyId && (
         <div
@@ -541,209 +769,29 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       )}
 
       {/* ========================================================
-          4. HISTORIA (Cajas del color del menú navBg)
+          5. FOOTER EXCLUSIVO (Color del menú navBg, SIN BOTONES DE OTRAS MARCAS)
           ======================================================== */}
-      <section id="historia" className="py-20 sm:py-28 bg-[#F8FAFC]">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 text-center">
-          {/* Título centrado arriba */}
-          <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight mb-6">
-            {brand.storyTitle}
-          </h2>
-
-          {/* Texto descriptivo centrado */}
-          <p className="text-base sm:text-xl text-stone-700 leading-relaxed font-normal max-w-3xl mx-auto mb-10 text-balance">
-            {brand.storyText}
-          </p>
-
-          {/* Imagen central de la historia (sin delineado) */}
-          <div className="w-full max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white mb-20">
-            <div className="relative aspect-[16/10]">
-              <img
-                src={getBrandStoryImage()}
-                alt={brand.storyTitle}
-                className="w-full h-full object-cover object-center"
-              />
-            </div>
-          </div>
-
-          {/* COCO FREEZE: Línea de tiempo en zigzag interactiva con el coco rodando */}
-          {brand.id === 'coco-freeze' ? (
-            <div
-              ref={historyTimelineRef}
-              className="relative max-w-4xl mx-auto mt-14 py-6"
-            >
-              {/* Coco rodante grande y notorio (sin burbuja blanca, solo el gráfico natural con sombra 3D) */}
-              <div
-                className="absolute pointer-events-none z-20 transition-transform duration-75 will-change-transform hidden md:flex items-center justify-center"
-                style={{
-                  top: `${Math.min(Math.max(scrollProgress * 88, 2), 92)}%`,
-                  // Zigzag sincronizado con las tarjetas: empieza en la derecha (84%), luego izquierda (16%), etc.
-                  left: `${50 + 34 * Math.cos(scrollProgress * Math.PI * 3)}%`,
-                  transform: `translate(-50%, -50%) rotate(${scrollProgress * 1440}deg)`,
-                }}
-              >
-                <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
-                  <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_12px_24px_rgba(0,0,0,0.45)]" fill="none">
-                    <defs>
-                      <radialGradient id="cocoShellGrad" cx="35%" cy="30%" r="70%">
-                        <stop offset="0%" stopColor="#8C532B" />
-                        <stop offset="45%" stopColor="#5E3416" />
-                        <stop offset="100%" stopColor="#381D0B" />
-                      </radialGradient>
-                      <linearGradient id="cocoSprout" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#4A7422" />
-                        <stop offset="100%" stopColor="#84CC16" />
-                      </linearGradient>
-                    </defs>
-                    <path d="M50 14 C46 6, 36 4, 32 8 C38 10, 44 16, 46 22 Z" fill="url(#cocoSprout)" />
-                    <path d="M50 14 C54 5, 64 6, 68 11 C62 11, 56 17, 53 23 Z" fill="url(#cocoSprout)" />
-                    <ellipse cx="50" cy="54" rx="37" ry="40" fill="url(#cocoShellGrad)" stroke="#2A1406" strokeWidth="2.5" />
-                    <ellipse cx="40" cy="42" rx="4.5" ry="5.5" fill="#1C0D05" />
-                    <circle cx="39" cy="40.5" r="1.5" fill="#4A2813" />
-                    <ellipse cx="60" cy="42" rx="4.5" ry="5.5" fill="#1C0D05" />
-                    <circle cx="59" cy="40.5" r="1.5" fill="#4A2813" />
-                    <ellipse cx="50" cy="62" rx="5" ry="6" fill="#1C0D05" />
-                    <circle cx="49" cy="60.5" r="1.6" fill="#4A2813" />
-                  </svg>
-                </div>
-              </div>
-
-              {/* Tarjetas alternadas:
-                  1. El comienzo -> DERECHA
-                  2. Del coco a la botella -> IZQUIERDA
-                  3. Aprender desde el cultivo -> DERECHA
-                  4. El último (Cosechado en su punto) -> IZQUIERDA
-                  Fondo del color del menú (navBg), años fuera de burbuja y títulos centrados
-              */}
-              <div className="space-y-12 md:space-y-16">
-                {brand.milestones.map((milestone, idx) => {
-                  const isRight = idx % 2 === 0;
-                  return (
-                    <div
-                      key={milestone.year}
-                      className="relative flex flex-col md:flex-row items-center"
-                    >
-                      {/* Columna Izquierda (para hitos impares: idx 1, idx 3) */}
-                      <div className={`w-full md:w-1/2 ${!isRight ? 'md:pr-10' : 'md:hidden'}`}>
-                        {!isRight && (
-                          <div
-                            className="p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all text-center"
-                            style={{ backgroundColor: brand.colors.navBg }}
-                          >
-                            <span className="text-2xl sm:text-3xl font-black text-yellow-300 tracking-tight block mb-1">
-                              {milestone.year}
-                            </span>
-                            <h3 className="text-lg sm:text-xl font-black text-white mb-3">
-                              {milestone.title}
-                            </h3>
-                            <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal">
-                              {milestone.description}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Columna Derecha (para hitos pares: idx 0, idx 2) */}
-                      <div className={`w-full md:w-1/2 ${isRight ? 'md:pl-10 md:ml-auto' : 'hidden md:block'}`}>
-                        {isRight && (
-                          <div
-                            className="p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all text-center"
-                            style={{ backgroundColor: brand.colors.navBg }}
-                          >
-                            <span className="text-2xl sm:text-3xl font-black text-yellow-300 tracking-tight block mb-1">
-                              {milestone.year}
-                            </span>
-                            <h3 className="text-lg sm:text-xl font-black text-white mb-3">
-                              {milestone.title}
-                            </h3>
-                            <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal">
-                              {milestone.description}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ) : (
-            /* D'HOY, ECOLOVE & HORTILISTO: Sin bola moviéndose y con cuadros centrados uno arriba del otro en el medio */
-            <div className="max-w-2xl mx-auto space-y-8 mt-14">
-              {brand.milestones.map((milestone) => (
-                <div
-                  key={milestone.year}
-                  className="p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all text-center"
-                  style={{ backgroundColor: brand.colors.navBg }}
-                >
-                  <span className="text-2xl sm:text-3xl font-black text-yellow-300 tracking-tight block mb-1">
-                    {milestone.year}
-                  </span>
-                  <h3 className="text-lg sm:text-xl font-black text-white mb-3">
-                    {milestone.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal">
-                    {milestone.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ========================================================
-          5. FOOTER EXCLUSIVO (Color del menú navBg y tarjetas de marcas cuadradas con nombre grande centrado)
-          ======================================================== */}
-      <section
-        className="py-16 sm:py-24 text-white relative overflow-hidden"
+      <footer
+        className="py-12 sm:py-16 text-white relative overflow-hidden"
         style={{
           backgroundColor: brand.colors.navBg,
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
-          {/* Ecosistema de marcas selector */}
-          <div>
-            <span className="text-xs uppercase tracking-widest text-white/70 font-bold mb-6 block text-center sm:text-left">
-              {t.brandDetail.exploreOtherBrands}
-            </span>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {otherBrands.map((other) => (
-                <button
-                  key={other.id}
-                  onClick={() => onNavigateBrand(other.slug)}
-                  className="relative aspect-[4/3] sm:aspect-square rounded-3xl bg-black/20 hover:bg-black/35 text-center transition-all group cursor-pointer flex flex-col items-center justify-center p-6 shadow-lg hover:shadow-2xl hover:scale-105"
-                >
-                  {/* Flecha de ir arriba a la derecha */}
-                  <div className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 group-hover:bg-white/25 flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    <ArrowUpRight className="w-4 h-4 text-white group-hover:text-yellow-300 transition-colors" />
-                  </div>
-
-                  {/* Nombre grande y centrado en el cuadrado (sin descripción ni botones extras) */}
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight group-hover:text-yellow-300 transition-colors drop-shadow-sm text-center px-4">
-                    {other.name}
-                  </span>
-                </button>
-              ))}
-            </div>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10 flex flex-col sm:flex-row items-center justify-between text-sm text-white/80 gap-6">
+          <div className="flex items-center gap-3">
+            <span className="font-black text-white text-base tracking-wide">{brand.name}</span>
+            <span>·</span>
+            <span>Una marca del ecosistema ECOPACIFIC</span>
           </div>
-
-          {/* Retorno corporativo */}
-          <div className="mt-16 pt-8 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between text-xs text-white/70 gap-4">
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-white">{brand.name}</span>
-              <span>·</span>
-              <span>Una marca del ecosistema ECOPACIFIC</span>
-            </div>
-            <button
-              onClick={onNavigateHome}
-              className="text-white hover:underline font-semibold cursor-pointer"
-            >
-              ← Regresar al portal ECOPACIFIC
-            </button>
-          </div>
+          <button
+            onClick={onNavigateHome}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold transition-all cursor-pointer shadow-xs hover:text-yellow-300"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Regresar al portal ECOPACIFIC</span>
+          </button>
         </div>
-      </section>
+      </footer>
 
       {/* Modal para Ficha Individual Completa */}
       {selectedProduct && (

@@ -9,7 +9,7 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import { Language } from '../types';
-import ecopacificLogo from '../assets/ecopacificlogo.png';
+import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 
 interface ContactSubpageProps {
@@ -41,54 +41,17 @@ export const ContactSubpage: React.FC<ContactSubpageProps> = ({
 
   return (
     <div className="min-h-screen flex flex-col bg-[#5B8C2A] text-white selection:bg-white selection:text-[#5B8C2A]">
-      {/* Top Bar: Al apretar ECOPACIFIC vuelves directamente al inicio como en las demás secciones */}
-      <header className="sticky top-0 z-40 bg-[#5B8C2A] text-white shadow-md border-b border-[#4A7422]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 py-3.5 flex items-center justify-between">
-          <button
-            onClick={onNavigateHome}
-            className="flex items-center cursor-pointer hover:opacity-90 transition-opacity focus:outline-hidden"
-            aria-label="ECOPACIFIC Inicio"
-            title={language === 'es' ? 'Volver al Inicio' : 'Back to Home'}
-          >
-            <img
-              src={ecopacificLogo}
-              alt="ECOPACIFIC"
-              className="h-8 sm:h-10 w-auto object-contain drop-shadow-sm"
-            />
-          </button>
-
-          <div className="flex items-center gap-4">
-            <span className="text-sm sm:text-base uppercase tracking-widest text-white font-bold">
-              {language === 'es' ? 'Contacto' : 'Contact'}
-            </span>
-            <div className="flex gap-1.5 p-1 rounded-full bg-black/15 border border-white/20">
-              <button
-                onClick={() => onLanguageChange('es')}
-                className={`px-3 py-1 rounded-full text-xs transition-all font-bold cursor-pointer ${
-                  language === 'es'
-                    ? 'bg-white text-[#5B8C2A] shadow-xs'
-                    : 'text-white/80 hover:text-white'
-                }`}
-              >
-                ES
-              </button>
-              <button
-                onClick={() => onLanguageChange('en')}
-                className={`px-3 py-1 rounded-full text-xs transition-all font-bold cursor-pointer ${
-                  language === 'en'
-                    ? 'bg-white text-[#5B8C2A] shadow-xs'
-                    : 'text-white/80 hover:text-white'
-                }`}
-              >
-                EN
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+      {/* Top Navbar con menú de 3 rayas a la izquierda, logo centrado y selector de idioma */}
+      <Navbar
+        currentPath="/contacto"
+        onNavigate={onNavigate}
+        language={language}
+        onLanguageChange={onLanguageChange}
+        onOpenContact={() => {}}
+      />
 
       {/* Contenido Principal de la Sección de Contacto */}
-      <main className="flex-grow py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+      <main className="flex-grow pt-24 sm:pt-28 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Header de la sección (sin la burbuja innecesaria) */}
           <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">

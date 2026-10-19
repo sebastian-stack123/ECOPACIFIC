@@ -1,7 +1,6 @@
 import React from 'react';
-import { ArrowDown } from 'lucide-react';
 import { Language } from '../types';
-import featuredJuicesImg from '../assets/images/bebidas_tropicales_en_la_finca.jpg';
+import featuredJuicesImg from '../assets/images/bebidas_tropicales_en_la_cosecha.png';
 
 interface TransitionSectionProps {
   language: Language;
@@ -26,20 +25,11 @@ export const TransitionSection: React.FC<TransitionSectionProps> = ({ language }
           </span>
 
           {/* Título Principal: Transformamos lo que nace del campo */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight leading-[1.08] text-center max-w-4xl mx-auto mb-10 text-balance drop-shadow-xs">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight leading-[1.08] text-center max-w-4xl mx-auto text-balance drop-shadow-xs">
             {language === 'es'
               ? 'Transformamos lo que nace del campo'
               : 'Transforming what grows from the land'}
           </h1>
-
-          {/* Botón hacia nuestras marcas */}
-          <a
-            href="#marcas"
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider text-[#5B8C2A] bg-white hover:bg-stone-100 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            <span>{language === 'es' ? 'Nuestras marcas' : 'Our brands'}</span>
-            <ArrowDown className="w-4 h-4 animate-bounce" />
-          </a>
         </div>
       </section>
 
@@ -48,7 +38,7 @@ export const TransitionSection: React.FC<TransitionSectionProps> = ({ language }
         <div className="max-w-5xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-stone-300/80 bg-stone-100 aspect-[4/3] sm:aspect-[16/10] md:h-[560px]">
           <img
             src={featuredJuicesImg}
-            alt="EcoPacific - Coco Freeze y D'Hoy Jugos Naturales"
+            alt="EcoPacific - Bebidas tropicales en la cosecha"
             loading="lazy"
             decoding="async"
             referrerPolicy="no-referrer"
