@@ -1,7 +1,11 @@
 import { Brand } from '../types';
 import cocoFreezeImg from '../assets/images/cocofreeze_nuevo.png';
 import cocofreezeAguaDeCocoImg from '../assets/images/cocofreeze_aguadecoco.png';
-import saborescocofreezeImg from '../assets/images/saborescocofreeze.png';
+import cocofreezePipaNaturalImg from '../assets/images/cocofreeze_pipa_natural.png';
+import cocofreezeJugoDeCocoImg from '../assets/images/cocofreeze_jugo_de_coco.png';
+import cocofreezeAguaDeCocoConPinaImg from '../assets/images/cocofreeze_agua_de_coco_con_pina.png';
+import cocofreezeLimonadaDeCocoImg from '../assets/images/cocofreeze_limonada_de_coco.png';
+import cocofreezePinaColadaImg from '../assets/images/cocofreeze_pina_colada.png';
 import dhoyImg from '../assets/images/dhoy_marca.jpg';
 import dhoyJugo100Img from '../assets/images/dhoy_jugo100.png';
 import dhoyShotImg from '../assets/images/dhoy_shot.png';
@@ -112,7 +116,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Almacenar en lugar fresco y seco o refrigerar para un consumo óptimo.',
           origin: 'Palmas seleccionadas de la costa pacífica.'
         },
-        imageUrl: cocofreezeAguaDeCocoImg
+        imageUrl: cocofreezePipaNaturalImg
       },
       {
         id: 'cf-jugo-coco',
@@ -126,7 +130,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener en refrigeración. Agitar bien antes de disfrutar.',
           origin: 'Cocos frescos ecuatorianos.'
         },
-        imageUrl: saborescocofreezeImg
+        imageUrl: cocofreezeJugoDeCocoImg
       },
       {
         id: 'cf-coco-pina',
@@ -140,7 +144,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener refrigerado entre 2°C y 4°C.',
           origin: 'Frutas cosechadas en zonas tropicales de origen.'
         },
-        imageUrl: saborescocofreezeImg
+        imageUrl: cocofreezeAguaDeCocoConPinaImg
       },
       {
         id: 'cf-limonada-coco',
@@ -154,7 +158,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener frío para preservar frescura cítrica.',
           origin: 'Cítricos y cocos del Pacífico.'
         },
-        imageUrl: saborescocofreezeImg
+        imageUrl: cocofreezeLimonadaDeCocoImg
       },
       {
         id: 'cf-pina-colada',
@@ -168,7 +172,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar siempre para servir bien frío.',
           origin: 'Frutas tropicales de campo.'
         },
-        imageUrl: saborescocofreezeImg
+        imageUrl: cocofreezePinaColadaImg
       }
     ]
   },

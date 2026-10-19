@@ -7,7 +7,7 @@ import { ProductDetailModal } from './ProductDetailModal';
 import cocofreezeLogoTransparent from '../assets/images/cocofreeze_logo_transparent.png';
 import cocofreezePortadaImg from '../assets/images/cocofreeze_portada_2026.jpg';
 import aguaDeCocoCategoryImg from '../assets/images/cocofreeze_aguadecoco.png';
-import saborescocofreezeImg from '../assets/images/saborescocofreeze.png';
+import saboresDeCocoImg from '../assets/images/sabores_de_coco.png';
 import cocosStoryImg from '../assets/images/cocos.jpg';
 import dhoyStoryImg from '../assets/images/dhoy.jpg';
 import dhoyMenuImg from '../assets/images/dhoyimagenmenu.jpg';
@@ -136,7 +136,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
     if (brand.id === 'coco-freeze') {
       return familyId === 'agua-de-coco' || index === 0
         ? aguaDeCocoCategoryImg
-        : saborescocofreezeImg;
+        : saboresDeCocoImg;
     }
     if (brand.id === 'dhoy') {
       if (familyId === '100-jugo' || index === 0) return dhoyJugo100Img;
