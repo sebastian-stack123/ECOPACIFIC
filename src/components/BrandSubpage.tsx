@@ -326,7 +326,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                   onClick={() => setIsDrawerOpen(false)}
                   className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
                 >
-                  {brand.id === 'coco-freeze' ? 'Cosechado en su punto' : 'Declaración de valor'}
+                  {brand.id === 'coco-freeze' ? 'Cosechado en su punto' : 'Inicio'}
                 </a>
 
                 {brand.milestones && brand.milestones.length > 0 && (
@@ -359,14 +359,10 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       )}
 
       {/* ========================================================
-          1. DECLARACIÓN DE VALOR (Lo primero en pantalla debajo del navbar para todas las marcas)
+          1. INICIO / DECLARACIÓN (Lo primero en pantalla debajo del navbar para todas las marcas)
           ======================================================== */}
       <section id="valor" className="pt-10 sm:pt-16 pb-14 sm:pb-20 bg-white text-center">
-        {/* Ancla adicional para compatibilidad con links a cosechado-en-su-punto */}
         <div id="cosechado-en-su-punto" className="max-w-5xl mx-auto px-6 sm:px-8">
-          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-400 block mb-3">
-            Declaración de valor
-          </span>
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-stone-900 tracking-tight mb-6 flex flex-col items-center gap-2">
             {brand.id === 'dhoy' ? (
               <>
