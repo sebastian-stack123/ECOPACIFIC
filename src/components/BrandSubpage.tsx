@@ -29,10 +29,18 @@ import dhoyantiguatImg from '../assets/images/dhoyantiguat.png';
 import dhoyfabricaImg from '../assets/images/dhoyfabrica.png';
 import dhoyshotshitosImg from '../assets/images/dhoyshotshitos.png';
 import dhoy2026BotellaImg from '../assets/images/dhoy_2026_botella.jpg';
+import naturalezaMesaRusticaImg from '../assets/images/dhoy_naturaleza_fresca_mesa_rustica.png';
 import lafabricaImg from '../assets/images/lafabrica-1.jpg';
 import campo3Img from '../assets/images/campo3.jpg';
 import fotoEcopacificImg from '../assets/images/fotoecopacific.jpg';
 import bebidasTropicalesImg from '../assets/images/bebidas_tropicales_en_la_cosecha.png';
+
+// DHOY Categorías portadas (primer producto de cada categoría)
+import dhoy355mlImg from '../assets/EP_DHOY_355ML_1.png';
+import dhoyNaranjaZanaImg from '../assets/355-naranjazana.jpg';
+import dhoyColdPitahayaImg from '../assets/COLD-PRESSED-PITAHAYA.png';
+import dhoyShotInmuniImg from '../assets/JENGIBRE.jpg';
+import dhoySabilaImg from '../assets/sabila.png';
 
 interface BrandSubpageProps {
   brand?: Brand;
@@ -57,12 +65,12 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
   const [selectedFamilyId, setSelectedFamilyId] = useState<string | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
 
-  // Ref & scroll tracker for the single zigzag rolling coconut (Coco Freeze only)
+  // Ref & scroll tracker for the zigzag rolling coconut (Coco Freeze) and orange (DHOY)
   const historyTimelineRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
 
   useEffect(() => {
-    if (brand.id !== 'coco-freeze') return;
+    if (brand.id !== 'coco-freeze' && brand.id !== 'dhoy') return;
 
     const handleScroll = () => {
       if (!historyTimelineRef.current) return;
@@ -148,12 +156,12 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
         : saboresDeCocoImg;
     }
     if (brand.id === 'dhoy') {
-      if (familyId === 'jugo-de-naranja' || index === 0) return dhoyJugo100Img;
-      if (familyId === 'mezclas-de-fruta' || index === 1) return dhoyMenuImg;
-      if (familyId === 'cold-pressed' || index === 2) return dhoyColdPressedImg;
-      if (familyId === 'shots' || index === 3) return dhoyshotshitosImg;
-      if (familyId === 'especialidades-dhoy' || index === 4) return dhoyImg;
-      return dhoyJugo100Img;
+      if (familyId === 'jugo-de-naranja' || index === 0) return dhoy355mlImg;
+      if (familyId === 'mezclas-de-fruta' || index === 1) return dhoyNaranjaZanaImg;
+      if (familyId === 'cold-pressed' || index === 2) return dhoyColdPitahayaImg;
+      if (familyId === 'shots' || index === 3) return dhoyShotInmuniImg;
+      if (familyId === 'especialidades-dhoy' || index === 4) return dhoySabilaImg;
+      return dhoy355mlImg;
     }
     if (brand.id === 'ecolove') {
       return index === 0 ? ecoloveMenuImg : ecoloveImg;
@@ -413,8 +421,8 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
           {brand.id === 'dhoy' && (
             <div className="max-w-5xl mx-auto rounded-3xl sm:rounded-4xl overflow-hidden shadow-2xl border-2 border-white/20 aspect-[16/9] sm:aspect-[21/9] md:h-[460px] bg-white/10 backdrop-blur-sm">
               <img
-                src={dhoyMenuImg}
-                alt="D'Hoy - De familia y del campo. Sabe a fruta de verdad."
+                src={naturalezaMesaRusticaImg}
+                alt="D'Hoy - Naturaleza fresca en la mesa rústica"
                 className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-102"
               />
             </div>
@@ -468,7 +476,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
               ref={historyTimelineRef}
               className="relative max-w-5xl mx-auto mt-14 py-6"
             >
-              {/* Coco rodante verde (pipa) grande y notorio en zigzag (SOLO para Coco Freeze) */}
+              {/* Coco rodante verde natural en zigzag (SOLO para Coco Freeze) */}
               {brand.id === 'coco-freeze' && (
                 <div
                   className="absolute pointer-events-none z-20 transition-transform duration-75 will-change-transform hidden md:flex items-center justify-center"
@@ -479,40 +487,34 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                   }}
                 >
                   <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
-                    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_12px_24px_rgba(0,0,0,0.5)]" fill="none">
+                    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)]" fill="none">
                       <defs>
-                        <radialGradient id="pipaGreenGrad" cx="35%" cy="35%" r="70%">
+                        <radialGradient id="cocoShellGradGreen" cx="36%" cy="32%" r="68%">
                           <stop offset="0%" stopColor="#86EFAC" />
-                          <stop offset="30%" stopColor="#22C55E" />
-                          <stop offset="75%" stopColor="#15803D" />
-                          <stop offset="100%" stopColor="#14532D" />
+                          <stop offset="28%" stopColor="#4ADE80" />
+                          <stop offset="70%" stopColor="#22C55E" />
+                          <stop offset="100%" stopColor="#15803D" />
                         </radialGradient>
-                        <linearGradient id="pipaCutTop" x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" stopColor="#FFFFFF" />
-                          <stop offset="75%" stopColor="#F1F5F9" />
-                          <stop offset="100%" stopColor="#CBD5E1" />
+                        <linearGradient id="cocoCalyxGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#4D7C0F" />
+                          <stop offset="50%" stopColor="#65A30D" />
+                          <stop offset="100%" stopColor="#A3E635" />
                         </linearGradient>
                       </defs>
-                      {/* Pipa Green Outer Husk (Coco Verde) */}
-                      <path
-                        d="M22 45 C15 62, 22 84, 50 88 C78 84, 85 62, 78 45 C74 38, 66 32, 50 32 C34 32, 26 38, 22 45 Z"
-                        fill="url(#pipaGreenGrad)"
-                        stroke="#14532D"
-                        strokeWidth="2"
-                      />
-                      {/* Shaved white conical cut top */}
-                      <path
-                        d="M32 36 L50 16 L68 36 C60 38, 40 38, 32 36 Z"
-                        fill="url(#pipaCutTop)"
-                        stroke="#94A3B8"
-                        strokeWidth="1.2"
-                      />
-                      {/* Blue circular badge */}
-                      <circle cx="50" cy="58" r="14" fill="#0284C7" stroke="#38BDF8" strokeWidth="1.5" />
-                      <circle cx="50" cy="58" r="10" fill="#009FE3" />
-                      <ellipse cx="48" cy="54" rx="4" ry="2.5" fill="#FFFFFF" opacity="0.6" />
-                      {/* Drinking straw */}
-                      <path d="M48 20 L52 10 L56 12 L52 22 Z" fill="#38BDF8" stroke="#0284C7" strokeWidth="0.8" />
+                      {/* Corona / sépalos de la pipa verde */}
+                      <path d="M48 9 L52 9 L51.5 17 L48.5 17 Z" fill="#65A30D" />
+                      <path d="M50 16 C42 9, 32 10, 29 16 C37 17, 43 21, 46 25 Z" fill="url(#cocoCalyxGrad)" stroke="#3F6212" strokeWidth="0.8" />
+                      <path d="M50 16 C58 8, 68 9, 71 15 C63 17, 57 21, 54 25 Z" fill="url(#cocoCalyxGrad)" stroke="#3F6212" strokeWidth="0.8" />
+                      <path d="M50 16 C46 22, 54 22, 50 26 Z" fill="#84CC16" />
+                      {/* Cuerpo de la pipa verde */}
+                      <ellipse cx="50" cy="56" rx="37" ry="39" fill="url(#cocoShellGradGreen)" stroke="#16A34A" strokeWidth="2" />
+                      {/* Brillo suave de coco fresco */}
+                      <path d="M30 40 C36 30, 48 26, 62 28 C56 26, 40 28, 30 40 Z" fill="#FFFFFF" opacity="0.35" />
+                      <ellipse cx="36" cy="46" rx="14" ry="7" fill="#FFFFFF" opacity="0.22" transform="rotate(-30 36 46)" />
+                      {/* Marcas naturales suaves de coco */}
+                      <ellipse cx="42" cy="48" rx="3.5" ry="4.5" fill="#15803D" opacity="0.45" />
+                      <ellipse cx="58" cy="48" rx="3.5" ry="4.5" fill="#15803D" opacity="0.45" />
+                      <ellipse cx="50" cy="66" rx="4" ry="5" fill="#15803D" opacity="0.45" />
                     </svg>
                   </div>
                 </div>
@@ -634,20 +636,16 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
           </div>
 
           {/* Cuadros interactivos de categorías */}
-          <div
-            className={`grid grid-cols-1 ${
-              brand.families.length === 2
-                ? 'md:grid-cols-2 max-w-4xl'
-                : brand.families.length === 3
-                ? 'md:grid-cols-3 max-w-5xl'
-                : 'sm:grid-cols-2 lg:grid-cols-3 max-w-6xl'
-            } gap-8 mx-auto`}
-          >
+          <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
             {brand.families.map((family, idx) => (
               <div
                 key={family.id}
                 onClick={() => setSelectedFamilyId(family.id)}
-                className="group rounded-3xl p-6 sm:p-8 transition-all duration-300 cursor-pointer flex flex-col items-center justify-between bg-white text-stone-900 shadow-xl hover:shadow-2xl hover:-translate-y-1"
+                className={`group rounded-3xl p-6 sm:p-8 transition-all duration-300 cursor-pointer flex flex-col items-center justify-between bg-white text-stone-900 shadow-xl hover:shadow-2xl hover:-translate-y-1 w-full ${
+                  brand.families.length === 2
+                    ? 'sm:w-[calc(50%-1.25rem)] max-w-md'
+                    : 'sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.5rem)] max-w-[360px]'
+                }`}
               >
                 <div className="w-full h-72 sm:h-80 md:h-96 rounded-2xl bg-white p-3 sm:p-5 flex items-center justify-center overflow-hidden shadow-inner">
                   <img

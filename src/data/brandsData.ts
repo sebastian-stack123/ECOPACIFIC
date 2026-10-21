@@ -13,6 +13,37 @@ import dhoyColdPressedImg from '../assets/images/dhoy_coldpressed.png';
 import ecoloveImg from '../assets/images/ecolove_nuevo.png';
 import hortilistoImg from '../assets/images/hortilisto_nuevo.png';
 
+// DHOY Jugo de Naranja
+import dhoy355mlImg from '../assets/EP_DHOY_355ML_1.png';
+import dhoySinPulpaImg from '../assets/EP_DHOY_SINPULPA_2.5L_1.png';
+import dhoyCalcioDImg from '../assets/EP_DHOY_CALCIOTYD_2.5L_1.png';
+
+// DHOY Mezclas de Fruta
+import dhoyNaranjaZanaImg from '../assets/355-naranjazana.jpg';
+import dhoyNaranjaMangoImg from '../assets/355-naranjamango.jpg';
+import dhoyNaranjaFresaImg from '../assets/355-naranjabanafresa.jpg';
+import dhoyMoraImg from '../assets/mora355.png';
+import dhoyMandarinaImg from '../assets/mandarina355ml.png';
+import dhoyCranberryImg from '../assets/Chamberry.jpg';
+import dhoyToronjaImg from '../assets/toronja.png';
+import dhoyNectarFrutillaImg from '../assets/fresa.png';
+import dhoyLimonadaFresaImg from '../assets/ECOPACIFIC-LIMONADA-FRESA.png';
+
+// DHOY Cold Pressed
+import dhoyColdPitahayaImg from '../assets/COLD-PRESSED-PITAHAYA.png';
+import dhoyColdPinaImg from '../assets/COLD-PRESSED-PINA.png';
+import dhoyColdRemolachaImg from '../assets/COLD-PRESSED-REMOLACHA.png';
+
+// DHOY Shots
+import dhoyShotInmuniImg from '../assets/JENGIBRE.jpg';
+import dhoyShotInmuniPlusImg from '../assets/extreme.jpg';
+import dhoyShotBalanceImg from '../assets/CURCUMA.jpg';
+import dhoyShotDigestiImg from '../assets/DIGESTIVE.jpg';
+import dhoyShotDefenImg from '../assets/VITAMINA-C.jpg';
+
+// DHOY Especialidades
+import dhoySabilaImg from '../assets/sabila.png';
+
 export const BRANDS_DATA: Record<string, Brand> = {
   'coco-freeze': {
     id: 'coco-freeze',
@@ -272,7 +303,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener refrigerado a 4°C. Agitar suavemente antes de servir.',
           origin: 'Huertos de cítricos seleccionados por EcoPacific.'
         },
-        imageUrl: dhoyJugo100Img,
+        imageUrl: dhoy355mlImg,
         featured: true
       },
       {
@@ -287,7 +318,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Conservar siempre en frío.',
           origin: 'Cítricos de cosecha controlada.'
         },
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoySinPulpaImg
       },
       {
         id: 'dh-naranja-calcio-vitamina-d',
@@ -301,7 +332,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar a 4°C.',
           origin: 'Huertos ecuatorianos.'
         },
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoyCalcioDImg
       },
       {
         id: 'dh-naranja-zanahoria',
@@ -315,7 +346,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar entre 2°C y 4°C.',
           origin: 'Cultivos de altura y valles cálidos.'
         },
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoyNaranjaZanaImg
       },
       {
         id: 'dh-naranja-mango',
@@ -329,7 +360,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar a 4°C.',
           origin: 'Frutas tropicales del campo.'
         },
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoyNaranjaMangoImg
       },
       {
         id: 'dh-naranja-fresa',
@@ -343,7 +374,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar entre 2°C y 4°C.',
           origin: 'Orígenes seleccionados.'
         },
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoyNaranjaFresaImg
       },
       {
         id: 'dh-naranja-jengibre',
@@ -371,7 +402,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigeración continua.',
           origin: 'Valles andinos.'
         },
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoyMoraImg
       },
       {
         id: 'dh-mandarina',
@@ -385,7 +416,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar a 4°C.',
           origin: 'Huertos de cítricos dulces.'
         },
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoyMandarinaImg
       },
       {
         id: 'dh-cranberry',
@@ -399,7 +430,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener en frío.',
           origin: 'Selección de berries de calidad.'
         },
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoyCranberryImg
       },
       {
         id: 'dh-toronja',
@@ -413,7 +444,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar entre 2°C y 4°C.',
           origin: 'Cultivos de cítricos.'
         },
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoyToronjaImg
       },
       {
         id: 'dh-nectar-frutilla',
@@ -427,7 +458,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar a 4°C.',
           origin: 'Campos frutícolas.'
         },
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoyNectarFrutillaImg
       },
       {
         id: 'dh-limonada-fresa',
@@ -441,7 +472,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener refrigerado.',
           origin: 'Frutas frescas de huerto.'
         },
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoyLimonadaFresaImg
       },
       {
         id: 'dh-cold-pitahaya',
@@ -455,7 +486,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar estrictamente entre 2°C y 4°C.',
           origin: 'Cultivos de pitahaya ecuatoriana.'
         },
-        imageUrl: dhoyColdPressedImg
+        imageUrl: dhoyColdPitahayaImg
       },
       {
         id: 'dh-cold-pina-hierbabuena',
@@ -469,7 +500,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener en frío.',
           origin: 'Cosechas tropicales.'
         },
-        imageUrl: dhoyColdPressedImg
+        imageUrl: dhoyColdPinaImg
       },
       {
         id: 'dh-cold-remolacha',
@@ -483,7 +514,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener entre 2°C y 4°C.',
           origin: 'Hortalizas y frutas de origen.'
         },
-        imageUrl: dhoyColdPressedImg
+        imageUrl: dhoyColdRemolachaImg
       },
       {
         id: 'dh-shot-inmuni',
@@ -497,7 +528,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener en frío.',
           origin: 'Raíces frescas de cultivo.'
         },
-        imageUrl: dhoyShotImg
+        imageUrl: dhoyShotInmuniImg
       },
       {
         id: 'dh-shot-inmuni-plus',
@@ -511,7 +542,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Conservar refrigerado.',
           origin: 'Raíces y cítricos seleccionados.'
         },
-        imageUrl: dhoyShotImg
+        imageUrl: dhoyShotInmuniPlusImg
       },
       {
         id: 'dh-shot-balance',
@@ -525,7 +556,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Mantener en frío.',
           origin: 'Campos de cultivo agroecológico.'
         },
-        imageUrl: dhoyShotImg
+        imageUrl: dhoyShotBalanceImg
       },
       {
         id: 'dh-shot-digesti',
@@ -539,7 +570,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar a 4°C.',
           origin: 'Frutas tropicales.'
         },
-        imageUrl: dhoyShotImg
+        imageUrl: dhoyShotDigestiImg
       },
       {
         id: 'dh-shot-defen',
@@ -553,7 +584,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Refrigerar siempre.',
           origin: 'Cítricos de máxima concentración.'
         },
-        imageUrl: dhoyShotImg
+        imageUrl: dhoyShotDefenImg
       },
       {
         id: 'dh-zumo-limon',
@@ -581,7 +612,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
           conservation: 'Conservar refrigerado.',
           origin: 'Cultivos de aloe de origen local.'
         },
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoySabilaImg
       }
     ]
   },
