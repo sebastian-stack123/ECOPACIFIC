@@ -3,21 +3,32 @@ import { Language } from './types';
 import { CoconutLoader } from './components/CoconutLoader';
 import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton';
 
-// Dynamic lazy imports: Only the page currently requested by the user is loaded.
-// Other pages and their assets are NOT fetched until navigated to.
-const HomePage = lazy(() =>
-  import('./components/HomePage').then((m) => ({ default: m.HomePage }))
-);
-const NosotrosSubpage = lazy(() =>
+import { HomePage } from './components/HomePage';
+
+// Lazy load subpages on-demand with automatic retry on chunk load failures
+function lazyRetry<T extends React.ComponentType<any>>(
+  componentImport: () => Promise<{ default: T }>
+) {
+  return lazy(async () => {
+    try {
+      return await componentImport();
+    } catch {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      return await componentImport();
+    }
+  });
+}
+
+const NosotrosSubpage = lazyRetry(() =>
   import('./components/NosotrosSubpage').then((m) => ({ default: m.NosotrosSubpage }))
 );
-const SustainabilitySubpage = lazy(() =>
+const SustainabilitySubpage = lazyRetry(() =>
   import('./components/SustainabilitySubpage').then((m) => ({ default: m.SustainabilitySubpage }))
 );
-const BrandSubpage = lazy(() =>
+const BrandSubpage = lazyRetry(() =>
   import('./components/BrandSubpage').then((m) => ({ default: m.BrandSubpage }))
 );
-const ContactSubpage = lazy(() =>
+const ContactSubpage = lazyRetry(() =>
   import('./components/ContactSubpage').then((m) => ({ default: m.ContactSubpage }))
 );
 

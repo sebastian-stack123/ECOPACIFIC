@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language } from '../types';
-import featuredJuicesImg from '../assets/images/bebidas_tropicales_en_la_cosecha.png';
+import cocofreezefotoinicioImg from '../assets/images/cocofreezefotoinicio.png';
 
 interface TransitionSectionProps {
   language: Language;
@@ -37,8 +37,8 @@ export const TransitionSection: React.FC<TransitionSectionProps> = ({ language }
       <section className="bg-[#FBF9F5] py-8 sm:py-14 px-4 sm:px-8 border-b border-stone-200/60">
         <div className="max-w-5xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-stone-300/80 bg-stone-100 aspect-[4/3] sm:aspect-[16/10] md:h-[560px]">
           <img
-            src={featuredJuicesImg}
-            alt="EcoPacific - Bebidas tropicales en la cosecha"
+            src={cocofreezefotoinicioImg}
+            alt="EcoPacific - Coco Freeze en el inicio"
             loading="lazy"
             decoding="async"
             referrerPolicy="no-referrer"

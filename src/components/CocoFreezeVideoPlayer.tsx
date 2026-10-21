@@ -88,7 +88,7 @@ export const CocoFreezeVideoPlayer: React.FC<CocoFreezeVideoPlayerProps> = ({
     <div
       ref={containerRef}
       onClick={togglePlay}
-      className="relative w-full max-w-4xl mx-auto rounded-3xl sm:rounded-4xl overflow-hidden shadow-2xl bg-black aspect-video md:aspect-[16/10] border-2 border-stone-200/60 group cursor-pointer"
+      className="relative w-full max-w-5xl mx-auto rounded-3xl sm:rounded-4xl overflow-hidden shadow-2xl bg-black aspect-video border-2 border-white/20 group cursor-pointer"
     >
       <video
         ref={videoRef}
@@ -96,7 +96,7 @@ export const CocoFreezeVideoPlayer: React.FC<CocoFreezeVideoPlayerProps> = ({
         loop
         playsInline
         preload="auto"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-contain bg-black"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       />

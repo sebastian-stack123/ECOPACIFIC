@@ -24,6 +24,11 @@ import hortilistoMenuImg from '../assets/images/hortilistoimagenlogo.jpg';
 import { CocoFreezeVideoPlayer } from './CocoFreezeVideoPlayer';
 import cocofreeze2006BotellaImg from '../assets/images/cocofreeze_2006_botella_azul.png';
 import screenshot2010Img from '../assets/images/screenshot_2010.png';
+import cocosRefrigeradoraImg from '../assets/images/cocos_refrigeradora.jpg';
+import dhoyantiguatImg from '../assets/images/dhoyantiguat.png';
+import dhoyfabricaImg from '../assets/images/dhoyfabrica.png';
+import dhoyshotshitosImg from '../assets/images/dhoyshotshitos.png';
+import dhoy2026BotellaImg from '../assets/images/dhoy_2026_botella.jpg';
 import lafabricaImg from '../assets/images/lafabrica-1.jpg';
 import campo3Img from '../assets/images/campo3.jpg';
 import fotoEcopacificImg from '../assets/images/fotoecopacific.jpg';
@@ -143,10 +148,12 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
         : saboresDeCocoImg;
     }
     if (brand.id === 'dhoy') {
-      if (familyId === '100-jugo' || index === 0) return dhoyJugo100Img;
-      if (familyId === 'shot' || index === 1) return dhoyShotImg;
+      if (familyId === 'jugo-de-naranja' || index === 0) return dhoyJugo100Img;
+      if (familyId === 'mezclas-de-fruta' || index === 1) return dhoyMenuImg;
       if (familyId === 'cold-pressed' || index === 2) return dhoyColdPressedImg;
-      return dhoyImg;
+      if (familyId === 'shots' || index === 3) return dhoyshotshitosImg;
+      if (familyId === 'especialidades-dhoy' || index === 4) return dhoyImg;
+      return dhoyJugo100Img;
     }
     if (brand.id === 'ecolove') {
       return index === 0 ? ecoloveMenuImg : ecoloveImg;
@@ -160,17 +167,17 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
   // Helper to get milestone images paired with each milestone
   const getMilestoneImage = (index: number) => {
     if (brand.id === 'coco-freeze') {
-      if (index === 0) return { img: cocosStoryImg, alt: '2004 El comienzo - 200 cocos' };
+      if (index === 0) return { img: cocosRefrigeradoraImg, alt: '2004 El comienzo - 200 cocos' };
       if (index === 1) return { img: cocofreeze2006BotellaImg, alt: '2006 Del coco a la botella' };
       if (index === 2) return { img: screenshot2010Img, alt: '2010 Aprender desde el cultivo' };
       return { img: cocofreezePortadaImg, alt: '2026 Cosechado en su punto' };
     }
     if (brand.id === 'dhoy') {
       if (index === 0) return { img: dhoyStoryImg, alt: "2009 Nace DHOY" };
-      if (index === 1) return { img: lafabricaImg, alt: "2011 Llegamos a más personas" };
-      if (index === 2) return { img: campo3Img, alt: "2012 Tecnología para cuidar la fruta" };
-      if (index === 3) return { img: dhoyShotImg, alt: "2016 Nacen los shots" };
-      return { img: dhoyMenuImg, alt: "2026 Fruta de verdad" };
+      if (index === 1) return { img: dhoyantiguatImg, alt: "2011 Llegamos a más personas" };
+      if (index === 2) return { img: dhoyfabricaImg, alt: "2012 Tecnología para cuidar la fruta" };
+      if (index === 3) return { img: dhoyshotshitosImg, alt: "2016 Nacen los shots" };
+      return { img: dhoy2026BotellaImg, alt: "2026 Fruta de verdad" };
     }
     if (brand.id === 'ecolove') {
       if (index === 0) return { img: ecoloveMenuImg, alt: "2017 Primeros pasos" };
@@ -361,9 +368,22 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       {/* ========================================================
           1. INICIO / DECLARACIÓN (Lo primero en pantalla debajo del navbar para todas las marcas)
           ======================================================== */}
-      <section id="valor" className="pt-10 sm:pt-16 pb-14 sm:pb-20 bg-white text-center">
+      <section
+        id="valor"
+        className={`pt-12 sm:pt-16 pb-14 sm:pb-20 text-center transition-colors duration-500 ${
+          brand.id === 'coco-freeze'
+            ? 'bg-[#009FE3] text-white'
+            : brand.id === 'dhoy'
+            ? 'bg-[#3b6e22] text-white'
+            : 'bg-white text-stone-900'
+        }`}
+      >
         <div id="cosechado-en-su-punto" className="max-w-5xl mx-auto px-6 sm:px-8">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-stone-900 tracking-tight mb-6 flex flex-col items-center gap-2">
+          <h2
+            className={`text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6 flex flex-col items-center gap-2 ${
+              brand.id === 'coco-freeze' || brand.id === 'dhoy' ? 'text-white drop-shadow-xs' : 'text-stone-900'
+            }`}
+          >
             {brand.id === 'dhoy' ? (
               <>
                 <span>DE FAMILIA Y DEL CAMPO.</span>
@@ -374,7 +394,11 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             )}
           </h2>
 
-          <p className="text-base sm:text-lg md:text-xl text-stone-700 leading-relaxed font-normal max-w-3xl mx-auto mb-10 sm:mb-14 text-balance">
+          <p
+            className={`text-base sm:text-lg md:text-xl leading-relaxed font-normal max-w-3xl mx-auto mb-10 sm:mb-14 text-balance ${
+              brand.id === 'coco-freeze' || brand.id === 'dhoy' ? 'text-white/95' : 'text-stone-700'
+            }`}
+          >
             {brand.id === 'coco-freeze'
               ? 'Todo comienza en el campo. Seleccionamos cocos en su punto ideal de cosecha para llevar a cada botella ese sabor naturalmente dulce, fresco y auténtico que hace especial al coco. Más de 20 años cerca del origen nos han enseñado algo simple: cuando el coco se cosecha en su punto, se siente en cada sorbo.'
               : brand.shortDescription}
@@ -384,6 +408,17 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
           {brand.id === 'coco-freeze' && (
             <CocoFreezeVideoPlayer src="/VIDEO-COCO-FREEZE-2026.mp4" />
           )}
+
+          {/* Imagen debajo de inicio para DHOY */}
+          {brand.id === 'dhoy' && (
+            <div className="max-w-5xl mx-auto rounded-3xl sm:rounded-4xl overflow-hidden shadow-2xl border-2 border-white/20 aspect-[16/9] sm:aspect-[21/9] md:h-[460px] bg-white/10 backdrop-blur-sm">
+              <img
+                src={dhoyMenuImg}
+                alt="D'Hoy - De familia y del campo. Sabe a fruta de verdad."
+                className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-102"
+              />
+            </div>
+          )}
         </div>
       </section>
 
@@ -391,24 +426,49 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
           2. HISTORIA Y LOS HITOS (Para marcas con historia: Coco Freeze, D'Hoy, EcoLove; Hortilisto no tiene)
           ======================================================== */}
       {brand.milestones && brand.milestones.length > 0 && brand.storyTitle && (
-        <section id="historia" className="py-20 sm:py-28 bg-[#F8FAFC]">
+        <section
+          id="historia"
+          className={`py-20 sm:py-28 transition-colors duration-500 ${
+            brand.id === 'coco-freeze'
+              ? 'bg-[#0087C1] text-white border-t border-b border-sky-400/30'
+              : brand.id === 'dhoy'
+              ? 'bg-[#315b1d] text-white border-t border-b border-lime-600/30'
+              : 'bg-[#F8FAFC]'
+          }`}
+        >
           <div className="max-w-5xl mx-auto px-6 sm:px-8 text-center">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-400 block mb-2">
+            <span
+              className={`text-xs sm:text-sm font-bold uppercase tracking-wider block mb-2 ${
+                brand.id === 'coco-freeze'
+                  ? 'text-yellow-300'
+                  : brand.id === 'dhoy'
+                  ? 'text-yellow-300'
+                  : 'text-stone-400'
+              }`}
+            >
               Historia
             </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight mb-6">
+            <h2
+              className={`text-3xl sm:text-5xl font-black tracking-tight mb-6 ${
+                brand.id === 'coco-freeze' || brand.id === 'dhoy' ? 'text-white' : 'text-stone-900'
+              }`}
+            >
               {brand.storyTitle}
             </h2>
-            <p className="text-base sm:text-xl text-stone-700 leading-relaxed font-normal max-w-3xl mx-auto mb-12 text-balance">
+            <p
+              className={`text-base sm:text-xl leading-relaxed font-normal max-w-3xl mx-auto mb-12 text-balance ${
+                brand.id === 'coco-freeze' || brand.id === 'dhoy' ? 'text-white/90' : 'text-stone-700'
+              }`}
+            >
               {brand.storyText}
             </p>
 
-            {/* Timeline en zigzag (con coco rodante solo para Coco Freeze, y fotos emparejadas para cada hito) */}
+            {/* Timeline en zigzag (con coco rodante verde para Coco Freeze, naranjita para D'Hoy, y fotos emparejadas para cada hito) */}
             <div
               ref={historyTimelineRef}
               className="relative max-w-5xl mx-auto mt-14 py-6"
             >
-              {/* Coco rodante grande y notorio en zigzag (SOLO para Coco Freeze) */}
+              {/* Coco rodante verde (pipa) grande y notorio en zigzag (SOLO para Coco Freeze) */}
               {brand.id === 'coco-freeze' && (
                 <div
                   className="absolute pointer-events-none z-20 transition-transform duration-75 will-change-transform hidden md:flex items-center justify-center"
@@ -419,27 +479,78 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                   }}
                 >
                   <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
-                    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_12px_24px_rgba(0,0,0,0.45)]" fill="none">
+                    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_12px_24px_rgba(0,0,0,0.5)]" fill="none">
                       <defs>
-                        <radialGradient id="cocoShellGrad" cx="35%" cy="30%" r="70%">
-                          <stop offset="0%" stopColor="#8C532B" />
-                          <stop offset="45%" stopColor="#5E3416" />
-                          <stop offset="100%" stopColor="#381D0B" />
+                        <radialGradient id="pipaGreenGrad" cx="35%" cy="35%" r="70%">
+                          <stop offset="0%" stopColor="#86EFAC" />
+                          <stop offset="30%" stopColor="#22C55E" />
+                          <stop offset="75%" stopColor="#15803D" />
+                          <stop offset="100%" stopColor="#14532D" />
                         </radialGradient>
-                        <linearGradient id="cocoSprout" x1="0%" y1="100%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#4A7422" />
-                          <stop offset="100%" stopColor="#84CC16" />
+                        <linearGradient id="pipaCutTop" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stopColor="#FFFFFF" />
+                          <stop offset="75%" stopColor="#F1F5F9" />
+                          <stop offset="100%" stopColor="#CBD5E1" />
                         </linearGradient>
                       </defs>
-                      <path d="M50 14 C46 6, 36 4, 32 8 C38 10, 44 16, 46 22 Z" fill="url(#cocoSprout)" />
-                      <path d="M50 14 C54 5, 64 6, 68 11 C62 11, 56 17, 53 23 Z" fill="url(#cocoSprout)" />
-                      <ellipse cx="50" cy="54" rx="37" ry="40" fill="url(#cocoShellGrad)" stroke="#2A1406" strokeWidth="2.5" />
-                      <ellipse cx="40" cy="42" rx="4.5" ry="5.5" fill="#1C0D05" />
-                      <circle cx="39" cy="40.5" r="1.5" fill="#4A2813" />
-                      <ellipse cx="60" cy="42" rx="4.5" ry="5.5" fill="#1C0D05" />
-                      <circle cx="59" cy="40.5" r="1.5" fill="#4A2813" />
-                      <ellipse cx="50" cy="62" rx="5" ry="6" fill="#1C0D05" />
-                      <circle cx="49" cy="60.5" r="1.6" fill="#4A2813" />
+                      {/* Pipa Green Outer Husk (Coco Verde) */}
+                      <path
+                        d="M22 45 C15 62, 22 84, 50 88 C78 84, 85 62, 78 45 C74 38, 66 32, 50 32 C34 32, 26 38, 22 45 Z"
+                        fill="url(#pipaGreenGrad)"
+                        stroke="#14532D"
+                        strokeWidth="2"
+                      />
+                      {/* Shaved white conical cut top */}
+                      <path
+                        d="M32 36 L50 16 L68 36 C60 38, 40 38, 32 36 Z"
+                        fill="url(#pipaCutTop)"
+                        stroke="#94A3B8"
+                        strokeWidth="1.2"
+                      />
+                      {/* Blue circular badge */}
+                      <circle cx="50" cy="58" r="14" fill="#0284C7" stroke="#38BDF8" strokeWidth="1.5" />
+                      <circle cx="50" cy="58" r="10" fill="#009FE3" />
+                      <ellipse cx="48" cy="54" rx="4" ry="2.5" fill="#FFFFFF" opacity="0.6" />
+                      {/* Drinking straw */}
+                      <path d="M48 20 L52 10 L56 12 L52 22 Z" fill="#38BDF8" stroke="#0284C7" strokeWidth="0.8" />
+                    </svg>
+                  </div>
+                </div>
+              )}
+
+              {/* Naranjita rodante grande y notoria en zigzag (SOLO para DHOY) */}
+              {brand.id === 'dhoy' && (
+                <div
+                  className="absolute pointer-events-none z-20 transition-transform duration-75 will-change-transform hidden md:flex items-center justify-center"
+                  style={{
+                    top: `${Math.min(Math.max(scrollProgress * 88, 3), 92)}%`,
+                    left: `${50 + 36 * Math.cos(scrollProgress * Math.PI * 3)}%`,
+                    transform: `translate(-50%, -50%) rotate(${scrollProgress * 1440}deg)`,
+                  }}
+                >
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_12px_24px_rgba(0,0,0,0.5)]" fill="none">
+                      <defs>
+                        <radialGradient id="orangeSkinGrad" cx="38%" cy="32%" r="68%">
+                          <stop offset="0%" stopColor="#FED7AA" />
+                          <stop offset="25%" stopColor="#FB923C" />
+                          <stop offset="70%" stopColor="#EA580C" />
+                          <stop offset="100%" stopColor="#C2410C" />
+                        </radialGradient>
+                        <linearGradient id="leafGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#15803D" />
+                          <stop offset="100%" stopColor="#4ADE80" />
+                        </linearGradient>
+                      </defs>
+                      {/* Leaves */}
+                      <path d="M50 20 C38 8, 23 12, 20 22 C30 24, 40 22, 50 20 Z" fill="url(#leafGrad)" stroke="#166534" strokeWidth="0.8" />
+                      <path d="M50 20 C58 10, 72 12, 76 20 C66 22, 58 22, 50 20 Z" fill="url(#leafGrad)" stroke="#166534" strokeWidth="0.8" />
+                      {/* Stem */}
+                      <path d="M48 24 L52 24 L51 15 L49 15 Z" fill="#78350F" />
+                      {/* Orange Body */}
+                      <circle cx="50" cy="56" r="38" fill="url(#orangeSkinGrad)" stroke="#9A3412" strokeWidth="1.5" />
+                      {/* Sheen */}
+                      <ellipse cx="38" cy="44" rx="14" ry="9" fill="#FFF7ED" opacity="0.3" transform="rotate(-20 38 44)" />
                     </svg>
                   </div>
                 </div>
@@ -501,10 +612,23 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       {/* ========================================================
           3. PRODUCTOS (Para todas las marcas)
           ======================================================== */}
-      <section className="py-20 sm:py-28 bg-white" id="productos">
+      <section
+        className={`py-20 sm:py-28 transition-colors duration-500 ${
+          brand.id === 'coco-freeze'
+            ? 'bg-[#009FE3] text-white'
+            : brand.id === 'dhoy'
+            ? 'bg-[#3b6e22] text-white'
+            : 'bg-white text-stone-900'
+        }`}
+        id="productos"
+      >
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
+            <h2
+              className={`text-3xl sm:text-5xl font-black tracking-tight ${
+                brand.id === 'coco-freeze' || brand.id === 'dhoy' ? 'text-white drop-shadow-xs' : 'text-stone-900'
+              }`}
+            >
               Productos
             </h2>
           </div>
@@ -523,7 +647,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
               <div
                 key={family.id}
                 onClick={() => setSelectedFamilyId(family.id)}
-                className="group rounded-3xl p-6 sm:p-8 transition-all duration-300 cursor-pointer flex flex-col items-center justify-between bg-[#FAFAF8] shadow-md hover:shadow-2xl hover:bg-white hover:-translate-y-1"
+                className="group rounded-3xl p-6 sm:p-8 transition-all duration-300 cursor-pointer flex flex-col items-center justify-between bg-white text-stone-900 shadow-xl hover:shadow-2xl hover:-translate-y-1"
               >
                 <div className="w-full h-72 sm:h-80 md:h-96 rounded-2xl bg-white p-3 sm:p-5 flex items-center justify-center overflow-hidden shadow-inner">
                   <img
@@ -608,9 +732,9 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                       className="group bg-white rounded-3xl p-6 sm:p-8 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1 border border-stone-100"
                     >
                       <div>
-                        {/* 1. Nombre del producto */}
-                        <div className="flex items-start justify-between gap-3 mb-3">
-                          <h4 className="text-xl sm:text-2xl font-black text-stone-900 group-hover:opacity-80 transition-opacity">
+                        {/* 1. Nombre del producto (altura fija para alineación simétrica y perfecta de todas las fotos) */}
+                        <div className="h-16 sm:h-20 flex items-center justify-between gap-3 mb-3">
+                          <h4 className="text-xl sm:text-2xl font-black text-stone-900 group-hover:opacity-80 transition-opacity line-clamp-2 leading-tight">
                             {product.name}
                           </h4>
                           <div
@@ -707,25 +831,25 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       )}
 
       {/* ========================================================
-          5. FOOTER EXCLUSIVO (Color del menú navBg, SIN BOTONES DE OTRAS MARCAS)
+          5. CIERRE CON EL LOGO AL MEDIO (Sin "una marca del ecosistema ecopacific")
           ======================================================== */}
       <footer
-        className="py-12 sm:py-16 text-white relative overflow-hidden"
+        className="py-14 sm:py-20 text-white relative overflow-hidden"
         style={{
           backgroundColor: brand.colors.navBg,
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10 flex flex-col sm:flex-row items-center justify-between text-sm text-white/80 gap-6">
-          <div className="flex items-center gap-3">
-            <span className="font-black text-white text-base tracking-wide">{brand.name}</span>
-            <span>·</span>
-            <span>Una marca del ecosistema ECOPACIFIC</span>
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 relative z-10 flex flex-col items-center justify-center text-center gap-6">
+          {/* Logo centrado en el medio como cierre principal */}
+          <div className="flex items-center justify-center scale-110 sm:scale-125 my-1">
+            {renderNavbarLogo()}
           </div>
+
           <button
             onClick={onNavigateHome}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold transition-all cursor-pointer shadow-xs hover:text-yellow-300"
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold transition-all cursor-pointer shadow-md hover:text-yellow-300 text-sm"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4 stroke-[2.5]" />
             <span>Regresar al portal ECOPACIFIC</span>
           </button>
         </div>

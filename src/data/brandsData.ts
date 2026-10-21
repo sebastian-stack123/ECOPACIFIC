@@ -214,13 +214,20 @@ export const BRANDS_DATA: Record<string, Brand> = {
     closingStatement: "Elegimos buena fruta y cuidamos cada proceso para que cuando abras una botella de D'hoy, sientas el verdadero sabor del campo.",
     families: [
       {
-        id: '100-jugo',
-        name: '100% jugo',
-        tagline: "El que empezó todo. Jugos 100% puros y mezclas de fruta fresca con todo el sabor natural del campo.",
+        id: 'jugo-de-naranja',
+        name: 'Jugo de naranja',
+        tagline: 'El que empezó todo. Nuestro producto estrella y la expresión más pura de lo que significa DHOY.',
         productIds: [
           'dh-naranja-clasico',
           'dh-naranja-sin-pulpa',
-          'dh-naranja-calcio-vitamina-d',
+          'dh-naranja-calcio-vitamina-d'
+        ]
+      },
+      {
+        id: 'mezclas-de-fruta',
+        name: 'Mezclas de fruta',
+        tagline: 'Frutas que juntas saben todavía mejor. Combinaciones naturales, intensas y deliciosas.',
+        productIds: [
           'dh-naranja-zanahoria',
           'dh-naranja-mango',
           'dh-naranja-fresa',
@@ -230,22 +237,26 @@ export const BRANDS_DATA: Record<string, Brand> = {
           'dh-cranberry',
           'dh-toronja',
           'dh-nectar-frutilla',
-          'dh-limonada-fresa',
-          'dh-zumo-limon',
-          'dh-pulpa-sabila'
+          'dh-limonada-fresa'
         ]
-      },
-      {
-        id: 'shot',
-        name: 'Shot',
-        tagline: 'Ingredientes potentes y combinaciones funcionales creadas para acompañar distintos momentos y necesidades de tu rutina.',
-        productIds: ['dh-shot-inmuni', 'dh-shot-inmuni-plus', 'dh-shot-balance', 'dh-shot-digesti', 'dh-shot-defen']
       },
       {
         id: 'cold-pressed',
         name: 'Cold pressed',
         tagline: 'Frutas y vegetales prensados en frío, con combinaciones pensadas para sumar sabor y funcionalidad a tu día.',
         productIds: ['dh-cold-pitahaya', 'dh-cold-pina-hierbabuena', 'dh-cold-remolacha']
+      },
+      {
+        id: 'shots',
+        name: 'Shots',
+        tagline: 'Ingredientes potentes y combinaciones funcionales creadas para acompañar distintos momentos y necesidades de tu rutina.',
+        productIds: ['dh-shot-inmuni', 'dh-shot-inmuni-plus', 'dh-shot-balance', 'dh-shot-digesti', 'dh-shot-defen']
+      },
+      {
+        id: 'especialidades-dhoy',
+        name: 'Especialidades DHOY',
+        tagline: 'Formatos prácticos para llevar ingredientes naturales a distintas preparaciones.',
+        productIds: ['dh-zumo-limon', 'dh-pulpa-sabila']
       }
     ],
     products: [
@@ -253,7 +264,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-naranja-clasico',
         name: 'Jugo de naranja',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'jugo-de-naranja',
         emotionalDescription: 'Naranjas seleccionadas por su sabor para disfrutar un jugo fresco, auténtico y delicioso todos los días.',
         presentations: ['200 ml Six Pack', '240 ml', '355 ml', '1 L', '1,75 L', '2,5 L', '3,8 L'],
         technicalInfo: {
@@ -268,7 +279,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-naranja-sin-pulpa',
         name: 'Naranja sin pulpa',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'jugo-de-naranja',
         emotionalDescription: 'Todo el sabor de nuestra naranja, con una textura más ligera y suave.',
         presentations: ['1 L', '2,5 L'],
         technicalInfo: {
@@ -282,7 +293,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-naranja-calcio-vitamina-d',
         name: 'Naranja + Calcio y Vitamina D',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'jugo-de-naranja',
         emotionalDescription: 'Nuestro jugo de naranja con calcio y vitamina D para sumar algo más a tu día.',
         presentations: ['2,5 L'],
         technicalInfo: {
@@ -296,7 +307,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-naranja-zanahoria',
         name: 'Naranja + Zanahoria',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'mezclas-de-fruta',
         emotionalDescription: 'La frescura de la naranja y el carácter de la zanahoria en uno de nuestros sabores favoritos.',
         presentations: ['355 ml', '1 L', '1,75 L'],
         technicalInfo: {
@@ -310,7 +321,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-naranja-mango',
         name: 'Naranja + Mango',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Naranja fresca y mango tropical en una mezcla naturalmente deliciosa.',
         presentations: ['355 ml', '1,75 L'],
         technicalInfo: {
@@ -324,7 +335,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-naranja-fresa',
         name: 'Naranja + Fresa',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'mezclas-de-fruta',
         emotionalDescription: 'La frescura de la naranja se encuentra con el sabor dulce y aromático de la fresa.',
         presentations: ['355 ml'],
         technicalInfo: {
@@ -338,7 +349,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-naranja-jengibre',
         name: 'Naranja + Jengibre',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Naranja refrescante con un toque intenso y vibrante de jengibre.',
         presentations: ['355 ml'],
         technicalInfo: {
@@ -352,7 +363,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-mora',
         name: 'Mora',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Intenso, frutal y lleno del sabor característico de la mora.',
         presentations: ['355 ml', '1 L'],
         technicalInfo: {
@@ -366,7 +377,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-mandarina',
         name: 'Mandarina',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Dulce, aromática y refrescante. Mandarina para disfrutar en cada sorbo.',
         presentations: ['355 ml', '1,75 L'],
         technicalInfo: {
@@ -380,7 +391,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-cranberry',
         name: 'Cranberry',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Un sabor frutal, intenso y ligeramente ácido que se disfruta bien frío.',
         presentations: ['355 ml', '1,75 L'],
         technicalInfo: {
@@ -394,7 +405,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-toronja',
         name: 'Toronja',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Cítrica, refrescante y con ese carácter inconfundible de la toronja.',
         presentations: ['355 ml'],
         technicalInfo: {
@@ -408,7 +419,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-nectar-frutilla',
         name: 'Néctar de frutilla',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Dulce, aromático y lleno del sabor que hace irresistible a la frutilla.',
         presentations: ['355 ml'],
         technicalInfo: {
@@ -422,7 +433,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-limonada-fresa',
         name: 'Limonada de fresa',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Limón refrescante y fresa en una combinación frutal y deliciosa.',
         presentations: ['355 ml'],
         technicalInfo: {
@@ -434,7 +445,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
       },
       {
         id: 'dh-cold-pitahaya',
-        name: 'Pitahaya Cold Pressed',
+        name: 'Pitahaya',
         brandId: 'dhoy',
         familyId: 'cold-pressed',
         emotionalDescription: 'Pitahaya en una combinación suave y tropical, pensada para acompañar tu bienestar digestivo.',
@@ -448,7 +459,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
       },
       {
         id: 'dh-cold-pina-hierbabuena',
-        name: 'Piña + Hierbabuena Cold Pressed',
+        name: 'Piña + Hierbabuena',
         brandId: 'dhoy',
         familyId: 'cold-pressed',
         emotionalDescription: 'Piña tropical y hierbabuena fresca en una combinación muy refrescante.',
@@ -462,7 +473,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
       },
       {
         id: 'dh-cold-remolacha',
-        name: 'Remolacha + Frutas Cold Pressed',
+        name: 'Remolacha + Frutas',
         brandId: 'dhoy',
         familyId: 'cold-pressed',
         emotionalDescription: 'El carácter de la remolacha equilibrado con frutas en una mezcla intensa y diferente.',
@@ -478,7 +489,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-shot-inmuni',
         name: 'Inmunishot',
         brandId: 'dhoy',
-        familyId: 'shot',
+        familyId: 'shots',
         emotionalDescription: 'Jengibre intenso en una fórmula pensada para acompañar tus defensas y darle potencia a tu rutina.',
         presentations: ['Tripack', 'Six Pack'],
         technicalInfo: {
@@ -492,7 +503,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-shot-inmuni-plus',
         name: 'Inmunishot Plus',
         brandId: 'dhoy',
-        familyId: 'shot',
+        familyId: 'shots',
         emotionalDescription: 'Una fórmula reforzada para quienes buscan todavía más potencia en su rutina diaria.',
         presentations: ['Tripack'],
         technicalInfo: {
@@ -506,7 +517,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-shot-balance',
         name: 'Balanceshot',
         brandId: 'dhoy',
-        familyId: 'shot',
+        familyId: 'shots',
         emotionalDescription: 'Cúrcuma y otros ingredientes en una combinación funcional pensada para acompañar tu equilibrio diario.',
         presentations: ['Tripack'],
         technicalInfo: {
@@ -520,7 +531,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-shot-digesti',
         name: 'Digestishot',
         brandId: 'dhoy',
-        familyId: 'shot',
+        familyId: 'shots',
         emotionalDescription: 'Papaya en una combinación funcional pensada para acompañar tu bienestar digestivo.',
         presentations: ['Tripack'],
         technicalInfo: {
@@ -534,7 +545,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-shot-defen',
         name: 'Defenshot',
         brandId: 'dhoy',
-        familyId: 'shot',
+        familyId: 'shots',
         emotionalDescription: 'Vitamina C como protagonista en una fórmula pensada para acompañar tus defensas todos los días.',
         presentations: ['Tripack'],
         technicalInfo: {
@@ -548,7 +559,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-zumo-limon',
         name: 'Zumo de limón',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'especialidades-dhoy',
         emotionalDescription: 'El sabor fresco y ácido del limón listo para usar cuando lo necesites.',
         presentations: ['200 ml'],
         technicalInfo: {
@@ -562,9 +573,9 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'dh-pulpa-sabila',
         name: 'Pulpa de sábila',
         brandId: 'dhoy',
-        familyId: '100-jugo',
+        familyId: 'especialidades-dhoy',
         emotionalDescription: 'Sábila lista para incorporar fácilmente a diferentes preparaciones.',
-        presentations: ['450 g'],
+        presentations: ['Sábila lista para incorporar fácilmente a diferentes preparaciones'],
         technicalInfo: {
           ingredients: 'Cristales de sábila (Aloe vera) procesados en frío.',
           conservation: 'Conservar refrigerado.',
