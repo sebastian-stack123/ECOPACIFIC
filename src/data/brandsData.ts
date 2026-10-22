@@ -298,11 +298,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'jugo-de-naranja',
         emotionalDescription: 'Naranjas seleccionadas por su sabor para disfrutar un jugo fresco, auténtico y delicioso todos los días.',
         presentations: ['200 ml Six Pack', '240 ml', '355 ml', '1 L', '1,75 L', '2,5 L', '3,8 L'],
-        technicalInfo: {
-          ingredients: '100% Jugo puro de naranja recién exprimido con pulpa natural.',
-          conservation: 'Mantener refrigerado a 4°C. Agitar suavemente antes de servir.',
-          origin: 'Huertos de cítricos seleccionados por EcoPacific.'
-        },
         imageUrl: dhoy355mlImg,
         featured: true
       },
@@ -313,11 +308,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'jugo-de-naranja',
         emotionalDescription: 'Todo el sabor de nuestra naranja, con una textura más ligera y suave.',
         presentations: ['1 L', '2,5 L'],
-        technicalInfo: {
-          ingredients: '100% Jugo puro de naranja filtrado suavemente.',
-          conservation: 'Conservar siempre en frío.',
-          origin: 'Cítricos de cosecha controlada.'
-        },
         imageUrl: dhoySinPulpaImg
       },
       {
@@ -327,11 +317,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'jugo-de-naranja',
         emotionalDescription: 'Nuestro jugo de naranja con calcio y vitamina D para sumar algo más a tu día.',
         presentations: ['2,5 L'],
-        technicalInfo: {
-          ingredients: 'Jugo de naranja exprimido, citrato de calcio, colecalciferol (vitamina D).',
-          conservation: 'Refrigerar a 4°C.',
-          origin: 'Huertos ecuatorianos.'
-        },
         imageUrl: dhoyCalcioDImg
       },
       {
@@ -341,11 +326,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'mezclas-de-fruta',
         emotionalDescription: 'La frescura de la naranja y el carácter de la zanahoria en uno de nuestros sabores favoritos.',
         presentations: ['355 ml', '1 L', '1,75 L'],
-        technicalInfo: {
-          ingredients: 'Jugo de naranja exprimido, jugo fresco de zanahoria.',
-          conservation: 'Refrigerar entre 2°C y 4°C.',
-          origin: 'Cultivos de altura y valles cálidos.'
-        },
         imageUrl: dhoyNaranjaZanaImg
       },
       {
@@ -355,11 +335,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Naranja fresca y mango tropical en una mezcla naturalmente deliciosa.',
         presentations: ['355 ml', '1,75 L'],
-        technicalInfo: {
-          ingredients: 'Jugo de naranja exprimido, pulpa de mango natural.',
-          conservation: 'Refrigerar a 4°C.',
-          origin: 'Frutas tropicales del campo.'
-        },
         imageUrl: dhoyNaranjaMangoImg
       },
       {
@@ -369,11 +344,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'mezclas-de-fruta',
         emotionalDescription: 'La frescura de la naranja se encuentra con el sabor dulce y aromático de la fresa.',
         presentations: ['355 ml'],
-        technicalInfo: {
-          ingredients: 'Jugo de naranja y pulpa seleccionada de fresa.',
-          conservation: 'Refrigerar entre 2°C y 4°C.',
-          origin: 'Orígenes seleccionados.'
-        },
         imageUrl: dhoyNaranjaFresaImg
       },
       {
@@ -383,11 +353,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Naranja refrescante con un toque intenso y vibrante de jengibre.',
         presentations: ['355 ml'],
-        technicalInfo: {
-          ingredients: 'Jugo de naranja y extracto fresco de jengibre.',
-          conservation: 'Mantener refrigerado.',
-          origin: 'Cítricos y raíces de cultivo nacional.'
-        },
         imageUrl: dhoyJugo100Img
       },
       {
@@ -397,11 +362,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Intenso, frutal y lleno del sabor característico de la mora.',
         presentations: ['355 ml', '1 L'],
-        technicalInfo: {
-          ingredients: 'Pulpa de mora andina seleccionada, agua purificada.',
-          conservation: 'Refrigeración continua.',
-          origin: 'Valles andinos.'
-        },
         imageUrl: dhoyMoraImg
       },
       {
@@ -411,11 +371,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Dulce, aromática y refrescante. Mandarina para disfrutar en cada sorbo.',
         presentations: ['355 ml', '1,75 L'],
-        technicalInfo: {
-          ingredients: '100% Jugo puro de mandarinas cosechadas en temporada.',
-          conservation: 'Refrigerar a 4°C.',
-          origin: 'Huertos de cítricos dulces.'
-        },
         imageUrl: dhoyMandarinaImg
       },
       {
@@ -425,11 +380,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Un sabor frutal, intenso y ligeramente ácido que se disfruta bien frío.',
         presentations: ['355 ml', '1,75 L'],
-        technicalInfo: {
-          ingredients: 'Jugo concentrado de arándano rojo (cranberry), agua.',
-          conservation: 'Mantener en frío.',
-          origin: 'Selección de berries de calidad.'
-        },
         imageUrl: dhoyCranberryImg
       },
       {
@@ -439,11 +389,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Cítrica, refrescante y con ese carácter inconfundible de la toronja.',
         presentations: ['355 ml'],
-        technicalInfo: {
-          ingredients: '100% Jugo de toronja fresca.',
-          conservation: 'Refrigerar entre 2°C y 4°C.',
-          origin: 'Cultivos de cítricos.'
-        },
         imageUrl: dhoyToronjaImg
       },
       {
@@ -453,11 +398,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Dulce, aromático y lleno del sabor que hace irresistible a la frutilla.',
         presentations: ['355 ml'],
-        technicalInfo: {
-          ingredients: 'Pulpa de frutillas maduras seleccionadas.',
-          conservation: 'Refrigerar a 4°C.',
-          origin: 'Campos frutícolas.'
-        },
         imageUrl: dhoyNectarFrutillaImg
       },
       {
@@ -467,11 +407,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Limón refrescante y fresa en una combinación frutal y deliciosa.',
         presentations: ['355 ml'],
-        technicalInfo: {
-          ingredients: 'Jugo natural de limón, pulpa de fresa.',
-          conservation: 'Mantener refrigerado.',
-          origin: 'Frutas frescas de huerto.'
-        },
         imageUrl: dhoyLimonadaFresaImg
       },
       {
@@ -481,11 +416,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'cold-pressed',
         emotionalDescription: 'Pitahaya en una combinación suave y tropical, pensada para acompañar tu bienestar digestivo.',
         presentations: ['450 ml'],
-        technicalInfo: {
-          ingredients: 'Pitahaya prensada en frío con toque de limón.',
-          conservation: 'Refrigerar estrictamente entre 2°C y 4°C.',
-          origin: 'Cultivos de pitahaya ecuatoriana.'
-        },
         imageUrl: dhoyColdPitahayaImg
       },
       {
@@ -495,11 +425,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'cold-pressed',
         emotionalDescription: 'Piña tropical y hierbabuena fresca en una combinación muy refrescante.',
         presentations: ['450 ml'],
-        technicalInfo: {
-          ingredients: 'Piña Golden prensada en frío, hojas frescas de hierbabuena.',
-          conservation: 'Mantener en frío.',
-          origin: 'Cosechas tropicales.'
-        },
         imageUrl: dhoyColdPinaImg
       },
       {
@@ -509,11 +434,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'cold-pressed',
         emotionalDescription: 'El carácter de la remolacha equilibrado con frutas en una mezcla intensa y diferente.',
         presentations: ['450 ml'],
-        technicalInfo: {
-          ingredients: 'Remolacha prensada en frío, manzana, naranja y limón.',
-          conservation: 'Mantener entre 2°C y 4°C.',
-          origin: 'Hortalizas y frutas de origen.'
-        },
         imageUrl: dhoyColdRemolachaImg
       },
       {
@@ -523,11 +443,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'shots',
         emotionalDescription: 'Jengibre intenso en una fórmula pensada para acompañar tus defensas y darle potencia a tu rutina.',
         presentations: ['Tripack', 'Six Pack'],
-        technicalInfo: {
-          ingredients: 'Extracto puro prensado de raíz de jengibre, limón, miel de abeja y cayena.',
-          conservation: 'Mantener en frío.',
-          origin: 'Raíces frescas de cultivo.'
-        },
         imageUrl: dhoyShotInmuniImg
       },
       {
@@ -537,11 +452,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'shots',
         emotionalDescription: 'Una fórmula reforzada para quienes buscan todavía más potencia en su rutina diaria.',
         presentations: ['Tripack'],
-        technicalInfo: {
-          ingredients: 'Jengibre reforzado, cúrcuma viva, limón concentrado y pimienta negra.',
-          conservation: 'Conservar refrigerado.',
-          origin: 'Raíces y cítricos seleccionados.'
-        },
         imageUrl: dhoyShotInmuniPlusImg
       },
       {
@@ -551,11 +461,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'shots',
         emotionalDescription: 'Cúrcuma y otros ingredientes en una combinación funcional pensada para acompañar tu equilibrio diario.',
         presentations: ['Tripack'],
-        technicalInfo: {
-          ingredients: 'Raíz de cúrcuma prensada, naranja, jengibre y pimienta.',
-          conservation: 'Mantener en frío.',
-          origin: 'Campos de cultivo agroecológico.'
-        },
         imageUrl: dhoyShotBalanceImg
       },
       {
@@ -565,11 +470,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'shots',
         emotionalDescription: 'Papaya en una combinación funcional pensada para acompañar tu bienestar digestivo.',
         presentations: ['Tripack'],
-        technicalInfo: {
-          ingredients: 'Extracto de papaya madura, sábila fresca, limón.',
-          conservation: 'Refrigerar a 4°C.',
-          origin: 'Frutas tropicales.'
-        },
         imageUrl: dhoyShotDigestiImg
       },
       {
@@ -579,11 +479,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'shots',
         emotionalDescription: 'Vitamina C como protagonista en una fórmula pensada para acompañar tus defensas todos los días.',
         presentations: ['Tripack'],
-        technicalInfo: {
-          ingredients: 'Concentrado de cítricos (naranja, toronja, limón), acerola y vitamina C.',
-          conservation: 'Refrigerar siempre.',
-          origin: 'Cítricos de máxima concentración.'
-        },
         imageUrl: dhoyShotDefenImg
       },
       {
@@ -593,11 +488,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'especialidades-dhoy',
         emotionalDescription: 'El sabor fresco y ácido del limón listo para usar cuando lo necesites.',
         presentations: ['200 ml'],
-        technicalInfo: {
-          ingredients: '100% Zumo natural de limón prensado sin aditivos.',
-          conservation: 'Mantener refrigerado una vez abierto.',
-          origin: 'Limones de cosecha nacional.'
-        },
         imageUrl: dhoyJugo100Img
       },
       {
@@ -607,11 +497,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'especialidades-dhoy',
         emotionalDescription: 'Sábila lista para incorporar fácilmente a diferentes preparaciones.',
         presentations: ['Sábila lista para incorporar fácilmente a diferentes preparaciones'],
-        technicalInfo: {
-          ingredients: 'Cristales de sábila (Aloe vera) procesados en frío.',
-          conservation: 'Conservar refrigerado.',
-          origin: 'Cultivos de aloe de origen local.'
-        },
         imageUrl: dhoySabilaImg
       }
     ]
