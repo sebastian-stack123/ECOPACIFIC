@@ -244,7 +244,16 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-white text-stone-900">
+    <div
+      className={`min-h-screen bg-white text-stone-900 ${
+        brand.id === 'coco-freeze' ? 'font-sans' : ''
+      }`}
+      style={
+        brand.id === 'coco-freeze'
+          ? { fontFamily: 'var(--font-sans, "Plus Jakarta Sans", system-ui, -apple-system, sans-serif)' }
+          : undefined
+      }
+    >
       {/* ========================================================
           1. NAVBAR SUPERIOR UNIFICADO (Estructura idéntica para todas las marcas)
           ======================================================== */}
@@ -489,32 +498,55 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                   <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
                     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)]" fill="none">
                       <defs>
-                        <radialGradient id="cocoShellGradGreen" cx="36%" cy="32%" r="68%">
-                          <stop offset="0%" stopColor="#86EFAC" />
-                          <stop offset="28%" stopColor="#4ADE80" />
-                          <stop offset="70%" stopColor="#22C55E" />
-                          <stop offset="100%" stopColor="#15803D" />
+                        {/* Verde un poco más oscuro y natural para la cáscara */}
+                        <radialGradient id="cocoHuskDarkGreen" cx="35%" cy="45%" r="65%">
+                          <stop offset="0%" stopColor="#22C55E" />
+                          <stop offset="35%" stopColor="#15803D" />
+                          <stop offset="75%" stopColor="#166534" />
+                          <stop offset="100%" stopColor="#14532D" />
                         </radialGradient>
-                        <linearGradient id="cocoCalyxGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#4D7C0F" />
-                          <stop offset="50%" stopColor="#65A30D" />
-                          <stop offset="100%" stopColor="#A3E635" />
+                        {/* Pulpa de coco blanca y pura */}
+                        <linearGradient id="cocoPulpWhite" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stopColor="#FFFFFF" />
+                          <stop offset="70%" stopColor="#F8FAFC" />
+                          <stop offset="100%" stopColor="#E2E8F0" />
                         </linearGradient>
+                        {/* Agua de coco refrescante en el interior */}
+                        <radialGradient id="cocoWaterInner" cx="45%" cy="40%" r="60%">
+                          <stop offset="0%" stopColor="#F0F9FF" />
+                          <stop offset="40%" stopColor="#7DD3FC" />
+                          <stop offset="85%" stopColor="#0284C7" />
+                          <stop offset="100%" stopColor="#0369A1" />
+                        </radialGradient>
                       </defs>
-                      {/* Corona / sépalos de la pipa verde */}
-                      <path d="M48 9 L52 9 L51.5 17 L48.5 17 Z" fill="#65A30D" />
-                      <path d="M50 16 C42 9, 32 10, 29 16 C37 17, 43 21, 46 25 Z" fill="url(#cocoCalyxGrad)" stroke="#3F6212" strokeWidth="0.8" />
-                      <path d="M50 16 C58 8, 68 9, 71 15 C63 17, 57 21, 54 25 Z" fill="url(#cocoCalyxGrad)" stroke="#3F6212" strokeWidth="0.8" />
-                      <path d="M50 16 C46 22, 54 22, 50 26 Z" fill="#84CC16" />
-                      {/* Cuerpo de la pipa verde */}
-                      <ellipse cx="50" cy="56" rx="37" ry="39" fill="url(#cocoShellGradGreen)" stroke="#16A34A" strokeWidth="2" />
-                      {/* Brillo suave de coco fresco */}
-                      <path d="M30 40 C36 30, 48 26, 62 28 C56 26, 40 28, 30 40 Z" fill="#FFFFFF" opacity="0.35" />
-                      <ellipse cx="36" cy="46" rx="14" ry="7" fill="#FFFFFF" opacity="0.22" transform="rotate(-30 36 46)" />
-                      {/* Marcas naturales suaves de coco */}
-                      <ellipse cx="42" cy="48" rx="3.5" ry="4.5" fill="#15803D" opacity="0.45" />
-                      <ellipse cx="58" cy="48" rx="3.5" ry="4.5" fill="#15803D" opacity="0.45" />
-                      <ellipse cx="50" cy="66" rx="4" ry="5" fill="#15803D" opacity="0.45" />
+
+                      {/* Borde posterior de la cáscara verde detrás del corte */}
+                      <ellipse cx="50" cy="27" rx="27" ry="12" fill="#14532D" />
+
+                      {/* Cuerpo verde del coco (verde natural más oscuro, sin los 3 puntos) */}
+                      <path
+                        d="M23 28 C16 48, 20 74, 36 86 C42 90, 58 90, 64 86 C80 74, 84 48, 77 28 C70 38, 30 38, 23 28 Z"
+                        fill="url(#cocoHuskDarkGreen)"
+                        stroke="#14532D"
+                        strokeWidth="2.2"
+                      />
+
+                      {/* Fibras sutiles orgánicas de la pipa verde */}
+                      <path d="M32 44 Q25 64 36 82" stroke="#0F3A20" strokeWidth="1.2" strokeLinecap="round" opacity="0.35" />
+                      <path d="M68 44 Q75 64 64 82" stroke="#0F3A20" strokeWidth="1.2" strokeLinecap="round" opacity="0.35" />
+
+                      {/* Brillo suave en la piel verde del coco */}
+                      <ellipse cx="36" cy="56" rx="12" ry="6" fill="#86EFAC" opacity="0.22" transform="rotate(-30 36 56)" />
+
+                      {/* Parte superior blanca expuesta como si estuviera partido */}
+                      <ellipse cx="50" cy="27" rx="26" ry="11" fill="url(#cocoPulpWhite)" stroke="#CBD5E1" strokeWidth="1.2" />
+
+                      {/* Cavidad interior con agua de coco fresca */}
+                      <ellipse cx="50" cy="28" rx="18" ry="7.5" fill="url(#cocoWaterInner)" />
+
+                      {/* Reflejos de luz en el agua fresca y en la pulpa blanca */}
+                      <ellipse cx="45" cy="27.5" rx="7" ry="2.5" fill="#FFFFFF" opacity="0.75" />
+                      <path d="M28 27 C34 22, 66 22, 72 27 C66 24.5, 34 24.5, 28 27 Z" fill="#FFFFFF" opacity="0.85" />
                     </svg>
                   </div>
                 </div>

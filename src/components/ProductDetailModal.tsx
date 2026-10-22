@@ -22,8 +22,16 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-stone-950/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
       <div
-        className="relative w-full max-w-4xl bg-white rounded-3xl overflow-hidden shadow-2xl border-4"
-        style={{ borderColor: brand.colors.borderAccent }}
+        className={`relative w-full max-w-4xl bg-white rounded-3xl overflow-hidden shadow-2xl border-4 ${
+          brand.id === 'coco-freeze' ? 'font-sans' : ''
+        }`}
+        style={{
+          borderColor: brand.colors.borderAccent,
+          fontFamily:
+            brand.id === 'coco-freeze'
+              ? 'var(--font-sans, "Plus Jakarta Sans", system-ui, -apple-system, sans-serif)'
+              : undefined,
+        }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
