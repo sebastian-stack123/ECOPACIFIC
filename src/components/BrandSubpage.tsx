@@ -41,6 +41,25 @@ import dhoyNaranjaZanaImg from '../assets/355-naranjazana.jpg';
 import dhoyColdPitahayaImg from '../assets/COLD-PRESSED-PITAHAYA.png';
 import dhoyShotInmuniImg from '../assets/JENGIBRE.jpg';
 import dhoySabilaImg from '../assets/sabila.png';
+import botellaJugoDhoyNaranjaImg from '../assets/Botella de jugo D’Hoy de naranja.png';
+import botellaAntiguaDhoyImg from '../assets/botellaantiguadhoy.png';
+import botelladhoyxdxdxdImg from '../assets/botelladhoyxdxdxd.png';
+
+// ECOLOVE Imágenes
+import ecolovePortadaSeccionImg from '../assets/ECOPACIFIC-ECOLOVE-SECCION-PORTADA2026.png';
+import ecoloveAceiteCocoImg from '../assets/ECOLOVE-ACEITE-COCO-EXTRAVIRGEN-473ML-2026.png';
+import ecoloveAceiteAguacateImg from '../assets/ECOLOVE-ACEITE-AGUACATE-250ML.png';
+import ecoloveSprayAguacateImg from '../assets/ECOLOVE-ACEITE-AGUACATE-SPRAY-180ML-2026.png';
+import ecoloveBebidaAlmendraImg from '../assets/ECOLOVE-BEBIDA-DE-ALMENDRA-SIN-AZUCAR-1L-2026.png';
+import ecolovePapasFritasImg from '../assets/ECOLOVE-PAPAS-FRITAS-2026.png';
+import ecoloveMielAgaveImg from '../assets/ECOLOVE-MIEL-DE-AGAVE-230ML.png';
+
+// HORTILISTO Imágenes
+import hlAguacateMaduroImg from '../assets/aguacatemaduro.jpg';
+import hlMixCebollaImg from '../assets/mix-cebolla.jpg';
+import hlGuacamoleTomatePimientoImg from '../assets/GUACAMOLE-CON-TOMATE-Y-PIMIENTO.png';
+import hlMangoImg from '../assets/mango.jpg';
+
 
 interface BrandSubpageProps {
   brand?: Brand;
@@ -124,9 +143,9 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       case 'dhoy':
         return dhoyMenuImg;
       case 'ecolove':
-        return ecoloveMenuImg;
+        return ecolovePortadaSeccionImg;
       case 'hortilisto':
-        return hortilistoMenuImg;
+        return naturalezaMesaRusticaImg;
       default:
         return brand.heroImage;
     }
@@ -140,9 +159,9 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       case 'dhoy':
         return dhoyStoryImg;
       case 'ecolove':
-        return ecoloveMenuImg;
+        return ecolovePortadaSeccionImg;
       case 'hortilisto':
-        return hortilistoMenuImg;
+        return naturalezaMesaRusticaImg;
       default:
         return cocosStoryImg;
     }
@@ -164,16 +183,26 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       return dhoy355mlImg;
     }
     if (brand.id === 'ecolove') {
-      return index === 0 ? ecoloveMenuImg : ecoloveImg;
+      if (familyId === 'aceites-de-coco') return ecoloveAceiteCocoImg;
+      if (familyId === 'aceites-de-aguacate') return ecoloveAceiteAguacateImg;
+      if (familyId === 'aceites-en-spray') return ecoloveSprayAguacateImg;
+      if (familyId === 'bebidas-vegetales') return ecoloveBebidaAlmendraImg;
+      if (familyId === 'snacks') return ecolovePapasFritasImg;
+      if (familyId === 'algo-extra') return ecoloveMielAgaveImg;
+      return ecoloveTransparentImg;
     }
     if (brand.id === 'hortilisto') {
-      return index === 0 ? hortilistoMenuImg : hortilistoLogoImg;
+      if (familyId === 'aguacates-maduros' || index === 0) return hlAguacateMaduroImg;
+      if (familyId === 'vegetales-y-frutas-listas' || index === 1) return hlMixCebollaImg;
+      if (familyId === 'guacamole' || index === 2) return hlGuacamoleTomatePimientoImg;
+      if (familyId === 'encurtidos' || index === 3) return hlMangoImg;
+      return hlAguacateMaduroImg;
     }
     return brand.heroImage;
   };
 
   // Helper to get milestone images paired with each milestone
-  const getMilestoneImage = (index: number) => {
+  const getMilestoneImage = (index: number): { img: string; alt: string } => {
     if (brand.id === 'coco-freeze') {
       if (index === 0) return { img: cocosRefrigeradoraImg, alt: '2004 El comienzo - 200 cocos' };
       if (index === 1) return { img: cocofreeze2006BotellaImg, alt: '2006 Del coco a la botella' };
@@ -181,18 +210,18 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       return { img: cocofreezePortadaImg, alt: '2026 Cosechado en su punto' };
     }
     if (brand.id === 'dhoy') {
-      if (index === 0) return { img: dhoyStoryImg, alt: "2009 Nace DHOY" };
-      if (index === 1) return { img: dhoyantiguatImg, alt: "2011 Llegamos a más personas" };
+      if (index === 0) return { img: botellaJugoDhoyNaranjaImg, alt: "2009 Nace DHOY" };
+      if (index === 1) return { img: botelladhoyxdxdxdImg, alt: "2011 Llegamos a más personas" };
       if (index === 2) return { img: dhoyfabricaImg, alt: "2012 Tecnología para cuidar la fruta" };
       if (index === 3) return { img: dhoyshotshitosImg, alt: "2016 Nacen los shots" };
       return { img: dhoy2026BotellaImg, alt: "2026 Fruta de verdad" };
     }
     if (brand.id === 'ecolove') {
-      if (index === 0) return { img: ecoloveMenuImg, alt: "2017 Primeros pasos" };
-      if (index === 1) return { img: ecoloveImg, alt: "2018 Llegan los aceites" };
-      if (index === 2) return { img: ecoloveTransparentImg, alt: "2021 Bebidas vegetales" };
-      if (index === 3) return { img: fotoEcopacificImg, alt: "2022 Nuevas opciones" };
-      return { img: bebidasTropicalesImg, alt: "2026 Bienestar diario" };
+      if (index === 0) return { img: ecolovePortadaSeccionImg, alt: "2017 Primeros pasos" };
+      if (index === 1) return { img: ecoloveAceiteCocoImg, alt: "2018 Llegan los aceites" };
+      if (index === 2) return { img: ecoloveBebidaAlmendraImg, alt: "2021 Bebidas vegetales" };
+      if (index === 3) return { img: ecoloveSprayAguacateImg, alt: "2022 Nuevas opciones" };
+      return { img: ecolovePapasFritasImg, alt: "2026 Bienestar diario" };
     }
     return { img: brand.heroImage, alt: brand.name };
   };
@@ -245,7 +274,9 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
 
   return (
     <div
-      className={`min-h-screen bg-white text-stone-900 ${
+      className={`min-h-screen ${
+        brand.id === 'hortilisto' ? 'bg-[#007F3A]' : 'bg-white'
+      } text-stone-900 ${
         brand.id === 'coco-freeze' ? 'font-sans' : ''
       }`}
       style={
@@ -391,14 +422,22 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
           brand.id === 'coco-freeze'
             ? 'bg-[#009FE3] text-white'
             : brand.id === 'dhoy'
-            ? 'bg-[#3b6e22] text-white'
+            ? 'bg-[#00943A] text-white'
+            : brand.id === 'ecolove'
+            ? 'bg-[#1A3815] text-white'
+            : brand.id === 'hortilisto'
+            ? 'bg-[#007F3A] text-black'
             : 'bg-white text-stone-900'
         }`}
       >
         <div id="cosechado-en-su-punto" className="max-w-5xl mx-auto px-6 sm:px-8">
           <h2
             className={`text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6 flex flex-col items-center gap-2 ${
-              brand.id === 'coco-freeze' || brand.id === 'dhoy' ? 'text-white drop-shadow-xs' : 'text-stone-900'
+              brand.id === 'hortilisto'
+                ? 'text-black'
+                : brand.id === 'coco-freeze' || brand.id === 'dhoy' || brand.id === 'ecolove'
+                ? 'text-white drop-shadow-xs'
+                : 'text-stone-900'
             }`}
           >
             {brand.id === 'dhoy' ? (
@@ -412,8 +451,12 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
           </h2>
 
           <p
-            className={`text-base sm:text-lg md:text-xl leading-relaxed font-normal max-w-3xl mx-auto mb-10 sm:mb-14 text-balance ${
-              brand.id === 'coco-freeze' || brand.id === 'dhoy' ? 'text-white/95' : 'text-stone-700'
+            className={`text-base sm:text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-10 sm:mb-14 text-balance ${
+              brand.id === 'hortilisto'
+                ? 'text-black font-semibold'
+                : brand.id === 'coco-freeze' || brand.id === 'dhoy' || brand.id === 'ecolove'
+                ? 'text-white/95 font-normal'
+                : 'text-stone-700 font-normal'
             }`}
           >
             {brand.id === 'coco-freeze'
@@ -436,6 +479,28 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
               />
             </div>
           )}
+
+          {/* Imagen debajo de inicio para EcoLove (sin recortar / sin zoom para que se vea toda la imagen) */}
+          {brand.id === 'ecolove' && (
+            <div className="max-w-5xl mx-auto rounded-3xl sm:rounded-4xl overflow-hidden shadow-2xl border-2 border-white/20 bg-black/20">
+              <img
+                src={ecolovePortadaSeccionImg}
+                alt="EcoLove - Bienestar diario que nace de lo natural"
+                className="w-full h-auto block transition-transform duration-700 hover:scale-101"
+              />
+            </div>
+          )}
+
+          {/* Imagen debajo de inicio para Hortilisto (misma imagen de inicio de D'Hoy) */}
+          {brand.id === 'hortilisto' && (
+            <div className="max-w-5xl mx-auto rounded-3xl sm:rounded-4xl overflow-hidden shadow-2xl border-2 border-black/25 aspect-[16/9] sm:aspect-[21/9] md:h-[460px] bg-black/10 backdrop-blur-sm">
+              <img
+                src={naturalezaMesaRusticaImg}
+                alt="Hortilisto - Vegetales frescos y prácticos"
+                className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-102"
+              />
+            </div>
+          )}
         </div>
       </section>
 
@@ -449,16 +514,16 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             brand.id === 'coco-freeze'
               ? 'bg-[#0087C1] text-white border-t border-b border-sky-400/30'
               : brand.id === 'dhoy'
-              ? 'bg-[#315b1d] text-white border-t border-b border-lime-600/30'
+              ? 'bg-[#007b30] text-white border-t border-b border-emerald-400/30'
+              : brand.id === 'ecolove'
+              ? 'bg-[#132A10] text-white border-t border-b border-green-900/40'
               : 'bg-[#F8FAFC]'
           }`}
         >
           <div className="max-w-5xl mx-auto px-6 sm:px-8 text-center">
             <span
               className={`text-xs sm:text-sm font-bold uppercase tracking-wider block mb-2 ${
-                brand.id === 'coco-freeze'
-                  ? 'text-yellow-300'
-                  : brand.id === 'dhoy'
+                brand.id === 'coco-freeze' || brand.id === 'dhoy' || brand.id === 'ecolove'
                   ? 'text-yellow-300'
                   : 'text-stone-400'
               }`}
@@ -467,14 +532,14 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             </span>
             <h2
               className={`text-3xl sm:text-5xl font-black tracking-tight mb-6 ${
-                brand.id === 'coco-freeze' || brand.id === 'dhoy' ? 'text-white' : 'text-stone-900'
+                brand.id === 'coco-freeze' || brand.id === 'dhoy' || brand.id === 'ecolove' ? 'text-white' : 'text-stone-900'
               }`}
             >
               {brand.storyTitle}
             </h2>
             <p
               className={`text-base sm:text-xl leading-relaxed font-normal max-w-3xl mx-auto mb-12 text-balance ${
-                brand.id === 'coco-freeze' || brand.id === 'dhoy' ? 'text-white/90' : 'text-stone-700'
+                brand.id === 'coco-freeze' || brand.id === 'dhoy' || brand.id === 'ecolove' ? 'text-white/90' : 'text-stone-700'
               }`}
             >
               {brand.storyText}
@@ -594,7 +659,8 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
               <div className="space-y-12 md:space-y-16">
                 {brand.milestones.map((milestone, idx) => {
                   const isRightCard = idx % 2 === 0;
-                  const { img: milestoneImg, alt: milestoneAlt } = getMilestoneImage(idx);
+                  const milestoneData = getMilestoneImage(idx);
+                  const { img: milestoneImg, alt: milestoneAlt } = milestoneData;
 
                   const textCard = (
                     <div
@@ -613,7 +679,33 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                     </div>
                   );
 
-                  const imageCard = (
+                  const isCocoFreeze2004 = brand.id === 'coco-freeze' && idx === 0;
+                  const isCocoFreeze2010 = brand.id === 'coco-freeze' && idx === 2;
+
+                  const imageCard = isCocoFreeze2004 ? (
+                    <div className="w-full max-w-[280px] sm:max-w-[320px] mx-auto rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all border-2 border-white/20 bg-stone-900">
+                      <div className="relative w-full aspect-[4/5] overflow-hidden">
+                        <img
+                          src={milestoneImg}
+                          alt={milestoneAlt}
+                          className="absolute w-full h-[155%] object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                          style={{
+                            top: '-25.5%', // Inicia exactamente en el marco blanco de la nevera y llega a la mitad de la tercera fila de cocos
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ) : isCocoFreeze2010 ? (
+                    <div className="w-full rounded-3xl overflow-hidden shadow-2xl group hover:shadow-3xl transition-all border-2 border-white/20 bg-sky-950 md:-my-4">
+                      <div className="relative w-full h-[320px] sm:h-[400px] md:h-[480px]">
+                        <img
+                          src={milestoneImg}
+                          alt={milestoneAlt}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    </div>
+                  ) : (
                     <div className="w-full rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all">
                       <img
                         src={milestoneImg}
@@ -651,7 +743,11 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
           brand.id === 'coco-freeze'
             ? 'bg-[#009FE3] text-white'
             : brand.id === 'dhoy'
-            ? 'bg-[#3b6e22] text-white'
+            ? 'bg-[#00943A] text-white'
+            : brand.id === 'ecolove'
+            ? 'bg-[#1A3815] text-white'
+            : brand.id === 'hortilisto'
+            ? 'bg-[#007F3A] text-black'
             : 'bg-white text-stone-900'
         }`}
         id="productos"
@@ -660,7 +756,11 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
           <div className="text-center mb-14">
             <h2
               className={`text-3xl sm:text-5xl font-black tracking-tight ${
-                brand.id === 'coco-freeze' || brand.id === 'dhoy' ? 'text-white drop-shadow-xs' : 'text-stone-900'
+                brand.id === 'hortilisto'
+                  ? 'text-black'
+                  : brand.id === 'coco-freeze' || brand.id === 'dhoy' || brand.id === 'ecolove'
+                  ? 'text-white drop-shadow-xs'
+                  : 'text-stone-900'
               }`}
             >
               Productos
@@ -866,7 +966,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       <footer
         className="py-14 sm:py-20 text-white relative overflow-hidden"
         style={{
-          backgroundColor: brand.colors.navBg,
+          backgroundColor: brand.id === 'hortilisto' ? '#000000' : (brand.colors.footerBg || brand.colors.navBg),
         }}
       >
         <div className="max-w-4xl mx-auto px-6 sm:px-8 relative z-10 flex flex-col items-center justify-center text-center gap-6">

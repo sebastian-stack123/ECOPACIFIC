@@ -44,6 +44,37 @@ import dhoyShotDefenImg from '../assets/VITAMINA-C.jpg';
 // DHOY Especialidades
 import dhoySabilaImg from '../assets/sabila.png';
 
+// ECOLOVE Productos
+import ecoloveAceiteCocoImg from '../assets/ECOLOVE-ACEITE-COCO-EXTRAVIRGEN-473ML-2026.png';
+import ecoloveAceiteCocoSinOlorImg from '../assets/ECOLOVE-ACEITE-DE-COCO-SIN-OLOR-473ML-2026.png';
+import ecoloveAceiteCocoMctImg from '../assets/ECOLOVE-ACEITE-DE-COCO-MCT-250ML-2026.png';
+import ecoloveAceiteAguacateImg from '../assets/ECOLOVE-ACEITE-AGUACATE-250ML.png';
+import ecoloveAceiteAguacateSinOlorImg from '../assets/ECOLOVE-ACEITE-AGUACATE-SIN-OLOR-250ML-2026.png';
+import ecoloveSprayCocoMctImg from '../assets/ECOLOVE-ACEITE-COCO-MCT-SPRAY180ML-2026.png';
+import ecoloveSprayAguacateImg from '../assets/ECOLOVE-ACEITE-AGUACATE-SPRAY-180ML-2026.png';
+import ecoloveSprayOlivaImg from '../assets/ECOLOVE-ACEITE-OLIVA-EXTRAVIRGEN-SPRAY-180ML-2026.png';
+import ecoloveBebidaAlmendraImg from '../assets/ECOLOVE-BEBIDA-DE-ALMENDRA-SIN-AZUCAR-1L-2026.png';
+import ecoloveBebidaAlmendraVainillaImg from '../assets/ECOLOVE-BEBIDA-DE-ALMENDRA-VAINILLA-2026.png';
+import ecoloveBebidaCocoImg from '../assets/ECOLOVE-BEBIDA-DE-COCO-SIN-AZUCAR.png';
+import ecolovePapasFritasImg from '../assets/ECOLOVE-PAPAS-FRITAS-2026.png';
+import ecoloveMielAgaveImg from '../assets/ECOLOVE-MIEL-DE-AGAVE-230ML.png';
+import ecolovePortadaSeccionImg from '../assets/ECOPACIFIC-ECOLOVE-SECCION-PORTADA2026.png';
+
+// HORTILISTO Productos
+import hlAguacateMaduroImg from '../assets/aguacatemaduro.jpg';
+import hlAguacate6PackImg from '../assets/aguacate6pack.jpg';
+import hlMixCebollaImg from '../assets/mix-cebolla.jpg';
+import hlMegaMixCebollaImg from '../assets/HORTILISTO6megamixcebolla.jpg';
+import hlCebollaPaitenitaImg from '../assets/cebollapaitenita.jpg';
+import hlCebollaPerlitaImg from '../assets/cebollaperlitas.jpg';
+import hlPimientosColoresImg from '../assets/pimientos de colores.jpg';
+import hlZapalloImg from '../assets/zapallo.jpg';
+import hlJengibreImg from '../assets/jengibre200g.jpg';
+import hlPinaGoldenImg from '../assets/pinagolden.jpg';
+import hlGuacamoleImg from '../assets/guacamole.jpg';
+import hlGuacamoleTomatePimientoImg from '../assets/GUACAMOLE-CON-TOMATE-Y-PIMIENTO.png';
+import hlMangoImg from '../assets/mango.jpg';
+
 export const BRANDS_DATA: Record<string, Brand> = {
   'coco-freeze': {
     id: 'coco-freeze',
@@ -217,12 +248,12 @@ export const BRANDS_DATA: Record<string, Brand> = {
     colors: {
       primary: '#F97316', // Naranja más claro y vibrante
       secondary: '#FFF7ED',
-      accent: '#15803D', // Verde fresco
+      accent: '#00943A', // Verde exacto de las letras DHOY en el logo
       badgeBg: '#FFEDD5',
       badgeText: '#C2410C',
       blockBg: '#EA580C',
       blockText: '#FFFFFF',
-      borderAccent: '#16A34A',
+      borderAccent: '#00943A',
       heroGradient: 'from-orange-950/95 via-amber-950/80 to-stone-950/90',
       navBg: '#F97316', // Naranja más claro en la barra de arriba
       navText: '#FFFFFF',
@@ -239,7 +270,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
       vibrantTag: "D'hoy · Sabor Cítrico Auténtico",
       buttonBg: '#F97316',
       buttonText: '#FFFFFF',
-      buttonBorder: '#15803D'
+      buttonBorder: '#00943A'
     },
     heroImage: dhoyImg,
     closingStatement: "Elegimos buena fruta y cuidamos cada proceso para que cuando abras una botella de D'hoy, sientas el verdadero sabor del campo.",
@@ -539,33 +570,33 @@ export const BRANDS_DATA: Record<string, Brand> = {
       }
     ],
     colors: {
-      primary: '#558B2F', // Verde aguacate fuerte
-      secondary: '#F7FEE7',
-      accent: '#84CC16', // Verde lima aguacate
-      badgeBg: '#ECFCCB',
-      badgeText: '#365314',
-      blockBg: '#3F6212',
-      blockText: '#F7FEE7',
-      borderAccent: '#A3E635',
-      heroGradient: 'from-stone-950/95 via-lime-950/80 to-stone-950/90',
-      navBg: '#3F6212',
+      primary: '#1A3815', // Verde mucho más oscuro
+      secondary: '#F4F7F2',
+      accent: '#2D5A27',
+      badgeBg: '#E2EBDD',
+      badgeText: '#1A3815',
+      blockBg: '#132A10',
+      blockText: '#FFFFFF',
+      borderAccent: '#2D5A27',
+      heroGradient: 'from-stone-950/95 via-green-950/85 to-stone-950/90',
+      navBg: '#1A3815', // Verde mucho más oscuro
       navText: '#FFFFFF',
-      navHover: '#ECFCCB',
-      navCtaBg: '#558B2F',
+      navHover: '#E2EBDD',
+      navCtaBg: '#2D5A27',
       navCtaText: '#FFFFFF',
-      subKickerBg: '#ECFCCB',
-      subKickerText: '#365314',
-      cardAccentBorder: '#A3E635',
-      cardTagBg: '#ECFCCB',
-      cardTagText: '#365314',
-      footerBg: '#1A2E05',
-      footerText: '#D9F99D',
+      subKickerBg: '#E2EBDD',
+      subKickerText: '#1A3815',
+      cardAccentBorder: '#2D5A27',
+      cardTagBg: '#E2EBDD',
+      cardTagText: '#1A3815',
+      footerBg: '#0D1D0B', // Verde muy oscuro profundo
+      footerText: '#C8DAC0',
       vibrantTag: 'Ecolove · Bienestar Botánico Diario',
-      buttonBg: '#558B2F',
+      buttonBg: '#1A3815', // Botón verde mucho más oscuro
       buttonText: '#FFFFFF',
-      buttonBorder: '#A3E635'
+      buttonBorder: '#2D5A27'
     },
-    heroImage: ecoloveImg,
+    heroImage: ecolovePortadaSeccionImg,
     closingStatement: 'Ecolove hace que el bienestar no sea un esfuerzo, sino una elección simple y deliciosa que acompaña cada momento de tu cocina y de tu día.',
     families: [
       {
@@ -625,12 +656,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'aceites-de-coco',
         emotionalDescription: 'Conserva el aroma y sabor característico del coco. Una opción vegetal versátil para cocinar, hornear o terminar tus preparaciones.',
         presentations: ['115 ml', '120 ml', '190 ml', '265 ml', '380 ml', '473 ml', '980 ml'],
-        technicalInfo: {
-          ingredients: '100% Aceite de coco virgen prensado en frío sin refinar.',
-          conservation: 'Almacenar a temperatura ambiente. Solidifica de forma natural por debajo de los 24°C.',
-          origin: 'Cocos frescos de fincas costeras.'
-        },
-        imageUrl: ecoloveImg,
+        imageUrl: ecoloveAceiteCocoImg,
         featured: true
       },
       {
@@ -640,12 +666,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'aceites-de-coco',
         emotionalDescription: 'Perfil neutro para cocinar lo que quieras. Una forma práctica de incorporar aceite de coco sin cambiar el sabor de tus recetas.',
         presentations: ['120 ml', '265 ml', '473 ml'],
-        technicalInfo: {
-          ingredients: 'Aceite de coco desodorizado mediante vaporización natural sin químicos.',
-          conservation: 'Guardar en lugar fresco, seco y protegido de la luz directa.',
-          origin: 'Cocos seleccionados.'
-        },
-        imageUrl: ecoloveImg
+        imageUrl: ecoloveAceiteCocoSinOlorImg
       },
       {
         id: 'el-aceite-coco-mct',
@@ -654,12 +675,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'aceites-de-coco',
         emotionalDescription: 'Aceite con triglicéridos de cadena media, fácil de incorporar a bebidas y preparaciones como parte de tu rutina diaria.',
         presentations: ['180 ml', '250 ml'],
-        technicalInfo: {
-          ingredients: 'Triglicéridos de cadena media (C8 y C10) extraídos de aceite de coco.',
-          conservation: 'Conservar a temperatura ambiente.',
-          origin: 'Aceite de coco natural fraccionado.'
-        },
-        imageUrl: ecoloveImg
+        imageUrl: ecoloveAceiteCocoMctImg
       },
       {
         id: 'el-aceite-aguacate-clasico',
@@ -668,12 +684,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'aceites-de-aguacate',
         emotionalDescription: 'Con el carácter del aguacate y gran versatilidad en cocina. Su buena estabilidad al calor ayuda a tolerar altas temperaturas con menor oxidación.',
         presentations: ['250 ml'],
-        technicalInfo: {
-          ingredients: '100% Aceite puro de pulpa de aguacate Hass.',
-          conservation: 'Guardar en botella oscura en alacena fresca.',
-          origin: 'Aguacates maduros seleccionados.'
-        },
-        imageUrl: ecoloveImg
+        imageUrl: ecoloveAceiteAguacateImg
       },
       {
         id: 'el-aceite-aguacate-sin-olor',
@@ -682,12 +693,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'aceites-de-aguacate',
         emotionalDescription: 'Perfil neutro y buena estabilidad al calor para cocinar a altas temperaturas sin alterar el sabor original de tus recetas.',
         presentations: ['250 ml', '500 ml'],
-        technicalInfo: {
-          ingredients: 'Aceite de aguacate puro con filtrado suave para perfil neutro.',
-          conservation: 'Temperatura ambiente, alejado de calor directo.',
-          origin: 'Aguacates de productores aliados.'
-        },
-        imageUrl: ecoloveImg
+        imageUrl: ecoloveAceiteAguacateSinOlorImg
       },
       {
         id: 'el-spray-coco',
@@ -696,12 +702,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'aceites-en-spray',
         emotionalDescription: 'Aceite de coco líquido en spray para distribuir de manera uniforme y usar solo lo necesario en cada preparación.',
         presentations: ['180 ml'],
-        technicalInfo: {
-          ingredients: 'Aceite de coco fraccionado líquido en envase spray sin propelentes dañinos.',
-          conservation: 'Guardar a temperatura ambiente.',
-          origin: 'Fincas de coco.'
-        },
-        imageUrl: ecoloveImg
+        imageUrl: ecoloveSprayCocoMctImg
       },
       {
         id: 'el-spray-aguacate',
@@ -710,12 +711,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'aceites-en-spray',
         emotionalDescription: 'Aceite de aguacate en spray para aplicar de forma uniforme y controlar mejor la cantidad en tu cocina diaria.',
         presentations: ['180 ml'],
-        technicalInfo: {
-          ingredients: 'Aceite puro de aguacate prensado.',
-          conservation: 'Almacenar en lugar seco y fresco.',
-          origin: 'Aguacates seleccionados.'
-        },
-        imageUrl: ecoloveImg
+        imageUrl: ecoloveSprayAguacateImg
       },
       {
         id: 'el-spray-oliva',
@@ -724,12 +720,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'aceites-en-spray',
         emotionalDescription: 'Aceite de oliva extra virgen en spray para sumar sabor y usar la cantidad justa en tus preparaciones.',
         presentations: ['180 ml'],
-        technicalInfo: {
-          ingredients: 'Aceite de oliva extra virgen de primera extracción en frío.',
-          conservation: 'Conservar en lugar fresco.',
-          origin: 'Aceitunas seleccionadas.'
-        },
-        imageUrl: ecoloveImg
+        imageUrl: ecoloveSprayOlivaImg
       },
       {
         id: 'el-bebida-almendra-original',
@@ -738,12 +729,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'bebidas-vegetales',
         emotionalDescription: 'Suave, ligera y versátil para acompañar cualquier momento del día.',
         presentations: ['1 L', 'Tripack 3 x 1 L'],
-        technicalInfo: {
-          ingredients: 'Agua purificada, pasta de almendras tostadas, carbonato de calcio.',
-          conservation: 'Una vez abierto, mantener refrigerado y consumir en 5 días.',
-          origin: 'Almendras seleccionadas.'
-        },
-        imageUrl: ecoloveImg
+        imageUrl: ecoloveBebidaAlmendraImg
       },
       {
         id: 'el-bebida-almendra-vainilla',
@@ -752,12 +738,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'bebidas-vegetales',
         emotionalDescription: 'Almendra con un delicado toque de vainilla para hacer cada sorbo más especial.',
         presentations: ['1 L', 'Tripack 3 x 1 L'],
-        technicalInfo: {
-          ingredients: 'Base de almendra y extracto de vainilla natural.',
-          conservation: 'Conservar en frío una vez abierto.',
-          origin: 'Almendras e ingredientes de origen natural.'
-        },
-        imageUrl: ecoloveImg
+        imageUrl: ecoloveBebidaAlmendraVainillaImg
       },
       {
         id: 'el-bebida-coco',
@@ -766,12 +747,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'bebidas-vegetales',
         emotionalDescription: 'Ligera y tropical, para tomar o combinar como quieras.',
         presentations: ['1 L'],
-        technicalInfo: {
-          ingredients: 'Agua de coco y leche de coco ligera.',
-          conservation: 'Refrigerar tras abrir.',
-          origin: 'Cocos frescos del Pacífico.'
-        },
-        imageUrl: ecoloveImg
+        imageUrl: ecoloveBebidaCocoImg
       },
       {
         id: 'el-kombucha-frutos-rojos',
@@ -780,11 +756,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'kombucha',
         emotionalDescription: 'Frutal, refrescante y con todo el carácter de los frutos rojos.',
         presentations: ['500 ml'],
-        technicalInfo: {
-          ingredients: 'Té verde y negro fermentado con cultivo vivo (SCOBY), jugo de frutos rojos.',
-          conservation: 'Mantener permanentemente en refrigeración a 4°C.',
-          origin: 'Fermentación artesanal controlada.'
-        },
         imageUrl: ecoloveImg
       },
       {
@@ -794,11 +765,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'kombucha',
         emotionalDescription: 'Refrescante, intensa y con ese toque de jengibre que se siente desde el primer sorbo.',
         presentations: ['500 ml'],
-        technicalInfo: {
-          ingredients: 'Té fermentado, jugo de jengibre fresco prensado en frío.',
-          conservation: 'Refrigerar a 4°C.',
-          origin: 'Jengibre de campo y té seleccionado.'
-        },
         imageUrl: ecoloveImg
       },
       {
@@ -808,11 +774,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'kombucha',
         emotionalDescription: 'Suave, aromática y fácil de disfrutar.',
         presentations: ['500 ml'],
-        technicalInfo: {
-          ingredients: 'Té fermentado con manzana prensada.',
-          conservation: 'Conservar en frío.',
-          origin: 'Frutas seleccionadas.'
-        },
         imageUrl: ecoloveImg
       },
       {
@@ -822,11 +783,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'shots-ecolove',
         emotionalDescription: 'Una combinación intensa con ginseng para esos días en los que buscas un impulso extra.',
         presentations: ['35 ml', 'Six Pack'],
-        technicalInfo: {
-          ingredients: 'Extracto de ginseng coreano, jengibre, guaraná natural y manzana.',
-          conservation: 'Almacenar en frío o fresco.',
-          origin: 'Ingredientes botánicos puros.'
-        },
         imageUrl: ecoloveImg
       },
       {
@@ -836,11 +792,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'shots-ecolove',
         emotionalDescription: 'El carácter del jengibre en un shot intenso y práctico para sumar a tu rutina.',
         presentations: ['35 ml'],
-        technicalInfo: {
-          ingredients: 'Zumo de jengibre concentrado, limón y miel.',
-          conservation: 'Mantener en refrigeración.',
-          origin: 'Cultivos locales.'
-        },
         imageUrl: ecoloveImg
       },
       {
@@ -850,12 +801,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'snacks',
         emotionalDescription: 'Crujientes, deliciosas y fritas en aceite de coco para disfrutar cada mordida.',
         presentations: ['100 g'],
-        technicalInfo: {
-          ingredients: 'Papas seleccionadas, 100% aceite de coco virgen, sal marina.',
-          conservation: 'Conservar en lugar fresco y seco, sellar empaque tras abrir.',
-          origin: 'Papas andinas cultivadas en altura.'
-        },
-        imageUrl: ecoloveImg
+        imageUrl: ecolovePapasFritasImg
       },
       {
         id: 'el-miel-agave',
@@ -864,12 +810,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'algo-extra',
         emotionalDescription: 'Una alternativa práctica para darle el toque dulce que tú eliges a comidas y bebidas.',
         presentations: ['230 ml'],
-        technicalInfo: {
-          ingredients: '100% Jarabe puro de agave azul orgánico.',
-          conservation: 'Temperatura ambiente.',
-          origin: 'Agave seleccionado.'
-        },
-        imageUrl: ecoloveImg
+        imageUrl: ecoloveMielAgaveImg
       }
     ]
   },
@@ -885,31 +826,31 @@ export const BRANDS_DATA: Record<string, Brand> = {
     storyText: '',
     milestones: [],
     colors: {
-      primary: '#0D9488', // Turquesa fuerte
-      secondary: '#F0FDFA',
-      accent: '#16A34A', // Tonos de verde fuerte
-      badgeBg: '#CCFBF1',
-      badgeText: '#0F766E',
-      blockBg: '#09090B', // Negro profundo con turquesa
-      blockText: '#2DD4BF',
-      borderAccent: '#2DD4BF',
-      heroGradient: 'from-black/95 via-teal-950/85 to-stone-950/90',
-      navBg: '#09090B', // Negro predominante
+      primary: '#007F3A',
+      secondary: '#F0FDF4',
+      accent: '#007F3A',
+      badgeBg: '#DCFCE7',
+      badgeText: '#14532D',
+      blockBg: '#000000',
+      blockText: '#FFFFFF',
+      borderAccent: '#000000',
+      heroGradient: 'from-[#005928] via-[#007F3A] to-[#004720]',
+      navBg: '#000000', // Barra de menú negra como antes
       navText: '#FFFFFF',
-      navHover: '#2DD4BF',
-      navCtaBg: '#0D9488', // Turquesa botón
+      navHover: '#86EFAC',
+      navCtaBg: '#000000',
       navCtaText: '#FFFFFF',
-      subKickerBg: '#0F766E',
+      subKickerBg: '#000000',
       subKickerText: '#FFFFFF',
-      cardAccentBorder: '#2DD4BF',
-      cardTagBg: '#134E4A',
-      cardTagText: '#5EEAD4',
-      footerBg: '#09090B',
-      footerText: '#99F6E4',
+      cardAccentBorder: '#000000',
+      cardTagBg: '#14532D',
+      cardTagText: '#86EFAC',
+      footerBg: '#000000', // Footer negro como antes
+      footerText: '#FFFFFF',
       vibrantTag: 'Hortilisto · Vegetales Frescos & Prácticos',
-      buttonBg: '#0D9488',
+      buttonBg: '#000000',
       buttonText: '#FFFFFF',
-      buttonBorder: '#09090B'
+      buttonBorder: '#000000'
     },
     heroImage: hortilistoImg,
     closingStatement: 'Nosotros adelantamos el trabajo con vegetales de primera calidad. Tú haces la comida y disfrutas el momento.',
@@ -959,12 +900,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'aguacates-maduros',
         emotionalDescription: 'Seleccionado en su punto para que tengas un aguacate maduro cuando realmente lo necesitas.',
         presentations: ['Presentación estándar'],
-        technicalInfo: {
-          ingredients: '100% Aguacate variedad Hass o Fuerte madurado en cámara controlada.',
-          conservation: 'Mantener a temperatura ambiente hasta abrir; refrigerar envuelto una vez cortado.',
-          origin: 'Valles de clima templado de agricultores asociados.'
-        },
-        imageUrl: hortilistoImg,
+        imageUrl: hlAguacateMaduroImg,
         featured: true
       },
       {
@@ -974,12 +910,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'aguacates-maduros',
         emotionalDescription: 'Aguacates maduros en un formato pensado para acompañarte durante la semana.',
         presentations: ['Pack semanal'],
-        technicalInfo: {
-          ingredients: 'Selección de aguacates con maduración escalonada.',
-          conservation: 'Conservar en frutero ventilado.',
-          origin: 'Productores locales certificados.'
-        },
-        imageUrl: hortilistoImg
+        imageUrl: hlAguacate6PackImg
       },
       {
         id: 'hl-aguacate-tamano-ideal',
@@ -988,12 +919,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'aguacates-maduros',
         emotionalDescription: 'Aguacates maduros en un tamaño de empaque práctico para tu consumo diario.',
         presentations: ['Tamaño ideal'],
-        technicalInfo: {
-          ingredients: 'Aguacates seleccionados por calibre y textura cremosa.',
-          conservation: 'Lugar fresco y ventilado.',
-          origin: 'Cultivos de valle.'
-        },
-        imageUrl: hortilistoImg
+        imageUrl: hlAguacateMaduroImg
       },
       {
         id: 'hl-achogcha',
@@ -1002,11 +928,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'vegetales-y-frutas-listas',
         emotionalDescription: 'Lista para convertir una receta tradicional en algo mucho más práctico.',
         presentations: ['400 g'],
-        technicalInfo: {
-          ingredients: 'Achogcha fresca limpia, desvenada y lista para rellenar o guisar.',
-          conservation: 'Refrigerar en su empaque entre 2°C y 6°C.',
-          origin: 'Huertos andinos.'
-        },
         imageUrl: hortilistoImg
       },
       {
@@ -1016,12 +937,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'vegetales-y-frutas-listas',
         emotionalDescription: 'Cebollas listas para cocinar y ahorrarte uno de esos pasos que nadie extraña.',
         presentations: ['550 g'],
-        technicalInfo: {
-          ingredients: 'Cebolla colorada (paitena) y cebolla perla peladas y picadas en cubos uniformes.',
-          conservation: 'Mantener en refrigeración. Consumir dentro de la fecha del empaque.',
-          origin: 'Cosechas seleccionadas.'
-        },
-        imageUrl: hortilistoImg
+        imageUrl: hlMixCebollaImg
       },
       {
         id: 'hl-mix-mega-cebollas',
@@ -1030,12 +946,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'vegetales-y-frutas-listas',
         emotionalDescription: 'Más cebolla lista para cocinar cuando la receta o la familia piden más.',
         presentations: ['1 kg'],
-        technicalInfo: {
-          ingredients: 'Formato familiar de cebollas seleccionadas picadas.',
-          conservation: 'Refrigerar a 4°C.',
-          origin: 'Agricultores aliados.'
-        },
-        imageUrl: hortilistoImg
+        imageUrl: hlMegaMixCebollaImg
       },
       {
         id: 'hl-paitenitas',
@@ -1044,12 +955,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'vegetales-y-frutas-listas',
         emotionalDescription: 'Cebollitas listas para sumar sabor y practicidad a tus preparaciones.',
         presentations: ['475 g'],
-        technicalInfo: {
-          ingredients: 'Cebollitas moradas paitenas enteras peladas y limpias.',
-          conservation: 'Refrigerar entre 2°C y 6°C.',
-          origin: 'Campos de cultivo de hortalizas.'
-        },
-        imageUrl: hortilistoImg
+        imageUrl: hlCebollaPaitenitaImg
       },
       {
         id: 'hl-perlita',
@@ -1058,12 +964,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'vegetales-y-frutas-listas',
         emotionalDescription: 'Pequeñas cebollas listas para cocinar, acompañar o darle un toque diferente a tus platos.',
         presentations: ['475 g'],
-        technicalInfo: {
-          ingredients: 'Cebollitas perla tiernas peladas y lavadas.',
-          conservation: 'Mantener en frío.',
-          origin: 'Huertos de altura.'
-        },
-        imageUrl: hortilistoImg
+        imageUrl: hlCebollaPerlitaImg
       },
       {
         id: 'hl-pimientos-colores',
@@ -1071,13 +972,8 @@ export const BRANDS_DATA: Record<string, Brand> = {
         brandId: 'hortilisto',
         familyId: 'vegetales-y-frutas-listas',
         emotionalDescription: 'Color, sabor y frescura listos para darle vida a tus comidas.',
-        presentations: ['Bandeja surtida'],
-        technicalInfo: {
-          ingredients: 'Pimientos rojos, amarillos y verdes lavados, dessemillados y picados.',
-          conservation: 'Refrigerar a 4°C.',
-          origin: 'Invernaderos y huertos tecnificados.'
-        },
-        imageUrl: hortilistoImg
+        presentations: ['Presentación lista'],
+        imageUrl: hlPimientosColoresImg
       },
       {
         id: 'hl-sambo-picado',
@@ -1086,11 +982,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'vegetales-y-frutas-listas',
         emotionalDescription: 'Limpio, picado y listo para convertirse en tu próxima receta.',
         presentations: ['600 g'],
-        technicalInfo: {
-          ingredients: 'Cucurbita ficifolia (sambo tierno) pelado y picado.',
-          conservation: 'Conservar en refrigeración.',
-          origin: 'Zonas agrícolas andinas.'
-        },
         imageUrl: hortilistoImg
       },
       {
@@ -1100,12 +991,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'vegetales-y-frutas-listas',
         emotionalDescription: 'Todo el sabor del zapallo, con mucho menos trabajo.',
         presentations: ['700 g'],
-        technicalInfo: {
-          ingredients: 'Zapallo maduro pelado, sin semillas, cortado en dados.',
-          conservation: 'Refrigerar entre 2°C y 5°C.',
-          origin: 'Campos de hortalizas.'
-        },
-        imageUrl: hortilistoImg
+        imageUrl: hlZapalloImg
       },
       {
         id: 'hl-verdura-mazo',
@@ -1114,12 +1000,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'vegetales-y-frutas-listas',
         emotionalDescription: 'Una opción práctica para tener vegetales frescos listos cuando los necesitas.',
         presentations: ['200 g'],
-        technicalInfo: {
-          ingredients: 'Selección de hierbas y vegetales de aroma (apio, perejil, culantro) atados y lavados.',
-          conservation: 'Refrigerar con humedad controlada.',
-          origin: 'Huertos locales.'
-        },
-        imageUrl: hortilistoImg
+        imageUrl: hlJengibreImg
       },
       {
         id: 'hl-jengibre-bandeja',
@@ -1127,13 +1008,8 @@ export const BRANDS_DATA: Record<string, Brand> = {
         brandId: 'hortilisto',
         familyId: 'vegetales-y-frutas-listas',
         emotionalDescription: 'Jengibre fresco y práctico para sumar fácilmente a comidas y bebidas.',
-        presentations: ['Bandeja estándar'],
-        technicalInfo: {
-          ingredients: 'Rizomas seleccionados de jengibre fresco lavados.',
-          conservation: 'Conservar en ambiente seco o refrigeración.',
-          origin: 'Cosechas nacionales.'
-        },
-        imageUrl: hortilistoImg
+        presentations: ['Bandeja'],
+        imageUrl: hlJengibreImg
       },
       {
         id: 'hl-pina-golden',
@@ -1142,12 +1018,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'vegetales-y-frutas-listas',
         emotionalDescription: 'Dulce, fresca y lista para disfrutar sin pelar ni cortar.',
         presentations: ['600 g'],
-        technicalInfo: {
-          ingredients: '100% Piña Golden cortada en trozos jugosos.',
-          conservation: 'Mantener estrictamente refrigerado a 4°C.',
-          origin: 'Plantaciones tropicales del litoral.'
-        },
-        imageUrl: hortilistoImg
+        imageUrl: hlPinaGoldenImg
       },
       {
         id: 'hl-guacamole-clasico',
@@ -1156,12 +1027,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'guacamole',
         emotionalDescription: 'Aguacate convertido en un guacamole práctico y delicioso para acompañar lo que quieras.',
         presentations: ['205 g'],
-        technicalInfo: {
-          ingredients: 'Aguacate fresco Hass, sal, toque de limón y especias naturales.',
-          conservation: 'Mantener refrigerado entre 2°C y 4°C. Consumir dentro de 48h de abierto.',
-          origin: 'Aguacates de fincas asociadas.'
-        },
-        imageUrl: hortilistoImg
+        imageUrl: hlGuacamoleImg
       },
       {
         id: 'hl-guacamole-tomate-pimiento',
@@ -1170,12 +1036,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'guacamole',
         emotionalDescription: 'Nuestro guacamole con tomate y pimiento para darle todavía más sabor a cada bocado.',
         presentations: ['205 g'],
-        technicalInfo: {
-          ingredients: 'Aguacate Hass, dados de tomate fresco, pimiento dulce, cilantro y limón.',
-          conservation: 'Refrigerar a 4°C.',
-          origin: 'Vegetales cosechados en origen.'
-        },
-        imageUrl: hortilistoImg
+        imageUrl: hlGuacamoleTomatePimientoImg
       },
       {
         id: 'hl-grosella-encurtida',
@@ -1184,11 +1045,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'encurtidos',
         emotionalDescription: 'Ácida, intensa y de esas que hacen difícil parar después de la primera.',
         presentations: ['172 g drenado'],
-        technicalInfo: {
-          ingredients: 'Grosellas silvestres enteras, salmuera tradicional con especias.',
-          conservation: 'Almacenar a temperatura ambiente; refrigerar una vez abierto.',
-          origin: 'Frutos de recolección local.'
-        },
         imageUrl: hortilistoImg
       },
       {
@@ -1198,12 +1054,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'encurtidos',
         emotionalDescription: 'Ese equilibrio entre ácido, fresco y delicioso que siempre provoca otro pedazo.',
         presentations: ['172 g'],
-        technicalInfo: {
-          ingredients: 'Tiras de mango verde en salmuera con toque cítrico y especias.',
-          conservation: 'Guardar en lugar fresco.',
-          origin: 'Mangos de fincas costeras.'
-        },
-        imageUrl: hortilistoImg
+        imageUrl: hlMangoImg
       }
     ]
   }
