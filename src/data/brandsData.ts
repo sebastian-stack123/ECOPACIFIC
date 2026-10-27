@@ -127,7 +127,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
       cardAccentBorder: '#38BDF8',
       cardTagBg: '#E0F2FE',
       cardTagText: '#0369A1',
-      footerBg: '#082F49',
+      footerBg: '#075985',
       footerText: '#BAE6FD',
       vibrantTag: 'Coco Freeze · 100% Tropical & Fresco',
       buttonBg: '#0369A1',

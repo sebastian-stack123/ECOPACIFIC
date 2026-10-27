@@ -22,13 +22,17 @@ import hortilistoLogoImg from '../assets/images/hortilisto_nuevo.png';
 import hortilistoTransparentImg from '../assets/images/hortilisto_transparent.png';
 import hortilistoMenuImg from '../assets/images/hortilistoimagenlogo.jpg';
 import { CocoFreezeVideoPlayer } from './CocoFreezeVideoPlayer';
+import cocofreezeCoconutRollingImg from '../assets/images/cocofreeze_coconut_rolling.png';
 import cocofreeze2006BotellaImg from '../assets/images/cocofreeze_2006_botella_azul.png';
 import screenshot2010Img from '../assets/images/screenshot_2010.png';
+import screenshot2010NewImg from '../assets/Screenshot 2026-10-26 185550.png';
 import cocosRefrigeradoraImg from '../assets/images/cocos_refrigeradora.jpg';
 import dhoyantiguatImg from '../assets/images/dhoyantiguat.png';
 import dhoyfabricaImg from '../assets/images/dhoyfabrica.png';
 import dhoyshotshitosImg from '../assets/images/dhoyshotshitos.png';
 import dhoy2026BotellaImg from '../assets/images/dhoy_2026_botella.jpg';
+import dhoy2026NewBotellaImg from '../assets/9960c9e8-30d7-4fe7-a287-afcd6b949fab.jfif';
+import jugoNaranjaNaturalFrutasImg from '../assets/Jugo de naranja natural entre frutas frescas.png';
 import naturalezaMesaRusticaImg from '../assets/images/dhoy_naturaleza_fresca_mesa_rustica.png';
 import lafabricaImg from '../assets/images/lafabrica-1.jpg';
 import campo3Img from '../assets/images/campo3.jpg';
@@ -206,7 +210,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
     if (brand.id === 'coco-freeze') {
       if (index === 0) return { img: cocosRefrigeradoraImg, alt: '2004 El comienzo - 200 cocos' };
       if (index === 1) return { img: cocofreeze2006BotellaImg, alt: '2006 Del coco a la botella' };
-      if (index === 2) return { img: screenshot2010Img, alt: '2010 Aprender desde el cultivo' };
+      if (index === 2) return { img: screenshot2010NewImg, alt: '2010 Aprender desde el cultivo' };
       return { img: cocofreezePortadaImg, alt: '2026 Cosechado en su punto' };
     }
     if (brand.id === 'dhoy') {
@@ -214,7 +218,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       if (index === 1) return { img: botelladhoyxdxdxdImg, alt: "2011 Llegamos a más personas" };
       if (index === 2) return { img: dhoyfabricaImg, alt: "2012 Tecnología para cuidar la fruta" };
       if (index === 3) return { img: dhoyshotshitosImg, alt: "2016 Nacen los shots" };
-      return { img: dhoy2026BotellaImg, alt: "2026 Fruta de verdad" };
+      return { img: dhoy2026NewBotellaImg, alt: "2026 Fruta de verdad" };
     }
     if (brand.id === 'ecolove') {
       if (index === 0) return { img: ecolovePortadaSeccionImg, alt: "2017 Primeros pasos" };
@@ -469,13 +473,13 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             <CocoFreezeVideoPlayer src="/VIDEO-COCO-FREEZE-2026.mp4" />
           )}
 
-          {/* Imagen debajo de inicio para DHOY */}
+          {/* Imagen debajo de inicio para DHOY (Jugo de naranja natural entre frutas - entera sin recortar) */}
           {brand.id === 'dhoy' && (
-            <div className="max-w-5xl mx-auto rounded-3xl sm:rounded-4xl overflow-hidden shadow-2xl border-2 border-white/20 aspect-[16/9] sm:aspect-[21/9] md:h-[460px] bg-white/10 backdrop-blur-sm">
+            <div className="max-w-5xl mx-auto rounded-3xl sm:rounded-4xl overflow-hidden shadow-2xl border-2 border-white/20 bg-black/15">
               <img
-                src={naturalezaMesaRusticaImg}
-                alt="D'Hoy - Naturaleza fresca en la mesa rústica"
-                className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-102"
+                src={jugoNaranjaNaturalFrutasImg}
+                alt="D'Hoy - Jugo de naranja natural entre frutas frescas"
+                className="w-full h-auto block object-contain transition-transform duration-700 hover:scale-101"
               />
             </div>
           )}
@@ -512,7 +516,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
           id="historia"
           className={`py-20 sm:py-28 transition-colors duration-500 ${
             brand.id === 'coco-freeze'
-              ? 'bg-[#0087C1] text-white border-t border-b border-sky-400/30'
+              ? 'bg-[#009FE3] text-white border-t border-b border-sky-400/30'
               : brand.id === 'dhoy'
               ? 'bg-[#007b30] text-white border-t border-b border-emerald-400/30'
               : brand.id === 'ecolove'
@@ -550,7 +554,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
               ref={historyTimelineRef}
               className="relative max-w-5xl mx-auto mt-14 py-6"
             >
-              {/* Coco rodante verde natural en zigzag (SOLO para Coco Freeze) */}
+              {/* Coco rodante completo verde en el estilo del logo de Coco Freeze */}
               {brand.id === 'coco-freeze' && (
                 <div
                   className="absolute pointer-events-none z-20 transition-transform duration-75 will-change-transform hidden md:flex items-center justify-center"
@@ -560,58 +564,50 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                     transform: `translate(-50%, -50%) rotate(${scrollProgress * 1440}deg)`,
                   }}
                 >
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
-                    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)]" fill="none">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center drop-shadow-[0_12px_24px_rgba(0,0,0,0.4)]">
+                    <svg
+                      viewBox="0 0 120 120"
+                      className="w-full h-full select-none pointer-events-none"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <defs>
-                        {/* Verde un poco más oscuro y natural para la cáscara */}
-                        <radialGradient id="cocoHuskDarkGreen" cx="35%" cy="45%" r="65%">
-                          <stop offset="0%" stopColor="#22C55E" />
-                          <stop offset="35%" stopColor="#15803D" />
-                          <stop offset="75%" stopColor="#166534" />
-                          <stop offset="100%" stopColor="#14532D" />
+                        <radialGradient id="cocoFullSkin" cx="36%" cy="34%" r="66%">
+                          <stop offset="0%" stopColor="#4ADE80" />
+                          <stop offset="20%" stopColor="#22C55E" />
+                          <stop offset="55%" stopColor="#009444" />
+                          <stop offset="85%" stopColor="#057234" />
+                          <stop offset="100%" stopColor="#064E3B" />
                         </radialGradient>
-                        {/* Pulpa de coco blanca y pura */}
-                        <linearGradient id="cocoPulpWhite" x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" stopColor="#FFFFFF" />
-                          <stop offset="70%" stopColor="#F8FAFC" />
-                          <stop offset="100%" stopColor="#E2E8F0" />
-                        </linearGradient>
-                        {/* Agua de coco refrescante en el interior */}
-                        <radialGradient id="cocoWaterInner" cx="45%" cy="40%" r="60%">
-                          <stop offset="0%" stopColor="#F0F9FF" />
-                          <stop offset="40%" stopColor="#7DD3FC" />
-                          <stop offset="85%" stopColor="#0284C7" />
-                          <stop offset="100%" stopColor="#0369A1" />
+                        <radialGradient id="cocoDepth" cx="50%" cy="50%" r="50%">
+                          <stop offset="70%" stopColor="#000000" stopOpacity="0" />
+                          <stop offset="100%" stopColor="#022c1b" stopOpacity="0.45" />
                         </radialGradient>
                       </defs>
 
-                      {/* Borde posterior de la cáscara verde detrás del corte */}
-                      <ellipse cx="50" cy="27" rx="27" ry="12" fill="#14532D" />
+                      {/* Silueta y cáscara verde completamente entera y redonda sin cortes */}
+                      <circle cx="60" cy="60" r="52" fill="url(#cocoFullSkin)" stroke="#211F20" strokeWidth="5.5" />
+                      <circle cx="60" cy="60" r="52" fill="url(#cocoDepth)" />
 
-                      {/* Cuerpo verde del coco (verde natural más oscuro, sin los 3 puntos) */}
+                      {/* Fibras orgánicas naturales de la pipa */}
+                      <path d="M 60 14 Q 58 60 60 106" stroke="#064E3B" strokeWidth="2.2" strokeLinecap="round" opacity="0.35" />
+                      <path d="M 60 14 Q 32 58 44 102" stroke="#064E3B" strokeWidth="2" strokeLinecap="round" opacity="0.28" />
+                      <path d="M 60 14 Q 88 58 76 102" stroke="#064E3B" strokeWidth="2" strokeLinecap="round" opacity="0.28" />
+
+                      {/* Brillo tropical suave */}
+                      <path d="M 26 44 C 32 28, 52 18, 74 20 C 60 20, 36 29, 28 48 Z" fill="#FFFFFF" opacity="0.42" />
+                      <ellipse cx="44" cy="36" rx="14" ry="7" fill="#FFFFFF" opacity="0.35" transform="rotate(-35 44 36)" />
+                      <circle cx="36" cy="44" r="4" fill="#FFFFFF" opacity="0.55" />
+
+                      {/* Cáliz / corona tropical superior de coco fresco */}
                       <path
-                        d="M23 28 C16 48, 20 74, 36 86 C42 90, 58 90, 64 86 C80 74, 84 48, 77 28 C70 38, 30 38, 23 28 Z"
-                        fill="url(#cocoHuskDarkGreen)"
-                        stroke="#14532D"
-                        strokeWidth="2.2"
+                        d="M 60 9 C 56 13, 52 14, 46 13 C 50 17, 53 20, 52 25 C 56 21, 64 21, 68 25 C 67 20, 70 17, 74 13 C 68 14, 64 13, 60 9 Z"
+                        fill="#14532D"
+                        stroke="#211F20"
+                        strokeWidth="3"
+                        strokeLinejoin="round"
                       />
-
-                      {/* Fibras sutiles orgánicas de la pipa verde */}
-                      <path d="M32 44 Q25 64 36 82" stroke="#0F3A20" strokeWidth="1.2" strokeLinecap="round" opacity="0.35" />
-                      <path d="M68 44 Q75 64 64 82" stroke="#0F3A20" strokeWidth="1.2" strokeLinecap="round" opacity="0.35" />
-
-                      {/* Brillo suave en la piel verde del coco */}
-                      <ellipse cx="36" cy="56" rx="12" ry="6" fill="#86EFAC" opacity="0.22" transform="rotate(-30 36 56)" />
-
-                      {/* Parte superior blanca expuesta como si estuviera partido */}
-                      <ellipse cx="50" cy="27" rx="26" ry="11" fill="url(#cocoPulpWhite)" stroke="#CBD5E1" strokeWidth="1.2" />
-
-                      {/* Cavidad interior con agua de coco fresca */}
-                      <ellipse cx="50" cy="28" rx="18" ry="7.5" fill="url(#cocoWaterInner)" />
-
-                      {/* Reflejos de luz en el agua fresca y en la pulpa blanca */}
-                      <ellipse cx="45" cy="27.5" rx="7" ry="2.5" fill="#FFFFFF" opacity="0.75" />
-                      <path d="M28 27 C34 22, 66 22, 72 27 C66 24.5, 34 24.5, 28 27 Z" fill="#FFFFFF" opacity="0.85" />
+                      <ellipse cx="60" cy="15" rx="3.5" ry="3" fill="#3D1E0C" stroke="#211F20" strokeWidth="1.5" />
                     </svg>
                   </div>
                 </div>
@@ -696,14 +692,12 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                       </div>
                     </div>
                   ) : isCocoFreeze2010 ? (
-                    <div className="w-full rounded-3xl overflow-hidden shadow-2xl group hover:shadow-3xl transition-all border-2 border-white/20 bg-sky-950 md:-my-4">
-                      <div className="relative w-full h-[320px] sm:h-[400px] md:h-[480px]">
-                        <img
-                          src={milestoneImg}
-                          alt={milestoneAlt}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
+                    <div className="w-full rounded-3xl overflow-hidden shadow-2xl group hover:shadow-3xl transition-all border-2 border-white/20 bg-sky-950">
+                      <img
+                        src={milestoneImg}
+                        alt={milestoneAlt}
+                        className="w-full h-auto block object-cover group-hover:scale-102 transition-transform duration-500"
+                      />
                     </div>
                   ) : (
                     <div className="w-full rounded-3xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all">
