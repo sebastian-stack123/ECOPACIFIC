@@ -636,12 +636,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         productIds: ['el-shot-energy', 'el-shot-defense']
       },
       {
-        id: 'snacks',
-        name: 'Snacks',
-        tagline: 'Algo rico también puede ser una mejor elección.',
-        productIds: ['el-snack-papas-coco']
-      },
-      {
         id: 'algo-extra',
         name: 'Algo extra',
         tagline: 'Una opción simple para endulzar tus comidas y bebidas a tu manera.',
@@ -793,15 +787,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         emotionalDescription: 'El carácter del jengibre en un shot intenso y práctico para sumar a tu rutina.',
         presentations: ['35 ml'],
         imageUrl: ecoloveImg
-      },
-      {
-        id: 'el-snack-papas-coco',
-        name: 'Papas fritas en aceite de coco',
-        brandId: 'ecolove',
-        familyId: 'snacks',
-        emotionalDescription: 'Crujientes, deliciosas y fritas en aceite de coco para disfrutar cada mordida.',
-        presentations: ['100 g'],
-        imageUrl: ecolovePapasFritasImg
       },
       {
         id: 'el-miel-agave',

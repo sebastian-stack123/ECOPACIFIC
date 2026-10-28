@@ -31,7 +31,7 @@ import dhoyantiguatImg from '../assets/images/dhoyantiguat.png';
 import dhoyfabricaImg from '../assets/images/dhoyfabrica.png';
 import dhoyshotshitosImg from '../assets/images/dhoyshotshitos.png';
 import dhoy2026BotellaImg from '../assets/images/dhoy_2026_botella.jpg';
-import dhoy2026NewBotellaImg from '../assets/9960c9e8-30d7-4fe7-a287-afcd6b949fab.jfif';
+import dhoy2026NewBotellaImg from '../assets/dhoy_2026_botella_nueva.png';
 import jugoNaranjaNaturalFrutasImg from '../assets/Jugo de naranja natural entre frutas frescas.png';
 import naturalezaMesaRusticaImg from '../assets/images/dhoy_naturaleza_fresca_mesa_rustica.png';
 import lafabricaImg from '../assets/images/lafabrica-1.jpg';
@@ -278,16 +278,24 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
 
   return (
     <div
+      data-brand={brand.id}
       className={`min-h-screen ${
         brand.id === 'hortilisto' ? 'bg-[#007F3A]' : 'bg-white'
       } text-stone-900 ${
-        brand.id === 'coco-freeze' ? 'font-sans' : ''
-      }`}
-      style={
         brand.id === 'coco-freeze'
-          ? { fontFamily: 'var(--font-sans, "Plus Jakarta Sans", system-ui, -apple-system, sans-serif)' }
-          : undefined
-      }
+          ? 'font-oscine'
+          : brand.id === 'dhoy'
+          ? 'font-baloo'
+          : ''
+      }`}
+      style={{
+        fontFamily:
+          brand.id === 'coco-freeze'
+            ? 'var(--font-oscine, "Oscine", "Oscine Trial", system-ui, sans-serif)'
+            : brand.id === 'dhoy'
+            ? 'var(--font-baloo, "Baloo Tammudu 2", "Baloo Tammudu", cursive, sans-serif)'
+            : undefined,
+      }}
     >
       {/* ========================================================
           1. NAVBAR SUPERIOR UNIFICADO (Estructura idéntica para todas las marcas)
