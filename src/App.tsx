@@ -77,6 +77,7 @@ export default function App() {
             onNavigateHome={() => navigateTo('/')}
             onNavigateBrand={(slug) => navigateTo(`/marcas/${slug}`)}
             onOpenContact={() => navigateTo('/contacto')}
+            onLanguageChange={setLanguage}
           />
         ) : isNosotros ? (
           /* Subpágina completa de Nuestra Empresa cargada bajo demanda */

@@ -72,6 +72,7 @@ interface BrandSubpageProps {
   onNavigateHome: () => void;
   onNavigateBrand: (slug: string) => void;
   onOpenContact: () => void;
+  onLanguageChange?: (lang: Language) => void;
 }
 
 export const BrandSubpage: React.FC<BrandSubpageProps> = ({
@@ -81,6 +82,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
   onNavigateHome,
   onNavigateBrand,
   onOpenContact,
+  onLanguageChange,
 }) => {
   const brand = brandProp || (brandSlug ? BRANDS_DATA[brandSlug] : null) || BRANDS_DATA['coco-freeze'];
   const t = UI_TRANSLATIONS[language];
@@ -332,14 +334,43 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             </button>
           </div>
 
-          {/* DERECHA: PRODUCTOS (sin burbuja, texto directo) */}
-          <div className="flex items-center gap-4 z-10">
+          {/* DERECHA: Selector de idioma Español/Inglés y enlace a PRODUCTOS */}
+          <div className="flex items-center gap-2.5 sm:gap-4 z-10">
             <a
               href="#productos"
-              className="text-xs sm:text-sm font-black uppercase tracking-wider text-white hover:text-yellow-300 transition-colors cursor-pointer"
+              className="hidden sm:inline-block text-xs sm:text-sm font-black uppercase tracking-wider text-white hover:text-yellow-300 transition-colors cursor-pointer"
             >
-              PRODUCTOS
+              {language === 'es' ? 'PRODUCTOS' : 'PRODUCTS'}
             </a>
+
+            {onLanguageChange && (
+              <div className="flex items-center bg-black/25 backdrop-blur-xs border border-white/30 rounded-full p-0.5 text-xs text-white shadow-xs">
+                <button
+                  type="button"
+                  onClick={() => onLanguageChange('es')}
+                  className={`px-2.5 py-1 rounded-full transition-all cursor-pointer font-bold ${
+                    language === 'es'
+                      ? 'bg-white text-stone-900 shadow-xs'
+                      : 'text-white/90 hover:text-white'
+                  }`}
+                  aria-label="Cambiar idioma a Español"
+                >
+                  ES
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onLanguageChange('en')}
+                  className={`px-2.5 py-1 rounded-full transition-all cursor-pointer font-bold ${
+                    language === 'en'
+                      ? 'bg-white text-stone-900 shadow-xs'
+                      : 'text-white/90 hover:text-white'
+                  }`}
+                  aria-label="Change language to English"
+                >
+                  EN
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </header>
@@ -416,10 +447,39 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
               </nav>
             </div>
 
-            {/* Pie del menú */}
-            <div className="pt-6 border-t border-white/15 text-xs text-white/70 flex items-center justify-between">
-              <span>EcoPacific S.A.</span>
-              <span className="text-[10px] uppercase font-bold text-yellow-300">{brand.name}</span>
+            {/* Pie del menú con selector de idioma */}
+            <div className="pt-6 border-t border-white/15 flex flex-col gap-4">
+              {onLanguageChange && (
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-white/80 font-medium">
+                    {language === 'es' ? 'Idioma / Language:' : 'Language / Idioma:'}
+                  </span>
+                  <div className="flex items-center bg-black/25 border border-white/30 rounded-full p-0.5 text-xs text-white shadow-xs">
+                    <button
+                      type="button"
+                      onClick={() => onLanguageChange('es')}
+                      className={`px-2.5 py-1 rounded-full font-bold transition-all cursor-pointer ${
+                        language === 'es' ? 'bg-white text-stone-900 shadow-xs' : 'text-white/90 hover:text-white'
+                      }`}
+                    >
+                      ES
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => onLanguageChange('en')}
+                      className={`px-2.5 py-1 rounded-full font-bold transition-all cursor-pointer ${
+                        language === 'en' ? 'bg-white text-stone-900 shadow-xs' : 'text-white/90 hover:text-white'
+                      }`}
+                    >
+                      EN
+                    </button>
+                  </div>
+                </div>
+              )}
+              <div className="text-xs text-white/70 flex items-center justify-between">
+                <span>EcoPacific S.A.</span>
+                <span className="text-[10px] uppercase font-bold text-yellow-300">{brand.name}</span>
+              </div>
             </div>
           </div>
         </div>
