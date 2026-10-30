@@ -21,12 +21,13 @@ import dhoyCalcioDImg from '../assets/EP_DHOY_CALCIOTYD_2.5L_1.png';
 // DHOY Mezclas de Fruta
 import dhoyNaranjaZanaImg from '../assets/355-naranjazana.jpg';
 import dhoyNaranjaMangoImg from '../assets/355-naranjamango.jpg';
-import dhoyNaranjaFresaImg from '../assets/355-naranjabanafresa.jpg';
+import dhoyNaranjaFresaImg from '../assets/naranjafresadhoy.png';
+import dhoyNaranjaJengibreImg from '../assets/naranjajengibre.png';
 import dhoyMoraImg from '../assets/mora355.png';
 import dhoyMandarinaImg from '../assets/mandarina355ml.png';
 import dhoyCranberryImg from '../assets/Chamberry.jpg';
 import dhoyToronjaImg from '../assets/toronja.png';
-import dhoyNectarFrutillaImg from '../assets/fresa.png';
+import dhoyNectarFrutillaImg from '../assets/nectardefrutilla.png';
 import dhoyLimonadaFresaImg from '../assets/ECOPACIFIC-LIMONADA-FRESA.png';
 
 // DHOY Cold Pressed
@@ -42,6 +43,7 @@ import dhoyShotDigestiImg from '../assets/DIGESTIVE.jpg';
 import dhoyShotDefenImg from '../assets/VITAMINA-C.jpg';
 
 // DHOY Especialidades
+import dhoyZumoLimonImg from '../assets/Limonzumo.png';
 import dhoySabilaImg from '../assets/sabila.png';
 
 // ECOLOVE Productos
@@ -56,6 +58,7 @@ import ecoloveSprayOlivaImg from '../assets/ECOLOVE-ACEITE-OLIVA-EXTRAVIRGEN-SPR
 import ecoloveBebidaAlmendraImg from '../assets/ECOLOVE-BEBIDA-DE-ALMENDRA-SIN-AZUCAR-1L-2026.png';
 import ecoloveBebidaAlmendraVainillaImg from '../assets/ECOLOVE-BEBIDA-DE-ALMENDRA-VAINILLA-2026.png';
 import ecoloveBebidaCocoImg from '../assets/ECOLOVE-BEBIDA-DE-COCO-SIN-AZUCAR.png';
+import ecoloveKombuchaJengibreImg from '../assets/kombuchajengibre.png';
 import ecolovePapasFritasImg from '../assets/ECOLOVE-PAPAS-FRITAS-2026.png';
 import ecoloveMielAgaveImg from '../assets/ECOLOVE-MIEL-DE-AGAVE-230ML.png';
 import ecolovePortadaSeccionImg from '../assets/ECOPACIFIC-ECOLOVE-SECCION-PORTADA2026.png';
@@ -384,7 +387,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'mezclas-de-fruta',
         emotionalDescription: 'Naranja refrescante con un toque intenso y vibrante de jengibre.',
         presentations: ['355 ml'],
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoyNaranjaJengibreImg
       },
       {
         id: 'dh-mora',
@@ -519,7 +522,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'especialidades-dhoy',
         emotionalDescription: 'El sabor fresco y ácido del limón listo para usar cuando lo necesites.',
         presentations: ['200 ml'],
-        imageUrl: dhoyJugo100Img
+        imageUrl: dhoyZumoLimonImg
       },
       {
         id: 'dh-pulpa-sabila',
@@ -759,7 +762,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'kombucha',
         emotionalDescription: 'Refrescante, intensa y con ese toque de jengibre que se siente desde el primer sorbo.',
         presentations: ['500 ml'],
-        imageUrl: ecoloveImg
+        imageUrl: ecoloveKombuchaJengibreImg
       },
       {
         id: 'el-kombucha-manzana',

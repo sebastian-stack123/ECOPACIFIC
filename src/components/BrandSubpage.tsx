@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowUpRight, Menu, X } from 'lucide-react';
 import { Brand, Product, Language } from '../types';
 import { UI_TRANSLATIONS } from '../data/translations';
 import { BRANDS_DATA } from '../data/brandsData';
+import { getTranslatedBrand } from '../data/brandTranslations';
 import { ProductDetailModal } from './ProductDetailModal';
 import cocofreezeLogoTransparent from '../assets/images/cocofreeze_logo_transparent.png';
 import cocofreezePortadaImg from '../assets/images/cocofreeze_portada_2026.jpg';
@@ -22,7 +23,7 @@ import hortilistoLogoImg from '../assets/images/hortilisto_nuevo.png';
 import hortilistoTransparentImg from '../assets/images/hortilisto_transparent.png';
 import hortilistoMenuImg from '../assets/images/hortilistoimagenlogo.jpg';
 import { CocoFreezeVideoPlayer } from './CocoFreezeVideoPlayer';
-import cocofreezeCoconutRollingImg from '../assets/images/cocofreeze_coconut_rolling.png';
+import cocoVerdeStickerImg from '../assets/Coco Verde Cortado en Estilo Sticker.png';
 import cocofreeze2006BotellaImg from '../assets/images/cocofreeze_2006_botella_azul.png';
 import screenshot2010Img from '../assets/images/screenshot_2010.png';
 import screenshot2010NewImg from '../assets/Screenshot 2026-10-26 185550.png';
@@ -57,6 +58,7 @@ import ecoloveSprayAguacateImg from '../assets/ECOLOVE-ACEITE-AGUACATE-SPRAY-180
 import ecoloveBebidaAlmendraImg from '../assets/ECOLOVE-BEBIDA-DE-ALMENDRA-SIN-AZUCAR-1L-2026.png';
 import ecolovePapasFritasImg from '../assets/ECOLOVE-PAPAS-FRITAS-2026.png';
 import ecoloveMielAgaveImg from '../assets/ECOLOVE-MIEL-DE-AGAVE-230ML.png';
+import kombuchaJengibreImg from '../assets/kombuchajengibre.png';
 
 // HORTILISTO Imágenes
 import hlAguacateMaduroImg from '../assets/aguacatemaduro.jpg';
@@ -84,7 +86,8 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
   onOpenContact,
   onLanguageChange,
 }) => {
-  const brand = brandProp || (brandSlug ? BRANDS_DATA[brandSlug] : null) || BRANDS_DATA['coco-freeze'];
+  const rawBrand = brandProp || (brandSlug ? BRANDS_DATA[brandSlug] : null) || BRANDS_DATA['coco-freeze'];
+  const brand = getTranslatedBrand(rawBrand, language);
   const t = UI_TRANSLATIONS[language];
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedFamilyId, setSelectedFamilyId] = useState<string | null>(null);
@@ -189,6 +192,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       return dhoy355mlImg;
     }
     if (brand.id === 'ecolove') {
+      if (familyId === 'kombucha') return kombuchaJengibreImg;
       if (familyId === 'aceites-de-coco') return ecoloveAceiteCocoImg;
       if (familyId === 'aceites-de-aguacate') return ecoloveAceiteAguacateImg;
       if (familyId === 'aceites-en-spray') return ecoloveSprayAguacateImg;
@@ -416,7 +420,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                   className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 transition-colors text-left cursor-pointer text-yellow-300"
                 >
                   <ArrowLeft className="w-4 h-4" />
-                  <span>Ecopacific Corporativo</span>
+                  <span>{language === 'es' ? 'Ecopacific Corporativo' : 'Corporate Ecopacific'}</span>
                 </button>
 
                 <a
@@ -424,7 +428,9 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                   onClick={() => setIsDrawerOpen(false)}
                   className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
                 >
-                  {brand.id === 'coco-freeze' ? 'Cosechado en su punto' : 'Inicio'}
+                  {brand.id === 'coco-freeze'
+                    ? (language === 'es' ? 'Cosechado en su punto' : 'Harvested at its peak')
+                    : (language === 'es' ? 'Inicio' : 'Home')}
                 </a>
 
                 {brand.milestones && brand.milestones.length > 0 && (
@@ -433,7 +439,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                     onClick={() => setIsDrawerOpen(false)}
                     className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
                   >
-                    Historia
+                    {language === 'es' ? 'Historia' : 'Story'}
                   </a>
                 )}
 
@@ -442,7 +448,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                   onClick={() => setIsDrawerOpen(false)}
                   className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
                 >
-                  Productos
+                  {language === 'es' ? 'Productos' : 'Products'}
                 </a>
               </nav>
             </div>
@@ -513,10 +519,17 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             }`}
           >
             {brand.id === 'dhoy' ? (
-              <>
-                <span>DE FAMILIA Y DEL CAMPO.</span>
-                <span>SABE A FRUTA DE VERDAD.</span>
-              </>
+              language === 'es' ? (
+                <>
+                  <span>DE FAMILIA Y DEL CAMPO.</span>
+                  <span>SABE A FRUTA DE VERDAD.</span>
+                </>
+              ) : (
+                <>
+                  <span>FROM THE FAMILY AND THE FIELD.</span>
+                  <span>TASTES LIKE REAL FRUIT.</span>
+                </>
+              )
             ) : (
               <span>{brand.valueStatement}</span>
             )}
@@ -532,7 +545,9 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             }`}
           >
             {brand.id === 'coco-freeze'
-              ? 'Todo comienza en el campo. Seleccionamos cocos en su punto ideal de cosecha para llevar a cada botella ese sabor naturalmente dulce, fresco y auténtico que hace especial al coco. Más de 20 años cerca del origen nos han enseñado algo simple: cuando el coco se cosecha en su punto, se siente en cada sorbo.'
+              ? (language === 'es'
+                  ? 'Todo comienza en el campo. Seleccionamos cocos en su punto ideal de cosecha para llevar a cada botella ese sabor naturalmente dulce, fresco y auténtico que hace especial al coco. Más de 20 años cerca del origen nos han enseñado algo simple: cuando el coco se cosecha en su punto, se siente en cada sorbo.'
+                  : 'It all starts in the field. We select coconuts at their ideal harvest point to bring that naturally sweet, fresh, and authentic coconut flavor into every bottle. Over 20 years close to the origin have taught us something simple: when coconuts are harvested at their peak, you feel it in every sip.')
               : brand.shortDescription}
           </p>
 
@@ -600,7 +615,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                   : 'text-stone-400'
               }`}
             >
-              Historia
+              {language === 'es' ? 'Historia' : 'Story'}
             </span>
             <h2
               className={`text-3xl sm:text-5xl font-black tracking-tight mb-6 ${
@@ -622,7 +637,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
               ref={historyTimelineRef}
               className="relative max-w-5xl mx-auto mt-14 py-6"
             >
-              {/* Coco rodante completo verde en el estilo del logo de Coco Freeze */}
+              {/* Coco rodante cortado estilo sticker de Coco Freeze */}
               {brand.id === 'coco-freeze' && (
                 <div
                   className="absolute pointer-events-none z-20 transition-transform duration-75 will-change-transform hidden md:flex items-center justify-center"
@@ -632,51 +647,13 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                     transform: `translate(-50%, -50%) rotate(${scrollProgress * 1440}deg)`,
                   }}
                 >
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center drop-shadow-[0_12px_24px_rgba(0,0,0,0.4)]">
-                    <svg
-                      viewBox="0 0 120 120"
-                      className="w-full h-full select-none pointer-events-none"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <defs>
-                        <radialGradient id="cocoFullSkin" cx="36%" cy="34%" r="66%">
-                          <stop offset="0%" stopColor="#4ADE80" />
-                          <stop offset="20%" stopColor="#22C55E" />
-                          <stop offset="55%" stopColor="#009444" />
-                          <stop offset="85%" stopColor="#057234" />
-                          <stop offset="100%" stopColor="#064E3B" />
-                        </radialGradient>
-                        <radialGradient id="cocoDepth" cx="50%" cy="50%" r="50%">
-                          <stop offset="70%" stopColor="#000000" stopOpacity="0" />
-                          <stop offset="100%" stopColor="#022c1b" stopOpacity="0.45" />
-                        </radialGradient>
-                      </defs>
-
-                      {/* Silueta y cáscara verde completamente entera y redonda sin cortes */}
-                      <circle cx="60" cy="60" r="52" fill="url(#cocoFullSkin)" stroke="#211F20" strokeWidth="5.5" />
-                      <circle cx="60" cy="60" r="52" fill="url(#cocoDepth)" />
-
-                      {/* Fibras orgánicas naturales de la pipa */}
-                      <path d="M 60 14 Q 58 60 60 106" stroke="#064E3B" strokeWidth="2.2" strokeLinecap="round" opacity="0.35" />
-                      <path d="M 60 14 Q 32 58 44 102" stroke="#064E3B" strokeWidth="2" strokeLinecap="round" opacity="0.28" />
-                      <path d="M 60 14 Q 88 58 76 102" stroke="#064E3B" strokeWidth="2" strokeLinecap="round" opacity="0.28" />
-
-                      {/* Brillo tropical suave */}
-                      <path d="M 26 44 C 32 28, 52 18, 74 20 C 60 20, 36 29, 28 48 Z" fill="#FFFFFF" opacity="0.42" />
-                      <ellipse cx="44" cy="36" rx="14" ry="7" fill="#FFFFFF" opacity="0.35" transform="rotate(-35 44 36)" />
-                      <circle cx="36" cy="44" r="4" fill="#FFFFFF" opacity="0.55" />
-
-                      {/* Cáliz / corona tropical superior de coco fresco */}
-                      <path
-                        d="M 60 9 C 56 13, 52 14, 46 13 C 50 17, 53 20, 52 25 C 56 21, 64 21, 68 25 C 67 20, 70 17, 74 13 C 68 14, 64 13, 60 9 Z"
-                        fill="#14532D"
-                        stroke="#211F20"
-                        strokeWidth="3"
-                        strokeLinejoin="round"
-                      />
-                      <ellipse cx="60" cy="15" rx="3.5" ry="3" fill="#3D1E0C" stroke="#211F20" strokeWidth="1.5" />
-                    </svg>
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)]">
+                    <img
+                      src={cocoVerdeStickerImg}
+                      alt="Coco Freeze - Coco rodante"
+                      className="w-full h-full object-contain select-none pointer-events-none"
+                      draggable={false}
+                    />
                   </div>
                 </div>
               )}
@@ -825,7 +802,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                   : 'text-stone-900'
               }`}
             >
-              Productos
+              {language === 'es' ? 'Productos' : 'Products'}
             </h2>
           </div>
 
@@ -889,7 +866,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                 />
                 <div>
                   <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-400 block">
-                    {brand.name} · Categoría
+                    {brand.name} · {language === 'es' ? 'Categoría' : 'Category'}
                   </span>
                   <h3 className="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight uppercase">
                     {brand.families.find((f) => f.id === selectedFamilyId)?.name}
@@ -1009,13 +986,14 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             {/* Footer del Pop-up con botón para cerrar */}
             <div className="px-6 sm:px-10 py-4 bg-white border-t border-stone-200 flex items-center justify-between">
               <span className="text-xs text-stone-500 font-medium">
-                {brand.name} · {brand.products.filter((p) => p.familyId === selectedFamilyId).length} productos disponibles
+                {brand.name} · {brand.products.filter((p) => p.familyId === selectedFamilyId).length}{' '}
+                {language === 'es' ? 'productos disponibles' : 'products available'}
               </span>
               <button
                 onClick={() => setSelectedFamilyId(null)}
                 className="px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-wider text-stone-700 bg-stone-100 hover:bg-stone-200 transition-colors cursor-pointer"
               >
-                Cerrar &times;
+                {language === 'es' ? 'Cerrar' : 'Close'} &times;
               </button>
             </div>
           </div>
@@ -1042,7 +1020,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold transition-all cursor-pointer shadow-md hover:text-yellow-300 text-sm"
           >
             <ArrowLeft className="w-4 h-4 stroke-[2.5]" />
-            <span>Regresar al portal ECOPACIFIC</span>
+            <span>{language === 'es' ? 'Regresar al portal ECOPACIFIC' : 'Return to ECOPACIFIC portal'}</span>
           </button>
         </div>
       </footer>

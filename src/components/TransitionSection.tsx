@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language } from '../types';
-import cocofreezefotoinicioImg from '../assets/images/cocofreezefotoinicio.png';
+import refrescanteCosechaTropicalImg from '../assets/Refrescante cosecha tropical con D’hoy.png';
 
 interface TransitionSectionProps {
   language: Language;
@@ -35,17 +35,18 @@ export const TransitionSection: React.FC<TransitionSectionProps> = ({ language }
 
       {/* 2. FOTO PRODUCTOS DESTACADOS: Abajo del inicio y arriba de nuestras marcas, SOLO LA FOTO NINGÚN TEXTO */}
       <section className="bg-[#FBF9F5] py-8 sm:py-14 px-4 sm:px-8 border-b border-stone-200/60">
-        <div className="max-w-5xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-stone-300/80 bg-stone-100 aspect-[4/3] sm:aspect-[16/10] md:h-[560px]">
+        <div className="max-w-5xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-stone-300/80 bg-stone-100">
           <img
-            src={cocofreezefotoinicioImg}
-            alt="EcoPacific - Coco Freeze en el inicio"
+            src={refrescanteCosechaTropicalImg}
+            alt="EcoPacific - Refrescante cosecha tropical con D'Hoy"
             loading="lazy"
             decoding="async"
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-102"
+            className="w-full h-auto block object-contain mx-auto transition-transform duration-700 hover:scale-101"
           />
         </div>
       </section>
     </>
   );
 };
+
