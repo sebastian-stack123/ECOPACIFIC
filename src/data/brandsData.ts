@@ -14,37 +14,37 @@ import ecoloveImg from '../assets/images/ecolove_nuevo.png';
 import hortilistoImg from '../assets/images/hortilisto_nuevo.png';
 
 // DHOY Jugo de Naranja
-import dhoy355mlImg from '../assets/EP_DHOY_355ML_1.png';
-import dhoySinPulpaImg from '../assets/EP_DHOY_SINPULPA_2.5L_1.png';
-import dhoyCalcioDImg from '../assets/EP_DHOY_CALCIOTYD_2.5L_1.png';
+import dhoy355mlImg from '../assets/naranjanormalnuevo.png';
+import dhoySinPulpaImg from '../assets/naranjasinpulpanuevo.png';
+import dhoyCalcioDImg from '../assets/Naranjamenosacidonuevo.png';
 
 // DHOY Mezclas de Fruta
-import dhoyNaranjaZanaImg from '../assets/355-naranjazana.jpg';
-import dhoyNaranjaMangoImg from '../assets/355-naranjamango.jpg';
+import dhoyNaranjaZanaImg from '../assets/Naranjazanahorianuevo.png';
+import dhoyNaranjaMangoImg from '../assets/Naranjamangonuevo.png';
 import dhoyNaranjaFresaImg from '../assets/naranjafresadhoy.png';
 import dhoyNaranjaJengibreImg from '../assets/naranjajengibre.png';
 import dhoyMoraImg from '../assets/mora355.png';
-import dhoyMandarinaImg from '../assets/mandarina355ml.png';
-import dhoyCranberryImg from '../assets/Chamberry.jpg';
-import dhoyToronjaImg from '../assets/toronja.png';
+import dhoyMandarinaImg from '../assets/mandarinanuevo.png';
+import dhoyCranberryImg from '../assets/cranberrynuevo.png';
+import dhoyToronjaImg from '../assets/toronjanuevo.png';
 import dhoyNectarFrutillaImg from '../assets/nectardefrutilla.png';
-import dhoyLimonadaFresaImg from '../assets/ECOPACIFIC-LIMONADA-FRESA.png';
+import dhoyLimonadaFresaImg from '../assets/limonadafresanuevo.png';
 
 // DHOY Cold Pressed
-import dhoyColdPitahayaImg from '../assets/COLD-PRESSED-PITAHAYA.png';
-import dhoyColdPinaImg from '../assets/COLD-PRESSED-PINA.png';
-import dhoyColdRemolachaImg from '../assets/COLD-PRESSED-REMOLACHA.png';
+import dhoyColdPitahayaImg from '../assets/pitahayanuevocoldpressed.png';
+import dhoyColdPinaImg from '../assets/pinamangohierbabuenanuevocoldpressed.png';
+import dhoyColdRemolachaImg from '../assets/remolachanuevocoldpressed.png';
 
 // DHOY Shots
-import dhoyShotInmuniImg from '../assets/JENGIBRE.jpg';
-import dhoyShotInmuniPlusImg from '../assets/extreme.jpg';
+import dhoyShotInmuniImg from '../assets/inmunishotjengibre.png';
+import dhoyShotInmuniPlusImg from '../assets/inmunishotplusnuevo.jpeg';
 import dhoyShotBalanceImg from '../assets/CURCUMA.jpg';
-import dhoyShotDigestiImg from '../assets/DIGESTIVE.jpg';
+import dhoyShotDigestiImg from '../assets/digestishotplusnuevo.png';
 import dhoyShotDefenImg from '../assets/VITAMINA-C.jpg';
 
 // DHOY Especialidades
-import dhoyZumoLimonImg from '../assets/Limonzumo.png';
-import dhoySabilaImg from '../assets/sabila.png';
+import dhoyZumoLimonImg from '../assets/Limonzumo_blanco.png';
+import dhoySabilaImg from '../assets/sabilaencubosnueva.png';
 
 // ECOLOVE Productos
 import ecoloveAceiteCocoImg from '../assets/ECOLOVE-ACEITE-COCO-EXTRAVIRGEN-473ML-2026.png';
@@ -59,7 +59,6 @@ import ecoloveBebidaAlmendraImg from '../assets/ECOLOVE-BEBIDA-DE-ALMENDRA-SIN-A
 import ecoloveBebidaAlmendraVainillaImg from '../assets/ECOLOVE-BEBIDA-DE-ALMENDRA-VAINILLA-2026.png';
 import ecoloveBebidaCocoImg from '../assets/ECOLOVE-BEBIDA-DE-COCO-SIN-AZUCAR.png';
 import ecoloveKombuchaJengibreImg from '../assets/kombuchajengibre.png';
-import ecolovePapasFritasImg from '../assets/ECOLOVE-PAPAS-FRITAS-2026.png';
 import ecoloveMielAgaveImg from '../assets/ECOLOVE-MIEL-DE-AGAVE-230ML.png';
 import ecolovePortadaSeccionImg from '../assets/ECOPACIFIC-ECOLOVE-SECCION-PORTADA2026.png';
 
@@ -530,7 +529,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         brandId: 'dhoy',
         familyId: 'especialidades-dhoy',
         emotionalDescription: 'Sábila lista para incorporar fácilmente a diferentes preparaciones.',
-        presentations: ['Sábila lista para incorporar fácilmente a diferentes preparaciones'],
+        presentations: ['En cubos / Lista para usar', 'Uso culinario'],
         imageUrl: dhoySabilaImg
       }
     ]

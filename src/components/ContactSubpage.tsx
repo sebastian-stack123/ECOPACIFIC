@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  CheckCircle,
   Mail,
   MapPin,
   Phone,
   MessageCircle,
-  Send,
   ExternalLink,
+  ArrowRight,
+  Clock,
+  Building2,
+  Send,
 } from 'lucide-react';
 import { Language } from '../types';
 import { Navbar } from './Navbar';
@@ -25,23 +27,11 @@ export const ContactSubpage: React.FC<ContactSubpageProps> = ({
   onNavigate,
   onLanguageChange,
 }) => {
-  const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    contact: '',
-    topic: 'productos',
-    message: '',
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.contact || !formData.message) return;
-    setSubmitted(true);
-  };
+  const isEs = language === 'es';
 
   return (
     <div className="min-h-screen flex flex-col bg-[#5B8C2A] text-white selection:bg-white selection:text-[#5B8C2A]">
-      {/* Top Navbar con menú de 3 rayas a la izquierda, logo centrado y selector de idioma */}
+      {/* Top Navbar */}
       <Navbar
         currentPath="/contacto"
         onNavigate={onNavigate}
@@ -50,295 +40,186 @@ export const ContactSubpage: React.FC<ContactSubpageProps> = ({
         onOpenContact={() => {}}
       />
 
-      {/* Contenido Principal de la Sección de Contacto */}
-      <main className="flex-grow pt-24 sm:pt-28 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          {/* Header de la sección (sin la burbuja innecesaria) */}
-          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+      {/* Contenido Principal de Contacto */}
+      <main className="flex-grow pt-24 sm:pt-28 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mb-4 drop-shadow-sm">
-              {language === 'es' ? '¿En qué te podemos ayudar?' : 'How can we help you?'}
+              {isEs ? 'Hablemos directamente' : "Let's talk directly"}
             </h1>
-            <p className="text-base sm:text-lg text-white/90 leading-relaxed font-light text-balance">
-              {language === 'es'
-                ? 'Escríbenos directamente o déjanos un mensaje. Ya seas cliente, distribuidor, agricultor o aliado del campo, siempre nos encanta conversar.'
-                : 'Reach out to us directly or leave us a message. Whether you are a customer, distributor, farmer, or field partner, we would love to hear from you.'}
+            <p className="text-base sm:text-lg text-white/95 leading-relaxed font-light text-balance">
+              {isEs
+                ? 'Sin formularios largos ni esperas. Comunícate al instante con nuestro equipo por WhatsApp o envíanos un correo directo.'
+                : 'No long forms, no waiting. Reach out to our team instantly via WhatsApp or send us a direct email.'}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Columna Izquierda: WhatsApp, Canales Directos y Minimapa */}
-            <div className="lg:col-span-5 space-y-6">
-              {/* Tarjeta WhatsApp Inmediato */}
-              <div className="p-6 sm:p-7 rounded-3xl bg-white text-stone-900 shadow-xl border border-white/40">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-md">
-                    <MessageCircle className="w-6 h-6" />
+          {/* Tarjetas Principales de Contacto Directo: WhatsApp & Correo */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-12">
+            {/* Tarjeta WhatsApp */}
+            <div className="rounded-3xl bg-white text-stone-900 p-7 sm:p-9 shadow-2xl border border-white/50 flex flex-col justify-between hover:shadow-emerald-950/20 transition-all">
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-14 h-14 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                    <MessageCircle className="w-8 h-8" />
                   </div>
-                  <div>
-                    <span className="text-[11px] font-black uppercase tracking-wider text-emerald-700 block">
-                      {language === 'es' ? 'Canal Rápido' : 'Fast Channel'}
-                    </span>
-                    <h2 className="text-xl font-black text-stone-900 leading-tight">
-                      {language === 'es' ? 'Atención por WhatsApp' : 'Chat via WhatsApp'}
-                    </h2>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black tracking-wider uppercase bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    {isEs ? 'Atención Inmediata' : 'Fast Response'}
+                  </span>
+                </div>
+
+                <h2 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight mb-2">
+                  {isEs ? 'WhatsApp Directo' : 'Direct WhatsApp'}
+                </h2>
+                <p className="text-stone-600 text-sm sm:text-base leading-relaxed mb-6">
+                  {isEs
+                    ? 'Chatea con nuestro equipo comercial y de atención. Ideal para pedidos, consultas sobre productos, precios y distribución rápida.'
+                    : 'Chat with our sales and customer care team. Ideal for orders, product inquiries, pricing, and rapid distribution.'}
+                </p>
+
+                <div className="space-y-2 mb-6 text-xs sm:text-sm text-stone-500">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isEs ? 'Horario: Lun a Vie 08:30 - 17:30' : 'Hours: Mon to Fri 08:30 - 17:30'}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Phone className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>+593 98 930 0156</span>
                   </div>
                 </div>
-                <a
-                  href="https://wa.me/593989300156?text=Hola%20EcoPacific%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md hover:shadow-xl transition-all cursor-pointer transform hover:scale-[1.02] active:scale-[0.98]"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  <span>+593 98 930 0156</span>
-                </a>
               </div>
 
-              {/* Tarjeta de Canales Directos, Horarios y Minimapa */}
-              <div className="p-6 sm:p-7 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 text-white space-y-5">
-                <h3 className="text-base font-black uppercase tracking-wider text-white/90">
-                  {language === 'es' ? 'Canales directos y ubicación' : 'Direct channels & location'}
+              <a
+                href="https://wa.me/593989300156?text=Hola%20EcoPacific%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-base shadow-lg shadow-emerald-600/30 hover:shadow-xl transition-all cursor-pointer transform hover:scale-[1.01] active:scale-[0.99]"
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span>{isEs ? 'Escribir por WhatsApp' : 'Chat on WhatsApp'}</span>
+                <ArrowRight className="w-4 h-4 ml-auto" />
+              </a>
+            </div>
+
+            {/* Tarjeta Correo Electrónico Directo */}
+            <div className="rounded-3xl bg-white text-stone-900 p-7 sm:p-9 shadow-2xl border border-white/50 flex flex-col justify-between hover:shadow-emerald-950/20 transition-all">
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-14 h-14 rounded-2xl bg-[#5B8C2A] text-white flex items-center justify-center shadow-lg shadow-[#5B8C2A]/30">
+                    <Mail className="w-8 h-8" />
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black tracking-wider uppercase bg-stone-100 text-stone-700 border border-stone-200">
+                    {isEs ? 'Institucional & Ventas' : 'Corporate & Sales'}
+                  </span>
+                </div>
+
+                <h2 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight mb-2">
+                  {isEs ? 'Correo Electrónico' : 'Direct Email'}
+                </h2>
+                <p className="text-stone-600 text-sm sm:text-base leading-relaxed mb-6">
+                  {isEs
+                    ? 'Escríbenos directamente para cotizaciones corporativas, compras mayoristas, exportaciones o alianzas agrícolas con el campo.'
+                    : 'Write to us directly for corporate quotes, wholesale orders, exports, or agricultural partnerships.'}
+                </p>
+
+                <div className="space-y-2 mb-6 text-xs sm:text-sm text-stone-500">
+                  <div className="flex items-center gap-2">
+                    <Building2 className="w-4 h-4 text-[#5B8C2A] shrink-0" />
+                    <span>{isEs ? 'Atención a distribuidores y empresas' : 'Retailers & enterprise support'}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Mail className="w-4 h-4 text-[#5B8C2A] shrink-0" />
+                    <span className="font-semibold text-stone-700">info@ecopacific.com.ec</span>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="mailto:info@ecopacific.com.ec?subject=Contacto%20EcoPacific%20-%20Consulta"
+                className="w-full inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-[#5B8C2A] hover:bg-[#4a7322] text-white font-extrabold text-base shadow-lg shadow-[#5B8C2A]/30 hover:shadow-xl transition-all cursor-pointer transform hover:scale-[1.01] active:scale-[0.99]"
+              >
+                <Send className="w-5 h-5" />
+                <span>{isEs ? 'Enviar Correo Electrónico' : 'Send an Email'}</span>
+                <ArrowRight className="w-4 h-4 ml-auto" />
+              </a>
+            </div>
+          </div>
+
+          {/* Información de Planta, Ubicación y Mapa */}
+          <div className="rounded-3xl bg-white/10 backdrop-blur-md border border-white/25 p-6 sm:p-10 text-white shadow-xl">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-6 space-y-5">
+                <span className="text-xs font-black uppercase tracking-wider text-yellow-300 block">
+                  {isEs ? 'Planta de Producción & Oficinas' : 'Production Plant & Headquarters'}
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight">
+                  EcoPacific S.A.
                 </h3>
-
-                <div className="space-y-4 text-sm">
-                  {/* Teléfono */}
-                  <div className="flex items-start gap-3.5">
-                    <div className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center shrink-0 text-white mt-0.5">
-                      <Phone className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-white/70 font-semibold uppercase tracking-wider">
-                        {language === 'es' ? 'Teléfono de contacto' : 'Phone'}
-                      </p>
-                      <a
-                        href="tel:+593989300156"
-                        className="text-white font-bold hover:underline"
-                      >
-                        +593 98 930 0156
-                      </a>
-                    </div>
+                <div className="space-y-3 text-sm sm:text-base text-white/90">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-yellow-300 shrink-0 mt-0.5" />
+                    <p className="leading-relaxed">
+                      Parque Industrial El Carmen, Calle H lote 13
+                      <br />
+                      Km 2 ½ vía Sangolquí – Amaguaña, Sangolquí, Ecuador
+                    </p>
                   </div>
-
-                  {/* Correo */}
-                  <div className="flex items-start gap-3.5">
-                    <div className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center shrink-0 text-white mt-0.5">
-                      <Mail className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-white/70 font-semibold uppercase tracking-wider">
-                        {language === 'es' ? 'Correo electrónico' : 'Email'}
-                      </p>
-                      <a
-                        href="mailto:info@ecopacific.com.ec"
-                        className="text-white font-bold hover:underline"
-                      >
-                        info@ecopacific.com.ec
-                      </a>
-                    </div>
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-5 h-5 text-yellow-300 shrink-0" />
+                    <a href="tel:+593989300156" className="hover:underline font-bold text-white">
+                      +593 98 930 0156
+                    </a>
                   </div>
-
-                  {/* Ubicación */}
-                  <div className="flex items-start gap-3.5">
-                    <div className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center shrink-0 text-white mt-0.5">
-                      <MapPin className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-white/70 font-semibold uppercase tracking-wider">
-                        {language === 'es' ? 'Ubicación' : 'Location'}
-                      </p>
-                      <p className="text-white/95 font-medium leading-relaxed">
-                        Parque Industrial El Carmen
-                        <br />
-                        Km 2 ½ vía Sangolquí – Amaguaña, Sangolquí
-                      </p>
-                      <p className="text-xs text-white/75 mt-1">
-                        Calle H lote 13 (Parque Industrial El Carmen)
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Minimapa */}
-                  <div className="pt-2">
-                    <div className="relative rounded-2xl overflow-hidden border border-white/25 shadow-lg bg-black/20 aspect-video">
-                      <iframe
-                        title="Minimapa Ubicación EcoPacific"
-                        src="https://maps.google.com/maps?q=Calle%20H%20lote%2013%2C%20Parque%20Industrial%20El%20Carmen%2C%20Km%202%20%C2%BD%20v%C3%ADa%20Sangolqu%C3%AD%20-%20Amagua%C3%B1a%2C%20Sangolqu%C3%AD&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                        className="w-full h-full border-0"
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                      />
-                    </div>
-                    <div className="mt-2 text-right">
-                      <a
-                        href="https://www.google.com/maps/search/?api=1&query=Calle+H+lote+13+Parque+Industrial+El+Carmen+Km+2+1%2F2+via+Sangolqui+-+Amaguana+Sangolqui"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/90 hover:text-white underline"
-                      >
-                        <span>{language === 'es' ? 'Ver en Google Maps' : 'View on Google Maps'}</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-5 h-5 text-yellow-300 shrink-0" />
+                    <a href="mailto:info@ecopacific.com.ec" className="hover:underline font-bold text-white">
+                      info@ecopacific.com.ec
+                    </a>
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-white/15">
+                <div className="pt-3 flex flex-wrap items-center gap-4">
                   <a
                     href="https://cl.linkedin.com/company/ecopacific-s.a."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-bold text-white/90 hover:text-white transition-colors"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-white bg-white/15 hover:bg-white/25 px-4 py-2.5 rounded-xl transition-all"
                   >
-                    <span>{language === 'es' ? 'Conoce nuestro equipo en LinkedIn' : 'Visit our LinkedIn profile'}</span>
+                    <span>{isEs ? 'Perfil en LinkedIn' : 'LinkedIn Profile'}</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Calle+H+lote+13+Parque+Industrial+El+Carmen+Km+2+1%2F2+via+Sangolqui+-+Amaguana+Sangolqui"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-white bg-white/15 hover:bg-white/25 px-4 py-2.5 rounded-xl transition-all"
+                  >
+                    <span>{isEs ? 'Abrir en Google Maps' : 'Open in Google Maps'}</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
-            </div>
 
-            {/* Columna Derecha: Formulario Amigable */}
-            <div className="lg:col-span-7">
-              <div className="p-6 sm:p-10 rounded-3xl bg-[#FDFCF9] text-stone-900 shadow-2xl border border-stone-200/80">
-                {submitted ? (
-                  <div className="text-center py-12 sm:py-16 space-y-5">
-                    <div className="w-20 h-20 rounded-full bg-emerald-100 text-[#5B8C2A] flex items-center justify-center mx-auto shadow-sm">
-                      <CheckCircle className="w-10 h-10" />
-                    </div>
-                    <h2 className="text-3xl font-extrabold text-stone-900 tracking-tight">
-                      {language === 'es' ? '¡Mensaje recibido con gusto!' : 'Message Received with Joy!'}
-                    </h2>
-                    <p className="text-stone-600 max-w-md mx-auto text-base leading-relaxed">
-                      {language === 'es'
-                        ? 'Muchas gracias por escribirnos. Nuestro equipo revisará tu mensaje y se pondrá en contacto contigo muy pronto.'
-                        : 'Thank you for reaching out. Our team will review your message and get back to you shortly.'}
-                    </p>
-                    <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-                      <button
-                        onClick={() => {
-                          setSubmitted(false);
-                          setFormData({ name: '', contact: '', topic: 'productos', message: '' });
-                        }}
-                        className="px-6 py-3 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-bold transition-all cursor-pointer"
-                      >
-                        {language === 'es' ? 'Enviar otro mensaje' : 'Send another message'}
-                      </button>
-                      <button
-                        onClick={onNavigateHome}
-                        className="px-8 py-3 rounded-full bg-[#5B8C2A] hover:bg-[#4A7422] text-white text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer"
-                      >
-                        {language === 'es' ? 'Volver al inicio' : 'Back to home'}
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <div>
-                    <div className="mb-6">
-                      <h2 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
-                        {language === 'es' ? 'Déjanos tu mensaje' : 'Leave us a message'}
-                      </h2>
-                      <p className="text-sm text-stone-600 mt-1">
-                        {language === 'es'
-                          ? 'Completa los campos a continuación y te responderemos a la brevedad.'
-                          : 'Fill in the fields below and we will get back to you shortly.'}
-                      </p>
-                    </div>
-
-                    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <label className="text-xs font-bold text-stone-700 uppercase tracking-wider block mb-1.5">
-                            {language === 'es' ? 'Tu nombre' : 'Your name'} *
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            placeholder={language === 'es' ? 'Ej. María Barcia' : 'e.g. Maria Barcia'}
-                            className="w-full px-4 py-3 text-sm rounded-xl bg-stone-50 border border-stone-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#5B8C2A] focus:border-transparent transition-all"
-                          />
-                        </div>
-
-                        <div>
-                          <label className="text-xs font-bold text-stone-700 uppercase tracking-wider block mb-1.5">
-                            {language === 'es' ? 'Teléfono o WhatsApp' : 'Phone or WhatsApp'} *
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            value={formData.contact}
-                            onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
-                            placeholder={language === 'es' ? '099... o tu correo' : 'Phone or email'}
-                            className="w-full px-4 py-3 text-sm rounded-xl bg-stone-50 border border-stone-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#5B8C2A] focus:border-transparent transition-all"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="text-xs font-bold text-stone-700 uppercase tracking-wider block mb-1.5">
-                          {language === 'es' ? '¿Sobre qué te gustaría hablar?' : 'Topic'}
-                        </label>
-                        <select
-                          value={formData.topic}
-                          onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                          className="w-full px-4 py-3 text-sm rounded-xl bg-stone-50 border border-stone-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#5B8C2A] focus:border-transparent transition-all cursor-pointer"
-                        >
-                          <option value="productos">
-                            {language === 'es' ? 'Conocer o comprar productos' : 'Products & availability'}
-                          </option>
-                          <option value="distribucion">
-                            {language === 'es' ? 'Distribución y tiendas' : 'Distribution & retail'}
-                          </option>
-                          <option value="campo">
-                            {language === 'es' ? 'Agricultores y alianzas del campo' : 'Farmers & field alliances'}
-                          </option>
-                          <option value="otro">
-                            {language === 'es' ? 'Otro mensaje o sugerencia' : 'General inquiry or feedback'}
-                          </option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="text-xs font-bold text-stone-700 uppercase tracking-wider block mb-1.5">
-                          {language === 'es' ? 'Tu mensaje' : 'Your message'} *
-                        </label>
-                        <textarea
-                          required
-                          rows={4}
-                          value={formData.message}
-                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                          placeholder={
-                            language === 'es'
-                              ? 'Cuéntanos en qué te podemos ayudar...'
-                              : 'Tell us how we can help you...'
-                          }
-                          className="w-full px-4 py-3 text-sm rounded-xl bg-stone-50 border border-stone-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#5B8C2A] focus:border-transparent resize-none transition-all"
-                        />
-                      </div>
-
-                      <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div className="flex items-center gap-2 text-xs text-stone-500">
-                          <Mail className="w-4 h-4 text-[#5B8C2A]" />
-                          <span>info@ecopacific.com.ec</span>
-                        </div>
-                        <button
-                          type="submit"
-                          className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#5B8C2A] hover:bg-[#4A7422] text-white text-sm font-bold shadow-md hover:shadow-xl transition-all cursor-pointer transform hover:scale-[1.02] active:scale-[0.98]"
-                        >
-                          <span>{language === 'es' ? 'Enviar mensaje' : 'Send message'}</span>
-                          <Send className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                )}
+              {/* Minimapa */}
+              <div className="lg:col-span-6">
+                <div className="relative rounded-2xl overflow-hidden border border-white/30 shadow-2xl bg-black/20 aspect-video">
+                  <iframe
+                    title="Minimapa Ubicación EcoPacific"
+                    src="https://maps.google.com/maps?q=Calle%20H%20lote%2013%2C%20Parque%20Industrial%20El%20Carmen%2C%20Km%202%20%C2%BD%20v%C3%ADa%20Sangolqu%C3%AD%20-%20Amagua%C3%B1a%2C%20Sangolqu%C3%AD&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    className="w-full h-full border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </main>
 
-      {/* Footer corporativo al final de la sección */}
+      {/* Footer corporativo */}
       <Footer
         language={language}
         onNavigate={onNavigate}

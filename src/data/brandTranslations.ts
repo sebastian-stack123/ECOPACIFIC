@@ -140,6 +140,11 @@ export const BRAND_TRANSLATIONS_EN: Record<string, BrandTranslationData> = {
       },
     },
     products: {
+      'dh-naranja-clasico': {
+        name: '100% Orange Juice with Pulp',
+        emotionalDescription:
+          'Direct from fresh oranges. Pure, authentic citrus flavor with natural pulp in every sip.',
+      },
       'dh-naranja-original': {
         name: '100% Orange Juice with Pulp',
         emotionalDescription:
@@ -149,6 +154,11 @@ export const BRAND_TRANSLATIONS_EN: Record<string, BrandTranslationData> = {
         name: '100% Orange Juice without Pulp',
         emotionalDescription:
           'The same natural orange sweetness in a completely smooth, pulp-free texture.',
+      },
+      'dh-naranja-calcio-vitamina-d': {
+        name: 'Orange Juice + Calcium & Vitamin D',
+        emotionalDescription:
+          'Naturally sweet orange juice fortified with Calcium and Vitamin D for family wellbeing.',
       },
       'dh-naranja-calcio-d': {
         name: 'Orange Juice + Calcium & Vitamin D',
@@ -205,15 +215,30 @@ export const BRAND_TRANSLATIONS_EN: Record<string, BrandTranslationData> = {
         emotionalDescription:
           'Zesty lime and sweet strawberry in a delightfully balanced thirst-quencher.',
       },
+      'dh-cold-pitahaya': {
+        name: 'Cold Pressed Pitahaya',
+        emotionalDescription:
+          '100% cold-pressed yellow dragon fruit, naturally supporting gut health and hydration.',
+      },
       'dh-cp-pitahaya': {
         name: 'Cold Pressed Pitahaya',
         emotionalDescription:
           '100% cold-pressed yellow dragon fruit, naturally supporting gut health and hydration.',
       },
+      'dh-cold-pina-hierbabuena': {
+        name: 'Cold Pressed Pineapple + Mint',
+        emotionalDescription:
+          'Cold-pressed golden pineapple and fresh peppermint preserving maximum nutrients and tropical taste.',
+      },
       'dh-cp-pina': {
         name: 'Cold Pressed Pineapple',
         emotionalDescription:
           'Cold-pressed golden pineapple preserving maximum enzyme activity and tropical taste.',
+      },
+      'dh-cold-remolacha': {
+        name: 'Cold Pressed Beetroot + Fruit',
+        emotionalDescription:
+          'Earthy beetroot cold-pressed with vibrant fruit notes for vitality and endurance.',
       },
       'dh-cp-remolacha': {
         name: 'Cold Pressed Beetroot',
@@ -235,10 +260,20 @@ export const BRAND_TRANSLATIONS_EN: Record<string, BrandTranslationData> = {
         emotionalDescription:
           'Golden turmeric root blend with black pepper extract for natural recovery.',
       },
+      'dh-shot-digesti': {
+        name: 'Digestive Shot',
+        emotionalDescription:
+          'Synergistic botanical blend formulated to comfort and support digestion.',
+      },
       'dh-shot-digestive': {
         name: 'Digestive Shot',
         emotionalDescription:
           'Synergistic botanical blend formulated to comfort and support digestion.',
+      },
+      'dh-shot-defen': {
+        name: 'Defense Shot Vitamin C',
+        emotionalDescription:
+          'High-potency natural Vitamin C formulation to keep your defenses fortified.',
       },
       'dh-shot-defensa': {
         name: 'Defense Shot Vitamin C',

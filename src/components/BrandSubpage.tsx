@@ -50,13 +50,15 @@ import botellaJugoDhoyNaranjaImg from '../assets/Botella de jugo D’Hoy de nara
 import botellaAntiguaDhoyImg from '../assets/botellaantiguadhoy.png';
 import botelladhoyxdxdxdImg from '../assets/botelladhoyxdxdxd.png';
 
+import trioJugosDhoyImg from '../assets/Trío de jugos D’hoy naturales.png';
+import filaJugosDhoyImg from '../assets/Fila de jugos D’hoy naturales.png';
+
 // ECOLOVE Imágenes
 import ecolovePortadaSeccionImg from '../assets/ECOPACIFIC-ECOLOVE-SECCION-PORTADA2026.png';
 import ecoloveAceiteCocoImg from '../assets/ECOLOVE-ACEITE-COCO-EXTRAVIRGEN-473ML-2026.png';
 import ecoloveAceiteAguacateImg from '../assets/ECOLOVE-ACEITE-AGUACATE-250ML.png';
 import ecoloveSprayAguacateImg from '../assets/ECOLOVE-ACEITE-AGUACATE-SPRAY-180ML-2026.png';
 import ecoloveBebidaAlmendraImg from '../assets/ECOLOVE-BEBIDA-DE-ALMENDRA-SIN-AZUCAR-1L-2026.png';
-import ecolovePapasFritasImg from '../assets/ECOLOVE-PAPAS-FRITAS-2026.png';
 import ecoloveMielAgaveImg from '../assets/ECOLOVE-MIEL-DE-AGAVE-230ML.png';
 import kombuchaJengibreImg from '../assets/kombuchajengibre.png';
 
@@ -185,8 +187,8 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
     }
     if (brand.id === 'dhoy') {
       if (familyId === 'jugo-de-naranja' || index === 0) return dhoy355mlImg;
-      if (familyId === 'mezclas-de-fruta' || index === 1) return dhoyNaranjaZanaImg;
-      if (familyId === 'cold-pressed' || index === 2) return dhoyColdPitahayaImg;
+      if (familyId === 'mezclas-de-fruta' || index === 1) return filaJugosDhoyImg;
+      if (familyId === 'cold-pressed' || index === 2) return trioJugosDhoyImg;
       if (familyId === 'shots' || index === 3) return dhoyShotInmuniImg;
       if (familyId === 'especialidades-dhoy' || index === 4) return dhoySabilaImg;
       return dhoy355mlImg;
@@ -197,7 +199,6 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       if (familyId === 'aceites-de-aguacate') return ecoloveAceiteAguacateImg;
       if (familyId === 'aceites-en-spray') return ecoloveSprayAguacateImg;
       if (familyId === 'bebidas-vegetales') return ecoloveBebidaAlmendraImg;
-      if (familyId === 'snacks') return ecolovePapasFritasImg;
       if (familyId === 'algo-extra') return ecoloveMielAgaveImg;
       return ecoloveTransparentImg;
     }
@@ -231,7 +232,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       if (index === 1) return { img: ecoloveAceiteCocoImg, alt: "2018 Llegan los aceites" };
       if (index === 2) return { img: ecoloveBebidaAlmendraImg, alt: "2021 Bebidas vegetales" };
       if (index === 3) return { img: ecoloveSprayAguacateImg, alt: "2022 Nuevas opciones" };
-      return { img: ecolovePapasFritasImg, alt: "2026 Bienestar diario" };
+      return { img: ecoloveAceiteAguacateImg, alt: "2026 Bienestar diario" };
     }
     return { img: brand.heroImage, alt: brand.name };
   };
@@ -348,11 +349,11 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             </a>
 
             {onLanguageChange && (
-              <div className="flex items-center bg-black/25 backdrop-blur-xs border border-white/30 rounded-full p-0.5 text-xs text-white shadow-xs">
+              <div className="flex items-center bg-black/25 backdrop-blur-xs border border-white/30 rounded-full p-0.5 text-xs text-white shadow-xs font-sans tracking-normal select-none">
                 <button
                   type="button"
                   onClick={() => onLanguageChange('es')}
-                  className={`px-2.5 py-1 rounded-full transition-all cursor-pointer font-bold ${
+                  className={`px-2.5 py-1 rounded-full transition-all cursor-pointer font-bold font-sans text-xs leading-none flex items-center justify-center ${
                     language === 'es'
                       ? 'bg-white text-stone-900 shadow-xs'
                       : 'text-white/90 hover:text-white'
@@ -364,7 +365,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                 <button
                   type="button"
                   onClick={() => onLanguageChange('en')}
-                  className={`px-2.5 py-1 rounded-full transition-all cursor-pointer font-bold ${
+                  className={`px-2.5 py-1 rounded-full transition-all cursor-pointer font-bold font-sans text-xs leading-none flex items-center justify-center ${
                     language === 'en'
                       ? 'bg-white text-stone-900 shadow-xs'
                       : 'text-white/90 hover:text-white'
@@ -460,11 +461,11 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                   <span className="text-xs text-white/80 font-medium">
                     {language === 'es' ? 'Idioma / Language:' : 'Language / Idioma:'}
                   </span>
-                  <div className="flex items-center bg-black/25 border border-white/30 rounded-full p-0.5 text-xs text-white shadow-xs">
+                  <div className="flex items-center bg-black/25 border border-white/30 rounded-full p-0.5 text-xs text-white shadow-xs font-sans tracking-normal select-none">
                     <button
                       type="button"
                       onClick={() => onLanguageChange('es')}
-                      className={`px-2.5 py-1 rounded-full font-bold transition-all cursor-pointer ${
+                      className={`px-2.5 py-1 rounded-full font-bold font-sans text-xs leading-none flex items-center justify-center transition-all cursor-pointer ${
                         language === 'es' ? 'bg-white text-stone-900 shadow-xs' : 'text-white/90 hover:text-white'
                       }`}
                     >
@@ -473,7 +474,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                     <button
                       type="button"
                       onClick={() => onLanguageChange('en')}
-                      className={`px-2.5 py-1 rounded-full font-bold transition-all cursor-pointer ${
+                      className={`px-2.5 py-1 rounded-full font-bold font-sans text-xs leading-none flex items-center justify-center transition-all cursor-pointer ${
                         language === 'en' ? 'bg-white text-stone-900 shadow-xs' : 'text-white/90 hover:text-white'
                       }`}
                     >
