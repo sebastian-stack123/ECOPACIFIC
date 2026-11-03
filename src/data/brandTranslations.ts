@@ -84,7 +84,7 @@ export const BRAND_TRANSLATIONS_EN: Record<string, BrandTranslationData> = {
   },
 
   'dhoy': {
-    valueStatement: 'FROM FAMILY AND THE FIELD. TASTES LIKE REAL FRUIT.',
+    valueStatement: 'Family-made. Farm-grown. Real fruit in every bite.',
     shortDescription:
       '100% real fruit juices and delicious blends crafted to accompany your daily life with the authentic flavor of the Ecuadorian countryside.',
     storyTitle: 'A story born from real fruit',

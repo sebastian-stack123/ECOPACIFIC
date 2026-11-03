@@ -23,7 +23,7 @@ import dhoyNaranjaZanaImg from '../assets/Naranjazanahorianuevo.png';
 import dhoyNaranjaMangoImg from '../assets/Naranjamangonuevo.png';
 import dhoyNaranjaFresaImg from '../assets/naranjafresadhoy.png';
 import dhoyNaranjaJengibreImg from '../assets/naranjajengibre.png';
-import dhoyMoraImg from '../assets/mora355.png';
+import dhoyMoraImg from '../assets/moradhoynuevo.png';
 import dhoyMandarinaImg from '../assets/mandarinanuevo.png';
 import dhoyCranberryImg from '../assets/cranberrynuevo.png';
 import dhoyToronjaImg from '../assets/toronjanuevo.png';

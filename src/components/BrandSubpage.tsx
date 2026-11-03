@@ -41,17 +41,13 @@ import fotoEcopacificImg from '../assets/images/fotoecopacific.jpg';
 import bebidasTropicalesImg from '../assets/images/bebidas_tropicales_en_la_cosecha.png';
 
 // DHOY Categorías portadas (primer producto de cada categoría)
-import dhoy355mlImg from '../assets/EP_DHOY_355ML_1.png';
-import dhoyNaranjaZanaImg from '../assets/355-naranjazana.jpg';
-import dhoyColdPitahayaImg from '../assets/COLD-PRESSED-PITAHAYA.png';
-import dhoyShotInmuniImg from '../assets/JENGIBRE.jpg';
-import dhoySabilaImg from '../assets/sabila.png';
+import dhoy2litrosImg from '../assets/dhoy2litros.png';
+import trioJugosNaturalesDhoyImg from '../assets/Trío de jugos naturales D’hoy.png';
+import tresJugosUnidosImg from '../assets/tres_jugos_unidos_sin_redimensionar.png';
+import dhoyShotInmuniImg from '../assets/inmunishotjengibre.png';
+import dhoySabilaImg from '../assets/sabilaencubosnueva.png';
 import botellaJugoDhoyNaranjaImg from '../assets/Botella de jugo D’Hoy de naranja.png';
-import botellaAntiguaDhoyImg from '../assets/botellaantiguadhoy.png';
 import botelladhoyxdxdxdImg from '../assets/botelladhoyxdxdxd.png';
-
-import trioJugosDhoyImg from '../assets/Trío de jugos D’hoy naturales.png';
-import filaJugosDhoyImg from '../assets/Fila de jugos D’hoy naturales.png';
 
 // ECOLOVE Imágenes
 import ecolovePortadaSeccionImg from '../assets/ECOPACIFIC-ECOLOVE-SECCION-PORTADA2026.png';
@@ -186,12 +182,12 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
         : saboresDeCocoImg;
     }
     if (brand.id === 'dhoy') {
-      if (familyId === 'jugo-de-naranja' || index === 0) return dhoy355mlImg;
-      if (familyId === 'mezclas-de-fruta' || index === 1) return filaJugosDhoyImg;
-      if (familyId === 'cold-pressed' || index === 2) return trioJugosDhoyImg;
+      if (familyId === 'jugo-de-naranja' || index === 0) return dhoy2litrosImg;
+      if (familyId === 'mezclas-de-fruta' || index === 1) return trioJugosNaturalesDhoyImg;
+      if (familyId === 'cold-pressed' || index === 2) return tresJugosUnidosImg;
       if (familyId === 'shots' || index === 3) return dhoyShotInmuniImg;
       if (familyId === 'especialidades-dhoy' || index === 4) return dhoySabilaImg;
-      return dhoy355mlImg;
+      return dhoy2litrosImg;
     }
     if (brand.id === 'ecolove') {
       if (familyId === 'kombucha') return kombuchaJengibreImg;
@@ -228,7 +224,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       return { img: dhoy2026NewBotellaImg, alt: "2026 Fruta de verdad" };
     }
     if (brand.id === 'ecolove') {
-      if (index === 0) return { img: ecolovePortadaSeccionImg, alt: "2017 Primeros pasos" };
+      if (index === 0) return { img: kombuchaJengibreImg, alt: "2017 Primeros pasos" };
       if (index === 1) return { img: ecoloveAceiteCocoImg, alt: "2018 Llegan los aceites" };
       if (index === 2) return { img: ecoloveBebidaAlmendraImg, alt: "2021 Bebidas vegetales" };
       if (index === 3) return { img: ecoloveSprayAguacateImg, alt: "2022 Nuevas opciones" };
