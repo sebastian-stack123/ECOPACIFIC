@@ -1,18 +1,42 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Volume2, VolumeX, Play, Pause } from 'lucide-react';
+import { Volume2, VolumeX, Play, Pause, Subtitles } from 'lucide-react';
+import { Language } from '../types';
+
+interface SubtitleCue {
+  start: number;
+  end: number;
+  text: string;
+}
+
+const ENGLISH_SUBTITLES: SubtitleCue[] = [
+  { start: 0.5, end: 3.5, text: 'My name is Jonathan Pincay' },
+  { start: 3.5, end: 8.5, text: 'and I have dedicated 20 years to the coconut harvest.' },
+  { start: 8.5, end: 13.5, text: 'To know the true flavor of the coconut, it has to be tender,' },
+  { start: 13.5, end: 18.0, text: 'with a color between green and yellowish.' },
+  { start: 18.0, end: 24.5, text: 'When harvesting, you first have to thank the palm,' },
+  { start: 24.5, end: 29.5, text: 'because they give us a delicious fruit—treat it with care' },
+  { start: 29.5, end: 33.5, text: 'so the coconut arrives fresh to those who enjoy it.' },
+  { start: 33.5, end: 37.5, text: 'So this gift from nature reaches your hands,' },
+  { start: 37.5, end: 42.0, text: 'at Coco Freeze we unite field expertise with first-rate technology,' },
+  { start: 42.0, end: 45.0, text: 'under safe processes guaranteeing the best of its origin.' },
+  { start: 45.0, end: 48.2, text: '100% coconut water, refreshing and full of life.' },
+];
 
 interface CocoFreezeVideoPlayerProps {
   src?: string;
+  language?: Language;
 }
 
 export const CocoFreezeVideoPlayer: React.FC<CocoFreezeVideoPlayerProps> = ({
   src = '/VIDEO-COCO-FREEZE-2026.mp4',
+  language = 'es',
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [userInteracted, setUserInteracted] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [subtitlesEnabled, setSubtitlesEnabled] = useState(true);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -62,7 +86,6 @@ export const CocoFreezeVideoPlayer: React.FC<CocoFreezeVideoPlayerProps> = ({
   const togglePlay = () => {
     const video = videoRef.current;
     if (!video) return;
-    setUserInteracted(true);
     if (video.paused) {
       video.play().then(() => setIsPlaying(true));
     } else {
@@ -75,7 +98,6 @@ export const CocoFreezeVideoPlayer: React.FC<CocoFreezeVideoPlayerProps> = ({
     e.stopPropagation();
     const video = videoRef.current;
     if (!video) return;
-    setUserInteracted(true);
     const newMuted = !isMuted;
     video.muted = newMuted;
     if (!newMuted) {
@@ -83,6 +105,18 @@ export const CocoFreezeVideoPlayer: React.FC<CocoFreezeVideoPlayerProps> = ({
     }
     setIsMuted(newMuted);
   };
+
+  const toggleSubtitles = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setSubtitlesEnabled((prev) => !prev);
+  };
+
+  const activeEnglishCue =
+    language === 'en' && subtitlesEnabled
+      ? ENGLISH_SUBTITLES.find(
+          (cue) => currentTime >= cue.start && currentTime <= cue.end
+        )
+      : null;
 
   return (
     <div
@@ -97,9 +131,17 @@ export const CocoFreezeVideoPlayer: React.FC<CocoFreezeVideoPlayerProps> = ({
         playsInline
         preload="auto"
         className="w-full h-full object-contain bg-black"
+        onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       />
+
+      {/* English subtitles overlay covering the bottom burned-in Spanish subs */}
+      {activeEnglishCue && (
+        <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none max-w-[92%] sm:max-w-[84%] min-w-[280px] sm:min-w-[420px] text-center px-4 py-1.5 sm:px-6 sm:py-2 rounded-xl sm:rounded-2xl bg-black/95 text-white font-medium text-xs sm:text-sm md:text-base border border-white/25 shadow-2xl backdrop-blur-md transition-all duration-200">
+          <p className="leading-snug drop-shadow-md">{activeEnglishCue.text}</p>
+        </div>
+      )}
 
       {/* Play/Pause subtle overlay indicator on hover */}
       <div className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors pointer-events-none flex items-center justify-center">
@@ -110,8 +152,25 @@ export const CocoFreezeVideoPlayer: React.FC<CocoFreezeVideoPlayerProps> = ({
         )}
       </div>
 
-      {/* Floating sound toggle */}
+      {/* Floating controls */}
       <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2">
+        {language === 'en' && (
+          <button
+            type="button"
+            onClick={toggleSubtitles}
+            className={`flex items-center gap-1.5 px-3 py-2 rounded-full backdrop-blur-md text-xs sm:text-sm font-bold transition-all shadow-xl cursor-pointer hover:scale-105 active:scale-95 border ${
+              subtitlesEnabled
+                ? 'bg-sky-600/90 text-white border-sky-300/40'
+                : 'bg-black/75 text-white/70 border-white/20'
+            }`}
+            aria-label="Toggle English Subtitles"
+            title="Toggle English Subtitles"
+          >
+            <Subtitles className="w-4 h-4" />
+            <span>EN Subtitles</span>
+          </button>
+        )}
+
         <button
           type="button"
           onClick={toggleMute}
@@ -122,12 +181,12 @@ export const CocoFreezeVideoPlayer: React.FC<CocoFreezeVideoPlayerProps> = ({
           {isMuted ? (
             <>
               <VolumeX className="w-4 h-4 text-yellow-300 stroke-[2.5]" />
-              <span>Activar Sonido</span>
+              <span>{language === 'en' ? 'Unmute' : 'Activar Sonido'}</span>
             </>
           ) : (
             <>
               <Volume2 className="w-4 h-4 text-emerald-400 stroke-[2.5]" />
-              <span>Sonido Activo</span>
+              <span>{language === 'en' ? 'Mute' : 'Sonido Activo'}</span>
             </>
           )}
         </button>

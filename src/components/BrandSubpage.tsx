@@ -41,9 +41,9 @@ import fotoEcopacificImg from '../assets/images/fotoecopacific.jpg';
 import bebidasTropicalesImg from '../assets/images/bebidas_tropicales_en_la_cosecha.png';
 
 // DHOY Categorías portadas (primer producto de cada categoría)
-import dhoy2litrosImg from '../assets/dhoy2litros.png';
-import trioJugosNaturalesDhoyImg from '../assets/Trío de jugos naturales D’hoy.png';
-import tresJugosUnidosImg from '../assets/tres_jugos_unidos_sin_redimensionar.png';
+import dhoyCatNaranjaSinSaboresImg from '../assets/categoriajugosdenaranjasinsaboresnuevo.png';
+import dhoyCatMezclasNuevaImg from '../assets/jugosdenaranjacategoriaproductosnueva.png';
+import dhoyCatColdPressedNuevaImg from '../assets/Coldpressedcategorianuevo.png';
 import dhoyShotInmuniImg from '../assets/inmunishotjengibre.png';
 import dhoySabilaImg from '../assets/sabilaencubosnueva.png';
 import botellaJugoDhoyNaranjaImg from '../assets/Botella de jugo D’Hoy de naranja.png';
@@ -59,7 +59,8 @@ import ecoloveMielAgaveImg from '../assets/ECOLOVE-MIEL-DE-AGAVE-230ML.png';
 import kombuchaJengibreImg from '../assets/kombuchajengibre.png';
 
 // HORTILISTO Imágenes
-import hlAguacateMaduroImg from '../assets/aguacatemaduro.jpg';
+import imagenHortilistoInicioImg from '../assets/imagenhortilistoinicio.png';
+import hlAguacateMaduroImg from '../assets/aguacatemaduro.png';
 import hlMixCebollaImg from '../assets/mix-cebolla.jpg';
 import hlGuacamoleTomatePimientoImg from '../assets/GUACAMOLE-CON-TOMATE-Y-PIMIENTO.png';
 import hlMangoImg from '../assets/mango.jpg';
@@ -152,7 +153,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       case 'ecolove':
         return ecolovePortadaSeccionImg;
       case 'hortilisto':
-        return naturalezaMesaRusticaImg;
+        return imagenHortilistoInicioImg;
       default:
         return brand.heroImage;
     }
@@ -168,7 +169,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       case 'ecolove':
         return ecolovePortadaSeccionImg;
       case 'hortilisto':
-        return naturalezaMesaRusticaImg;
+        return imagenHortilistoInicioImg;
       default:
         return cocosStoryImg;
     }
@@ -182,12 +183,12 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
         : saboresDeCocoImg;
     }
     if (brand.id === 'dhoy') {
-      if (familyId === 'jugo-de-naranja' || index === 0) return dhoy2litrosImg;
-      if (familyId === 'mezclas-de-fruta' || index === 1) return trioJugosNaturalesDhoyImg;
-      if (familyId === 'cold-pressed' || index === 2) return tresJugosUnidosImg;
+      if (familyId === 'jugo-de-naranja' || index === 0) return dhoyCatNaranjaSinSaboresImg;
+      if (familyId === 'mezclas-de-fruta' || index === 1) return dhoyCatMezclasNuevaImg;
+      if (familyId === 'cold-pressed' || index === 2) return dhoyCatColdPressedNuevaImg;
       if (familyId === 'shots' || index === 3) return dhoyShotInmuniImg;
       if (familyId === 'especialidades-dhoy' || index === 4) return dhoySabilaImg;
-      return dhoy2litrosImg;
+      return dhoyCatNaranjaSinSaboresImg;
     }
     if (brand.id === 'ecolove') {
       if (familyId === 'kombucha') return kombuchaJengibreImg;
@@ -227,8 +228,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       if (index === 0) return { img: kombuchaJengibreImg, alt: "2017 Primeros pasos" };
       if (index === 1) return { img: ecoloveAceiteCocoImg, alt: "2018 Llegan los aceites" };
       if (index === 2) return { img: ecoloveBebidaAlmendraImg, alt: "2021 Bebidas vegetales" };
-      if (index === 3) return { img: ecoloveSprayAguacateImg, alt: "2022 Nuevas opciones" };
-      return { img: ecoloveAceiteAguacateImg, alt: "2026 Bienestar diario" };
+      return { img: ecoloveSprayAguacateImg, alt: "2022 Nuevas opciones" };
     }
     return { img: brand.heroImage, alt: brand.name };
   };
@@ -266,11 +266,11 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
         );
       case 'hortilisto':
         return (
-          <div className="w-13 h-13 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center p-2 shadow-md shrink-0 overflow-hidden">
+          <div className="bg-white px-3.5 sm:px-5 py-1 sm:py-1.5 rounded-2xl shadow-lg border border-white/70 flex items-center justify-center shrink-0 h-11 sm:h-14 transition-transform hover:scale-105">
             <img
               src={hortilistoTransparentImg}
               alt="Hortilisto"
-              className="w-[90%] h-auto max-h-full object-contain"
+              className="h-7 sm:h-10 w-auto max-w-[160px] object-contain"
             />
           </div>
         );
@@ -550,7 +550,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
 
           {/* Video interactivo para Coco Freeze */}
           {brand.id === 'coco-freeze' && (
-            <CocoFreezeVideoPlayer src="/VIDEO-COCO-FREEZE-2026.mp4" />
+            <CocoFreezeVideoPlayer src="/VIDEO-COCO-FREEZE-2026.mp4" language={language} />
           )}
 
           {/* Imagen debajo de inicio para DHOY (Jugo de naranja natural entre frutas - entera sin recortar) */}
@@ -575,11 +575,11 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             </div>
           )}
 
-          {/* Imagen debajo de inicio para Hortilisto (misma imagen de inicio de D'Hoy) */}
+          {/* Imagen debajo de inicio para Hortilisto */}
           {brand.id === 'hortilisto' && (
             <div className="max-w-5xl mx-auto rounded-3xl sm:rounded-4xl overflow-hidden shadow-2xl border-2 border-black/25 aspect-[16/9] sm:aspect-[21/9] md:h-[460px] bg-black/10 backdrop-blur-sm">
               <img
-                src={naturalezaMesaRusticaImg}
+                src={imagenHortilistoInicioImg}
                 alt="Hortilisto - Vegetales frescos y prácticos"
                 className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-102"
               />

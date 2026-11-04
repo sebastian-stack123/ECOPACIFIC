@@ -180,11 +180,6 @@ export const BRAND_TRANSLATIONS_EN: Record<string, BrandTranslationData> = {
         emotionalDescription:
           'The crispness of orange meets the sweet, aromatic flavor of ripe strawberries.',
       },
-      'dh-naranja-jengibre': {
-        name: 'Orange + Ginger',
-        emotionalDescription:
-          'Refreshing orange juice with a vibrant, invigorating kick of fresh ginger.',
-      },
       'dh-mora': {
         name: 'Blackberry Juice',
         emotionalDescription:
@@ -320,11 +315,6 @@ export const BRAND_TRANSLATIONS_EN: Record<string, BrandTranslationData> = {
         title: 'New convenient options',
         description:
           'We introduced spray cooking oils without chemical propellants for light cooking.',
-      },
-      '2026': {
-        title: 'Daily wellbeing',
-        description:
-          'Natural, delicious options designed to nourish your healthy lifestyle.',
       },
     },
     families: {

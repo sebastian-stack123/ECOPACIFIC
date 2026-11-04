@@ -17,12 +17,12 @@ import hortilistoImg from '../assets/images/hortilisto_nuevo.png';
 import dhoy355mlImg from '../assets/naranjanormalnuevo.png';
 import dhoySinPulpaImg from '../assets/naranjasinpulpanuevo.png';
 import dhoyCalcioDImg from '../assets/Naranjamenosacidonuevo.png';
+import dhoy2litrosImg from '../assets/dhoy2litros.png';
 
 // DHOY Mezclas de Fruta
 import dhoyNaranjaZanaImg from '../assets/Naranjazanahorianuevo.png';
 import dhoyNaranjaMangoImg from '../assets/Naranjamangonuevo.png';
 import dhoyNaranjaFresaImg from '../assets/naranjafresadhoy.png';
-import dhoyNaranjaJengibreImg from '../assets/naranjajengibre.png';
 import dhoyMoraImg from '../assets/moradhoynuevo.png';
 import dhoyMandarinaImg from '../assets/mandarinanuevo.png';
 import dhoyCranberryImg from '../assets/cranberrynuevo.png';
@@ -38,9 +38,9 @@ import dhoyColdRemolachaImg from '../assets/remolachanuevocoldpressed.png';
 // DHOY Shots
 import dhoyShotInmuniImg from '../assets/inmunishotjengibre.png';
 import dhoyShotInmuniPlusImg from '../assets/inmunishotplusnuevo.jpeg';
-import dhoyShotBalanceImg from '../assets/CURCUMA.jpg';
+import dhoyShotBalanceImg from '../assets/Balanceshotnueva.png';
 import dhoyShotDigestiImg from '../assets/digestishotplusnuevo.png';
-import dhoyShotDefenImg from '../assets/VITAMINA-C.jpg';
+import dhoyShotDefenImg from '../assets/DEFENSHOTnueva.png';
 
 // DHOY Especialidades
 import dhoyZumoLimonImg from '../assets/Limonzumo_blanco.png';
@@ -63,8 +63,9 @@ import ecoloveMielAgaveImg from '../assets/ECOLOVE-MIEL-DE-AGAVE-230ML.png';
 import ecolovePortadaSeccionImg from '../assets/ECOPACIFIC-ECOLOVE-SECCION-PORTADA2026.png';
 
 // HORTILISTO Productos
-import hlAguacateMaduroImg from '../assets/aguacatemaduro.jpg';
-import hlAguacate6PackImg from '../assets/aguacate6pack.jpg';
+import hlAguacateMaduroImg from '../assets/aguacatemaduro.png';
+import hlAguacatePackSemanalImg from '../assets/aguacatepacksemanal.png';
+import hlAguacateTamanoIdealImg from '../assets/aguacatemadurotamanoideal.png';
 import hlMixCebollaImg from '../assets/mix-cebolla.jpg';
 import hlMegaMixCebollaImg from '../assets/HORTILISTO6megamixcebolla.jpg';
 import hlCebollaPaitenitaImg from '../assets/cebollapaitenita.jpg';
@@ -178,7 +179,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         brandId: 'coco-freeze',
         familyId: 'sabores-de-coco',
         emotionalDescription: 'Cremoso, tropical y lleno de auténtico sabor a coco.',
-        presentations: ['355 ml', '1 L'],
+        presentations: ['355 ml'],
         imageUrl: cocofreezeJugoDeCocoImg
       },
       {
@@ -295,7 +296,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
           'dh-naranja-zanahoria',
           'dh-naranja-mango',
           'dh-naranja-fresa',
-          'dh-naranja-jengibre',
           'dh-mora',
           'dh-mandarina',
           'dh-cranberry',
@@ -331,7 +331,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'jugo-de-naranja',
         emotionalDescription: 'Naranjas seleccionadas por su sabor para disfrutar un jugo fresco, auténtico y delicioso todos los días.',
         presentations: ['200 ml Six Pack', '240 ml', '355 ml', '1 L', '1,75 L', '2,5 L', '3,8 L'],
-        imageUrl: dhoy355mlImg,
+        imageUrl: dhoy2litrosImg,
         featured: true
       },
       {
@@ -378,15 +378,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         emotionalDescription: 'La frescura de la naranja se encuentra con el sabor dulce y aromático de la fresa.',
         presentations: ['355 ml'],
         imageUrl: dhoyNaranjaFresaImg
-      },
-      {
-        id: 'dh-naranja-jengibre',
-        name: 'Naranja + Jengibre',
-        brandId: 'dhoy',
-        familyId: 'mezclas-de-fruta',
-        emotionalDescription: 'Naranja refrescante con un toque intenso y vibrante de jengibre.',
-        presentations: ['355 ml'],
-        imageUrl: dhoyNaranjaJengibreImg
       },
       {
         id: 'dh-mora',
@@ -493,7 +484,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         brandId: 'dhoy',
         familyId: 'shots',
         emotionalDescription: 'Cúrcuma y otros ingredientes en una combinación funcional pensada para acompañar tu equilibrio diario.',
-        presentations: ['Tripack'],
+        presentations: ['60 ml'],
         imageUrl: dhoyShotBalanceImg
       },
       {
@@ -564,11 +555,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         year: '2022',
         title: 'Nuevas opciones',
         description: 'Lanzamos aceite de aguacate y aceites en spray, ampliando las opciones para cocinar con bienestar todos los días.'
-      },
-      {
-        year: '2026',
-        title: 'Bienestar diario',
-        description: 'Ecolove evoluciona más allá de lo vegano hacia pequeñas decisiones que suman bienestar.'
       }
     ],
     colors: {
@@ -661,7 +647,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         brandId: 'ecolove',
         familyId: 'aceites-de-coco',
         emotionalDescription: 'Perfil neutro para cocinar lo que quieras. Una forma práctica de incorporar aceite de coco sin cambiar el sabor de tus recetas.',
-        presentations: ['120 ml', '265 ml', '473 ml'],
+        presentations: ['265 ml', '473 ml'],
         imageUrl: ecoloveAceiteCocoSinOlorImg
       },
       {
@@ -897,7 +883,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'aguacates-maduros',
         emotionalDescription: 'Aguacates maduros en un formato pensado para acompañarte durante la semana.',
         presentations: ['Pack semanal'],
-        imageUrl: hlAguacate6PackImg
+        imageUrl: hlAguacatePackSemanalImg
       },
       {
         id: 'hl-aguacate-tamano-ideal',
@@ -906,7 +892,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'aguacates-maduros',
         emotionalDescription: 'Aguacates maduros en un tamaño de empaque práctico para tu consumo diario.',
         presentations: ['Tamaño ideal'],
-        imageUrl: hlAguacateMaduroImg
+        imageUrl: hlAguacateTamanoIdealImg
       },
       {
         id: 'hl-achogcha',
