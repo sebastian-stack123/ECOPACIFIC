@@ -60,10 +60,10 @@ import kombuchaJengibreImg from '../assets/kombuchajengibre.png';
 
 // HORTILISTO Imágenes
 import imagenHortilistoInicioImg from '../assets/imagenhortilistoinicio.png';
-import hlAguacateMaduroImg from '../assets/aguacatemaduro.png';
-import hlMixCebollaImg from '../assets/mix-cebolla.jpg';
-import hlGuacamoleTomatePimientoImg from '../assets/GUACAMOLE-CON-TOMATE-Y-PIMIENTO.png';
-import hlMangoImg from '../assets/mango.jpg';
+import hlAguacateMaduroImg from '../assets/aguacatemaduro-1.png';
+import hlMixCebollaImg from '../assets/cebollasmixnuevas.png';
+import hlGuacamoleTomatePimientoImg from '../assets/guacamolehortilistonuevo.png';
+import hlMangoImg from '../assets/mangoencurtidonuevo.png';
 
 
 interface BrandSubpageProps {
@@ -221,8 +221,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       if (index === 0) return { img: botellaJugoDhoyNaranjaImg, alt: "2009 Nace DHOY" };
       if (index === 1) return { img: botelladhoyxdxdxdImg, alt: "2011 Llegamos a más personas" };
       if (index === 2) return { img: dhoyfabricaImg, alt: "2012 Tecnología para cuidar la fruta" };
-      if (index === 3) return { img: dhoyshotshitosImg, alt: "2016 Nacen los shots" };
-      return { img: dhoy2026NewBotellaImg, alt: "2026 Fruta de verdad" };
+      return { img: dhoyshotshitosImg, alt: "2016 Nacen los shots" };
     }
     if (brand.id === 'ecolove') {
       if (index === 0) return { img: kombuchaJengibreImg, alt: "2017 Primeros pasos" };
@@ -266,11 +265,11 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
         );
       case 'hortilisto':
         return (
-          <div className="bg-white px-3.5 sm:px-5 py-1 sm:py-1.5 rounded-2xl shadow-lg border border-white/70 flex items-center justify-center shrink-0 h-11 sm:h-14 transition-transform hover:scale-105">
+          <div className="bg-white px-2 sm:px-3 py-0.5 rounded-2xl shadow-lg border border-white/80 flex items-center justify-center shrink-0 h-12 sm:h-15 transition-transform hover:scale-105 overflow-hidden">
             <img
               src={hortilistoTransparentImg}
               alt="Hortilisto"
-              className="h-7 sm:h-10 w-auto max-w-[160px] object-contain"
+              className="h-10 sm:h-13.5 w-auto max-w-[185px] sm:max-w-[215px] object-contain"
             />
           </div>
         );
@@ -447,6 +446,17 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                 >
                   {language === 'es' ? 'Productos' : 'Products'}
                 </a>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsDrawerOpen(false);
+                    onOpenContact();
+                  }}
+                  className="px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left cursor-pointer flex items-center justify-between"
+                >
+                  <span>{language === 'es' ? 'Contacto' : 'Contact'}</span>
+                </button>
               </nav>
             </div>
 

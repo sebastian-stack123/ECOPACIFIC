@@ -38,7 +38,7 @@ import dhoyColdRemolachaImg from '../assets/remolachanuevocoldpressed.png';
 // DHOY Shots
 import dhoyShotInmuniImg from '../assets/inmunishotjengibre.png';
 import dhoyShotInmuniPlusImg from '../assets/inmunishotplusnuevo.jpeg';
-import dhoyShotBalanceImg from '../assets/Balanceshotnueva.png';
+import dhoyShotEnergyImg from '../assets/energyshotpequeno.png';
 import dhoyShotDigestiImg from '../assets/digestishotplusnuevo.png';
 import dhoyShotDefenImg from '../assets/DEFENSHOTnueva.png';
 
@@ -63,20 +63,20 @@ import ecoloveMielAgaveImg from '../assets/ECOLOVE-MIEL-DE-AGAVE-230ML.png';
 import ecolovePortadaSeccionImg from '../assets/ECOPACIFIC-ECOLOVE-SECCION-PORTADA2026.png';
 
 // HORTILISTO Productos
-import hlAguacateMaduroImg from '../assets/aguacatemaduro.png';
+import hlAguacateMaduroImg from '../assets/aguacatemaduro-1.png';
 import hlAguacatePackSemanalImg from '../assets/aguacatepacksemanal.png';
 import hlAguacateTamanoIdealImg from '../assets/aguacatemadurotamanoideal.png';
-import hlMixCebollaImg from '../assets/mix-cebolla.jpg';
-import hlMegaMixCebollaImg from '../assets/HORTILISTO6megamixcebolla.jpg';
-import hlCebollaPaitenitaImg from '../assets/cebollapaitenita.jpg';
-import hlCebollaPerlitaImg from '../assets/cebollaperlitas.jpg';
+import hlMixCebollaImg from '../assets/cebollasmixnuevas.png';
+import hlMegaMixCebollaImg from '../assets/megacebollanuevo.png';
+import hlCebollaPaitenitaImg from '../assets/paitenitas.png';
+import hlCebollaPerlitaImg from '../assets/perlitasnuevas.png';
 import hlPimientosColoresImg from '../assets/pimientos de colores.jpg';
-import hlZapalloImg from '../assets/zapallo.jpg';
+import hlZapalloImg from '../assets/zapallonuevo.png';
 import hlJengibreImg from '../assets/jengibre200g.jpg';
-import hlPinaGoldenImg from '../assets/pinagolden.jpg';
-import hlGuacamoleImg from '../assets/guacamole.jpg';
+import hlPinaGoldenImg from '../assets/pinagoldenextradulce.png';
+import hlGuacamoleImg from '../assets/guacamolehortilistonuevo.png';
 import hlGuacamoleTomatePimientoImg from '../assets/GUACAMOLE-CON-TOMATE-Y-PIMIENTO.png';
-import hlMangoImg from '../assets/mango.jpg';
+import hlMangoImg from '../assets/mangoencurtidonuevo.png';
 
 export const BRANDS_DATA: Record<string, Brand> = {
   'coco-freeze': {
@@ -241,11 +241,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         year: '2016',
         title: 'Nacen los shots',
         description: 'Inmunishot de jengibre se convierte en el protagonista de una nueva categoría.'
-      },
-      {
-        year: '2026',
-        title: 'Fruta de verdad',
-        description: 'Seguimos perfeccionando fruta y proceso para lograr un sabor consistentemente delicioso'
       }
     ],
     colors: {
@@ -314,7 +309,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'shots',
         name: 'Shots',
         tagline: 'Ingredientes potentes y combinaciones funcionales creadas para acompañar distintos momentos y necesidades de tu rutina.',
-        productIds: ['dh-shot-inmuni', 'dh-shot-inmuni-plus', 'dh-shot-balance', 'dh-shot-digesti', 'dh-shot-defen']
+        productIds: ['dh-shot-inmuni', 'dh-shot-inmuni-plus', 'dh-shot-energy', 'dh-shot-digesti', 'dh-shot-defen']
       },
       {
         id: 'especialidades-dhoy',
@@ -479,13 +474,13 @@ export const BRANDS_DATA: Record<string, Brand> = {
         imageUrl: dhoyShotInmuniPlusImg
       },
       {
-        id: 'dh-shot-balance',
-        name: 'Balanceshot',
+        id: 'dh-shot-energy',
+        name: 'Energyshot',
         brandId: 'dhoy',
         familyId: 'shots',
-        emotionalDescription: 'Cúrcuma y otros ingredientes en una combinación funcional pensada para acompañar tu equilibrio diario.',
+        emotionalDescription: 'Guaraná, maca y café verde en una fórmula pensada para darte un impulso natural de energía.',
         presentations: ['60 ml'],
-        imageUrl: dhoyShotBalanceImg
+        imageUrl: dhoyShotEnergyImg
       },
       {
         id: 'dh-shot-digesti',
@@ -665,7 +660,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         brandId: 'ecolove',
         familyId: 'aceites-de-aguacate',
         emotionalDescription: 'Con el carácter del aguacate y gran versatilidad en cocina. Su buena estabilidad al calor ayuda a tolerar altas temperaturas con menor oxidación.',
-        presentations: ['250 ml'],
+        presentations: ['250 ml', '500 ml'],
         imageUrl: ecoloveAceiteAguacateImg
       },
       {
@@ -839,15 +834,12 @@ export const BRANDS_DATA: Record<string, Brand> = {
         name: 'Vegetales y frutas listas',
         tagline: 'Nosotros adelantamos el trabajo. Tú haces la comida. Productos seleccionados, pelados, picados o listos para disfrutar.',
         productIds: [
-          'hl-achogcha',
           'hl-mix-cebollas',
           'hl-mix-mega-cebollas',
           'hl-paitenitas',
           'hl-perlita',
           'hl-pimientos-colores',
-          'hl-sambo-picado',
           'hl-zapallo-picado',
-          'hl-verdura-mazo',
           'hl-jengibre-bandeja',
           'hl-pina-golden'
         ]
@@ -895,15 +887,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         imageUrl: hlAguacateTamanoIdealImg
       },
       {
-        id: 'hl-achogcha',
-        name: 'Achogcha',
-        brandId: 'hortilisto',
-        familyId: 'vegetales-y-frutas-listas',
-        emotionalDescription: 'Lista para convertir una receta tradicional en algo mucho más práctico.',
-        presentations: ['400 g'],
-        imageUrl: hortilistoImg
-      },
-      {
         id: 'hl-mix-cebollas',
         name: 'Mix de cebollas',
         brandId: 'hortilisto',
@@ -949,15 +932,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         imageUrl: hlPimientosColoresImg
       },
       {
-        id: 'hl-sambo-picado',
-        name: 'Sambo picado',
-        brandId: 'hortilisto',
-        familyId: 'vegetales-y-frutas-listas',
-        emotionalDescription: 'Limpio, picado y listo para convertirse en tu próxima receta.',
-        presentations: ['600 g'],
-        imageUrl: hortilistoImg
-      },
-      {
         id: 'hl-zapallo-picado',
         name: 'Zapallo picado',
         brandId: 'hortilisto',
@@ -965,15 +939,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         emotionalDescription: 'Todo el sabor del zapallo, con mucho menos trabajo.',
         presentations: ['700 g'],
         imageUrl: hlZapalloImg
-      },
-      {
-        id: 'hl-verdura-mazo',
-        name: 'Verdura en mazo',
-        brandId: 'hortilisto',
-        familyId: 'vegetales-y-frutas-listas',
-        emotionalDescription: 'Una opción práctica para tener vegetales frescos listos cuando los necesitas.',
-        presentations: ['200 g'],
-        imageUrl: hlJengibreImg
       },
       {
         id: 'hl-jengibre-bandeja',

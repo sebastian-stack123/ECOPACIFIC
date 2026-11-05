@@ -83,11 +83,6 @@ export const BrandsSection: React.FC<BrandsSectionProps> = ({
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#5B8C2A] mb-3">
             {t.brandsSection.title}
           </h2>
-          <p className="text-base sm:text-lg md:text-xl font-medium text-stone-700 max-w-xl mx-auto">
-            {language === 'es'
-              ? 'Más de 200 productos en todo el Ecuador.'
-              : 'Over 200 products across Ecuador.'}
-          </p>
         </div>
 
         {/* 4 Cards con SOLO la foto de la marca y la flechita (sin textos ni nombres) */}

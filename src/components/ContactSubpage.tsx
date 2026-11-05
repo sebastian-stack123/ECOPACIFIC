@@ -48,11 +48,6 @@ export const ContactSubpage: React.FC<ContactSubpageProps> = ({
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mb-4 drop-shadow-sm">
               {isEs ? 'Hablemos directamente' : "Let's talk directly"}
             </h1>
-            <p className="text-base sm:text-lg text-white/95 leading-relaxed font-light text-balance">
-              {isEs
-                ? 'Sin formularios largos ni esperas. Comunícate al instante con nuestro equipo por WhatsApp o envíanos un correo directo.'
-                : 'No long forms, no waiting. Reach out to our team instantly via WhatsApp or send us a direct email.'}
-            </p>
           </div>
 
           {/* Tarjetas Principales de Contacto Directo: WhatsApp & Correo */}

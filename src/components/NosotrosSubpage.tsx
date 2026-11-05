@@ -155,8 +155,8 @@ export const NosotrosSubpage: React.FC<NosotrosSubpageProps> = ({
 
           <p className="text-base sm:text-xl text-stone-700 leading-relaxed font-normal text-balance max-w-3xl mx-auto">
             {language === 'es'
-              ? 'Ecopacific cree que un producto debe ser delicioso, saludable, innovador y natural. Brindamos más de 200 productos a todo el Ecuador. Estamos orgullosos de liderar la categoría de jugos y frutas en el canal moderno del país. Ecopacific se fundó el 2008 a través de la fusión de emprendimientos familiares: Limón Ecopacific, Coco Freeze y Hortilisto.'
-              : 'Ecopacific believes that a product must be delicious, healthy, innovative, and natural. We provide over 200 products across Ecuador. We are proud to lead the juice and fruit category in the country’s modern channel. Ecopacific was founded in 2008 through the merger of family ventures: Limón Ecopacific, Coco Freeze, and Hortilisto.'}
+              ? 'Ecopacific cree que un producto debe ser delicioso, saludable, innovador y natural. Estamos orgullosos de liderar la categoría de jugos y frutas en el canal moderno del país. Ecopacific se fundó el 2008 a través de la fusión de emprendimientos familiares: Limón Ecopacific, Coco Freeze y Hortilisto.'
+              : 'Ecopacific believes that a product must be delicious, healthy, innovative, and natural. We are proud to lead the juice and fruit category in the country’s modern channel. Ecopacific was founded in 2008 through the merger of family ventures: Limón Ecopacific, Coco Freeze, and Hortilisto.'}
           </p>
 
           <div className="pt-4">

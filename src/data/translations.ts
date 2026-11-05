@@ -18,7 +18,7 @@ export const UI_TRANSLATIONS = {
     },
     brandsSection: {
       title: 'Nuestras Marcas',
-      subtitle: 'Más de 200 productos líderes en jugos y frutas en el Ecuador.',
+      subtitle: 'Productos líderes en jugos y frutas en el Ecuador.',
       ctaCard: 'Ver marca',
     },
     historySection: {
@@ -67,7 +67,7 @@ export const UI_TRANSLATIONS = {
       step2: 'Innovación',
       step2Desc: 'Prensado en frío y conservación natural',
       step3: 'Variedad',
-      step3Desc: 'Más de 200 productos frescos y prácticos',
+      step3Desc: 'Productos frescos y prácticos',
       step4: 'Ecuador',
       step4Desc: 'Llegamos a todo el canal moderno del país',
     },
@@ -138,7 +138,7 @@ export const UI_TRANSLATIONS = {
     },
     brandsSection: {
       title: 'Our Brands',
-      subtitle: 'Over 200 products leading the fruit and juice category in Ecuador.',
+      subtitle: 'Leading products in the fruit and juice category in Ecuador.',
       ctaCard: 'View brand',
     },
     historySection: {
@@ -187,7 +187,7 @@ export const UI_TRANSLATIONS = {
       step2: 'Innovation',
       step2Desc: 'Cold-pressed and natural preservation',
       step3: 'Variety',
-      step3Desc: 'Over 200 fresh and convenient products',
+      step3Desc: 'Fresh and convenient healthy products',
       step4: 'Ecuador',
       step4Desc: 'Reaching modern retail stores nationwide',
     },

@@ -111,11 +111,6 @@ export const BRAND_TRANSLATIONS_EN: Record<string, BrandTranslationData> = {
         description:
           'Ginger Inmunishot leads the way in a brand new category of daily wellness.',
       },
-      '2026': {
-        title: 'Real fruit taste',
-        description:
-          'Over 15 varieties celebrating the genuine flavor of the Ecuadorian land.',
-      },
     },
     families: {
       'jugo-de-naranja': {
@@ -250,10 +245,10 @@ export const BRAND_TRANSLATIONS_EN: Record<string, BrandTranslationData> = {
         emotionalDescription:
           'An amplified concentration of ginger and citrus for demanding days.',
       },
-      'dh-shot-balance': {
-        name: 'Balance Shot Turmeric',
+      'dh-shot-energy': {
+        name: 'Energyshot',
         emotionalDescription:
-          'Golden turmeric root blend with black pepper extract for natural recovery.',
+          'Guarana, maca, and green coffee crafted for a natural boost of vitality.',
       },
       'dh-shot-digesti': {
         name: 'Digestive Shot',
