@@ -38,9 +38,9 @@ import dhoyColdRemolachaImg from '../assets/remolachanuevocoldpressed.png';
 // DHOY Shots
 import dhoyShotInmuniImg from '../assets/inmunishotjengibre.png';
 import dhoyShotInmuniPlusImg from '../assets/inmunishotplusnuevo.jpeg';
-import dhoyShotEnergyImg from '../assets/energyshotpequeno.png';
 import dhoyShotDigestiImg from '../assets/digestishotplusnuevo.png';
 import dhoyShotDefenImg from '../assets/DEFENSHOTnueva.png';
+import ecoloveShotEnergyImg from '../assets/energyshotpequeno.png';
 
 // DHOY Especialidades
 import dhoyZumoLimonImg from '../assets/Limonzumo_blanco.png';
@@ -309,7 +309,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         id: 'shots',
         name: 'Shots',
         tagline: 'Ingredientes potentes y combinaciones funcionales creadas para acompañar distintos momentos y necesidades de tu rutina.',
-        productIds: ['dh-shot-inmuni', 'dh-shot-inmuni-plus', 'dh-shot-energy', 'dh-shot-digesti', 'dh-shot-defen']
+        productIds: ['dh-shot-inmuni', 'dh-shot-inmuni-plus', 'dh-shot-digesti', 'dh-shot-defen']
       },
       {
         id: 'especialidades-dhoy',
@@ -472,15 +472,6 @@ export const BRANDS_DATA: Record<string, Brand> = {
         emotionalDescription: 'Una fórmula reforzada para quienes buscan todavía más potencia en su rutina diaria.',
         presentations: ['Tripack'],
         imageUrl: dhoyShotInmuniPlusImg
-      },
-      {
-        id: 'dh-shot-energy',
-        name: 'Energyshot',
-        brandId: 'dhoy',
-        familyId: 'shots',
-        emotionalDescription: 'Guaraná, maca y café verde en una fórmula pensada para darte un impulso natural de energía.',
-        presentations: ['60 ml'],
-        imageUrl: dhoyShotEnergyImg
       },
       {
         id: 'dh-shot-digesti',
@@ -755,12 +746,12 @@ export const BRANDS_DATA: Record<string, Brand> = {
       },
       {
         id: 'el-shot-energy',
-        name: 'Shot Energy',
+        name: 'Energyshot',
         brandId: 'ecolove',
         familyId: 'shots-ecolove',
-        emotionalDescription: 'Una combinación intensa con ginseng para esos días en los que buscas un impulso extra.',
-        presentations: ['35 ml', 'Six Pack'],
-        imageUrl: ecoloveImg
+        emotionalDescription: 'Guaraná, maca y café verde en una fórmula pensada para darte un impulso natural de energía.',
+        presentations: ['60 ml'],
+        imageUrl: ecoloveShotEnergyImg
       },
       {
         id: 'el-shot-defense',
@@ -965,7 +956,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'guacamole',
         emotionalDescription: 'Aguacate convertido en un guacamole práctico y delicioso para acompañar lo que quieras.',
         presentations: ['205 g'],
-        imageUrl: hlGuacamoleImg
+        imageUrl: hlGuacamoleTomatePimientoImg
       },
       {
         id: 'hl-guacamole-tomate-pimiento',
@@ -974,7 +965,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'guacamole',
         emotionalDescription: 'Nuestro guacamole con tomate y pimiento para darle todavía más sabor a cada bocado.',
         presentations: ['205 g'],
-        imageUrl: hlGuacamoleTomatePimientoImg
+        imageUrl: hlGuacamoleImg
       },
       {
         id: 'hl-grosella-encurtida',

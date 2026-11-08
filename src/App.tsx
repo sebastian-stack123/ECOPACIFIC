@@ -31,6 +31,9 @@ const BrandSubpage = lazyRetry(() =>
 const ContactSubpage = lazyRetry(() =>
   import('./components/ContactSubpage').then((m) => ({ default: m.ContactSubpage }))
 );
+const RecetasSubpage = lazyRetry(() =>
+  import('./components/RecetasSubpage').then((m) => ({ default: m.RecetasSubpage }))
+);
 
 const PageLoadingFallback: React.FC = () => (
   <CoconutLoader label="EcoPacific" fullScreen />
@@ -65,6 +68,7 @@ export default function App() {
   const isNosotros = currentPath === '/nosotros';
   const isSostenibilidad = currentPath === '/sostenibilidad';
   const isContacto = currentPath === '/contacto';
+  const isRecetas = currentPath === '/recetas/' || currentPath === '/recetas' || currentPath.startsWith('/recetas');
 
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-[#5B8C2A] selection:text-white">
@@ -78,6 +82,7 @@ export default function App() {
             onNavigateBrand={(slug) => navigateTo(`/marcas/${slug}`)}
             onOpenContact={() => navigateTo('/contacto')}
             onLanguageChange={setLanguage}
+            onNavigate={navigateTo}
           />
         ) : isNosotros ? (
           /* Subpágina completa de Nuestra Empresa cargada bajo demanda */
@@ -104,6 +109,15 @@ export default function App() {
             onNavigateHome={() => navigateTo('/')}
             onNavigate={navigateTo}
             onLanguageChange={setLanguage}
+          />
+        ) : isRecetas ? (
+          /* Subpágina de Recetas cargada bajo demanda */
+          <RecetasSubpage
+            language={language}
+            onNavigateHome={() => navigateTo('/')}
+            onNavigate={navigateTo}
+            onLanguageChange={setLanguage}
+            onOpenContact={() => navigateTo('/contacto')}
           />
         ) : (
           <HomePage

@@ -245,11 +245,6 @@ export const BRAND_TRANSLATIONS_EN: Record<string, BrandTranslationData> = {
         emotionalDescription:
           'An amplified concentration of ginger and citrus for demanding days.',
       },
-      'dh-shot-energy': {
-        name: 'Energyshot',
-        emotionalDescription:
-          'Guarana, maca, and green coffee crafted for a natural boost of vitality.',
-      },
       'dh-shot-digesti': {
         name: 'Digestive Shot',
         emotionalDescription:
@@ -332,6 +327,10 @@ export const BRAND_TRANSLATIONS_EN: Record<string, BrandTranslationData> = {
       'kombucha': {
         name: 'Kombucha',
         tagline: 'Naturally fermented, effervescent probiotic tea.',
+      },
+      'shots-ecolove': {
+        name: 'Functional Shots',
+        tagline: 'Small, intense, and easy to add to your daily routine.',
       },
       'algo-extra': {
         name: 'Something Extra',
@@ -502,6 +501,11 @@ export const BRAND_TRANSLATIONS_EN: Record<string, BrandTranslationData> = {
         name: 'Golden Pineapple Chunks',
         emotionalDescription:
           'Sweet, juicy golden pineapple cut into bite-sized chunks to enjoy anytime.',
+      },
+      'hl-guacamole-clasico': {
+        name: 'Traditional Guacamole',
+        emotionalDescription:
+          '100% fresh avocado guacamole seasoned with cilantro, lime, and onion.',
       },
       'hl-guacamole-original': {
         name: 'Traditional Guacamole',

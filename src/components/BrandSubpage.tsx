@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, ArrowRight, Menu, X, Utensils } from 'lucide-react';
 import { Brand, Product, Language } from '../types';
 import { UI_TRANSLATIONS } from '../data/translations';
 import { BRANDS_DATA } from '../data/brandsData';
@@ -57,12 +57,13 @@ import ecoloveSprayAguacateImg from '../assets/ECOLOVE-ACEITE-AGUACATE-SPRAY-180
 import ecoloveBebidaAlmendraImg from '../assets/ECOLOVE-BEBIDA-DE-ALMENDRA-SIN-AZUCAR-1L-2026.png';
 import ecoloveMielAgaveImg from '../assets/ECOLOVE-MIEL-DE-AGAVE-230ML.png';
 import kombuchaJengibreImg from '../assets/kombuchajengibre.png';
+import ecoloveShotEnergyImg from '../assets/energyshotpequeno.png';
 
 // HORTILISTO Imágenes
 import imagenHortilistoInicioImg from '../assets/imagenhortilistoinicio.png';
 import hlAguacateMaduroImg from '../assets/aguacatemaduro-1.png';
 import hlMixCebollaImg from '../assets/cebollasmixnuevas.png';
-import hlGuacamoleTomatePimientoImg from '../assets/guacamolehortilistonuevo.png';
+import hlGuacamoleTomatePimientoImg from '../assets/GUACAMOLE-CON-TOMATE-Y-PIMIENTO.png';
 import hlMangoImg from '../assets/mangoencurtidonuevo.png';
 
 
@@ -74,6 +75,7 @@ interface BrandSubpageProps {
   onNavigateBrand: (slug: string) => void;
   onOpenContact: () => void;
   onLanguageChange?: (lang: Language) => void;
+  onNavigate?: (path: string) => void;
 }
 
 export const BrandSubpage: React.FC<BrandSubpageProps> = ({
@@ -84,6 +86,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
   onNavigateBrand,
   onOpenContact,
   onLanguageChange,
+  onNavigate,
 }) => {
   const rawBrand = brandProp || (brandSlug ? BRANDS_DATA[brandSlug] : null) || BRANDS_DATA['coco-freeze'];
   const brand = getTranslatedBrand(rawBrand, language);
@@ -196,6 +199,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       if (familyId === 'aceites-de-aguacate') return ecoloveAceiteAguacateImg;
       if (familyId === 'aceites-en-spray') return ecoloveSprayAguacateImg;
       if (familyId === 'bebidas-vegetales') return ecoloveBebidaAlmendraImg;
+      if (familyId === 'shots-ecolove') return ecoloveShotEnergyImg;
       if (familyId === 'algo-extra') return ecoloveMielAgaveImg;
       return ecoloveTransparentImg;
     }
@@ -597,6 +601,35 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
           )}
         </div>
       </section>
+
+      {/* ========================================================
+          1.5 SECCIÓN RECETAS (Botón sutil para EcoLove antes de la historia)
+          ======================================================== */}
+      {brand.id === 'ecolove' && (
+        <section
+          aria-label={language === 'es' ? 'Recetas EcoLove' : 'EcoLove Recipes'}
+          className="bg-[#152e12] py-4 sm:py-5 border-t border-b border-white/10 text-center"
+        >
+          <div className="max-w-5xl mx-auto px-6 flex items-center justify-center">
+            <button
+              type="button"
+              onClick={() => {
+                if (onNavigate) {
+                  onNavigate('/recetas/');
+                } else {
+                  window.history.pushState({}, '', '/recetas/');
+                  window.dispatchEvent(new PopStateEvent('popstate'));
+                }
+              }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium text-white/90 bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/35 transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer group"
+            >
+              <Utensils className="w-3.5 h-3.5 text-yellow-300/90 group-hover:scale-110 transition-transform" />
+              <span>{language === 'es' ? 'Recetas' : 'Recipes'}</span>
+              <ArrowRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+            </button>
+          </div>
+        </section>
+      )}
 
       {/* ========================================================
           2. HISTORIA Y LOS HITOS (Para marcas con historia: Coco Freeze, D'Hoy, EcoLove; Hortilisto no tiene)
