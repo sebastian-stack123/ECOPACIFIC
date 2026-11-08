@@ -63,7 +63,7 @@ import ecoloveShotEnergyImg from '../assets/energyshotpequeno.png';
 import imagenHortilistoInicioImg from '../assets/imagenhortilistoinicio.png';
 import hlAguacateMaduroImg from '../assets/aguacatemaduro-1.png';
 import hlMixCebollaImg from '../assets/cebollasmixnuevas.png';
-import hlGuacamoleTomatePimientoImg from '../assets/GUACAMOLE-CON-TOMATE-Y-PIMIENTO.png';
+import hlGuacamoleOriginalImg from '../assets/guacamoleoriginalcategoriayguacamole.png';
 import hlMangoImg from '../assets/mangoencurtidonuevo.png';
 
 
@@ -206,7 +206,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
     if (brand.id === 'hortilisto') {
       if (familyId === 'aguacates-maduros' || index === 0) return hlAguacateMaduroImg;
       if (familyId === 'vegetales-y-frutas-listas' || index === 1) return hlMixCebollaImg;
-      if (familyId === 'guacamole' || index === 2) return hlGuacamoleTomatePimientoImg;
+      if (familyId === 'guacamole' || index === 2) return hlGuacamoleOriginalImg;
       if (familyId === 'encurtidos' || index === 3) return hlMangoImg;
       return hlAguacateMaduroImg;
     }

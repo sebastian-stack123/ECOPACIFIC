@@ -74,8 +74,9 @@ import hlPimientosColoresImg from '../assets/pimientos de colores.jpg';
 import hlZapalloImg from '../assets/zapallonuevo.png';
 import hlJengibreImg from '../assets/jengibre200g.jpg';
 import hlPinaGoldenImg from '../assets/pinagoldenextradulce.png';
+import hlGuacamoleOriginalImg from '../assets/guacamoleoriginalcategoriayguacamole.png';
 import hlGuacamoleImg from '../assets/guacamolehortilistonuevo.png';
-import hlGuacamoleTomatePimientoImg from '../assets/GUACAMOLE-CON-TOMATE-Y-PIMIENTO.png';
+import hlGrosellaImg from '../assets/groselllas.png';
 import hlMangoImg from '../assets/mangoencurtidonuevo.png';
 
 export const BRANDS_DATA: Record<string, Brand> = {
@@ -956,7 +957,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'guacamole',
         emotionalDescription: 'Aguacate convertido en un guacamole práctico y delicioso para acompañar lo que quieras.',
         presentations: ['205 g'],
-        imageUrl: hlGuacamoleTomatePimientoImg
+        imageUrl: hlGuacamoleOriginalImg
       },
       {
         id: 'hl-guacamole-tomate-pimiento',
@@ -974,7 +975,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'encurtidos',
         emotionalDescription: 'Ácida, intensa y de esas que hacen difícil parar después de la primera.',
         presentations: ['172 g drenado'],
-        imageUrl: hortilistoImg
+        imageUrl: hlGrosellaImg
       },
       {
         id: 'hl-mango-encurtido',
