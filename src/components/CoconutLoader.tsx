@@ -7,7 +7,7 @@ interface CoconutLoaderProps {
 }
 
 export const CoconutLoader: React.FC<CoconutLoaderProps> = ({
-  label = 'EcoPacific',
+  label = 'Ecopacific',
   size = 'md',
   fullScreen = true,
 }) => {

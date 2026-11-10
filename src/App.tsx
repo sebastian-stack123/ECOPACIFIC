@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Language } from './types';
 import { CoconutLoader } from './components/CoconutLoader';
 import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton';
@@ -39,7 +40,7 @@ const LegalSubpage = lazyRetry(() =>
 );
 
 const PageLoadingFallback: React.FC = () => (
-  <CoconutLoader label="EcoPacific" fullScreen />
+  <CoconutLoader label="Ecopacific" fullScreen />
 );
 
 export default function App() {
@@ -182,6 +183,9 @@ export default function App() {
 
       {/* Acceso directo flotante a WhatsApp siempre visible en toda la web */}
       <FloatingWhatsAppButton language={language} />
+
+      {/* Vercel Analytics */}
+      <Analytics />
     </div>
   );
 }

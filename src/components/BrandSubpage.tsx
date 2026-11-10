@@ -437,10 +437,10 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                     setIsDrawerOpen(false);
                     onNavigateHome();
                   }}
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 transition-colors text-left cursor-pointer text-yellow-300"
+                  className="w-full flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition-colors text-center cursor-pointer text-yellow-300 font-bold"
                 >
-                  <ArrowLeft className="w-4 h-4" />
-                  <span>{language === 'es' ? 'Ecopacific Corporativo' : 'Corporate Ecopacific'}</span>
+                  <ArrowLeft className="w-4 h-4 shrink-0" />
+                  <span className="text-center">{language === 'es' ? 'Ecopacific Corporativo' : 'Corporate Ecopacific'}</span>
                 </button>
 
                 <a
@@ -514,7 +514,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
                 </div>
               )}
               <div className="text-xs text-white/70 flex items-center justify-between">
-                <span>EcoPacific S.A.</span>
+                <span>Ecopacific S.A.</span>
                 <span className="text-[10px] uppercase font-bold text-yellow-300">{brand.name}</span>
               </div>
             </div>
@@ -1119,13 +1119,15 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             </div>
           )}
 
-          <button
-            onClick={onNavigateHome}
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold transition-all cursor-pointer shadow-md hover:text-yellow-300 text-sm mt-1"
-          >
-            <ArrowLeft className="w-4 h-4 stroke-[2.5]" />
-            <span>{language === 'es' ? 'Regresar al portal ECOPACIFIC' : 'Return to ECOPACIFIC portal'}</span>
-          </button>
+          <div className="w-full flex items-center justify-center pt-1">
+            <button
+              onClick={onNavigateHome}
+              className="inline-flex items-center justify-center text-center gap-2.5 px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold transition-all cursor-pointer shadow-md hover:text-yellow-300 text-sm mx-auto"
+            >
+              <ArrowLeft className="w-4 h-4 stroke-[2.5] shrink-0" />
+              <span className="text-center">{language === 'es' ? 'Regresar al portal ECOPACIFIC' : 'Return to ECOPACIFIC portal'}</span>
+            </button>
+          </div>
         </div>
       </footer>
 

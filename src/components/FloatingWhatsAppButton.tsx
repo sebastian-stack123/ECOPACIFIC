@@ -12,14 +12,14 @@ export const FloatingWhatsAppButton: React.FC<FloatingWhatsAppButtonProps> = ({
   const phoneNumber = '593989300156';
   const defaultMessage =
     language === 'es'
-      ? 'Hola EcoPacific, quisiera más información sobre sus productos.'
-      : 'Hello EcoPacific, I would like more information about your products.';
+      ? 'Hola Ecopacific, quisiera más información sobre sus productos.'
+      : 'Hello Ecopacific, I would like more information about your products.';
 
   const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
 
   return (
     <div
-      aria-label="WhatsApp EcoPacific"
+      aria-label="WhatsApp Ecopacific"
       className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 pointer-events-none flex items-center"
     >
       <div className="relative group pointer-events-auto flex items-center">
@@ -33,7 +33,7 @@ export const FloatingWhatsAppButton: React.FC<FloatingWhatsAppButtonProps> = ({
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Abrir chat de WhatsApp con EcoPacific"
+          aria-label="Abrir chat de WhatsApp con Ecopacific"
           className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-hidden ring-4 ring-white/30 cursor-pointer pointer-events-auto"
           style={{ touchAction: 'manipulation' }}
         >

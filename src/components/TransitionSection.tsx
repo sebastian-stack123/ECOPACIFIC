@@ -34,11 +34,11 @@ export const TransitionSection: React.FC<TransitionSectionProps> = ({ language }
       </section>
 
       {/* 2. FOTO PRODUCTOS DESTACADOS: Abajo del inicio y arriba de nuestras marcas, SOLO LA FOTO NINGÚN TEXTO */}
-      <section className="bg-[#FBF9F5] py-8 sm:py-14 px-4 sm:px-8 border-b border-stone-200/60">
-        <div className="max-w-5xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-stone-300/80 bg-stone-100">
+      <section className="bg-[#FBF9F5] py-6 sm:py-10 px-4 sm:px-8 border-b border-stone-200/60">
+        <div className="max-w-3xl sm:max-w-3xl md:max-w-3xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-stone-300/80 bg-stone-100">
           <img
             src={refrescanteCosechaTropicalImg}
-            alt="EcoPacific - Refrescante cosecha tropical con D'Hoy"
+            alt="Ecopacific - Refrescante cosecha tropical con D'Hoy"
             loading="lazy"
             decoding="async"
             referrerPolicy="no-referrer"

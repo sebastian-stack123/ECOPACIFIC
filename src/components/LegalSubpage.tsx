@@ -67,7 +67,7 @@ export const LegalSubpage: React.FC<LegalSubpageProps> = ({
               {type === 'cookies' && <Cookie className="w-6 h-6" />}
             </div>
             <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-emerald-300">
-              {isEs ? 'Legal · EcoPacific' : 'Legal · EcoPacific'}
+              {isEs ? 'Legal · Ecopacific' : 'Legal · Ecopacific'}
             </span>
           </div>
 
