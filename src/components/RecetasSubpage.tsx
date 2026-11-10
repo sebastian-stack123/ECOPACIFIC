@@ -38,11 +38,11 @@ export const RecetasSubpage: React.FC<RecetasSubpageProps> = ({
   }, [isDrawerOpen]);
 
   const renderEcoLoveLogo = () => (
-    <div className="w-13 h-13 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center p-1.5 shadow-md shrink-0 overflow-hidden">
+    <div className="w-13 h-13 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center p-2 sm:p-2.5 shadow-md shrink-0 overflow-hidden">
       <img
         src={ecoloveTransparentImg}
         alt="EcoLove"
-        className="w-[82%] h-auto max-h-full object-contain drop-shadow-xs"
+        className="w-[80%] sm:w-[82%] h-auto max-h-[80%] object-contain drop-shadow-xs"
       />
     </div>
   );

@@ -41,8 +41,8 @@ const HOMEPAGE_BRANDS: BrandCardItem[] = [
     heroImage: dhoyImg,
     imageFit: 'contain',
     objectPosition: 'center center',
-    imageScale: 'scale-95 group-hover:scale-105',
-    boxPadding: 'p-4 sm:p-5',
+    imageScale: 'scale-90 group-hover:scale-95',
+    boxPadding: 'p-5 sm:p-6',
   },
   {
     id: 'ecolove',
@@ -51,8 +51,8 @@ const HOMEPAGE_BRANDS: BrandCardItem[] = [
     heroImage: ecoloveImg,
     imageFit: 'contain',
     objectPosition: 'center center',
-    imageScale: 'scale-100 group-hover:scale-108',
-    boxPadding: 'p-4 sm:p-5',
+    imageScale: 'scale-90 group-hover:scale-95',
+    boxPadding: 'p-5 sm:p-6',
   },
   {
     id: 'hortilisto',
