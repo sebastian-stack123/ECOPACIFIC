@@ -120,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({
               {Object.values(BRANDS_DATA).map((brand) => (
                 <button
                   key={brand.id}
-                  onClick={() => onNavigate(`/marcas/${brand.slug}`)}
+                  onClick={() => onNavigate(brand.slug === 'coco-freeze' ? '/coco-freeze/' : `/marcas/${brand.slug}`)}
                   className="text-left text-white/90 hover:text-white py-1 transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
                   <span
@@ -134,8 +134,35 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
 
+        {/* Legal Links */}
+        <div className="pt-8 pb-4 flex flex-wrap items-center justify-center sm:justify-start gap-x-6 gap-y-2 text-xs font-semibold text-white/90 border-b border-white/10">
+          <button
+            type="button"
+            onClick={() => onNavigate('/terminos-y-condiciones/')}
+            className="hover:text-yellow-300 transition-colors cursor-pointer text-left"
+          >
+            {language === 'es' ? 'Términos y condiciones' : 'Terms & Conditions'}
+          </button>
+          <span className="text-white/40 hidden sm:inline" aria-hidden="true">·</span>
+          <button
+            type="button"
+            onClick={() => onNavigate('/politica-de-privacidad/')}
+            className="hover:text-yellow-300 transition-colors cursor-pointer text-left"
+          >
+            {language === 'es' ? 'Política de privacidad' : 'Privacy Policy'}
+          </button>
+          <span className="text-white/40 hidden sm:inline" aria-hidden="true">·</span>
+          <button
+            type="button"
+            onClick={() => onNavigate('/politica-de-cookies/')}
+            className="hover:text-yellow-300 transition-colors cursor-pointer text-left"
+          >
+            {language === 'es' ? 'Política de cookies' : 'Cookie Policy'}
+          </button>
+        </div>
+
         {/* Bottom Credits */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/80 gap-4">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-white/80 gap-4">
           <p>© {new Date().getFullYear()} ECOPACIFIC S.A. {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
           <div className="flex gap-6">
             <span>Parque Industrial El Carmen</span>

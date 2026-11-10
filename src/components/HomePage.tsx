@@ -36,7 +36,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         {/* 2. Nuestras Marcas */}
         <BrandsSection
           language={language}
-          onSelectBrand={(slug) => onNavigate(`/marcas/${slug}`)}
+          onSelectBrand={(slug) => onNavigate(slug === 'coco-freeze' ? '/coco-freeze/' : `/marcas/${slug}`)}
         />
       </main>
 

@@ -40,7 +40,8 @@ import dhoyShotInmuniImg from '../assets/inmunishotjengibre.png';
 import dhoyShotInmuniPlusImg from '../assets/inmunishotplusnuevo.jpeg';
 import dhoyShotDigestiImg from '../assets/digestishotplusnuevo.png';
 import dhoyShotDefenImg from '../assets/DEFENSHOTnueva.png';
-import ecoloveShotEnergyImg from '../assets/energyshotpequeno.png';
+import ecoloveShotEnergyImg from '../assets/shotenergy.png';
+import ecoloveShotDefenseImg from '../assets/defense shot.png';
 
 // DHOY Especialidades
 import dhoyZumoLimonImg from '../assets/Limonzumo_blanco.png';
@@ -747,11 +748,11 @@ export const BRANDS_DATA: Record<string, Brand> = {
       },
       {
         id: 'el-shot-energy',
-        name: 'Energyshot',
+        name: 'Shot Energy',
         brandId: 'ecolove',
         familyId: 'shots-ecolove',
-        emotionalDescription: 'Guaraná, maca y café verde en una fórmula pensada para darte un impulso natural de energía.',
-        presentations: ['60 ml'],
+        emotionalDescription: 'Una fórmula pensada para darte un impulso natural de energía.',
+        presentations: ['35 ml'],
         imageUrl: ecoloveShotEnergyImg
       },
       {
@@ -761,7 +762,7 @@ export const BRANDS_DATA: Record<string, Brand> = {
         familyId: 'shots-ecolove',
         emotionalDescription: 'El carácter del jengibre en un shot intenso y práctico para sumar a tu rutina.',
         presentations: ['35 ml'],
-        imageUrl: ecoloveImg
+        imageUrl: ecoloveShotDefenseImg
       },
       {
         id: 'el-miel-agave',

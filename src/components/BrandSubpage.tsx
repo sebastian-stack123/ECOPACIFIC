@@ -57,7 +57,7 @@ import ecoloveSprayAguacateImg from '../assets/ECOLOVE-ACEITE-AGUACATE-SPRAY-180
 import ecoloveBebidaAlmendraImg from '../assets/ECOLOVE-BEBIDA-DE-ALMENDRA-SIN-AZUCAR-1L-2026.png';
 import ecoloveMielAgaveImg from '../assets/ECOLOVE-MIEL-DE-AGAVE-230ML.png';
 import kombuchaJengibreImg from '../assets/kombuchajengibre.png';
-import ecoloveShotEnergyImg from '../assets/energyshotpequeno.png';
+import ecoloveShotEnergyImg from '../assets/shotenergy.png';
 
 // HORTILISTO Imágenes
 import imagenHortilistoInicioImg from '../assets/imagenhortilistoinicio.png';
@@ -66,6 +66,26 @@ import hlMixCebollaImg from '../assets/cebollasmixnuevas.png';
 import hlGuacamoleOriginalImg from '../assets/guacamoleoriginalcategoriayguacamole.png';
 import hlMangoImg from '../assets/mangoencurtidonuevo.png';
 
+
+interface BrandSocialConfig {
+  instagram?: { handle: string; url: string };
+  facebook?: { handle: string; url: string };
+}
+
+const BRAND_SOCIALS: Record<string, BrandSocialConfig> = {
+  'coco-freeze': {
+    instagram: { handle: '@cocofreeze_ec', url: 'https://www.instagram.com/cocofreeze_ec/' },
+    facebook: { handle: '@CocoFreeze.ec', url: 'https://www.facebook.com/CocoFreeze.ec/' },
+  },
+  'ecolove': {
+    instagram: { handle: '@ecolove_ec', url: 'https://www.instagram.com/ecolove_ec/' },
+    facebook: { handle: '@ecoloveec', url: 'https://www.facebook.com/ecoloveec/' },
+  },
+  'dhoy': {
+    instagram: { handle: '@dhoy_ec', url: 'https://www.instagram.com/dhoy_ec/' },
+    facebook: { handle: '@jugosdhoy', url: 'https://www.facebook.com/jugosdhoy/' },
+  },
+};
 
 interface BrandSubpageProps {
   brand?: Brand;
@@ -603,35 +623,6 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       </section>
 
       {/* ========================================================
-          1.5 SECCIÓN RECETAS (Botón sutil para EcoLove antes de la historia)
-          ======================================================== */}
-      {brand.id === 'ecolove' && (
-        <section
-          aria-label={language === 'es' ? 'Recetas EcoLove' : 'EcoLove Recipes'}
-          className="bg-[#152e12] py-4 sm:py-5 border-t border-b border-white/10 text-center"
-        >
-          <div className="max-w-5xl mx-auto px-6 flex items-center justify-center">
-            <button
-              type="button"
-              onClick={() => {
-                if (onNavigate) {
-                  onNavigate('/recetas/');
-                } else {
-                  window.history.pushState({}, '', '/recetas/');
-                  window.dispatchEvent(new PopStateEvent('popstate'));
-                }
-              }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium text-white/90 bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/35 transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer group"
-            >
-              <Utensils className="w-3.5 h-3.5 text-yellow-300/90 group-hover:scale-110 transition-transform" />
-              <span>{language === 'es' ? 'Recetas' : 'Recipes'}</span>
-              <ArrowRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
-            </button>
-          </div>
-        </section>
-      )}
-
-      {/* ========================================================
           2. HISTORIA Y LOS HITOS (Para marcas con historia: Coco Freeze, D'Hoy, EcoLove; Hortilisto no tiene)
           ======================================================== */}
       {brand.milestones && brand.milestones.length > 0 && brand.storyTitle && (
@@ -886,6 +877,40 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       </section>
 
       {/* ========================================================
+          SECCIÓN RECETAS (Para EcoLove: debajo de las categorías y arriba del footer)
+          ======================================================== */}
+      {brand.id === 'ecolove' && (
+        <section
+          aria-label={language === 'es' ? 'Recetas EcoLove' : 'EcoLove Recipes'}
+          className="bg-[#12280F] py-12 sm:py-16 border-t border-b border-green-900/50 text-center"
+        >
+          <div className="max-w-4xl mx-auto px-6 flex flex-col items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={() => {
+                if (onNavigate) {
+                  onNavigate('/recetas/');
+                } else {
+                  window.history.pushState({}, '', '/recetas/');
+                  window.dispatchEvent(new PopStateEvent('popstate'));
+                }
+              }}
+              className="inline-flex items-center gap-3.5 px-8 py-4 sm:px-10 sm:py-4.5 rounded-full text-base sm:text-lg font-black text-stone-900 bg-white hover:bg-emerald-50 border-2 border-white/80 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 cursor-pointer group"
+            >
+              <Utensils className="w-5 h-5 text-[#2D5A27] group-hover:scale-110 transition-transform" />
+              <span>{language === 'es' ? 'Recetas' : 'Recipes'}</span>
+              <ArrowRight className="w-5 h-5 text-[#2D5A27] opacity-80 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+            </button>
+            <p className="text-sm sm:text-base text-emerald-100/90 max-w-lg leading-relaxed font-medium">
+              {language === 'es'
+                ? 'Descubre recetas saludables, fáciles y llenas de sabor elaboradas con nuestros productos'
+                : 'Discover healthy, easy, and flavorful recipes crafted with our products'}
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* ========================================================
           POP-UP DE CASI TODA LA PANTALLA PARA VER PRODUCTOS
           ======================================================== */}
       {selectedFamilyId && (
@@ -931,14 +956,14 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
 
             {/* Contenido scrolleable de los productos */}
             <div className="overflow-y-auto p-6 sm:p-10 flex-1 bg-stone-50">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              <div className="flex flex-wrap justify-center gap-6 sm:gap-8 max-w-6xl mx-auto">
                 {brand.products
                   .filter((p) => p.familyId === selectedFamilyId)
                   .map((product) => (
                     <div
                       key={product.id}
                       onClick={() => setSelectedProduct(product)}
-                      className="group bg-white rounded-3xl p-6 sm:p-8 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1 border border-stone-100"
+                      className="group bg-white rounded-3xl p-6 sm:p-8 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1 border border-stone-100 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm"
                     >
                       <div>
                         {/* 1. Nombre del producto (altura fija para alineación simétrica y perfecta de todas las fotos) */}
@@ -1041,7 +1066,7 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
       )}
 
       {/* ========================================================
-          5. CIERRE CON EL LOGO AL MEDIO (Sin "una marca del ecosistema ecopacific")
+          5. CIERRE CON EL LOGO AL MEDIO Y REDES SOCIALES
           ======================================================== */}
       <footer
         className="py-14 sm:py-20 text-white relative overflow-hidden"
@@ -1055,9 +1080,48 @@ export const BrandSubpage: React.FC<BrandSubpageProps> = ({
             {renderNavbarLogo()}
           </div>
 
+          {/* Redes Sociales Oficiales de la Marca */}
+          {BRAND_SOCIALS[brand.id] && (
+            <div className="flex flex-col items-center gap-3 pt-1">
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/90">
+                {language === 'es' ? 'Síguenos en nuestras redes' : 'Follow us on social media'}
+              </span>
+              <div className="flex items-center justify-center gap-4 sm:gap-5">
+                {BRAND_SOCIALS[brand.id]?.instagram && (
+                  <a
+                    href={BRAND_SOCIALS[brand.id].instagram!.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${brand.name} Instagram ${BRAND_SOCIALS[brand.id].instagram!.handle}`}
+                    title={`${brand.name} Instagram (${BRAND_SOCIALS[brand.id].instagram!.handle})`}
+                    className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:brightness-110 shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-108 active:scale-95 ring-4 ring-white/30 cursor-pointer"
+                  >
+                    <svg className="w-7 h-7 sm:w-8 sm:h-8 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  </a>
+                )}
+                {BRAND_SOCIALS[brand.id]?.facebook && (
+                  <a
+                    href={BRAND_SOCIALS[brand.id].facebook!.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${brand.name} Facebook ${BRAND_SOCIALS[brand.id].facebook!.handle}`}
+                    title={`${brand.name} Facebook (${BRAND_SOCIALS[brand.id].facebook!.handle})`}
+                    className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#1877F2] hover:bg-[#166fe5] shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-108 active:scale-95 ring-4 ring-white/30 cursor-pointer"
+                  >
+                    <svg className="w-7 h-7 sm:w-8 sm:h-8 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                  </a>
+                )}
+              </div>
+            </div>
+          )}
+
           <button
             onClick={onNavigateHome}
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold transition-all cursor-pointer shadow-md hover:text-yellow-300 text-sm"
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold transition-all cursor-pointer shadow-md hover:text-yellow-300 text-sm mt-1"
           >
             <ArrowLeft className="w-4 h-4 stroke-[2.5]" />
             <span>{language === 'es' ? 'Regresar al portal ECOPACIFIC' : 'Return to ECOPACIFIC portal'}</span>

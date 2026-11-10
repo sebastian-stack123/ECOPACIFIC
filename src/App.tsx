@@ -34,6 +34,9 @@ const ContactSubpage = lazyRetry(() =>
 const RecetasSubpage = lazyRetry(() =>
   import('./components/RecetasSubpage').then((m) => ({ default: m.RecetasSubpage }))
 );
+const LegalSubpage = lazyRetry(() =>
+  import('./components/LegalSubpage').then((m) => ({ default: m.LegalSubpage }))
+);
 
 const PageLoadingFallback: React.FC = () => (
   <CoconutLoader label="EcoPacific" fullScreen />
@@ -62,13 +65,31 @@ export default function App() {
   };
 
   // Determine active view
+  const isCocoFreeze =
+    currentPath === '/coco-freeze/' ||
+    currentPath === '/coco-freeze' ||
+    currentPath.startsWith('/coco-freeze');
   const brandSlugMatch = currentPath.match(/^\/marcas\/([a-z0-9-]+)/);
-  const activeBrandSlug = brandSlugMatch ? brandSlugMatch[1] : null;
+  const activeBrandSlug = isCocoFreeze ? 'coco-freeze' : (brandSlugMatch ? brandSlugMatch[1] : null);
 
   const isNosotros = currentPath === '/nosotros';
   const isSostenibilidad = currentPath === '/sostenibilidad';
   const isContacto = currentPath === '/contacto';
   const isRecetas = currentPath === '/recetas/' || currentPath === '/recetas' || currentPath.startsWith('/recetas');
+  const isTerminos =
+    currentPath === '/terminos-y-condiciones/' ||
+    currentPath === '/terminos-y-condiciones' ||
+    currentPath.startsWith('/terminos');
+  const isPrivacidad =
+    currentPath === '/politica-de-privacidad/' ||
+    currentPath === '/politica-de-privacidad' ||
+    currentPath.startsWith('/politica-de-privacidad') ||
+    currentPath.startsWith('/privacidad');
+  const isCookies =
+    currentPath === '/politica-de-cookies/' ||
+    currentPath === '/politica-de-cookies' ||
+    currentPath.startsWith('/politica-de-cookies') ||
+    currentPath.startsWith('/cookies');
 
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-[#5B8C2A] selection:text-white">
@@ -79,7 +100,7 @@ export default function App() {
             brandSlug={activeBrandSlug}
             language={language}
             onNavigateHome={() => navigateTo('/')}
-            onNavigateBrand={(slug) => navigateTo(`/marcas/${slug}`)}
+            onNavigateBrand={(slug) => navigateTo(slug === 'coco-freeze' ? '/coco-freeze/' : `/marcas/${slug}`)}
             onOpenContact={() => navigateTo('/contacto')}
             onLanguageChange={setLanguage}
             onNavigate={navigateTo}
@@ -113,6 +134,36 @@ export default function App() {
         ) : isRecetas ? (
           /* Subpágina de Recetas cargada bajo demanda */
           <RecetasSubpage
+            language={language}
+            onNavigateHome={() => navigateTo('/')}
+            onNavigate={navigateTo}
+            onLanguageChange={setLanguage}
+            onOpenContact={() => navigateTo('/contacto')}
+          />
+        ) : isTerminos ? (
+          /* Términos y condiciones */
+          <LegalSubpage
+            type="terminos"
+            language={language}
+            onNavigateHome={() => navigateTo('/')}
+            onNavigate={navigateTo}
+            onLanguageChange={setLanguage}
+            onOpenContact={() => navigateTo('/contacto')}
+          />
+        ) : isPrivacidad ? (
+          /* Política de privacidad */
+          <LegalSubpage
+            type="privacidad"
+            language={language}
+            onNavigateHome={() => navigateTo('/')}
+            onNavigate={navigateTo}
+            onLanguageChange={setLanguage}
+            onOpenContact={() => navigateTo('/contacto')}
+          />
+        ) : isCookies ? (
+          /* Política de cookies */
+          <LegalSubpage
+            type="cookies"
             language={language}
             onNavigateHome={() => navigateTo('/')}
             onNavigate={navigateTo}
