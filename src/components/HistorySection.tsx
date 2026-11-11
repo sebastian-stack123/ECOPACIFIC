@@ -19,12 +19,9 @@ export const HistorySection: React.FC<HistorySectionProps> = ({ language }) => {
           <span className="text-xs uppercase tracking-widest text-white/90 font-bold mb-3 block">
             ECOPACIFIC S.A.
           </span>
-          <h2 className="text-4xl sm:text-6xl font-black tracking-tight text-white mb-4 leading-[1.08]">
+          <h2 className="text-4xl sm:text-6xl font-black tracking-tight text-white leading-[1.08]">
             {h.title}
           </h2>
-          <p className="text-lg sm:text-xl text-white/90 leading-relaxed font-light">
-            {h.lead}
-          </p>
         </div>
 
         {/* 4 Authentic Key Metrics */}

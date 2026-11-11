@@ -48,12 +48,9 @@ export const NosotrosSubpage: React.FC<NosotrosSubpageProps> = ({
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-10 text-center">
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-4 leading-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
             {h.title}
           </h1>
-          <p className="text-lg sm:text-2xl font-bold text-yellow-200 tracking-tight leading-snug max-w-2xl mx-auto drop-shadow-xs">
-            {h.lead}
-          </p>
         </div>
       </div>
 

@@ -150,7 +150,7 @@ export const ContactSubpage: React.FC<ContactSubpageProps> = ({
                   {isEs ? 'Planta de Producción & Oficinas' : 'Production Plant & Headquarters'}
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight">
-                  EcoPacific S.A.
+                  ECOPACIFIC S.A.
                 </h3>
                 <div className="space-y-3 text-sm sm:text-base text-white/90">
                   <div className="flex items-start gap-3">
