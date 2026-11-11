@@ -1,12 +1,45 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <!-- Google Tag Manager -->
-    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-W66JX9FZ"></script>
+    <!-- Google Tag Manager (Consent Gated) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+
+      // Global loader for Google Tag Manager triggered only after user consent
+      window.__initGTM = function() {
+        if (window.__gtmLoaded) return;
+        window.__gtmLoaded = true;
+        var gtmScript = document.createElement('script');
+        gtmScript.async = true;
+        gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-W66JX9FZ';
+        document.head.appendChild(gtmScript);
+        gtag('js', new Date());
+      };
+
+      // Global cleaner for cookies if user declines or changes consent
+      window.__removeCookies = function() {
+        try {
+          var cookies = document.cookie.split(";");
+          for (var i = 0; i < cookies.length; i++) {
+            var c = cookies[i];
+            var eq = c.indexOf("=");
+            var name = eq > -1 ? c.substr(0, eq).trim() : c.trim();
+            if (name) {
+              document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;";
+              document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=" + window.location.hostname + ";";
+              document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=." + window.location.hostname + ";";
+            }
+          }
+        } catch(e) {}
+      };
+
+      // Only load if previously accepted by the user
+      try {
+        if (localStorage.getItem('ecopacific_cookie_consent') === 'accepted') {
+          window.__initGTM();
+        }
+      } catch (e) {}
     </script>
     <!-- End Google Tag Manager -->
 

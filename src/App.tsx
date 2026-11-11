@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Language } from './types';
 import { CoconutLoader } from './components/CoconutLoader';
 import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton';
+import { CookieBanner, CookieConsentType } from './components/CookieBanner';
 
 import { HomePage } from './components/HomePage';
 
@@ -48,6 +49,28 @@ export default function App() {
     return window.location.pathname || '/';
   });
   const [language, setLanguage] = useState<Language>('es');
+  const [cookieConsent, setCookieConsent] = useState<CookieConsentType>(() => {
+    try {
+      return (localStorage.getItem('ecopacific_cookie_consent') as CookieConsentType) || null;
+    } catch {
+      return null;
+    }
+  });
+  const [isCookieBannerOpen, setIsCookieBannerOpen] = useState(false);
+
+  // Listen for open-cookie-banner requests from footer or other links
+  useEffect(() => {
+    const handleOpenBanner = () => setIsCookieBannerOpen(true);
+    window.addEventListener('open-cookie-banner', handleOpenBanner);
+    return () => window.removeEventListener('open-cookie-banner', handleOpenBanner);
+  }, []);
+
+  const handleConsentChange = (status: 'accepted' | 'necessary' | 'declined') => {
+    setCookieConsent(status);
+    try {
+      localStorage.setItem('ecopacific_cookie_consent', status);
+    } catch {}
+  };
 
   // Sync with browser back/forward buttons
   useEffect(() => {
@@ -184,8 +207,19 @@ export default function App() {
       {/* Acceso directo flotante a WhatsApp siempre visible en toda la web */}
       <FloatingWhatsAppButton language={language} />
 
-      {/* Vercel Analytics */}
-      <Analytics />
+      {/* Banner y controlador de consentimiento de cookies */}
+      <CookieBanner
+        language={language}
+        onNavigate={navigateTo}
+        cookieConsent={cookieConsent}
+        onConsentChange={handleConsentChange}
+        isOpen={isCookieBannerOpen}
+        onClose={() => setIsCookieBannerOpen(false)}
+        onOpen={() => setIsCookieBannerOpen(true)}
+      />
+
+      {/* Vercel Analytics: ÚNICAMENTE se activa si el usuario aceptó cookies */}
+      {cookieConsent === 'accepted' && <Analytics />}
     </div>
   );
 }

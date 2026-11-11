@@ -11,6 +11,7 @@ interface FooterProps {
   onOpenNosotros: () => void;
   onOpenSostenibilidad: () => void;
   onOpenContact: () => void;
+  onOpenCookieSettings?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -19,6 +20,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenNosotros,
   onOpenSostenibilidad,
   onOpenContact,
+  onOpenCookieSettings,
 }) => {
   const t = UI_TRANSLATIONS[language];
 
@@ -158,6 +160,20 @@ export const Footer: React.FC<FooterProps> = ({
             className="hover:text-yellow-300 transition-colors cursor-pointer text-left"
           >
             {language === 'es' ? 'Política de cookies' : 'Cookie Policy'}
+          </button>
+          <span className="text-white/40 hidden sm:inline" aria-hidden="true">·</span>
+          <button
+            type="button"
+            onClick={() => {
+              if (onOpenCookieSettings) {
+                onOpenCookieSettings();
+              } else {
+                window.dispatchEvent(new CustomEvent('open-cookie-banner'));
+              }
+            }}
+            className="hover:text-yellow-300 transition-colors cursor-pointer text-left"
+          >
+            {language === 'es' ? 'Preferencias de cookies' : 'Cookie Preferences'}
           </button>
         </div>
 
