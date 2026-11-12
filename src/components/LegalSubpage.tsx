@@ -859,6 +859,20 @@ export const LegalSubpage: React.FC<LegalSubpageProps> = ({
         </div>
       </main>
 
+      {/* Crédito discreto exclusivo de Términos y Condiciones */}
+      {type === 'terminos' && (
+        <div className="w-full text-center py-2 bg-[#F8FAF5] select-none">
+          <a
+            href="https://mantaiweb.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[10px] sm:text-[11px] text-stone-400/50 hover:text-stone-500/80 transition-colors tracking-wide font-normal inline-block"
+          >
+            Creado por Mantaiweb Designer company
+          </a>
+        </div>
+      )}
+
       {/* Footer */}
       <Footer
         onNavigate={onNavigate}
